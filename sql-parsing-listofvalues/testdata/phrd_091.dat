@@ -1,0 +1,55 @@
+{
+  "Records" : [
+    {
+      "SourceSqlQueryId" : 7,
+      "TableDefinitionId" : 22,
+      "SourceType" : "Db Query",
+      "ResultTableType" : "Data Table",
+      "Description" : "Data Tables for PHRD Appearance Results",
+      "DisplayHeaders" : true,
+      "DisplayHeadersOnSide": false,
+      "Transpose" : true,
+      "ParamUserInputMap" : [
+        {
+          "ParamName" : "Statement#0_S1.PROTOCOL",
+          "UserInputId" : 10
+        },
+        {
+          "ParamName" : "Statement#1_TZ1.PROTOCOL",
+          "UserInputId" : 10
+        }
+      ],
+      "DbSystem" : "PharmSci Labware",
+      "SqlStatement" : "SELECT \nR3.\"ANALYSIS\" AS \"Analysis\",\nR3.\"REPORTED_NAME\" AS \"Reported Name\",\nS1.\"LOT_NAME\" AS \"Formulation\",\nX1.\"TITLE\" AS \"Description\",\nROUND(DECODE(TP1.NUM_MONTHS,0,TP1.INTERVAL/86400/30.4167, tp1.num_months), 2) as \"Timepoint_Num\",\nTP1.DISPLAY_STRING AS \"Timepoint_Str\",\nREGEXP_REPLACE(REGEXP_REPLACE(S1.\"CONDITION\", '_', ' / '), 'C', '°C') AS \"Condition\",\nR3.\"REPORTED_VALUE\" AS \"Reported Value\"\n--S1.\"PROTOCOL\", \n--S1.\"PROTOCOL_LEVEL\" AS \"Protocol Level\",\n\nFROM GLIMS_OWNER.SAMPLE S1\n\nLEFT JOIN GLIMS_OWNER.TEST T2 on S1.SAMPLE_NUMBER = T2.SAMPLE_NUMBER\nLEFT JOIN GLIMS_OWNER.RESULT R3 on T2.TEST_NUMBER = R3.TEST_NUMBER\nLEFT JOIN GLIMS_OWNER.X_COMPOUNDS X4 on S1.X_COMPOUND_ID = X4.COMPOUND_ID\nLEFT JOIN GLIMS_OWNER.PROTOCOL P1 on S1.PROTOCOL = P1.NAME\nLEFT JOIN GLIMS_OWNER.X_MATERIAL X1 on X1.NAME = S1.LOT_NAME\nLEFT OUTER JOIN GLIMS_OWNER.TIMEPOINT TP1 ON S1.TIMEPOINT = TP1.NAME\n\nWHERE R3.\"STATUS\" != 'X'\nAND T2.\"STATUS\" != 'X'\nAND S1.\"PROTOCOL\" = ?\n--AND R3.REPORTED_NAME IN ('Color Intensity','Clarity','Color','pH','Relative Potency','Visible Particles','Fragments')\nAND R3.\"REPORTED_NAME\" NOT IN ('Test Location','Method No. & Version/Effective Date', 'Data Reference', 'Test Date', 'Total Area', 'Result ID', 'T_mTCA', 'Empower Result ID', 'LOQ (% Area)')\n\nUNION \n\nSELECT DISTINCT\nR3.\"ANALYSIS\" AS \"Analysis\",\nR3.\"REPORTED_NAME\" AS \"Reported Name\",\nTZ1.\"TEST_ARTICLE\" AS \"Formulation\",\nM1.\"TITLE\" AS \"Description\",\n0 as \"Timepoint_Num\",\n'T-0' AS \"Timepoint_Str\",\n'T-0' AS \"Condition\",\nR3.\"REPORTED_VALUE\" AS \"Reported Value\"\n\nFROM GLIMS_OWNER.PROTOCOL PR1\n\nINNER JOIN GLIMS_OWNER.TIME_ZERO TZ1 ON PR1.NAME = TZ1.PROTOCOL AND TZ1.OBJECT_CLASS = 'SAMPLE'\nINNER JOIN GLIMS_OWNER.SAMPLE S1 ON TZ1.OBJECT_ID = S1.SAMPLE_NUMBER\nINNER JOIN GLIMS_OWNER.TEST T2 on S1.SAMPLE_NUMBER = T2.SAMPLE_NUMBER\nINNER JOIN GLIMS_OWNER.RESULT R3 on T2.TEST_NUMBER = R3.TEST_NUMBER\nLEFT OUTER JOIN GLIMS_OWNER.X_MATERIAL M1 on M1.NAME = TZ1.\"TEST_ARTICLE\"\nLEFT OUTER JOIN GLIMS_OWNER.TIMEPOINT TP1 ON S1.TIMEPOINT = TP1.NAME\n\nWHERE R3.\"STATUS\" != 'X'\nAND T2.\"STATUS\" != 'X'\nAND TZ1.\"PROTOCOL\" = ?\n--AND R3.REPORTED_NAME IN ('Color Intensity','Clarity','Color','pH','Relative Potency','Visible Particles','Fragments')\nAND R3.\"REPORTED_NAME\" NOT IN ('Test Location','Method No. & Version/Effective Date', 'Data Reference', 'Test Date', 'Total Area', 'Result ID', 'T_mTCA', 'Empower Result ID', 'LOQ (% Area)')\n\nORDER BY \"Analysis\", \"Reported Name\", \"Formulation\", \"Timepoint_Num\", \"Condition\"\n\n;",
+      "IsPivot" : true,
+      "PivotOnColumns" : [
+        {
+          "Column" : "Analysis",
+          "IsKeyColumn" : true
+        },
+        {
+          "Column" : "Reported Name",
+          "IsKeyColumn" : true
+        },
+        {
+          "Column" : "Formulation",
+          "IsKeyColumn" : true
+        },
+        {
+          "Column" : "Description",
+          "IsKeyColumn" : false
+        }
+      ],
+      "PivotGroupByColumns" : [
+        {
+          "Column" : "Timepoint_Str"
+        },
+        {
+          "Column" : "Condition"
+        }
+      ],
+      "PivotDataColumn" : "Reported Value",
+      "PivotTopLeftCornerOpt" : "Pivot On Label"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 36,
+      "TableDefinitionId": 82,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "DisplayHeaders": true,
+      "Transpose": true,
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Statement#0_S1.PROTOCOL",
+          "UserInputId": 162
+        },
+        {
+          "ParamName": "Statement#1_TZ1.PROTOCOL",
+          "UserInputId": 162
+        }
+      ],
+      "DbSystem": "PharmSci Labware",
+      "SqlStatement": "SELECT \nS1.PROTOCOL, \nS1.LOT_NAME AS \"Formulation\",\nX1.TITLE AS \"Description\",\nS1.PROTOCOL_LEVEL AS \"Protocol Level\",\nS1.CONDITION AS \"Condition\",\nS1.TIMEPOINT AS \"Timepoint\",\nR3.ANALYSIS,\nR3.REPORTED_NAME AS \"Reported Name\",\nR3.REPORTED_VALUE AS \"Reported Value\"\n\nFROM GLIMS_OWNER.SAMPLE S1\nLEFT JOIN GLIMS_OWNER.TEST T2 on S1.SAMPLE_NUMBER = T2.SAMPLE_NUMBER\nLEFT JOIN GLIMS_OWNER.RESULT R3 on T2.TEST_NUMBER = R3.TEST_NUMBER\nLEFT JOIN GLIMS_OWNER.X_COMPOUNDS X4 on S1.X_COMPOUND_ID = X4.COMPOUND_ID\nLEFT JOIN GLIMS_OWNER.PROTOCOL P1 on S1.PROTOCOL = P1.NAME\nLEFT JOIN GLIMS_OWNER.X_MATERIAL X1 on X1.NAME = S1.LOT_NAME\n\nWHERE\nR3.STATUS != 'X'\nAND T2.STATUS != 'X'\nAND S1.PROTOCOL = '00709448-0079-001'\nAND R3.REPORTED_NAME IN ('Color Intensity','Clarity','Color','pH','Relative Potency','Visible Particles','Fragments')\n\nUNION \n\nSELECT \nTZ1.PROTOCOL, \nTZ1.TEST_ARTICLE AS \"Formulation\",\nM1.TITLE AS \"Description\",\nTZ1.LEVEL_NAME AS \"Protocol Level\",\nTZ1.CONDITION AS \"Condition\",\n'0_TZ' AS \"Timepoint\",\nR3.ANALYSIS,\nR3.REPORTED_NAME AS \"Reported Name\",\nR3.REPORTED_VALUE AS \"Reported Value\"\n\nFROM GLIMS_OWNER.PROTOCOL PR1\nINNER JOIN GLIMS_OWNER.TIME_ZERO TZ1 ON PR1.NAME = TZ1.PROTOCOL AND TZ1.OBJECT_CLASS = 'SAMPLE'\nINNER JOIN GLIMS_OWNER.SAMPLE S1 ON TZ1.OBJECT_ID = S1.SAMPLE_NUMBER\nINNER JOIN GLIMS_OWNER.TEST T2 on S1.SAMPLE_NUMBER = T2.SAMPLE_NUMBER\nINNER JOIN GLIMS_OWNER.RESULT R3 on T2.TEST_NUMBER = R3.TEST_NUMBER\nLEFT OUTER JOIN GLIMS_OWNER.X_MATERIAL M1 on S1.X_MATERIAL = M1.NAME\n\nWHERE \nR3.STATUS != 'X'\nAND T2.STATUS != 'X'\nAND TZ1.PROTOCOL = ? \nAND R3.REPORTED_NAME IN ('Color Intensity','Clarity','Color','pH','Relative Potency','Visible Particles','Fragments')\n\nORDER BY\nANALYSIS, \"Reported Name\", \"Formulation\", \"Protocol Level\", \"Timepoint\", \"Condition\"",
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "REPORTEDNAME",
+          "IsKeyColumn": true
+        },
+        {
+          "Column": "Formulation",
+          "IsKeyColumn": true
+        },
+        {
+          "Column": "Description",
+          "IsKeyColumn": true
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "TIMEPOINT"
+        },
+        {
+          "Column": "CONDITION1"
+        }
+      ],
+      "PivotDataColumn": "REPORTEDVALUE",
+      "PivotTopLeftCornerOpt": "Pivot On Label"
+    }
+  ]
+}

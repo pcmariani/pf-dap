@@ -1,0 +1,16 @@
+{
+  "Records" : [
+    {
+      "SourceSqlQueryId" : 25,
+      "TableDefinitionId" : 42,
+      "SourceType" : "Db Query",
+      "ResultTableType" : "Data Table",
+      "DisplayHeaders" : true,
+      "DisplayHeadersOnSide" : true,
+      "Transpose" : false,
+      "DbSystem" : "INFORMA",
+      "SqlStatement" : "USE ROLE BTXPS__DEV_PS_LABWARE_RAW_RO_ROLE;\nUSE WAREHOUSE BTXPS_DEV_XS_WH;\nUSE DATABASE BTXPS_NONGXP_SRC_SBX_DB;\nUSE SCHEMA PS_LABWARE_RAW;\nSELECT NAME, VERSION, CODE, DESCRIPTION, COST_FACTOR, CHANGED_ON, CHANGED_BY, REMOVED, GROUP_NAME, EXT_LINK, TEST_LIST, FULL_TEST_FREQ, LOTS_TO_GO, REPORT_FORMAT, ACTIVE, X_PRODUCT_TYPE \nFROM \"BTXPS_NONGXP_SRC_SBX_DB\".\"PS_LABWARE_RAW\".\"PRODUCT\";",
+      "IsPivot" : false
+    }
+  ]
+}
