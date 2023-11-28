@@ -59,8 +59,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
          * --- parse the COLUMNS ---
          */
         // TODO: Account for column aliases with no AS which are inside double-quotes
-        def selectClause = sqlStatementArr[0].replaceAll(/(?si)(.*?)\bJOIN.*/,"\$1").replaceAll(/(?si)(.*)\bFROM.*/,"\$1").replaceAll(/SELECT\s*?\n*/,"")
+        def selectClause = sqlStatementArr[0]
+            .replaceAll(/(?si)(.*?)\bJOIN.*/,"\$1")
+            .replaceAll(/(?si)(.*)\bFROM.*/,"\$1")
+            .replaceAll(/(?i)SELECT(?: DISTINCT)?\s*?\n*/,"")
         // println selectClause
+
         if (uIndex == unionedSqlStatementsArr.size()-1) {
             columnsArr = selectClause
                 .split(/,(?![^(]*\))/)
