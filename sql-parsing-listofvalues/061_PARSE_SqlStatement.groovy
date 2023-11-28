@@ -15,8 +15,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         .replaceAll(/\\n/, "\n")
         .replaceAll(/--.*/,"")
         .replaceAll(/\n+/, "\n")
+    // println sqlRaw
 
-    def sqlRawArr = sqlRaw.split(/\s*;\s*/)
+    def sqlRawArr = sqlRaw.split(/\s*;\s+(?=SELECT)\s*/)
     // sqlRawArr.each { println it + "\n---------\n" }
     // println sqlRawArr.size()
 
