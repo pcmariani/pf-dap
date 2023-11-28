@@ -66,27 +66,14 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println selectClause
 
         if (uIndex == unionedSqlStatementsArr.size()-1) {
-            columnsArr = selectClause
-                .split(/,(?![^(]*\))/)
-                .collect {
-                    it.trim()
-                }
-                .collect {
-                    if (it =~/(?i)\bAS\b/)                     // if column contains AS
-                        it.split(/(?i)\s*\bAS\b\s*/)[-1]       // split on AS and use the last element
-                    else if (it =~ /\) /)                      // else if column contains a space after a )
-                        it.split(/\) +/)[-1]                   // split on space ) and use the last element
-                    // else if (it =~ / /)                       // else if column contains a space
-                    // it.split(/ +/)[-1]                        // split on space and use the last element
-                    else it                                    // else use the column as is
-                }
-                .collect {
-                    it.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
-                }
+            columnsArr = selectClause .split(/,(?![^(]*\))/).collect { it.trim() }.collect { 
+                if (it =~ /"\s*$/) it.replaceAll(/.*\s+(.*".*".*)/,"\$1") // alias surrounded in doublequotes
+                else if (it =~ /\s+/) it.replaceAll(/.*\s+/,"")           // alias not surrounded in doublequotes
+                else it                                                   // no alias
+            }
         }
-        // columnsArr.each{ println it }
-        // println columnsArr.size()
-
+        println columnsArr.size()
+        columnsArr.each { println it }
 
         /*
          * --- parse the FROM clause ---
