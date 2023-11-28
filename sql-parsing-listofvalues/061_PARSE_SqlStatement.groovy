@@ -52,7 +52,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // split the entire sql by the where clause
         def sqlStatementArr = sqlStatement.split(/(?si)WHERE\s*(?!.*WHERE)/, 2)
         // println sqlStatementArr[0]
-        // TODO Throw error if now WHERE clause: if sqlStatementArr.size == 1
 
 
         /*
