@@ -25,7 +25,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def sqlRawPreSelect = ""
     def sqlRawWithPreSelectRemoved = ""
     if (sqlRawArr.size() > 1) {
-        sqlRawPreSelect = sqlRawArr[0..-2].join(";\n ") + ";"
+        sqlRawPreSelect = sqlRawArr[0..-2].join() + ";"
         sqlRawWithPreSelectRemoved = sqlRawArr[-1]
     }
     else {
