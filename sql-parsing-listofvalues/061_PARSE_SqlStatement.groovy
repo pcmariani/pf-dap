@@ -152,16 +152,19 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             // println prettyJson(whereClauseArr)
             whereClauseArr.each { whereParam ->
                 // if (whereParam.contains("NOT IN")) println "\n" + whereParam
+
+                def operatorsRegexMatcher = /=|!=|<>|>|>=|<|<=|IS\s+NOT\s+NULL|IS\s+NULL|NOT\s+IN|IN|NOT\s+LIKE|LIKE|ANY|ALL/
                 def whereParamRegexMatcher = /(?xi)^
-                        \s*(\))?                                                          #closeParens
-                        \s*(\bAND\b|\bOR\b)?                                              #conjunction
-                        \s*(\()?                                                          #openParens
-                        \s*(.*?)                                                          #column
-                        \s*(=|!=|<>|>|>=|<|<=|NOT\s+IN|IN|LIKE|NOT\s+LIKE|ANY|ALL)        #operator
-                        \s*(.*?)                                                          #predicate
+                        \s*(\))?                      #closeParens
+                        \s*(\bAND\b|\bOR\b)?          #conjunction
+                        \s*(\()?                      #openParens
+                        \s*(.*?)                      #column
+                        \s*($operatorsRegexMatcher)   #operator
+                        \s*(.*?)                      #predicate
+                        \s*((?<!\+)\))?               #closeParensEnd
                     \s*$/
-                def (_, closeParen, conjunction, openParens, column, operator, predicate) = (whereParam =~ whereParamRegexMatcher).findAll()[0]
-                // println ([closeParen, conjunction, openParens, column, operator, predicate].join(" | "))
+                def (_, closeParen, conjunction, openParens, column, operator, predicate, closeParenEnd) = (whereParam =~ whereParamRegexMatcher).findAll()[0]
+                // println ([closeParen, conjunction, openParens, column, operator, predicate, closeParenEnd].join(" . "))
                 def table
                 if (column =~ /\./) {
                     def alias = column.replaceFirst(/\..*$/,"")
