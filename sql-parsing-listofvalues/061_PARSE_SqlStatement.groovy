@@ -144,9 +144,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 .replaceAll(/(?i)\bIN\b\s*\(\s*\?\s*\)/,"IN ?")
                 .replaceFirst(/^\s*WHERE\s+/,"")
                 .replaceAll(/\n/," ")
-                .replaceAll(/(?i)(\)?\s*(?:\bAND\b|\bOR\b))/, " __\$1")
+                // .replaceAll(/(?i)(\)?\s*(?:\bAND\b|\bOR\b))/, " __\$1")
+                // .replaceAll(/ {2,}/,"\n")
             // println whereClause
-            def whereClauseArr = whereClause.split(/\s*__\s*/)
+            // def whereClauseArr = whereClause.split(/\s*__\s*/)
+            def whereClauseArr = whereClause.split(/(?=\bAND\b|\bOR\b)/)
             // println prettyJson(whereClauseArr)
             whereClauseArr.each { whereParam ->
                 // if (whereParam.contains("NOT IN")) println "\n" + whereParam
