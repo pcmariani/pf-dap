@@ -57,7 +57,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         /*
          * --- parse the COLUMNS ---
          */
-        // TODO: Account for column aliases with no AS which are inside double-quotes
         def selectClause = sqlStatementArr[0]
             .replaceAll(/(?si)(.*?)\bJOIN.*/,"\$1")
             .replaceAll(/(?si)(.*)\bFROM.*/,"\$1")
@@ -71,8 +70,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 else it                                                   // no alias
             }
         }
-        println columnsArr.size()
-        columnsArr.each { println it }
+        // println columnsArr.size()
+        // columnsArr.each { println it }
 
         /*
          * --- parse the FROM clause ---
@@ -98,6 +97,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         }
         else {
             def table = sqlStatementArr[0].replaceAll(/(?si).*\bFROM\b\s*/,"").trim()
+            def tableArr = table.split(/\n*,\n*/).collect { it.trim() }
+            def base = tableArr[0].split(/\./)[0..-2].join(".")
+            // tableArr[0] = firstTableArr[-1]
+            // println base
+            def newTableArr = [tableArr[0]]
+            tableArr[1..-1].each{ newTableArr << base + "." + it + " " + it }
+            newTableArr.each { println it }
             fromTableMap = setFromTableMap( null, table)
         }
         fromTablesArr << fromTableMap
@@ -148,10 +154,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             // println whereClause
             // def whereClauseArr = whereClause.split(/\s*__\s*/)
             def whereClauseArr = whereClause.split(/(?=\bAND\b|\bOR\b)/)
-            // println prettyJson(whereClauseArr)
-            whereClauseArr.each { whereParam ->
-                // if (whereParam.contains("NOT IN")) println "\n" + whereParam
-
+            whereClauseArr.collect{it.trim()}.each { whereParam ->
+                // println whereParam
                 def operatorsRegexMatcher = /=|!=|<>|>|>=|<|<=|IS\s+NOT\s+NULL|IS\s+NULL|NOT\s+IN|IN|NOT\s+LIKE|LIKE|ANY|ALL/
                 def whereParamRegexMatcher = /(?xi)^
                         \s*(\))?                      #closeParens

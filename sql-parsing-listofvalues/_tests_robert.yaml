@@ -1,0 +1,4 @@
+tests:
+  - DAP061_snowflake_robert
+scripts:
+  - DAP061_GENERATE_SqlStatementMetadata -o

@@ -3,9 +3,10 @@ tests:
   # - PHRD_SqlMeta
   # - IND_Meta
   # - eln_sqlMeta
-  - phrd_091
-  - snowflake_meta
+  # - data/phrd_091
+  - data/snowflake_meta
+  - data/DAP061_snowflake_robert
 
 scripts:
-  - s130_SqlMeta -o -xp -xd
-  - s130_SqlListOfValues -o -xp -xd
+  - 061_PARSE_SqlStatement -o -xp -xd
+  # - 091_GEN_ListOfValues -o -xp -xd
