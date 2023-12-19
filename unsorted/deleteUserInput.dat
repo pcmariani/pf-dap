@@ -1,0 +1,31 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 11,
+      "TableDefinitionId": 24,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "experiment",
+          "UserInputId": 16
+        },
+        {
+          "ParamName": "p2",
+          "UserInputId": 17
+        },
+        {
+          "ParamName": "p3",
+          "UserInputId": 18
+        }
+      ],
+      "DbSystem": "RedShift",
+      "SqlStatement": "SELECT * FROM sdc_psbtx_baseline.eln_doc_automation_results WHERE experiment = ? AND workbooknumber = ? AND workbooksection = ?",
+      "DisplayHeaders": false,
+      "Transpose": false,
+      "IsPivot": false,
+      "PivotOnColumns": [],
+      "PivotGroupByColumns": []
+    }
+  ]
+}

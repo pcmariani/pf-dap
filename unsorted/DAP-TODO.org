@@ -1,0 +1,52 @@
+* Errors that need to be handled
+- "No GDMS Unique ID returned for Compound"
+  - Cause: There is no folder in GMDS for that compound name
+
+* Sure up the back-end
+- Proper error-handling
+- debugging help for scripts
+- separate the Querying of the data from the formatting
+  - API to get data, must store raw data somewhere
+  - API to format data, retrieve raw data from storage
+    - is this better? Only if data could be stored in memory
+    - Flow could store the raw data in it's state, then send it
+      back to integrate. Is that better? probably not
+- makes sure that the sql parser can handle a WHERE clause with hard-coded values
+
+* Error handling ideas
+- Send errors atomically to db, in addition to caching
+- UI to view enriched execution metadata
+    - button to retry in debug mode
+
+* Design changes
+**  Table Title
+- Move table title override out of the list of values modal to it's own config
+- Allow editing of table instances, which would include table title override
+
+**  Trasposition
+- remove tranposition for pivots
+- instead of transposing, the user will switch the PivotOn and GroupBy
+- Add configuration for GroupBy rows like PivotOn columns
+  - active, reorder, rename
+
+**  PivotOn columns
+- option for fixed column width (rather than percentage)
+**  Virtual Columns
+
+* Test Cases
+- IND Stability
+  - unpivoted
+  - pivoted
+  - pivoted-transposed
+** Things to check
+- Table title
+  - placeholders
+  - string replacements
+- Table Title override
+- Footnotes
+
+* Error Handling
+- Defaults
+- Limit number of rows in email
+- DEBUG mode
+-

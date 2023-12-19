@@ -1,0 +1,17 @@
+{
+  "Records": [
+    {
+      "TableInstanceId": 210,
+      "TableDefinitionId": 82,
+      "ReportContentItem_DynamicTableId": 143,
+      "UserInputValues": [
+        {
+          "UserInputId": 162,
+          "UserInputValue": "00709448-0079-001"
+        }
+      ],
+      "UserInputsIdentifier": "00709448-0079-001",
+      "TableInstanceSequenceNum": 2
+    }
+  ]
+}

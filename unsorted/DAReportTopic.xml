@@ -1,0 +1,18 @@
+<RecordQueryResponse resultCount="1" totalCount="1">
+  <Record recordId="5a9c5cf7-e364-4691-b8a1-76c791e5f0c5" createdDate="2023-05-31T16:37:39Z" updatedDate="2023-06-02T15:42:10Z">
+    <Fields>
+      <tr1reporttoc>
+        <dareport_id>dabecb4b-08ad-4dba-9aaf-7b558b272980</dareport_id>
+        <sequence_nbr>1</sequence_nbr>
+        <section_no_unformatted>1</section_no_unformatted>
+        <section_no>3.2.1.7.3</section_no>
+        <section_name>Stability Data</section_name>
+        <locked_by>peter.mariani@pfizer.com</locked_by>
+        <lock_acquired_timestamp>2023-06-02T11:42:09-0400</lock_acquired_timestamp>
+      </tr1reporttoc>
+    </Fields>
+    <links>
+      <link source="TR1Designer" entityId="20230531_123739342_3.2.1.7.3" establishedDate="2023-05-31T16:37:39Z"></link>
+    </links>
+  </Record>
+</RecordQueryResponse>

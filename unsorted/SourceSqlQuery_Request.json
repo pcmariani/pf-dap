@@ -1,0 +1,33 @@
+{
+    "Action": "UPSERT",
+    "Requestor": "Pete",
+    "Records": [
+        {
+            "TableDefinitionId": 3,
+            "SourceType": "Sql Query",
+            "Description": "Here is a description '{2}'",
+            "DbSystem": "INFORMA",
+            "SqlStatement": "SELECT Blah blah blah",
+            "PivotOnColumns": [
+                {
+                    "Column": "Assay Name",
+                    "CanBeRenamed": true
+                },
+                {
+                    "Column": "Parameter Field Name",
+                    "CanBeRenamed": true
+                },
+                {
+                    "Column": "Acceptance Criteria",
+                    "CanBeRenamed": false
+                }
+            ],
+            "PivotGroupByColumns": [
+                {
+                    "Column": "Protocol Months On Stability",
+                    "Label": "Time (Months)"
+                }
+            ]
+        }
+    ]
+}

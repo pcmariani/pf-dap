@@ -1,0 +1,17 @@
+<Component componentId="d704d07a-5aad-4339-a986-855ae25bd753" createdBy="peter.mariani@boomi.com" createdDate="2023-07-14T20:52:29Z" currentVersion="true" deleted="false" folderFullPath="Boomi_PeterMariani/AAPI" folderId="Rjo2MDA4ODM3" folderName="AAPI" modifiedBy="peter.mariani@boomi.com" modifiedDate="2023-07-14T20:52:29Z" name="TEST_SCRIPT" type="script.processing" version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="bns:Component" xmlns="http://api.platform.boomi.com/">
+    <bns:encryptedValues xmlns:bns="http://api.platform.boomi.com/"/>
+    <bns:description xmlns:bns="http://api.platform.boomi.com/"/>
+    <bns:object xmlns:bns="http://api.platform.boomi.com/">
+        <ProcessingScript language="groovy" useCache="true" xmlns="">
+        <script>import java.util.Properties;
+import java.io.InputStream;
+
+for( int i = 0; i &lt; dataContext.getDataCount(); i++ ) {
+    InputStream is = dataContext.getStream(i);
+    Properties props = dataContext.getProperties(i);
+
+    dataContext.storeStream(is, props);
+}</script>
+</ProcessingScript>
+</bns:object>
+</Component>

@@ -1,0 +1,34 @@
+AEX-HPLC___Anti-CD3 mAb
+Appearance___Clarity
+Appearance___Coloration
+Appearance___Visible Particulates
+Biological Activity (Binding ELISA)___Relative Potency
+CEX-HPLC___Anti-BCMA mAb
+CEX-HPLC___Anti-BCMA/Anti-CD3 Bispecific Clip
+CGE (non-reducing)___Fragments
+CGE (non-reducing)___Intact IgG
+CGE (non-reducing)___Other
+CGE (reducing)___Fragments
+CGE (reducing)___Heavy Chain + Light Chain
+CGE (reducing)___Other
+Endotoxin___Endotoxin
+Osmolarity___Osmolarity
+Peptide Mapping___Identity (Peptide Profile)
+SE-HPLC___HMMS
+SE-HPLC___Monomer
+Sterility___Sterility
+Subvisible Particles___Subvisible Particles
+Subvisible Particles___Subvisible Particles >= 10µm
+Subvisible Particles___Subvisible Particles >= 25µm
+UV Spectroscopy___Protein Concentration
+iCE___Acidic Species
+iCE___Basic Species
+iCE___Main Species
+pH___pH
+Time (Months)	CGE (non-reducing)	CGE (non-reducing)	CGE (non-reducing)	CGE (reducing)	CGE (reducing)	CGE (reducing)	Endotoxin	Osmolarity	Peptide Mapping	SE-HPLC	SE-HPLC	Sterility	Subvisible Particles	Subvisible Particles	Subvisible Particles	UV Spectroscopy	iCE	iCE	iCE	pH
+Time (Months)	Fragments	Intact IgG	Other	Fragments	Heavy Chain + Light Chain	Other	Endotoxin	Osmolarity	Identity (Peptide Profile)	HMMS	Monomer	Sterility	Subvisible Particles	Subvisible Particles >= 10µm	Subvisible Particles >= 25µm	Protein Concentration	Acidic Species	Basic Species	Main Species	pH
+0	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR
+1	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR
+3	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR
+6	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR	NR
+

@@ -1,0 +1,73 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 15,
+      "TableDefinitionId": 63,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for DP Batch Analysis",
+      "DisplayHeaders": true,
+      "Transpose": false,
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Product",
+          "UserInputId": 111
+        },
+        {
+          "ParamName": "Batch Number",
+          "UserInputId": 112
+        }
+      ],
+      "DbSystem": "INFORMA",
+      "SqlStatement": "SELECT &quot;Batch Number&quot;, &quot;Material Number&quot;, &quot;Acceptance Criteria&quot;, &quot;Analytical Procedure&quot;, &quot;Quality Attribute&quot;, &quot;Text Parameter Value&quot; FROM MIPRANS_OWNER.DELL_CQA_BA WHERE &quot;Product&quot; = ? AND &quot;Batch Number&quot; IN (?) ORDER BY &quot;Batch Number&quot;",
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "Analytical Procedure",
+          "IsKeyColumn": true
+        },
+        {
+          "Column": "Quality Attribute",
+          "IsKeyColumn": true
+        },
+        {
+          "Column": "Acceptance Criteria",
+          "IsKeyColumn": false
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "Batch Number"
+        }
+      ],
+      "PivotDataColumn": "Text Parameter Value",
+      "PivotTopLeftCornerOpt": "Pivot On Label",
+      "CreatedBy": "Peter.Mariani@pfizer.com",
+      "CreatedDate": "2023-06-12T21:47:44.3900000",
+      "ModifiedBy": "Peter.Mariani@pfizer.com",
+      "ModifiedDate": "2023-06-13T01:49:12.5781989",
+      "WhereClauseParams": [
+        {
+          "Group": 0,
+          "Conjunction": null,
+          "Table": "MIPRANS_OWNER.DELL_CQA_BA",
+          "Column": "Product",
+          "Operator": "=",
+          "MultiSelect": false
+        },
+        {
+          "Group": 1,
+          "Conjunction": "AND",
+          "Table": "MIPRANS_OWNER.DELL_CQA_BA",
+          "Column": "Batch Number",
+          "Operator": "IN",
+          "MultiSelect": true
+        }
+      ],
+      "FromTable": {
+        "Name": "MIPRANS_OWNER.DELL_CQA_BA",
+        "Alias": null
+      }
+    }
+  ]
+}

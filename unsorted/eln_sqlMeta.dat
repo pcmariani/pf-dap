@@ -1,0 +1,6 @@
+{
+  "Requestor": "Peter.Mariani@pfizer.com",
+  "SqlStatement": "SELECT \"verticaltitle\", \"horizontaltitle\", \"value\", \"rownum\", \"columnnum\", \"namedrange\"\nFROM sdc_psbtx_baseline.eln_doc_automation_results\nWHERE \"workbooknumber\" = ?\nAND \"workbooksection\" = ?\nAND \"experiment\" = ?\n\n",
+  "TableDefinitionId": 34,
+  "SourceSqlQueryId": 18
+}

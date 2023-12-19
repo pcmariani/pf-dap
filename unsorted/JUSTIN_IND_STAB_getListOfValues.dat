@@ -1,0 +1,84 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 22,
+      "TableDefinitionId": 68,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for Justin IND Stability",
+      "DisplayHeaders": true,
+      "Transpose": false,
+      "ParamUserInputMap": [
+        {
+          "ParamName": "C1.NAME",
+          "UserInputId": 130
+        },
+        {
+          "ParamName": "PC1.NAME",
+          "UserInputId": 130
+        },
+        {
+          "ParamName": "S1.LOT_NAME",
+          "UserInputId": 131
+        },
+        {
+          "ParamName": "T1.X_TEST_TYPE",
+          "UserInputId": 133
+        },
+        {
+          "ParamName": "S1.CONDITION",
+          "UserInputId": 134
+        }
+      ],
+      "DbSystem": "LIMS",
+      "SqlStatement": "SELECT PC1.NAME AS PARENT_COMPOUND_NAME, P1.DESCRIPTION as Product_DESC, P1.X_PRODUCT_TYPE as Product_Type, S1.LOT_NAME, S1.PROTOCOL, S1.PROTOCOL_LEVEL, S1.CONDITION, S1.TIMEPOINT, TP1.DISPLAY_STRING TP_STRING, ROUND(DECODE(TP1.NUM_MONTHS,0,TP1.INTERVAL/86400/30.4167, tp1.num_months), 2) as Num_Months_Planned, T1.DESCRIPTION as Test_Description, T1.REPORTED_NAME as Test_Reported_Name, R1.NAME as R_NAME, R1.REPORTED_NAME AS R_REPORTED_NAME_ACTUAL, COALESCE(PS1.REPORTED_NAME, R1.REPORTED_NAME) AS R_REPORTED_NAME_LATEST, R1.FORMATTED_ENTRY AS R_FORMATTED_ENTRY, U1.DISPLAY_STRING as UNITS_STRING, PS1.DESCRIPTION as ACCEPTANCE_CRITERIA, FROM GLIMS_OWNER.X_COMPOUNDS C1 LEFT OUTER JOIN GLIMS_OWNER.X_COMPOUNDS PC1 ON C1.PARENT_COMPOUND_NAME = PC1.NAME INNER JOIN GLIMS_OWNER.SAMPLE S1 ON C1.COMPOUND_ID = S1.X_COMPOUND_ID AND S1.SAMPLE_NUMBER = S1.ORIGINAL_SAMPLE AND S1.STATUS IN (&#39;A&#39;, &#39;C&#39;, &#39;P&#39;, &#39;U&#39;, &#39;I&#39;) AND S1.GROUP_NAME &lt;&gt; &#39;TRAINING&#39; AND S1.PROTOCOL IS NOT NULL INNER JOIN GLIMS_OWNER.SAMPLE S2 ON S1.SAMPLE_NUMBER = S2.ORIGINAL_SAMPLE AND NOT(S2.SAMPLE_NUMBER &lt;&gt; S2.ORIGINAL_SAMPLE and S2.PARENT_ALIQUOT = 0) AND S2.STATUS IN (&#39;A&#39;, &#39;C&#39;, &#39;P&#39;, &#39;U&#39;, &#39;I&#39;) INNER JOIN GLIMS_OWNER.TEST T1 ON S2.SAMPLE_NUMBER = T1.SAMPLE_NUMBER AND T1.STATUS IN (&#39;A&#39;, &#39;C&#39;, &#39;P&#39;) INNER JOIN (select x.test_number, MAX(DECODE(instr(x.name, &#39;Method No. &#39;),1,x.formatted_entry)) as R_METHOD, MAX(DECODE(x.name, &#39;Data Reference&#39;, x.formatted_entry)) as R_DATA_REF, MAX(DECODE(x.name, &#39;Test Location&#39;, x.formatted_entry)) as R_TEST_LOC, MAX(DECODE(x.name, &#39;Test Date&#39;, x.formatted_entry)) as R_TEST_DATE from GLIMS_OWNER.result x where x.status not in (&#39;X&#39;, &#39;R&#39;, &#39;N&#39;) and (x.Reported_name in (&#39;Test Date&#39;, &#39;Test Location&#39;, &#39;Data Reference&#39;) OR instr(x.name, &#39;Method No&#39;) = 1) group by x.test_number) RMETA ON T1.TEST_NUMBER = RMETA.TEST_NUMBER INNER JOIN GLIMS_OWNER.RESULT R1 ON T1.TEST_NUMBER = R1.TEST_NUMBER and r1.name NOT in (&#39;Test Date&#39;, &#39;Test Location&#39;, &#39;Data Reference&#39;, &#39;Method No. &amp; Version/Effective Date&#39;, &#39;Method No. &amp; Version/ Effective Date&#39;) and r1.status not in (&#39;X&#39;, &#39;R&#39;, &#39;N&#39;) LEFT OUTER JOIN GLIMS_OWNER.UNITS U1 ON R1.UNITS = U1.UNIT_CODE INNER JOIN GLIMS_OWNER.PRODUCT_SPEC PS1 ON S1.PRODUCT = PS1.PRODUCT AND PS1.VERSION = (SELECT MAX(X1.VERSION) FROM PRODUCT X1 WHERE S1.PRODUCT = X1.NAME AND X1.ACTIVE = &#39;T&#39;) AND S1.PRODUCT_GRADE = PS1.GRADE AND S1.SAMPLING_POINT = PS1.SAMPLING_POINT AND S1.SPEC_TYPE = PS1.SPEC_TYPE AND S1.STAGE = PS1.STAGE AND T1.ANALYSIS = PS1.ANALYSIS AND R1.NAME = PS1.COMPONENT AND PS1.RULE_TYPE&lt;&gt; &#39;F&#39; AND PS1.X_EXTERNAL_REPORT = &#39;T&#39; INNER JOIN GLIMS_OWNER.PRODUCT P1 ON S1.PRODUCT = P1.NAME AND S1.PRODUCT_VERSION = P1.VERSION LEFT OUTER JOIN GLIMS_OWNER.LOT L1 ON S1.LOT_NAME = L1.LOT_NAME LEFT OUTER JOIN GLIMS_OWNER.TIMEPOINT TP1 ON S1.TIMEPOINT = TP1.NAME WHERE (C1.NAME = ? OR PC1.NAME = ?) AND S1.LOT_NAME = ? AND T1.X_TEST_TYPE = ? AND S1.CONDITION = ? ORDER BY S1.PRODUCT, S1.LOT_NAME, S2.SAMPLE_NUMBER, T1.ANALYSIS, T1.TEST_NUMBER, R1.order_number",
+      "IsPivot": false,
+      "FromTable": {
+        "Name": "GLIMS_OWNER.X_COMPOUNDS",
+        "Alias": "C1"
+      },
+      "WhereClauseParams": [
+        {
+          "Group": 0,
+          "Conjunction": null,
+          "Table": "GLIMS_OWNER.X_COMPOUNDS",
+          "Column": "C1.NAME",
+          "Operator": "=",
+          "MultiSelect": false
+        },
+        {
+          "Group": 0,
+          "Conjunction": "OR",
+          "Table": "GLIMS_OWNER.X_COMPOUNDS",
+          "Column": "PC1.NAME",
+          "Operator": "=",
+          "MultiSelect": false
+        },
+        {
+          "Group": 1,
+          "Conjunction": "AND",
+          "Table": "GLIMS_OWNER.SAMPLE",
+          "Column": "S1.LOT_NAME",
+          "Operator": "=",
+          "MultiSelect": false
+        },
+        {
+          "Group": 1,
+          "Conjunction": "AND",
+          "Table": "GLIMS_OWNER.TEST",
+          "Column": "T1.X_TEST_TYPE",
+          "Operator": "=",
+          "MultiSelect": false
+        },
+        {
+          "Group": 1,
+          "Conjunction": "AND",
+          "Table": "GLIMS_OWNER.SAMPLE",
+          "Column": "S1.CONDITION",
+          "Operator": "=",
+          "MultiSelect": false
+        }
+      ]
+    }
+  ]
+}

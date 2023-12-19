@@ -1,0 +1,66 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 5,
+      "TableDefinitionId": 39,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for INFORMA DP Stability TEST",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "s.Product Name",
+          "UserInputId": 38
+        },
+        {
+          "ParamName": "s.Batch Number",
+          "UserInputId": 39
+        },
+        {
+          "ParamName": "s.Stab Storage Condition",
+          "UserInputId": 40
+        },
+        {
+          "ParamName": "s.Stab Storage Orientation",
+          "UserInputId": 41
+        }
+      ],
+      "DbSystem": "Informa",
+      "DisplayHeaders": true,
+      "Transpose": false,
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "Assay Name",
+          "Label": "Time (Months)",
+          "IsKeyColumn": true,
+          "MergeWithSelf": true,
+          "MergeWithPrevious": null
+        },
+        {
+          "Column": "Parameter Field Name",
+          "Label": "Time (Months)",
+          "IsKeyColumn": true,
+          "MergeWithSelf": true,
+          "MergeWithPrevious": false
+        },
+        {
+          "Column": "Spec Description",
+          "Label": "Clinical Acceptance Criteria",
+          "IsKeyColumn": false,
+          "MergeWithSelf": true,
+          "MergeWithPrevious": true
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "Protocol Months On Stability",
+          "Label": "Time (Months)",
+          "MergeWithSelf": null,
+          "MergeWithPrevious": null
+        }
+      ],
+      "PivotDataColumn": "Text Parameter Value",
+      "PivotTopLeftCornerOpt": "Pivot On Label"
+    }
+  ]
+}

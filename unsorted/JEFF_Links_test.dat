@@ -1,0 +1,227 @@
+0|^|Appearance (Clarity)|^|Appearance (Clarity)|^|8|^|NTU|^||^|NTU
+0|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y6|^|-|^||^|
+0|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+0|^|CGE (Non-Reducing)|^|Fragments|^|3.6|^|%|^||^|%
+0|^|CGE (Non-Reducing)|^|Fragments|^|3.6|^|%|^||^|
+0|^|CGE (Non-Reducing)|^|Intact IgG|^|96.4|^|%|^||^|%
+0|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+0|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.8|^|%|^||^|%
+0|^|CGE (Reducing)|^|Other|^|1.2|^|%|^||^|%
+0|^|Endotoxin|^|Endotoxin|^|0.015|^|EU/mg|^||^|EU/mg
+0|^|Inhibition Assay|^|Relative Potency|^|107|^|%|^||^|%
+0|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|70|^|Particles/container|^||^|Particles/container
+0|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|3|^|Particles/container|^||^|Particles/container
+0|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|%|^||^|%
+0|^|SE-HPLC|^|Monomer|^|98.8|^|%|^||^|%
+0|^|Sterility|^|Sterility|^|No growth detected|^|-|^|No growth detected|^|
+0|^|UV Spectroscopy|^|Protein Concentration|^|98.0|^|mg/mL|^||^|mg/mL
+0|^|iCE|^|Acidic Species|^|18.8|^|%|^||^|%
+0|^|iCE|^|Basic Species|^|8.2|^|%|^||^|%
+0|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+0|^|iCE|^|Main Species|^|73.0|^|%|^||^|%
+0|^|pH|^|pH|^|5.8|^|-|^||^|
+1|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|NTU
+1|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+1|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+1|^|CGE (Non-Reducing)|^|Fragments|^|4.0|^|%|^||^|%
+1|^|CGE (Non-Reducing)|^|Fragments|^|4.0|^|%|^||^|
+1|^|CGE (Non-Reducing)|^|Intact IgG|^|96.0|^|%|^||^|%
+1|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+1|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.3|^|%|^||^|%
+1|^|CGE (Reducing)|^|Other|^|1.7|^|%|^||^|%
+1|^|Inhibition Assay|^|Relative Potency|^|98|^|%|^||^|%
+1|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|%|^||^|%
+1|^|SE-HPLC|^|Monomer|^|98.2|^|%|^||^|%
+1|^|UV Spectroscopy|^|Protein Concentration|^|99.8|^|mg/mL|^||^|mg/mL
+1|^|iCE|^|Acidic Species|^|20.2|^|%|^||^|%
+1|^|iCE|^|Basic Species|^|8.8|^|%|^||^|%
+1|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+1|^|iCE|^|Main Species|^|71.1|^|%|^||^|%
+1|^|pH|^|pH|^|5.8|^|-|^||^|
+3|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+3|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+3|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+3|^|CGE (Non-Reducing)|^|Fragments|^|4.2|^|%|^||^|%
+3|^|CGE (Non-Reducing)|^|Fragments|^|4.2|^|%|^||^|
+3|^|CGE (Non-Reducing)|^|Intact IgG|^|95.8|^|%|^||^|%
+3|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+3|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+3|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.7|^|%|^||^|%
+3|^|CGE (Reducing)|^|Other|^|1.3|^|%|^||^|%
+3|^|Inhibition Assay|^|Relative Potency|^|96|^|%|^||^|%
+3|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|%|^||^|%
+3|^|SE-HPLC|^|Monomer|^|98.8|^|%|^||^|%
+3|^|UV Spectroscopy|^|Protein Concentration|^|101.1|^|mg/mL|^||^|mg/mL
+3|^|iCE|^|Acidic Species|^|20.1|^|%|^||^|%
+3|^|iCE|^|Basic Species|^|8.2|^|%|^||^|%
+3|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+3|^|iCE|^|Main Species|^|71.7|^|%|^||^|%
+3|^|pH|^|pH|^|5.8|^|-|^||^|
+6|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+6|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+6|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+6|^|CGE (Non-Reducing)|^|Fragments|^|5.1|^|%|^||^|%
+6|^|CGE (Non-Reducing)|^|Fragments|^|5.1|^|%|^||^|
+6|^|CGE (Non-Reducing)|^|Intact IgG|^|94.9|^|%|^||^|%
+6|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+6|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+6|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|99.2|^|%|^||^|%
+6|^|CGE (Reducing)|^|Other|^|0.8|^|%|^||^|%
+6|^|Inhibition Assay|^|Relative Potency|^|104|^|%|^||^|%
+6|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|25|^|Particles/container|^||^|Particles/container
+6|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|1|^|Particles/container|^||^|Particles/container
+6|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|%|^||^|%
+6|^|SE-HPLC|^|Monomer|^|97.8|^|%|^||^|%
+6|^|UV Spectroscopy|^|Protein Concentration|^|96.5|^|mg/mL|^||^|mg/mL
+6|^|iCE|^|Acidic Species|^|21.0|^|%|^||^|%
+6|^|iCE|^|Basic Species|^|8.2|^|%|^||^|%
+6|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+6|^|iCE|^|Main Species|^|70.8|^|%|^||^|%
+6|^|pH|^|pH|^|5.8|^|-|^||^|
+9|^|Appearance (Clarity)|^|Appearance (Clarity)|^|11|^|NTU|^||^|NTU
+9|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+9|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+9|^|CGE (Non-Reducing)|^|Fragments|^|3.4|^|%|^||^|%
+9|^|CGE (Non-Reducing)|^|Fragments|^|3.4|^|%|^||^|
+9|^|CGE (Non-Reducing)|^|Intact IgG|^|96.6|^|%|^||^|%
+9|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+9|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+9|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.7|^|%|^||^|%
+9|^|CGE (Reducing)|^|Other|^|1.3|^|%|^||^|%
+9|^|Inhibition Assay|^|Relative Potency|^|96|^|%|^||^|%
+9|^|SE-HPLC|^|HMMS|^|0.6|^|%|^||^|%
+9|^|SE-HPLC|^|Monomer|^|98.7|^|%|^||^|%
+9|^|UV Spectroscopy|^|Protein Concentration|^|96.5|^|mg/mL|^||^|mg/mL
+9|^|iCE|^|Acidic Species|^|20.8|^|%|^||^|%
+9|^|iCE|^|Basic Species|^|7.8|^|%|^||^|%
+9|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+9|^|iCE|^|Main Species|^|71.4|^|%|^||^|%
+9|^|pH|^|pH|^|5.8|^|-|^||^|
+12|^|Appearance (Clarity)|^|Appearance (Clarity)|^|11|^|NTU|^||^|NTU
+12|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=B9|^|-|^||^|
+12|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+12|^|CGE (Non-Reducing)|^|Fragments|^|3.9|^|%|^||^|%
+12|^|CGE (Non-Reducing)|^|Fragments|^|3.9|^|%|^||^|
+12|^|CGE (Non-Reducing)|^|Intact IgG|^|96.1|^|%|^||^|%
+12|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+12|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+12|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.6|^|%|^||^|%
+12|^|CGE (Reducing)|^|Other|^|1.4|^|%|^||^|%
+12|^|Container Closure Integrity|^|Dye Ingress|^|Pass|^|-|^|Pass|^|
+12|^|Inhibition Assay|^|Relative Potency|^|94|^|%|^||^|%
+12|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|38|^|Particles/container|^||^|Particles/container
+12|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|27|^|Particles/container|^||^|Particles/container
+12|^|SE-HPLC|^|HMMS|^|0.6|^|%|^||^|%
+12|^|SE-HPLC|^|Monomer|^|98.7|^|%|^||^|%
+12|^|UV Spectroscopy|^|Protein Concentration|^|99.3|^|mg/mL|^||^|mg/mL
+12|^|iCE|^|Acidic Species|^|21.6|^|%|^||^|%
+12|^|iCE|^|Basic Species|^|7.1|^|%|^||^|%
+12|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+12|^|iCE|^|Main Species|^|71.3|^|%|^||^|%
+12|^|pH|^|pH|^|5.8|^|-|^||^|
+18|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+18|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+18|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+18|^|CGE (Non-Reducing)|^|Fragments|^|3.7|^|%|^||^|%
+18|^|CGE (Non-Reducing)|^|Fragments|^|3.7|^|%|^||^|
+18|^|CGE (Non-Reducing)|^|Intact IgG|^|96.3|^|%|^||^|%
+18|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+18|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+18|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.6|^|%|^||^|%
+18|^|CGE (Reducing)|^|Other|^|1.4|^|%|^||^|%
+18|^|Inhibition Assay|^|Relative Potency|^|97|^|%|^||^|%
+18|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|8|^|Particles/container|^||^|Particles/container
+18|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|0|^|Particles/container|^||^|Particles/container
+18|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|%|^||^|%
+18|^|SE-HPLC|^|Monomer|^|98.9|^|%|^||^|%
+18|^|UV Spectroscopy|^|Protein Concentration|^|99.1|^|mg/mL|^||^|mg/mL
+18|^|iCE|^|Acidic Species|^|21.1|^|%|^||^|%
+18|^|iCE|^|Basic Species|^|10.6|^|%|^||^|%
+18|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+18|^|iCE|^|Main Species|^|68.3|^|%|^||^|%
+18|^|pH|^|pH|^|5.8|^|-|^||^|
+24|^|Appearance (Clarity)|^|Appearance (Clarity)|^|11|^|NTU|^||^|NTU
+24|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+24|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+24|^|CGE (Non-Reducing)|^|Fragments|^|5.1|^|%|^||^|%
+24|^|CGE (Non-Reducing)|^|Fragments|^|5.1|^|%|^||^|
+24|^|CGE (Non-Reducing)|^|Intact IgG|^|94.9|^|%|^||^|%
+24|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+24|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.3|^|%|^||^|%
+24|^|CGE (Reducing)|^|Other|^|1.7|^|%|^||^|%
+24|^|Container Closure Integrity|^|Dye Ingress|^|Pass|^|-|^|Pass|^|
+24|^|Inhibition Assay|^|Relative Potency|^|98|^|%|^||^|%
+24|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|5|^|Particles/container|^||^|Particles/container
+24|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|0|^|Particles/container|^||^|Particles/container
+24|^|SE-HPLC|^|HMMS|^|0.5|^|%|^||^|%
+24|^|SE-HPLC|^|Monomer|^|98.8|^|%|^||^|%
+24|^|UV Spectroscopy|^|Protein Concentration|^|99.8|^|mg/mL|^||^|mg/mL
+24|^|iCE|^|Acidic Species|^|19.0|^|%|^||^|%
+24|^|iCE|^|Basic Species|^|7.8|^|%|^||^|%
+24|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+24|^|iCE|^|Main Species|^|73.1|^|%|^||^|%
+24|^|pH|^|pH|^|5.7|^|-|^||^|
+30|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+30|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y6|^|-|^||^|
+30|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+30|^|CGE (Non-Reducing)|^|Fragments|^|3.9|^|%|^||^|%
+30|^|CGE (Non-Reducing)|^|Fragments|^|3.9|^|%|^||^|
+30|^|CGE (Non-Reducing)|^|Intact IgG|^|96.1|^|%|^||^|%
+30|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+30|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+30|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.8|^|%|^||^|%
+30|^|CGE (Reducing)|^|Other|^|0.9|^|%|^||^|%
+30|^|Inhibition Assay|^|Relative Potency|^|104|^|%|^||^|%
+30|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|10|^|Particles/container|^||^|Particles/container
+30|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|0|^|Particles/container|^||^|Particles/container
+30|^|SE-HPLC|^|HMMS|^|0.4|^|%|^||^|%
+30|^|SE-HPLC|^|Monomer|^|98.7|^|%|^||^|%
+30|^|UV Spectroscopy|^|Protein Concentration|^|99.1|^|mg/mL|^||^|mg/mL
+30|^|iCE|^|Acidic Species|^|22.2|^|%|^||^|%
+30|^|iCE|^|Basic Species|^|7.2|^|%|^||^|%
+30|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+30|^|iCE|^|Main Species|^|70.5|^|%|^||^|%
+30|^|pH|^|pH|^|5.8|^|-|^||^|
+36|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+36|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y6|^|-|^||^|
+36|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+36|^|CGE (Non-Reducing)|^|Fragments|^|3.6|^|%|^||^|%
+36|^|CGE (Non-Reducing)|^|Fragments|^|3.6|^|%|^||^|
+36|^|CGE (Non-Reducing)|^|Intact IgG|^|96.4|^|%|^||^|%
+36|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+36|^|CGE (Reducing)|^|Fragments|^|0.5|^|%|^||^|%
+36|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.1|^|%|^||^|%
+36|^|CGE (Reducing)|^|Other|^|1.4|^|%|^||^|%
+36|^|Container Closure Integrity|^|Dye Ingress|^|Pass|^|-|^|Pass|^|
+36|^|Inhibition Assay|^|Relative Potency|^|98|^|%|^||^|%
+36|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|11|^|Particles/container|^||^|Particles/container
+36|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|<1|^|Particles/container|^||^|Particles/container
+36|^|SE-HPLC|^|HMMS|^|0.5|^|%|^||^|%
+36|^|SE-HPLC|^|Monomer|^|98.6|^|%|^||^|%
+36|^|UV Spectroscopy|^|Protein Concentration|^|99.4|^|mg/mL|^||^|mg/mL
+36|^|iCE|^|Acidic Species|^|22.6|^|%|^||^|%
+36|^|iCE|^|Basic Species|^|6.6|^|%|^||^|%
+36|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+36|^|iCE|^|Main Species|^|70.8|^|%|^||^|%
+36|^|pH|^|pH|^|5.8|^|-|^||^|
+48|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+48|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y7|^|-|^||^|
+48|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|
+48|^|CGE (Non-Reducing)|^|Fragments|^|4.0|^|%|^||^|%
+48|^|CGE (Non-Reducing)|^|Fragments|^|4.0|^|%|^||^|
+48|^|CGE (Non-Reducing)|^|Intact IgG|^|96.0|^|%|^||^|%
+48|^|CGE (Reducing)|^|Fragments|^|0.7|^|%|^||^|%
+48|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.5|^|%|^||^|%
+48|^|CGE (Reducing)|^|Other|^|1.8|^|%|^||^|%
+48|^|Inhibition Assay|^|Relative Potency|^|105|^|%|^||^|%
+48|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|207|^|Particles/container|^||^|Particles/container
+48|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|5|^|Particles/container|^||^|Particles/container
+48|^|SE-HPLC|^|HMMS|^|0.6|^|%|^||^|%
+48|^|SE-HPLC|^|Monomer|^|98.4|^|%|^||^|%
+48|^|Sterility|^|Sterility|^|No growth detected|^|-|^|No growth detected|^|
+48|^|UV Spectroscopy|^|Protein Concentration|^|99.4|^|mg/mL|^||^|mg/mL
+48|^|iCE|^|Acidic Species|^|23.5|^|%|^||^|%
+48|^|iCE|^|Basic Species|^|6.7|^|%|^||^|%
+48|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|
+48|^|iCE|^|Main Species|^|69.7|^|%|^||^|%
+48|^|pH|^|pH|^|5.8|^|-|^||^|

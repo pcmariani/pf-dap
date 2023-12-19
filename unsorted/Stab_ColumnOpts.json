@@ -1,0 +1,196 @@
+{
+  "Records": [
+    {
+      "ColumnKey": "AEX-HPLC___Anti-CD3 mAb",
+      "Active": true,
+      "ColumnIndex": 1,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "AEX-HPLC", "PivotOnColumnLabel": "AEX-HPLC"
+        },
+        {
+          "PivotOnColumnName": "Anti-CD3 mAb", "PivotOnColumnLabel": "Anti-CD3 mAb"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Appearance___Clarity",
+      "Active": true,
+      "ColumnIndex": 2,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Appearance", "PivotOnColumnLabel": "Appearance"
+        },
+        {
+          "PivotOnColumnName":  "Clarity", "PivotOnColumnLabel": "Clarity"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Appearance___Coloration",
+      "Active": true,
+      "ColumnIndex": 3,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Appearance", "PivotOnColumnLabel": "Appearance"
+        },
+        {
+          "PivotOnColumnName":  "Coloration", "PivotOnColumnLabel": "Coloration"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Appearance___Visible Particulates",
+      "Active": true,
+      "ColumnIndex": 4,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Appearance", "PivotOnColumnLabel": "Appearance"
+        },
+        {
+          "PivotOnColumnName": "Visible Particulates", "PivotOnColumnLabel": "Visible Particulates"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Biological Activity (Binding ELISA)___Relative Potency",
+      "Active": true,
+      "ColumnIndex": 5,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Biological Activity (Binding ELISA)", "PivotOnColumnLabel": "Bioassay"
+        },
+        {
+          "PivotOnColumnName": "Relative Potency", "PivotOnColumnLabel": "Relative Potency"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "CGE (reducing)___Fragments",
+      "Active": true,
+      "ColumnIndex": 6,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "CGE (reducing)", "PivotOnColumnLabel": "CGE (reducing)"
+        },
+        {
+          "PivotOnColumnName": "Fragments", "PivotOnColumnLabel": "Fragments"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "CGE (reducing)___Heavy Chain + Light Chain",
+      "Active": true,
+      "ColumnIndex": 7,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "CGE (reducing)", "PivotOnColumnLabel": "CGE (reducing)"
+        },
+        {
+          "PivotOnColumnName":  "Heavy Chain + Light Chain", "PivotOnColumnLabel": "HCLC"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "CGE (reducing)___Other",
+      "Active": true,
+      "ColumnIndex": 8,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "CGE (reducing)", "PivotOnColumnLabel": "CGE (reducing)"
+        },
+        {
+          "PivotOnColumnName": "Other", "PivotOnColumnLabel": "Other"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Endotoxin___Endotoxin",
+      "Active": true,
+      "ColumnIndex": 9,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Endotoxin", "PivotOnColumnLabel": "Endotoxin"
+        },
+        {
+          "PivotOnColumnName": "Endotoxin", "PivotOnColumnLabel": "Endotoxin"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Subvisible Particles___Subvisible Particles >= 10µm",
+      "Active": true,
+      "ColumnIndex": 10,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Subvisible Particles", "PivotOnColumnLabel": "Subvisible Particles"
+        },
+        {
+          "PivotOnColumnName": "Subvisible Particles >= 10µm", "PivotOnColumnLabel": "Subvisible Particles >= 10µm"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "Subvisible Particles___Subvisible Particles >= 25µm",
+      "Active": true,
+      "ColumnIndex": 11,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName": "Subvisible Particles", "PivotOnColumnLabel": "Subvisible Particles"
+        },
+        {
+          "PivotOnColumnName": "Subvisible Particles >= 25µm", "PivotOnColumnLabel": "Subvisible Particles >= 25µm"
+        }
+      ]
+    },
+    {
+      "ColumnKey": "pH___pH",
+      "Active": false,
+      "ColumnIndex": 12,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true,
+      "PivotOnColumnsLabels": [
+        {
+          "PivotOnColumnName":  "pH", "PivotOnColumnLabel": "pH"
+        },
+        {
+          "PivotOnColumnName":  "pH", "PivotOnColumnLabel": "pH"
+        }
+      ]
+    }
+  ]
+}

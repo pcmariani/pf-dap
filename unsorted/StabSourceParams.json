@@ -1,0 +1,56 @@
+{
+    "Params": [
+        {
+            "Group": 0,
+            "Conjunction": null,
+            "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+            "Column": "Product Name",
+            "Operator": "=",
+            "MultiSelect": false
+        },
+        {
+            "Group": 0,
+            "Conjunction": "AND",
+            "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+            "Column": "Batch Number",
+            "Operator": "=",
+            "MultiSelect": false
+        },
+        {
+            "Group": 0,
+            "Conjunction": "AND",
+            "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+            "Column": "Stab Storage Condition",
+            "Operator": "=",
+            "MultiSelect": false
+        },
+        {
+            "Group": 0,
+            "Conjunction": "AND",
+            "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+            "Column": "Stab Storage Orientation",
+            "Operator": "=",
+            "MultiSelect": false
+        }
+    ],
+    "Columns": [
+        {
+            "Name": "Protocol Months On Stability"
+        },
+        {
+            "Name": "Assay Name"
+        },
+        {
+            "Name": "Parameter Field Name"
+        },
+        {
+            "Name": "Text Parameter Value"
+        },
+        {
+            "Name": "Parameter Units"
+        },
+        {
+            "Name": "Spec Description"
+        }
+    ]
+}

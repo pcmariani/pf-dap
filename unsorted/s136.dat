@@ -1,0 +1,24 @@
+{
+  "Columns": [
+    {
+      "Name": "*"
+    }
+  ],
+  "Params": [
+    {
+      "Table": "sdc_psbtx_baseline.eln_doc_automation_results",
+      "Column": "experiment",
+      "Operator": "="
+    },
+    {
+      "Table": "sdc_psbtx_baseline.eln_doc_automation_results",
+      "Column": "workbooknumber",
+      "Operator": "="
+    },
+    {
+      "Table": "sdc_psbtx_baseline.eln_doc_automation_results",
+      "Column": "workbooksection",
+      "Operator": "="
+    }
+  ]
+}

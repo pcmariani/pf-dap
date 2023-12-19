@@ -1,0 +1,28 @@
+{
+  "Records": [
+    {
+      "TableInstanceId": 13,
+      "TableDefinitionId": 39,
+      "ReportContentItem_DynamicTableId": 29,
+      "UserInputValues": [
+        {
+          "UserInputId": 39,
+          "UserInputValue": "18-001678"
+        },
+        {
+          "UserInputId": 40,
+          "UserInputValue": "25C_60RH"
+        },
+        {
+          "UserInputId": 41,
+          "UserInputValue": "INVERTED"
+        }
+      ],
+      "TableInstanceSequenceNum": 2,
+      "CreatedBy": "Casey.Wakefield@pfizer.com",
+      "CreatedDate": "2023-05-25T11:38:15.9566667",
+      "ModifiedBy": "Casey.Wakefield@pfizer.com",
+      "ModifiedDate": "2023-05-26T14:22:59.8729624"
+    }
+  ]
+}

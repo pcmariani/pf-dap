@@ -1,0 +1,31 @@
+Analytical Procedure|^|Quality Attribute|^|Acceptance Criteria|^|127-104-250L-04|^|15-001718
+Analytical Procedure|^|Quality Attribute|^|Acceptance Criteria|^|Results|^|Results
+iCE|^|Basic Species|^|Report Results (%)|^|9.4|^|8.2
+Appearance (Clarity)|^|Appearance (Clarity)|^|≤ 30 NTU|^|NR|^|8
+iCE|^|Acidic Species|^|Report Results (%)|^|19.3|^|18.8
+UV Spectroscopy|^|Protein Concentration|^|100.0 ± 15.0 mg/mL|^|NR|^|98.0
+rProtein A ELISA|^|Protein A|^|Report Results (ng/mg)|^|3|^|NR
+pH|^|pH|^|5.8 ± 0.5|^|NR|^|5.8
+SE-HPLC|^|Monomer|^|≥ 90.0%|^|NR|^|98.8
+iCE|^|Main Species|^|Report Results (%)|^|71.3|^|73.0
+CGE (Non-reducing)|^|Intact IgG|^|Report Results (%)|^|96.0|^|96.4
+HCP ELISA|^|Host Cell Protein|^|Report Results (ng/mg)|^|NMT 10|^|NR
+qPCR DNA Analysis|^|Host Cell DNA|^|Report Results (pg/mg)|^|NMT 3|^|NR
+SE-HPLC|^|HMMS|^|≤ 5.0%|^|NR|^|NMT 0.5
+CGE (Reducing)|^|Heavy Chain and Light Chain|^|≥ 90.0% IgG as heavy + light chain|^|NR|^|98.8
+CGE (Reducing)|^|Fragments|^|Report Results|^|NR|^|NMT 0.3
+Endotoxin|^|Endotoxin|^|≤ 0.125 EU/mg|^|NR|^|0.015
+Bioburden|^|Bioburden|^|Report Results (CFU/10mL)|^|0|^|NR
+Appearance (Coloration)|^|Appearance (Coloration)|^|Not more intensely colored than level 3 of the color standard|^|NR|^|≤Y6
+Sterility|^|Sterility|^|No growth detected|^|NR|^|No growth detected
+Subvisible Particles|^|Subvisible Particles ≥ 10 µm|^|Report Results|^|NR|^|70
+Subvisible Particles|^|Subvisible Particles ≥ 25 µm|^|Report Results|^|NR|^|3
+Inhibition Assay|^|TFPI_BIOASSAY_ELISA_Specific Activity_U/mg|^|500 - 1500 U/mg|^|NR|^|1068
+Inhibition Assay|^|Potency / Biological Activity|^|50 - 150% potency relative to reference material|^|NR|^|107
+Peptide Mapping|^|Peptide Profile|^|Comparable to Reference|^|NR|^|Comparable to Reference
+Osmolality|^|Osmolality|^|Report Results|^|NR|^|362
+Extractable Volume|^|Container Content for Injections|^|Not less than labeled volume|^|NR|^|Not less than labeled volume
+iCE|^|Charge Heterogeneity|^|Comparable to Reference Material|^|NR|^|Comparable to Reference Material
+Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|NR|^|Essentially free from visible particulates
+Subvisible Particles|^|TFPI_PARTICULATE_MATTER_USP788_Particulate Matter|^|__Meets compendial requirements|^|NR|^|Meets compendial requirements
+

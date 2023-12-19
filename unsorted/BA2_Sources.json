@@ -1,0 +1,58 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 15,
+      "TableDefinitionId": 63,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for DP Batch Analysis",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Product",
+          "UserInputId": 111
+        },
+        {
+          "ParamName": "Batch Number",
+          "UserInputId": 112
+        }
+      ],
+      "DbSystem": "Informa",
+      "DisplayHeaders": true,
+      "Transpose": true,
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "Analytical Procedure",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeWithSelf": true,
+          "MergeWithPrevious": null
+        },
+        {
+          "Column": "Quality Attribute",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeWithSelf": true,
+          "MergeWithPrevious": false
+        },
+        {
+          "Column": "Acceptance Criteria",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeWithSelf": null,
+          "MergeWithPrevious": null
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "Batch Number",
+          "Label": null,
+          "MergeWithSelf": null,
+          "MergeWithPrevious": null
+        }
+      ],
+      "PivotDataColumn": "Text Parameter Value",
+      "PivotTopLeftCornerOpt": "Pivot On Label"
+    }
+  ]
+}

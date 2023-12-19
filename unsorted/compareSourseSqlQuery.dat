@@ -1,0 +1,48 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 15,
+      "TableDefinitionId": 1,
+      "SourceType": "Sql Query",
+      "ResultTableType": "Data Tables",
+      "Description": "Here is a description 7374465250610979060",
+      "ParamUserInputMap": [],
+      "DbSystem": "INFORMA",
+      "SqlStatement": "SELECT Blah blah blah",
+      "DisplayHeaders": true,
+      "Transpose": false,
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "A",
+          "CanBeRenamed": true,
+          "MergeHorizonal": false,
+          "MergeVertical": true
+        },
+        {
+          "Column": "Parameter Field Name",
+          "CanBeRenamed": true,
+          "MergeHorizonal": false,
+          "MergeVertical": false
+        },
+        {
+          "Column": "Acceptance Criteria",
+          "CanBeRenamed": false,
+          "MergeHorizonal": true,
+          "MergeVertical": false
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "aProtocol Months On Stability",
+          "Label": "Time (Months)",
+          "MergeHorizonal": false,
+          "MergeVertical": false
+        }
+      ],
+      "PivotDataColumn": "Text Parameter Value",
+      "PivotTopLeftCornerOpt": "GroupBy Columns"
+    }
+  ]
+}
+

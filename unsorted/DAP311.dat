@@ -1,0 +1,14 @@
+{
+  "Action": "UPSERT",
+  "Requestor": "TestMode",
+  "ReportId": 2,
+  "Status": "",
+  "Message": "",
+  "pfe_xm_p_aer_case_number": "1235",
+  "countries": "USA",
+  "pfe_xm_p_work_location": "Jersey",
+  "gtc_xm_language": "EN",
+  "pfe_xm_p_project_code": "pf-1233",
+  "strength": "STRONG",
+  "proprietary_name": "Drug"
+}

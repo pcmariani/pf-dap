@@ -1,0 +1,31 @@
+<RecordQueryResponse resultCount="1" totalCount="1">
+  <Record recordId="cd38e235-5783-41c6-a44e-a9e899bba151" createdDate="2023-05-23T20:57:32Z" updatedDate="2023-05-23T20:57:56Z">
+    <Fields>
+      <tr1report>
+        <project>New report created by peter.mariani@pfizer.com on 2023-05-23T16:57:31-0400</project>
+        <dapattern_id>5223ce60-c967-4a17-9ee3-370d050248c6</dapattern_id>
+        <variables>
+          <variable>
+            <search_text>Product Name</search_text>
+            <replace_text>BCMA</replace_text>
+          </variable>
+          <variable>
+            <search_text>OtherVar</search_text>
+            <replace_text>2222</replace_text>
+          </variable>
+        </variables>
+        <status>Draft</status>
+        <authors>
+          <author>
+            <author_email>peter.mariani@pfizer.com</author_email>
+            <author_first_name>Peter</author_first_name>
+            <author_last_name>Mariani</author_last_name>
+          </author>
+        </authors>
+      </tr1report>
+    </Fields>
+    <links>
+      <link source="TR1Designer" entityId="20230523_045731695" establishedDate="2023-05-23T20:57:32Z"></link>
+    </links>
+  </Record>
+</RecordQueryResponse>

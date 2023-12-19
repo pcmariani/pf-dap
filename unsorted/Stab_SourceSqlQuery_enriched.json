@@ -1,0 +1,96 @@
+{
+    "Records": [
+        {
+            "SourceSqlQueryId": 7,
+            "TableDefinitionId": 39,
+            "SourceType": "Db Query",
+            "ResultTableType": "Data Tables",
+            "Description": "Query for Stability Data",
+            "ParamUserInputMap": [
+                {
+                    "ParamName": "s.Product Name",
+                    "UserInputId": 38
+                },
+                {
+                    "ParamName": "s.Batch Number",
+                    "UserInputId": 39
+                },
+                {
+                    "ParamName": "s.Stab Storage Condition",
+                    "UserInputId": 40
+                },
+                {
+                    "ParamName": "s.Stab Storage Orientation",
+                    "UserInputId": 41
+                }
+            ],
+            "DbSystem": "INFORMA",
+            "SqlStatement": "SELECT TO_CHAR(ROUND(s.\"Protocol Months On Stability\", '1'), 'TM') as \"Protocol Months On Stability\", s.\"Assay Name\", s.\"Parameter Field Name\", s.\"Text Parameter Value\", s.\"Parameter Units\", c.\"Spec Description\", c.\"Spec Units\"\nFROM MIPRANS_OWNER.DELL_STABILITY_DATA_DP s\nJOIN ( \n    SELECT DISTINCT \"Product Name\", \"Batch Number\", MAX(\"Protocol Months On Stability\") as \"Protocol Months On Stability\", \"Stab Storage Condition\", \"Stab Storage Orientation\", \"Assay Name\", \"Parameter Field Name\", \"Spec Description\", \"Spec Units\"\n    FROM MIPRANS_OWNER.DELL_STABILITY_DATA_DP\n    GROUP BY \"Product Name\", \"Batch Number\", \"Stab Storage Condition\", \"Stab Storage Orientation\", \"Assay Name\", \"Parameter Field Name\", \"Spec Description\", \"Spec Units\"   \n    ORDER BY \"Assay Name\", \"Parameter Field Name\"\n) c \nON c.\"Assay Name\" = s.\"Assay Name\" \n    AND c.\"Parameter Field Name\" = s.\"Parameter Field Name\"\n    AND c.\"Product Name\" = s.\"Product Name\" AND c.\"Batch Number\" = s.\"Batch Number\" AND c.\"Stab Storage Condition\" = s.\"Stab Storage Condition\" AND c.\"Stab Storage Orientation\" = s.\"Stab Storage Orientation\"\nWHERE s.\"Product Name\" = ? AND s.\"Batch Number\" = ? AND s.\"Stab Storage Condition\" = ? AND s.\"Stab Storage Orientation\" = ?\nGROUP BY s.\"Protocol Months On Stability\", s.\"Assay Name\", s.\"Parameter Field Name\", s.\"Text Parameter Value\", s.\"Parameter Units\", c.\"Spec Description\", c.\"Spec Units\"\nORDER BY s.\"Protocol Months On Stability\"\n;",
+            "DisplayHeaders": true,
+            "Transpose": false,
+            "IsPivot": true,
+            "PivotOnColumns": [
+                {
+                    "Column": "s.Assay Name",
+                    "Label": null,
+                    "CanBeRenamed": false
+                },
+                {
+                    "Column": "s.Parameter Field Name",
+                    "Label": null,
+                    "CanBeRenamed": false
+                }
+            ],
+            "PivotGropuByColumns": [
+                {
+                    "Column": "asProtocol Months On Stability",
+                    "Label": "Time (Months)"
+                }
+            ],
+            "PivotDataColumn": "s.Text Parameter Value",
+            "PivotTopLeftCornerOpt": "Group By Label",
+            "CreatedBy": "Peter.Mariani@pfizer.com",
+            "CreatedDate": "2023-05-23T13:14:07.7866667",
+            "ModifiedBy": "Peter.Mariani@pfizer.com",
+            "ModifiedDate": "2023-05-23T17:14:07.7875576",
+            "WhereClauseParams": [
+                {
+                    "Group": 0,
+                    "Conjunction": null,
+                    "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+                    "Column": "s.Product Name",
+                    "Operator": "=",
+                    "MultiSelect": false
+                },
+                {
+                    "Group": 0,
+                    "Conjunction": "AND",
+                    "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+                    "Column": "s.Batch Number",
+                    "Operator": "=",
+                    "MultiSelect": false
+                },
+                {
+                    "Group": 0,
+                    "Conjunction": "AND",
+                    "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+                    "Column": "s.Stab Storage Condition",
+                    "Operator": "=",
+                    "MultiSelect": false
+                },
+                {
+                    "Group": 0,
+                    "Conjunction": "AND",
+                    "Table": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+                    "Column": "s.Stab Storage Orientation",
+                    "Operator": "=",
+                    "MultiSelect": false
+                }
+            ],
+            "FromTable": {
+                "Name": "MIPRANS_OWNER.DELL_STABILITY_DATA_DP",
+                "Alias": "s"
+            }
+        }
+    ]
+}

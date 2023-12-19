@@ -1,0 +1,212 @@
+<RESULTSET>
+ <WorkbookNumber>280797</WorkbookNumber>
+ <RecordType>Vertical</RecordType>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>Harvest (mini-prep titer)</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>10</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>67</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>2300.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>1200.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>89</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>Clarified Lysate post 0.2 filtration</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>78</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>34</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>12.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>89.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>34</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>UF1</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>78</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>34</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>12.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>89.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>56</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>TMAE</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>64</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>74</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>97.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>43.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>97</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>UF2</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>78</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>34</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>23.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>89.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>56</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>Circular Final Filtration</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>76</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>54</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>32.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>978.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>76</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>Linearization / UF3</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>67</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>343</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>98.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>34.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>78</Val>
+  </TD>
+ </TR>
+ <TR>
+  <TD>
+   <Key>Step</Key>
+   <Val>NFF/Final Filtration</Val>
+  </TD>
+  <TD>
+   <Key>mg Loaded</Key>
+   <Val>67</Val>
+  </TD>
+  <TD>
+   <Key>mg Yield</Key>
+   <Val>23</Val>
+  </TD>
+  <TD>
+   <Key>% Step Yield</Key>
+   <Val>89.0%</Val>
+  </TD>
+  <TD>
+   <Key>% Overall Yield</Key>
+   <Val>2.00%</Val>
+  </TD>
+  <TD>
+   <Key>g pDNA/kg Cell Solids</Key>
+   <Val>8</Val>
+  </TD>
+ </TR>
+</RESULTSET>
