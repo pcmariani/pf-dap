@@ -1,0 +1,40 @@
+OPTIONS:
+  # - nothing
+  - no data
+  - no props
+
+GLOBALS:
+  scripts:
+    - s120_CREATE_NewPivotedDataConfigs.groovy
+    - s207_CREATE_RowHeaderConfigs.groovy
+    - s121_PIVOT_Data.groovy
+    - s205_BUILD_Html.groovy
+    - s09_APPLY_ColumnWidths.groovy
+    - s200_MERGE_Cells_Html.groovy
+      # - assert
+
+PHRD:
+  dppsFile: _testfiles/phrd.properties
+  docs:
+    - datafile: _testfiles/phrd.dat
+      propsfile: _testfiles/phrd.properties
+      ext: html
+# ---
+
+Stability:
+  dppsFile: _testfiles/ST3.properties
+  docs:
+    - datafile: _testfiles/ST3.dat
+      propsfile: _testfiles/ST3.properties
+      ext: html
+# ---
+
+BatchAnalysis:
+  dppsFile: _testfiles/ba3.properties
+  docs:
+    - datafile: _testfiles/ba3.dat
+      propsfile: _testfiles/ba3.properties
+      ext: html
+      assert:
+        - is.text =~ /<th colSpan="3".*?>Lot Number<\/th>/
+# ---
