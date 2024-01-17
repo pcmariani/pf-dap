@@ -43,6 +43,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         .each{ it.put("Index", columnNamesArr.indexOf(it.Column.toUpperCase())) }
     // println "groupByColsArr: " + prettyJson(groupByColsArr)
 
+    int maxColumnIndex = pivotedDataConfigsArr ? pivotedDataConfigsArr.ColumnIndex.max() : 0
+    // println maxColumnIndex
+    int maxRowIndex = groupByConfigsArr ? groupByConfigsArr.RowIndex.max() : 0
+    // println maxRowIndex
+
+
+
     /* LOGIC */
 
     def reader = new BufferedReader(new InputStreamReader(is))
@@ -64,18 +71,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def groupByKey = groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(OFS)
         def groupByLabels = groupByColsArr.collect{ lineArr[it.Index]}.join(OFS)
 
-        // if (line =~ /Intact Ig/) {
-        //     println pivotOnKey
-        //     println groupByKey
-        //     println lineArr
-        // }
-
         pivotOnKeySetMap[upper(pivotOnKey)] = pivotOnLabels
         groupByKeySetMap[upper(groupByKey)] = groupByLabels
     }
     // println prettyJson(pivotOnKeySetMap)
     // println prettyJson(groupByKeySetMap)
-
 
 
     /* --- conditionally create new pivotedDataConfig records --- */
@@ -108,8 +108,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println newPivotedDataConfigsArr.size()
 
 
-
-
     /* --- conditionally create new groupByConfig records --- */
 
     // collect all pivot keys which are in the data but not in groupByConfig records;
@@ -135,7 +133,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
     // println "newGroupByConfigsArr: " + prettyJson(newGroupByConfigsArr)
     // println newGroupByConfigsArr.size()
-
 
 
 
@@ -172,24 +169,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println "newPivotedDataConfigsWrapped: " + prettyJson(newPivotedDataConfigsWrapped)
     // println "newGroupByConfigsWrapped: " + prettyJson(newGroupByConfigsWrapped)
 
-    int maxColumnIndex = pivotedDataConfigsArr ? pivotedDataConfigsArr.ColumnIndex.max() : 0
-    // props.setProperty("document.dynamic.userdefined.ddp_pivotedDataConfigs_maxIndex", maxColumnIndex as String)
-    // props.setProperty("document.dynamic.userdefined.ddp_numPivotOnCols", pivotOnColsArr.size() as String)
-    // props.setProperty("document.dynamic.userdefined.ddp_numGroupByCols", groupByColsArr.size() as String)
-    // props.setProperty("document.dynamic.userdefined.ddp_numKeyHeaders", pivotOnColsArr.findAll{it.IsKeyColumn == true}.size() as String)
-    // props.setProperty("document.dynamic.userdefined.ddp_numHeaderRows", (!transpose ? pivotOnColsArr.size() : groupByColsArr.size()) as String)
-    // props.setProperty("document.dynamic.userdefined.ddp_numHeaderCols", (!transpose ? groupByColsArr.size() : pivotOnColsArr.size()) as String)
     props.setProperty("document.dynamic.userdefined.ddp_NewPivotedDataConfigs", JsonOutput.toJson(newPivotedDataConfigsWrapped))
     props.setProperty("document.dynamic.userdefined.ddp_NewGroupByConfigs", JsonOutput.toJson(newGroupByConfigsWrapped))
-    // props.setProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated", JsonOutput.toJson(newGroupByConfigsWrapped))
-    // props.setProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated", JsonOutput.toJson(newPivotedDataConfigsWrapped))
-
-    // println "pivotedDataConfigs_maxIndex: " + props.getProperty("document.dynamic.userdefined.ddp_pivotedDataConfigs_maxIndex")
-    // println "numPivotOnCols: " + props.getProperty("document.dynamic.userdefined.ddp_numPivotOnCols")
-    // println "numGroupByCols: " + props.getProperty("document.dynamic.userdefined.ddp_numGroupByCols")
-    // println "numKeyHeaders: "  + props.getProperty("document.dynamic.userdefined.ddp_numKeyHeaders")
-    // println "numHeaderRows: "  + props.getProperty("document.dynamic.userdefined.ddp_numHeaderRows")
-    // println "numHeaderCols: "  + props.getProperty("document.dynamic.userdefined.ddp_numHeaderCols")
+    props.setProperty("document.dynamic.userdefined.ddp_pivotedDataConfigs_maxIndex", maxColumnIndex as String)
+    props.setProperty("document.dynamic.userdefined.ddp_groupByConfigs_maxIndex", maxRowIndex as String)
 
     is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));
     dataContext.storeStream(is, props);
