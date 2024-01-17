@@ -1,0 +1,20 @@
+{
+  "description": "Authentication for Givex",
+  "params": [
+    {
+      "type": "request",
+      "key": "auth_url",
+      "value_list": [
+        {
+          "value": "first value"
+        },
+        {
+          "value": "second value"
+        },
+        {
+          "value": "third value"
+        }
+      ]
+    }
+  ]
+}

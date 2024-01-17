@@ -1,0 +1,14 @@
+OPTIONS:
+  # - no data
+  - no props
+  - no assertions
+  # - no guides
+
+GLOBALS:
+  scripts:
+    - casey_values.groovy
+# ---
+
+test1:
+  docs:
+    - datafile: values.json
