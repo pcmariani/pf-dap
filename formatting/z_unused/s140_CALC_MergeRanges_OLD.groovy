@@ -53,7 +53,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             || configItem.MergeWithSelf == configItemNext?.MergeWithSelf) {
             if (groupStart == -1) groupStart = r
             inGroup = true
-        }
+
         else {
             if (inGroup) {
                 println "gs > 0"
@@ -68,7 +68,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         }
 
     }
-    println prettyJson(groups)
+    // println prettyJson(groups)
 
     groups.each { g ->
         println g*.MergeWithSelf.unique()
@@ -124,7 +124,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     //     println "groupWithNextCounter:  " + groupWithNextCounter
     // }
 
+    println "mergeRangeArr size: " + mergeRangeArr.size()
     println prettyJson(mergeRangeArr)
+
 
     // def root = new XmlSlurper().parse(is)
 
@@ -132,6 +134,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // String outData
     // outData = groovy.xml.XmlUtil.serialize(root).replaceFirst("\\<\\?xml(.+?)\\?\\>", "").trim() //.replaceAll(/<tr\s*?\/\s*>/,"")
     // is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));
+
+    props.setProperty("document.dynamic.userdefined.ddp_mergeRangeArrJson", prettyJson(mergeRangeArr))
+
+
     dataContext.storeStream(is, props);
 }
 
