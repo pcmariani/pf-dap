@@ -1,6 +1,6 @@
 OPTIONS:
   - no data
-  - no props
+  # - no props
   - no assertions
   # - no guides
 
@@ -8,17 +8,17 @@ GLOBALS:
   scripts:
     - 02_CREATE_PivotOnGroupBy_Configs.groovy:
         - no data
-        - no props
-    - 02b_CONSOLIDATE_Configs.groovy:
-    - 03_CREATE_RowHeaderConfigs.groovy:
-    #     - no data
-    - 04_PIVOT_Data.groovy:
-    #     - no data
-    - 05_BUILD_Html.groovy:
-    #     - no data
-    - 06_WRAP_Table.groovy:
-    - 07_APPLY_ColumnWidths.groovy:
-    - 08_MERGE_Cells_Html.groovy:
+        # - no props
+    # - 02b_CONSOLIDATE_Configs.groovy:
+    # - 03_CREATE_RowHeaderConfigs.groovy:
+    # #     - no data
+    # - 04_PIVOT_Data.groovy:
+    # #     - no data
+    # - 05_BUILD_Html.groovy:
+    # #     - no data
+    # - 06_WRAP_Table.groovy:
+    # - 07_APPLY_ColumnWidths.groovy:
+    # - 08_MERGE_Cells_Html.groovy:
 # ---
 
 # PHRD:
@@ -32,7 +32,7 @@ GLOBALS:
 Stability:
   dppsFile: _testfiles/ST3.properties
   docs:
-    - datafile: _testfiles/ST3.dat
+    - dataile: _testfiles/ST3.dat
       propsfile: _testfiles/ST3.properties
       props:
         document.dynamic.userdefined.ddp_transpose: true
