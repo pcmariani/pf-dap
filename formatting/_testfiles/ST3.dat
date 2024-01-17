@@ -16,7 +16,6 @@
 0|^|Peptide Mapping|^|Identity (Peptide Profile)|^|Comparable to Reference|^|-|^|Comparable to Reference|^|
 0|^|SE-HPLC|^|HMMS|^|0.4|^|%|^|≤ 5.0% HMMS|^|%
 0|^|SE-HPLC|^|Monomer|^|99.6|^|%|^|≥ 90.0% monomer|^|%
-0|^|Sterility|^|Sterility|^|No growth detected|^|-|^|No growth detected|^|
 0|^|Subvisible Particles|^|Subvisible Particles|^|Meets compendial requirements|^|-|^|Meets compendial requirements|^|
 0|^|Subvisible Particles|^|Subvisible Particles >= 10µm|^|5|^|Particles/container|^|Report Results|^|Particles/container
 0|^|Subvisible Particles|^|Subvisible Particles >= 25µm|^|<1|^|Particles/container|^|Report Results|^|Particles/container

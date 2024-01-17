@@ -33,30 +33,31 @@
           "Column": "Assay Name",
           "Label": "Time (Months)",
           "IsKeyColumn": true,
-          "MergeWithSelf": true,
-          "MergeWithPrevious": null
+          "MergeRows": false,
+          "MergeCols": true
         },
         {
           "Column": "Parameter Field Name",
           "Label": "Time (Months)",
           "IsKeyColumn": true,
-          "MergeWithSelf": true,
-          "MergeWithPrevious": false
+          "MergeRows": true,
+          "MergeCols": false
         },
         {
           "Column": "Spec Description",
           "Label": "Clinical Acceptance Criteria",
           "IsKeyColumn": false,
-          "MergeWithSelf": true,
-          "MergeWithPrevious": true
+          "MergeRows": false,
+          "MergeCols": false
         }
       ],
       "PivotGroupByColumns": [
         {
           "Column": "Protocol Months On Stability",
           "Label": "Time (Months)",
-          "MergeWithSelf": null,
-          "MergeWithPrevious": null
+          "IsKeyColumn": true,
+          "MergeRows": false,
+          "MergeCols": false
         }
       ],
       "PivotDataColumn": "Text Parameter Value",
