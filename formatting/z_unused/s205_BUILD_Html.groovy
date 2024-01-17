@@ -243,8 +243,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         newDataArr = dataArr
     }
     // newDataArr.each {println it}
-    // println prettyJson(columnsConfigArr)
-    // println columnsConfigArr.size()
+    println prettyJson(columnsConfigArr)
+    println columnsConfigArr.size()
     // println columnsConfigArr.SubTableIndex
     // println newDataArr[0].size()
  
@@ -316,20 +316,20 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
                                         // if (r < numHeaderRows) {
                                         if (r < numHeaderRows) {
-                                            'th'('columnWidth':columnWidth, id:"id"+md5(itemId), item)
-                                            // 'th'('columnWidth':columnWidth, item)
+                                            // 'th'('columnWidth':columnWidth, id:"id"+md5(itemId), item)
+                                            'th'('columnWidth':columnWidth, item)
                                         }
 
                                         /* --- td --- */
 
                                         else {
                                             if (resultTableType == "summary" && columnsConfigArr[c].ColumnKey == "Data Table Location") {
-                                                'td'('columnWidth':columnWidth, id:"id"+md5(itemId), link:"id"+md5(summaryTableGroupLinkId), item)
-                                                // 'td'('columnWidth':columnWidth, link:"id"+md5(summaryTableGroupLinkId), item)
+                                                // 'td'('columnWidth':columnWidth, id:"id"+md5(itemId), link:"id"+md5(summaryTableGroupLinkId), item)
+                                                'td'('columnWidth':columnWidth, link:"id"+md5(summaryTableGroupLinkId), item)
                                             }
                                             else {
-                                                'td'('columnWidth':columnWidth, id:"id"+md5(itemId), item)
-                                                // 'td'('columnWidth':columnWidth, item)
+                                                // 'td'('columnWidth':columnWidth, id:"id"+md5(itemId), item)
+                                                'td'('columnWidth':columnWidth, item)
                                             }
                                         }
 
@@ -350,6 +350,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     }
 
+    // String outData
+    // outData = groovy.xml.XmlUtil.serialize(xmlMarkup).replaceFirst("\\<\\?xml(.+?)\\?\\>", "").trim() //.replaceAll(/<tr\s*?\/\s*>/,"")
+    // is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));
  
     is = new ByteArrayInputStream(xmlMarkup.toString().getBytes("UTF-8"));
     dataContext.storeStream(is, props);

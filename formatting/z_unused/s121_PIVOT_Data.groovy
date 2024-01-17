@@ -26,13 +26,21 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def columnNames = props.getProperty("document.dynamic.userdefined.ddp_sqlColumnNames") ?: ""
     def columnNamesArr = columnNames ? columnNames.split(IFS).collect{it.toUpperCase()} : []
     // println columnNamesArr
+
     def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
     def pivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
     // println prettyJson(pivotedDataConfigsArr)
     // println pivotedDataConfigsArr.size()
+    
+    def groupByConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated")
+    def groupByConfigsArr = groupByConfigsJson ? new JsonSlurper().parseText(groupByConfigsJson)?.Records : []
+    // println "#DEBUG ConfigsArr: " + prettyJson(groupByConfigsArr)
+    // println groupByConfigsArr.size()
+
     def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
     def sources = new JsonSlurper().parseText(sourcesJson).Records[0]
     // println prettyJson(sources)
+
     def sqlParamValues = props.getProperty("document.dynamic.userdefined.ddp_sqlParamValues")
     // println sqlParamValues
 
@@ -53,6 +61,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     def pivotDataMap = [:]
     def pivotOnKeySetMap_AllCols = [:]
+    def groupByKeySetMap_AllCols = [:]
 
     def reader = new BufferedReader(new InputStreamReader(is))
     while ((line = reader.readLine()) != null ) {
@@ -64,27 +73,38 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             .replaceFirst(/$IFS\s*$/, "${IFS}LAST_ELEMENT_IS_BLANK")
             .split(/\s*$IFS\s*/)
             .collect{ it == "LAST_ELEMENT_IS_BLANK" ? "" : it }
-        def groupByMapKey = groupByColsArr.collect { lineArr[it.Index] ?: "-" }.join("___")
+
+        def groupByMapKey_AllCols = groupByColsArr.collect { lineArr[it.Index] ?: "-" }.join("___")
+        def groupByMapKey_KeyCols = groupByColsArr.findAll{it.IsKeyColumn}.collect { lineArr[it.Index] }.join("___")
+        // println prettyJson(groupByMapKey_AllCols_AllCols)
+        // println prettyJson(groupByMapKey_KeyCols)
+
         def pivotOnMapKey_AllCols = pivotOnColsArr.collect { lineArr[it.Index] ?: "-" }.join("___")
-        def pivotOnMapKey_KeyCols = pivotOnColsArr.collect { if (it.IsKeyColumn) lineArr[it.Index]; else "REMOVE" }.join("___").replaceAll("___REMOVE","")
+        def pivotOnMapKey_KeyCols = pivotOnColsArr.findAll{it.IsKeyColumn}.collect { lineArr[it.Index] }.join("___")
+        // println prettyJson(pivotOnMapKey_AllCols)
+        // println prettyJson(pivotOnMapKey_KeyCols)
+
         def dataPoint = lineArr[dataColIndex]
+
         // populate map
-        if (!pivotDataMap[groupByMapKey]) {
-            pivotDataMap[groupByMapKey] = [:]
-            pivotDataMap[groupByMapKey][upper(pivotOnMapKey_AllCols)] = dataPoint
+        if (!pivotDataMap[groupByMapKey_AllCols]) {
+            pivotDataMap[groupByMapKey_AllCols] = [:]
+            pivotDataMap[groupByMapKey_AllCols][upper(pivotOnMapKey_AllCols)] = dataPoint
         }
-        else if (!pivotDataMap[groupByMapKey][upper(pivotOnMapKey_AllCols)]) {
-            pivotDataMap[groupByMapKey][upper(pivotOnMapKey_AllCols)] = dataPoint
+        else if (!pivotDataMap[groupByMapKey_AllCols][upper(pivotOnMapKey_AllCols)]) {
+            pivotDataMap[groupByMapKey_AllCols][upper(pivotOnMapKey_AllCols)] = dataPoint
         }
-        // println groupByMapKey + " ::: " + pivotOnMapKey_AllCols + " ::: " + pivotDataMap[groupByMapKey][upper(pivotOnMapKey_AllCols)]
+        println groupByMapKey_AllCols + " ::: " + pivotOnMapKey_AllCols + " ::: " + pivotDataMap[groupByMapKey_AllCols][upper(pivotOnMapKey_AllCols)]
 
         // populate keySets
         pivotOnKeySetMap_AllCols[upper(pivotOnMapKey_KeyCols)] = pivotOnMapKey_AllCols
+        groupByKeySetMap_AllCols[upper(groupByMapKey_KeyCols)] = groupByMapKey_AllCols
     }
+    // println prettyJson(pivotDataMap)
     // println pivotDataMap.keySet()
     // println prettyJson(pivotOnKeySetMap_AllCols)
     // println pivotOnKeySetMap_AllCols.size()
-    // println prettyJson(pivotDataMap)
+    // println prettyJson(groupByKeySetMap_AllCols)
 
     // if any of the groupBy keys are in the sqlParamValues, that means that we can sort by the param values
     // this is a hacky way of identifying that there is an IN operator and is a multiselect
@@ -126,75 +146,184 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def pivotedDataConfigsArrItemsRemoved = []
     pivotedDataConfigsArr.findAll { configItem -> configItem.Active == true }
         .each { activeConfigItem ->
+
             // set the columnKey if there is one in the data
             def columnKey = pivotOnKeySetMap_AllCols[activeConfigItem.ColumnKey]
+
             // if there is not a columnKey in the data AND SuppressIfNoDataForAllRows = false...
             if (!columnKey && !activeConfigItem.SuppressIfNoDataForAllRows) {
-                def activeItemNotInDataLabelsArr = activeConfigItem.PivotedItemLabels.collect{it.Label}
+
+                // def activeItemNotInDataLabelsArr = activeConfigItem.PivotedItemLabels.collect{it.Label} // OLD uses Labels Map
+                def activeItemNotInDataLabelsArr = activeConfigItem.ColumnLabels.split("___")
                 (0..pivotOnColsArr.size()-1).each { p ->
                     if (!activeItemNotInDataLabelsArr[p]) activeItemNotInDataLabelsArr << NO_TEST
                 }
                 // set a column key from the config item
                 columnKey = activeItemNotInDataLabelsArr.join("___")
+
                 // add dataPoint representing NO_TEST for each groupBy
                 pivotDataMap.keySet().each { pivotDataMap[it][upper(columnKey)] = NO_TEST }
             }
+            // println "\ncolumnKey: " + columnKey
 
             // there will be a column key if it exists in the config item AND it exists in
             // the data OR if doesn't exist in the data but it does exist in the config item
             // AND SuppressIfNoDataForAllRows = false
             if (columnKey) {
                 columnKeysActive << columnKey
+
                 // the config item only has labels for pivotOn column which are marked
                 // as key columns. For any pivotOn columns which are not key columns,
                 // use the original column name
                 def labelsArr = []
-                columnKey.split("___").eachWithIndex { columnName, j ->
-                    def activeConfigItemLabelsArr = activeConfigItem.PivotedItemLabels.collect{ it.Label }
-                    if (activeConfigItemLabelsArr[j] != null) {
-                        labelsArr << activeConfigItemLabelsArr[j]
+                // println columnKey
+                def columnKeysArr = columnKey.split("___")
+                // println "#DEBUG columnKeysArr: " + columnKeysArr
+                def activeConfigItemLabelsArr = activeConfigItem.ColumnLabels.split("___") as ArrayList
+                // println "#DEBUG activeConfigItemLabelsArr: " + activeConfigItemLabelsArr
+
+                int keyLabelsCounter = 0
+                pivotOnColsArr.eachWithIndex { configItem, r ->
+                    if (!configItem.IsKeyColumn) {
+                        labelsArr << columnKeysArr[r]
                     }
-                    else labelsArr << columnName
+                    else {
+                        labelsArr << activeConfigItemLabelsArr[keyLabelsCounter]
+                        keyLabelsCounter++
+                    }
+                    // println r + " " + configItem
                 }
-                columnLabelsActive << labelsArr.join("___")
+                // columnLabelsActive << labelsArr.join("___")
+                columnLabelsActive << labelsArr
                 // add config item to new array
                 pivotedDataConfigsArrItemsRemoved << activeConfigItem
             }
         }
     // println prettyJson(columnKeysActive)
+    // println "#DEBUG columnKeysActive: " + prettyJson(columnKeysActive)
+    // println "#DEBUG columnLabelsActive: " + prettyJson(columnLabelsActive)
     // println columnKeysActive.size()
-    // println prettyJson(columnLabelsActive)
     // println columnLabelsActive.size()
     // println prettyJson(pivotedDataConfigsArrItemsRemoved)
     // println pivotedDataConfigsArrItemsRemoved.size()
 
+
+    /* --- active rows --- */
+
+
+
+
+
+
+
+
+
+
+
+
+    def rowKeysActive = []
+    def rowLabelsActive = []
+    def groupByConfigsArrItemsRemoved = []
+
+    groupByConfigsArr.findAll { configItem -> configItem.Active == true }
+        .each { activeConfigItem ->
+
+            // set the rowKey if there is one in the data
+            def rowKey = groupByKeySetMap_AllCols[activeConfigItem.RowKey]
+
+            // if there is not a rowKey in the data AND SuppressIfNoDataForAllRows = false...
+            if (!rowKey && !activeConfigItem.SuppressIfNoDataForAllCols) {
+
+                // def activeItemNotInDataLabelsArr = activeConfigItem.PivotedItemLabels.collect{it.Label} // OLD uses Labels Map
+                def activeItemNotInDataLabelsArr = activeConfigItem.rowLabels.split("___")
+                (0..groupByColsArr.size()-1).each { p ->
+                    if (!activeItemNotInDataLabelsArr[p]) activeItemNotInDataLabelsArr << NO_TEST
+                }
+                // set a row key from the config item
+                rowKey = activeItemNotInDataLabelsArr.join("___")
+
+                // add dataPoint representing NO_TEST for each groupBy
+                // pivotDataMap.keySet().each { pivotDataMap[it][upper(rowKey)] = NO_TEST }
+            }
+            // println "\nrowKey: " + rowKey
+
+            // there will be a row key if it exists in the config item AND it exists in
+            // the data OR if doesn't exist in the data but it does exist in the config item
+            // AND SuppressIfNoDataForAllCols = false
+            if (rowKey) {
+                rowKeysActive << rowKey
+
+                // the config item only has labels for groupBy row which are marked
+                // as key rows. For any groupBy rows which are not key rows,
+                // use the original row name
+                def labelsArr = []
+                // println rowKey
+                def rowKeysArr = rowKey.split("___")
+                // println "#DEBUG rowKeysArr: " + rowKeysArr
+                def activeConfigItemLabelsArr = activeConfigItem.RowLabels.split("___") as ArrayList
+                // println "#DEBUG activeConfigItemLabelsArr: " + activeConfigItemLabelsArr
+
+                int keyLabelsCounter = 0
+                groupByColsArr.eachWithIndex { configItem, r ->
+                    if (!configItem.IsKeyrow) {
+                        labelsArr << rowKeysArr[r]
+                    }
+                    else {
+                        labelsArr << activeConfigItemLabelsArr[keyLabelsCounter]
+                        keyLabelsCounter++
+                    }
+                    // println r + " " + configItem
+                }
+                // rowLabelsActive << labelsArr.join("___")
+                rowLabelsActive << labelsArr
+                // add config item to new array
+                groupByConfigsArrItemsRemoved << activeConfigItem
+            }
+        }
+        // println "#DEBUG rowKeysActive: " + prettyJson(rowKeysActive)
+        // println "#DEBUG rowLabelsActive: " + prettyJson(rowLabelsActive)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /* --- start building result --- */
 
+    // top Left corner
+
     def topLeftCornerOpt = sources.PivotTopLeftCornerOpt ?: "PIVOT ON"
-    // println topLeftCornerOpt
+    // println "#DEBUG topLeftCornerOpt: " + topLeftCornerOpt
 
-    // top left corner
-    def topLeftCornerArr = topLeftCornerOpt =~ /(?i)group ?by/ ?
-        (groupByColsArr.collect { it.Label ?: it.Column } * pivotOnColsArr.size()) :
-        pivotOnColsArr.collect { it.Label ?: it.Column }
-    // println topLeftCornerArr
-
-    def topLeftCornerMatrix = topLeftCornerOpt =~ /(?i)group ?by/ ?
-        ([topLeftCornerArr] * groupByColsArr.size()) :
-        [topLeftCornerArr] * groupByColsArr.size()
-    // println topLeftCornerMatrix
-
-
-    // header rows
+    def topLeftCornerKeysArr = []
     def headerRowsArr = []
-    headerRowsArr << topLeftCornerMatrix.collect{it.join("___")}
-    headerRowsArr << columnLabelsActive
-    // println columnLabelsActive
-    // println headerRowsArr.flatten().collect{it.split("___")}
 
-    // add header rows to result
-    def resultArr = headerRowsArr.flatten().collect{it.split("___")}.transpose()
-    // println resultArr
+    if (topLeftCornerOpt =~ /(?i)group ?by/) {
+        topLeftCornerKeysArr = [groupByColsArr.collect { it.Label ?: it.Column }] * pivotOnColsArr.size()
+        headerRowsArr = topLeftCornerKeysArr.withIndex().collect { item, b -> item + columnLabelsActive.transpose()[b] }
+    } else {
+        topLeftCornerKeysArr = pivotOnColsArr.collect { [it.Label ?: it.Column] * groupByColsArr.size() }
+        headerRowsArr = topLeftCornerKeysArr.withIndex().collect { item, b -> item + columnLabelsActive.transpose()[b] }
+    }
+    // println "#DEBUG topLeftCornerKeysArr (pivotOn): " + prettyJson(topLeftCornerKeysArr)
+    // println "#DEBUG headerRowsArr: " + prettyJson(headerRowsArr)
+
+    props.setProperty("document.dynamic.userdefined.ddp_topLeftCornerKeysArrJson", prettyJson(topLeftCornerKeysArr))
+
+    def resultArr = headerRowsArr
+    // println "#DEBUG resultArr: " + prettyJson(resultArr)
 
     /* --- 2nd pass: loop through pivotDataMap -> resultArr --- */
 
@@ -214,7 +343,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     /* OUTPUT */
 
-    if (transpose) resultArr = resultArr.transpose()
+    // if (transpose) resultArr = resultArr.transpose()
 
     def outData = new StringBuffer()
     resultArr.each {outData.append(it.join(OFS) + NEWLINE)}
