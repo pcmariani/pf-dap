@@ -1,0 +1,15 @@
+{
+  "Requestor": "TestMode",
+  "ReportContentItem_DynamicTableId": "30",
+  "TableDefinitionId": "39",
+  "SourceId": "5",
+  "Records": [
+    {
+      "RowKey": "0",
+      "RowLabels": "0",
+      "Active": true,
+      "RowIndex": 20,
+      "SuppressIfNoDataForAllCols": true
+    }
+  ]
+}

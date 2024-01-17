@@ -1,0 +1,26 @@
+{
+  "Requestor": "Peter.Mariani@pfizer.com",
+  "ReportContentItem_DynamicTableId": "54",
+  "TableDefinitionId": "14",
+  "SourceId": "4",
+  "Records": [
+    {
+      "ColumnKey": "|^|15-001718|^|",
+      "ColumnLabels": "Lot Number|^|15-001718|^|Results",
+      "Active": true,
+      "ColumnIndex": 1,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "|^|18-000391|^|",
+      "ColumnLabels": "Lot Number|^|18-000391|^|Results",
+      "Active": true,
+      "ColumnIndex": 3,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    }
+  ]
+}

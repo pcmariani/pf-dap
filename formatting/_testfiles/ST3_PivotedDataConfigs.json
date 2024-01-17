@@ -1,0 +1,179 @@
+{
+  "Requestor": "TestMode",
+  "ReportContentItem_DynamicTableId": "30",
+  "TableDefinitionId": "39",
+  "SourceId": "5",
+  "Records": [
+    {
+      "ColumnKey": "AEX-HPLC|^|ANTI-CD3 MAB|^|",
+      "ColumnLabels": "AEX-HPLC|^|Anti-CD3 mAb|^|\u2264 3.0% anti CD3 parent mAb",
+      "Active": true,
+      "ColumnIndex": 1,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "APPEARANCE|^|CLARITY|^|",
+      "ColumnLabels": "Appearance|^|Clarity|^|\u2264 18 NTU",
+      "Active": true,
+      "ColumnIndex": 2,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "APPEARANCE|^|COLORATION|^|",
+      "ColumnLabels": "Appearance|^|Coloration|^|Not more intensely colored than level 5 of the color standard",
+      "Active": true,
+      "ColumnIndex": 3,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "APPEARANCE|^|VISIBLE PARTICULATES|^|",
+      "ColumnLabels": "Appearance|^|Visible Particulates|^|Essentially free from visible particulates",
+      "Active": true,
+      "ColumnIndex": 4,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "BIOLOGICAL ACTIVITY (BINDING ELISA)|^|RELATIVE POTENCY|^|",
+      "ColumnLabels": "Biological Activity (Binding ELISA)|^|Relative Potency|^|50 - 150% potency relative to refer ence material",
+      "Active": true,
+      "ColumnIndex": 5,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CEX-HPLC|^|ANTI-BCMA MAB|^|",
+      "ColumnLabels": "CEX-HPLC|^|Anti-BCMA mAb|^|\u2264 3.0% anti BCMA parent mAb",
+      "Active": true,
+      "ColumnIndex": 6,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CEX-HPLC|^|ANTI-BCMA/ANTI-CD3 BISPECIFIC CLIP|^|",
+      "ColumnLabels": "CEX-HPLC|^|Anti-BCMA/Anti-CD3 Bispecific Clip|^|\u2264 5.0% Bispecific mAb Clip",
+      "Active": true,
+      "ColumnIndex": 7,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CGE (NON-REDUCING)|^|FRAGMENTS|^|",
+      "ColumnLabels": "CGE (non-reducing)|^|Fragments|^|\u2264 10.0% fragments",
+      "Active": true,
+      "ColumnIndex": 8,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CGE (NON-REDUCING)|^|INTACT IGG|^|",
+      "ColumnLabels": "CGE (non-reducing)|^|Intact IgG|^|\u2265 90.0% IgG",
+      "Active": true,
+      "ColumnIndex": 9,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CGE (NON-REDUCING)|^|OTHER|^|",
+      "ColumnLabels": "CGE (non-reducing)|^|Other|^|Report Results",
+      "Active": true,
+      "ColumnIndex": 10,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CGE (REDUCING)|^|FRAGMENTS|^|",
+      "ColumnLabels": "CGE (reducing)|^|Fragments|^|",
+      "Active": true,
+      "ColumnIndex": 11,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CGE (REDUCING)|^|HEAVY CHAIN + LIGHT CHAIN|^|",
+      "ColumnLabels": "CGE (reducing)|^|Heavy Chain + Light Chain|^|",
+      "Active": true,
+      "ColumnIndex": 12,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "CGE (REDUCING)|^|OTHER|^|",
+      "ColumnLabels": "CGE (reducing)|^|Other|^|",
+      "Active": true,
+      "ColumnIndex": 13,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "ENDOTOXIN|^|ENDOTOXIN|^|",
+      "ColumnLabels": "Endotoxin|^|Endotoxin|^|\u2264 10 EU/mg",
+      "Active": true,
+      "ColumnIndex": 14,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "OSMOLARITY|^|OSMOLARITY|^|",
+      "ColumnLabels": "Osmolarity|^|Osmolarity|^|Report Results",
+      "Active": true,
+      "ColumnIndex": 15,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "PEPTIDE MAPPING|^|IDENTITY (PEPTIDE PROFILE)|^|",
+      "ColumnLabels": "Peptide Mapping|^|Identity (Peptide Profile)|^|Comparable to Reference",
+      "Active": true,
+      "ColumnIndex": 16,
+      "SubTableIndex": 1,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "SE-HPLC|^|HMMS|^|",
+      "ColumnLabels": "SE-HPLC|^|HMMS|^|\u2264 5.0% HMMS",
+      "Active": true,
+      "ColumnIndex": 17,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "SE-HPLC|^|MONOMER|^|",
+      "ColumnLabels": "SE-HPLC|^|Monomer|^|\u2265 90.0% monomer",
+      "Active": true,
+      "ColumnIndex": 18,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": true
+    },
+    {
+      "ColumnKey": "STERILITY|^|STERILITY|^|",
+      "ColumnLabels": "Sterility|^|Sterility|^|No growth detected",
+      "Active": true,
+      "ColumnIndex": 19,
+      "SubTableIndex": 2,
+      "ColumnWidth": 10,
+      "SuppressIfNoDataForAllRows": false
+    }
+  ]
+}

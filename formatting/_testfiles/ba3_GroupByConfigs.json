@@ -1,0 +1,53 @@
+{
+  "Records": [
+    {
+      "RowKey": "ICE|^|ACIDIC SPECIES|^|",
+      "RowLabels": "iCE|^|Acidic Species|^|Report Results (%)",
+      "Active": false,
+      "RowIndex": 1,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "RowKey": "APPEARANCE (CLARITY)|^|APPEARANCE (CLARITY)|^|",
+      "RowLabels": "Appearance (Clarity)|^|Appearance (Clarity)|^|<= 30 NTU",
+      "Active": true,
+      "RowIndex": 2,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "RowKey": "APPEARANCE (COLORATION)|^|APPEARANCE (COLORATION)|^|",
+      "RowLabels": "Appearance (Coloration)|^|Appearance (Coloration)|^|Not more intensely colored than level 3 of the color standard",
+      "Active": true,
+      "RowIndex": 3,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "RowKey": "APPEARANCE (VISIBLE PARTICULATES)|^|APPEARANCE (VISIBLE PARTICULATES)|^|",
+      "RowLabels": "Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates",
+      "Active": true,
+      "RowIndex": 4,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "RowKey": "ICE|^|BASIC SPECIES|^|",
+      "RowLabels": "iCE|^|Basic Species|^|Report Results (%)",
+      "Active": false,
+      "RowIndex": 5,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "RowKey": "ICE|^|CHARGE HETEROGENEITY|^|",
+      "RowLabels": "iCE|^|Charge Heterogeneity|^|Comparable to Reference Material",
+      "Active": false,
+      "RowIndex": 6,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "RowKey": "EXTRACTABLE VOLUME|^|CONTAINER CONTENT FOR INJECTIONS|^|",
+      "RowLabels": "Extractable Volume|^|Container Content for Injections|^|Not less than labeled volume",
+      "Active": true,
+      "RowIndex": 7,
+      "SuppressIfNoDataForAllCols": false
+    }
+  ]
+}

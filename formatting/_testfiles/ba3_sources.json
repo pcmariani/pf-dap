@@ -1,0 +1,75 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 4,
+      "TableDefinitionId": 14,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for BLA Batch Analysis DP",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Product",
+          "UserInputId": 5
+        },
+        {
+          "ParamName": "Batch Number",
+          "UserInputId": 6
+        }
+      ],
+      "DbSystem": "Informa",
+      "SqlStatement": "SELECT \"Batch Number\", \"Acceptance Criteria\", \"Analytical Procedure\", \"Quality Attribute\", \"Text Parameter Value\", 'Lot Number' as \"Lot Number Label\", 'Results' as \"Results Label\"\nFROM MIPRANS_OWNER.DELL_CQA_BA\nWHERE \"Product\" = ? AND \"Batch Number\" IN (?)",
+      "DisplayHeaders": true,
+      "DisplayHeadersOnSide": true,
+      "Transpose": false,
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "Lot Number Label",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeRows": false,
+          "MergeCols": true
+        },
+        {
+          "Column": "Batch Number",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeRows": false,
+          "MergeCols": false
+        },
+        {
+          "Column": "Results Label",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeRows": false,
+          "MergeCols": true
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "Analytical Procedure",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeRows": true,
+          "MergeCols": false
+        },
+        {
+          "Column": "Quality Attribute",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeRows": true,
+          "MergeCols": false
+        },
+        {
+          "Column": "Acceptance Criteria",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeRows": false,
+          "MergeCols": false
+        }
+      ],
+      "PivotDataColumn": "Text Parameter Value",
+      "PivotTopLeftCornerOpt": "GroupBy Label"
+    }
+  ]
+}

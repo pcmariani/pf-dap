@@ -1,0 +1,75 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 4,
+      "TableDefinitionId": 14,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for BLA Batch Analysis DP",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Product",
+          "UserInputId": 5
+        },
+        {
+          "ParamName": "Batch Number",
+          "UserInputId": 6
+        }
+      ],
+      "DbSystem": "Informa",
+      "SqlStatement": "SELECT \"Batch Number\", \"Acceptance Criteria\", \"Analytical Procedure\", \"Quality Attribute\", \"Text Parameter Value\", 'Lot Number' as \"Lot Number Label\", 'Results' as \"Results Label\"\nFROM MIPRANS_OWNER.DELL_CQA_BA\nWHERE \"Product\" = ? AND \"Batch Number\" IN (?)",
+      "DisplayHeaders": true,
+      "DisplayHeadersOnSide": true,
+      "Transpose": true,
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "Analytical Procedure",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": null,
+          "MergeVertical": null
+        },
+        {
+          "Column": "Quality Attribute",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": null,
+          "MergeVertical": null
+        },
+        {
+          "Column": "Acceptance Criteria",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeHorizontal": null,
+          "MergeVertical": null
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "Results Label",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeHorizontal": null,
+          "MergeVertical": null
+        },
+        {
+          "Column": "Batch Number",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": null,
+          "MergeVertical": null
+        },
+        {
+          "Column": "Lot Number Label",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeHorizontal": null,
+          "MergeVertical": null
+        }
+      ],
+      "PivotDataColumn": "Text Parameter Value",
+      "PivotTopLeftCornerOpt": "Pivot On Label"
+    }
+  ]
+}
