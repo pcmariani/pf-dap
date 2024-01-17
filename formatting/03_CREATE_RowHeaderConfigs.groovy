@@ -25,30 +25,30 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def newRowHeaderConfigsArr = []
     sources.each { source ->
         Boolean isPivot = source.IsPivot
-        Boolean transpose = source.Transpose
+        // Boolean transpose = source.Transpose
         def groupByColsArr = source.PivotGroupByColumns
         // println groupByColsArr
         def pivotOnColsArr = source.PivotOnColumns
         // println prettyJson(pivotOnColsArr)
         if (isPivot) {
-            if (!transpose) {
-                groupByColsArr.eachWithIndex { groupByCol, c ->
-                    def rowHeaderConfigItem = rowHeaderConfigArr.find{it.RowHeaderName == groupByCol.Column}
-                    newRowHeaderConfigsArr << [
-                        RowHeaderName: rowHeaderConfigItem?.RowHeaderName ?: groupByCol.Column,
-                        RowHeaderWidth: rowHeaderConfigItem?.RowHeaderWidth ?: 10,
-                    ]
-                }
+            // if (!transpose) {
+            groupByColsArr.eachWithIndex { groupByCol, c ->
+                def rowHeaderConfigItem = rowHeaderConfigArr.find{it.RowHeaderName == groupByCol.Column}
+                newRowHeaderConfigsArr << [
+                    RowHeaderName: rowHeaderConfigItem?.RowHeaderName ?: groupByCol.Column,
+                    RowHeaderWidth: rowHeaderConfigItem?.RowHeaderWidth ?: 10,
+                ]
             }
-            else {
-                pivotOnColsArr.eachWithIndex { pivotOnCol, c ->
-                    def rowHeaderConfigItem = rowHeaderConfigArr.find{it.RowHeaderName == pivotOnCol.Column}
-                    newRowHeaderConfigsArr << [
-                        RowHeaderName: rowHeaderConfigItem?.RowHeaderName ?: pivotOnCol.Column,
-                        RowHeaderWidth: rowHeaderConfigItem?.RowHeaderWidth ?: 10,
-                    ]
-                }
-            }
+            // }
+            // else {
+            //     pivotOnColsArr.eachWithIndex { pivotOnCol, c ->
+            //         def rowHeaderConfigItem = rowHeaderConfigArr.find{it.RowHeaderName == pivotOnCol.Column}
+            //         newRowHeaderConfigsArr << [
+            //             RowHeaderName: rowHeaderConfigItem?.RowHeaderName ?: pivotOnCol.Column,
+            //             RowHeaderWidth: rowHeaderConfigItem?.RowHeaderWidth ?: 10,
+            //         ]
+            //     }
+            // }
         }
     }
     // println prettyJson(newRowHeaderConfigsArr)

@@ -8,78 +8,70 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     def tableDefinitionJson = props.getProperty("document.dynamic.userdefined.ddp_TableDefinition")
     def tableDefinition = tableDefinitionJson ? new JsonSlurper().parseText(tableDefinitionJson).Records : []
-    println "#DEBUG tableDefinition: " + tableDefinition.Name
+    // println "#DEBUG tableDefinition: " + tableDefinition.Name
 
     Boolean isPivot = (props.getProperty("document.dynamic.userdefined.ddp_isPivot") ?: "true").toBoolean()
     // println isPivot
-    Boolean transpose = (props.getProperty("document.dynamic.userdefined.ddp_transpose") ?: "false").toBoolean()
-    // println transpose
+
     def numHeaderRows = (props.getProperty("document.dynamic.userdefined.ddp_numHeaderRows") ?: "1") as int
     // println numHeaderRows
-    def numKeyHeaders = (props.getProperty("document.dynamic.userdefined.ddp_numKeyHeaders") ?: "0") as int
-    // println numKeyHeaders
-    def numGroupByCols = (props.getProperty("document.dynamic.userdefined.ddp_numGroupByCols") ?: "0") as int
-    // println numGroupByCols
+    def numHeaderCols = (props.getProperty("document.dynamic.userdefined.ddp_numHeaderCols") ?: "1") as int
+    // println numHeaderCols
+
+    def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
+    def sources = new JsonSlurper().parseText(sourcesJson).Records[0]
+    // println prettyJson(sources)
+
+    def pivotOnColumns = sources.PivotOnColumns
+    // println prettyJson(pivotOnColumns)
+    def groupByColumns = sources.PivotGroupByColumns
+    // println prettyJson(groupByColumns)
+
 
     /* --- calculate merge ranges --- */
 
     def mergeRangeArr = []
 
-    if (isPivot && !transpose) {
-        println "isPivot && !transpose"
-        // key rows to merge vertically
+    def mergeRange = { rowStart, rowEnd, colStart, colEnd, mergeRows, mergeCols ->
         mergeRangeArr << [
-            rowStart: 0,
-            rowEnd: numKeyHeaders-1,
-            colStart: 0,
-            colEnd: -1,
-            mergeCols: false,
-            mergeRows: true
-        ]
-        // first row only to merge horizontally
-        mergeRangeArr << [
-            rowStart: 0,
-            rowEnd: 0,
-            colStart: 0,
-            colEnd: -1,
-            mergeCols: true,
-            mergeRows: false
+            rowStart: rowStart,
+            rowEnd: rowEnd,
+            colStart: colStart,
+            colEnd: colEnd,
+            mergeRows: mergeRows,
+            mergeCols: mergeCols
         ]
     }
 
-    else if (isPivot && transpose) {
-        println "isPivot && transpose"
+    // topLeft corner
+    mergeRange(0, numHeaderRows-1, 0, numHeaderCols-1, true, false)
 
-        // topleft corner only
-        mergeRangeArr << [
-            rowStart: 0,
-            rowEnd: numHeaderRows-1,
-            colStart: 0,
-            colEnd: numKeyHeaders+1,
-            mergeCols: true,
-            mergeRows: true
-        ]
-        // headers rows to merge horizontally and vertically
-        mergeRangeArr << [
-            rowStart: 0,
-            rowEnd: (tableDefinition =~ "(?i)phrd") ? numHeaderRows-2 : numHeaderRows-1,
-            // rowEnd: numHeaderRows-2,
-            colStart: numKeyHeaders+1,
-            colEnd: -1,
-            mergeCols: true,
-            mergeRows: true
-        ]
-        // row header key columns (not including top-left corner) to merge vertically
-        mergeRangeArr << [
-            rowStart: numHeaderRows,
-            rowEnd: -1,
-            colStart: 0,
-            colEnd: numKeyHeaders-1,
-            mergeCols: false,
-            mergeRows: true
-        ]
+    // header rows across top
+    pivotOnColumns.eachWithIndex { row, r ->
+        if (row.MergeRows) {
+            mergeRange(r-1, r, numHeaderCols, -1, true, false)
+        }
     }
-    // println mergeRangeArr
+    pivotOnColumns.eachWithIndex { row, r ->
+        if (row.MergeCols) {
+            mergeRange(r, r, numHeaderCols, -1, false, true)
+        }
+    }
+
+    // header cols on side
+    groupByColumns.eachWithIndex { col, c ->
+        if (col.MergeRows) {
+            mergeRange(numHeaderRows, -1, c, c, true, false)
+        }
+    }
+    groupByColumns.eachWithIndex { col, c ->
+        if (col.MergeCols) {
+            mergeRange(numHeaderRows, -1, c-1, c, false, true)
+        }
+    }
+
+    // println prettyJson(mergeRangeArr)
+
 
     /* --- loop through xml (pseudo-html) data --- */
 
@@ -167,7 +159,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             // // START debug
             // println "TABLE |  ROW  DELETE  SPAN |  COL  DELETE  SPAN |  NAME"
             // (0..tableArr.size()-1).each { r ->
-            //     println "------|--------------------|--------------------|------"
+            //     println "------+--------------------+--------------------+------"
             //     (0..tableArr[r].size()-1).each { c ->
             //         def cell = tableArr[r][c]
             //         def rStr = r.toString().length() < 2 ? r.toString() + " " : r.toString()
@@ -207,7 +199,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         /* --- remove empty tr's --- */
 
-        // there's probably a way to accomplish what follows above
+        // there's probably a way to accomplish what follows in the code above
         table.tr.eachWithIndex { tr, c ->
             // if the tr (serialized) is empty (looke like <tr/>) remove it and adjust @rowSpan of the tr above it
             // this will happen if all the cells in the next tr are the same as all the cells in the first tr
