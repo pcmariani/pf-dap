@@ -1,0 +1,10 @@
+OPTIONS:
+  - no guides
+  # - no data
+  - no props
+
+GLOBALS:
+  scripts: columnLabelMigration.groovy
+
+test1:
+  datafile: sampleData.csv
