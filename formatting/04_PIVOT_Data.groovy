@@ -13,6 +13,7 @@ def NO_RESULT = "NR"
 def NO_TEST = "NT"
 def IFS = /\|\^\|/  // Input Field Separator
 def OFS = "|^|"     // Output Field Separator
+def DBFS = "^^^"    // Database Field Separator
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
@@ -111,10 +112,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def dataPoint = lineArr[dataColIndex]
         // println dataPoint
 
-        def groupByMapKey = upper(groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(OFS))
+        def groupByMapKey = upper(groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBFS))
         // println "#DEBUG groupByMapKey: " + prettyJson(groupByMapKey)
 
-        def pivotOnMapKey = upper(pivotOnColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(OFS))
+        def pivotOnMapKey = upper(pivotOnColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBFS))
         // println "#DEBUG pivotOnMapKey: " + prettyJson(pivotOnMapKey)
 
         def rowIndex = activeGroupByConfigsArr.find{ it.RowKey == groupByMapKey}?.RowIndex
@@ -230,9 +231,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     /* OUTPUT */
 
-    // OFS = '\t'
+    // DBFS = '\t'
     def outData = new StringBuffer()
-    pivotedDataArr.each {outData.append(it.join(OFS) + NEWLINE)}
+    pivotedDataArr.each {outData.append(it.join(DBFS) + NEWLINE)}
 
     props.setProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated", prettyJson(
         [Records:activeGroupByConfigsArr.collect{ it.subMap("RowKey","RowIndex") }]

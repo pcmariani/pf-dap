@@ -8,6 +8,7 @@ logger = ExecutionUtil.getBaseLogger()
 def NEWLINE = System.lineSeparator()
 def IFS = /\|\^\|/  // Input Field Separator
 def OFS = "|^|"     // Output Field Separator
+def DBFS = "^^^"    // Database Field Separator
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
@@ -65,11 +66,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             .split(/\s*$IFS\s*/)
             .collect{ it == "LAST_ELEMENT_IS_BLANK" ? "" : it }
 
-        def pivotOnKey = pivotOnColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(OFS)
-        def pivotOnLabels = pivotOnColsArr.collect{ lineArr[it.Index]}.join(OFS)
+        def pivotOnKey = pivotOnColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBFS)
+        def pivotOnLabels = pivotOnColsArr.collect{ lineArr[it.Index]}.join(DBFS)
 
-        def groupByKey = groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(OFS)
-        def groupByLabels = groupByColsArr.collect{ lineArr[it.Index]}.join(OFS)
+        def groupByKey = groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBFS)
+        def groupByLabels = groupByColsArr.collect{ lineArr[it.Index]}.join(DBFS)
 
         pivotOnKeySetMap[upper(pivotOnKey)] = pivotOnLabels
         groupByKeySetMap[upper(groupByKey)] = groupByLabels
@@ -101,7 +102,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             SubTableIndex: subTableMaxIndex,
             ColumnWidth: 10,
             SuppressIfNoDataForAllRows: true,
-            // PivotedItemLabels: label.split(OFS).collect{ [Name: it, Label: it] }
+            // PivotedItemLabels: label.split(DBFS).collect{ [Name: it, Label: it] }
         ]
     }
     // println "newPivotedDataConfigsArr: " + prettyJson(newPivotedDataConfigsArr)
@@ -128,7 +129,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             Active: true,
             RowIndex: rowKeyCounter++,
             SuppressIfNoDataForAllCols: true,
-            // GroupByLabels: label.split(OFS).collect{ [Name: it, Label: it] }
+            // GroupByLabels: label.split(DBFS).collect{ [Name: it, Label: it] }
         ]
     }
     // println "newGroupByConfigsArr: " + prettyJson(newGroupByConfigsArr)

@@ -8,6 +8,7 @@ import com.boomi.execution.ExecutionUtil;
 logger = ExecutionUtil.getBaseLogger()
 def IFS = /\|\^\|/  // Input Field Separater
 def OFS = "|^|"     // Output Field Separator
+def DBFS = "^^^"    // Database Field Separator
 
 // def pivotedDataConfigsJson = ExecutionUtil.getDynamicProcessProperty("DPP_PivotedDataConfigs")
  
@@ -102,7 +103,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def columnsConfigArr = []
 
     if (isPivot) {
-        def rowHeaderKeysArr = topLeftCornerKeysArr.collect{ it.join(OFS) } + activeGroupByConfigsArr.RowKey
+        def rowHeaderKeysArr = topLeftCornerKeysArr.collect{ it.join(DBFS) } + activeGroupByConfigsArr.RowKey
         // println "#DEBUG rowHeaderKeysArr: " + rowHeaderKeysArr
 
         def rowHeaderColumnConfigsArr = []
@@ -126,7 +127,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             columnsConfigArr << [
                 ColumnKey: header,
                 ColumnWidth: 10,
-                RowHeaderKeys: rowHeaderKeysArr.collect{it.join(OFS)}
+                RowHeaderKeys: rowHeaderKeysArr.collect{it.join(DBFS)}
             ]
         }
     }
