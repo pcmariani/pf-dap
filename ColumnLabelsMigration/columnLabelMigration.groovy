@@ -16,11 +16,16 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def reader = new BufferedReader(new InputStreamReader(is))
     def outData = new StringBuffer()
 
+    // int j = 1
     while ((line = reader.readLine()) != null ) {
         // outData.append(line + NEWLINE)
         def lineArr = line.split(/\s*$IFS\s*/)
 
-        def oldLabelsArr = new JsonSlurper().parseText(lineArr[2]).Label
+        def oldLabelsClean = lineArr[2].replaceFirst("\"","").replaceFirst("\"\$","").replaceAll("\"\"","\"")
+        // println j + " " + new JsonSlurper().parseText(oldLabelsClean)
+        // j++
+
+        def oldLabelsArr = new JsonSlurper().parseText(oldLabelsClean).Label
         def keysArr = lineArr[1].split("___")
         def numKeys = keysArr.size()
         def newLabelsArr = []
