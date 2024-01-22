@@ -1,0 +1,562 @@
+[
+  {
+    "PivotedDataConfigId": 6054,
+    "ColumnKey": "APPEARANCE (CLARITY)^^^APPEARANCE (CLARITY)",
+    "ColumnLabels": "Appearance (Clarity)^^^Appearance (Clarity)",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 1,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6055,
+    "ColumnKey": "APPEARANCE (COLORATION)^^^APPEARANCE (COLORATION)",
+    "ColumnLabels": "Appearance (Coloration)^^^Appearance (Coloration)",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 2,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6056,
+    "ColumnKey": "APPEARANCE (VISIBLE PARTICULATES)^^^APPEARANCE (VISIBLE PARTICULATES)",
+    "ColumnLabels": "Appearance (Visible Particulates)^^^Appearance (Visible Particulates)",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 3,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6057,
+    "ColumnKey": "BLEF^^^BREAK LOOSE FORCE",
+    "ColumnLabels": "BLEF^^^Break Loose Force",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 4,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6058,
+    "ColumnKey": "BLEF^^^EXTRUSION FORCE",
+    "ColumnLabels": "BLEF^^^Extrusion Force",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 5,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6059,
+    "ColumnKey": "BLEF^^^MAXIMUM FORCE",
+    "ColumnLabels": "BLEF^^^Maximum Force",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 6,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6060,
+    "ColumnKey": "CGE (NON-REDUCING)^^^FRAGMENTS",
+    "ColumnLabels": "CGE (Non-Reducing)^^^Fragments",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 7,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6061,
+    "ColumnKey": "CGE (NON-REDUCING)^^^INTACT IGG",
+    "ColumnLabels": "CGE (Non-Reducing)^^^Intact IgG",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 8,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6062,
+    "ColumnKey": "CGE (REDUCING)^^^FRAGMENTS",
+    "ColumnLabels": "CGE (Reducing)^^^Fragments",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 9,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6063,
+    "ColumnKey": "CGE (REDUCING)^^^HEAVY CHAIN + LIGHT CHAIN",
+    "ColumnLabels": "CGE (Reducing)^^^Heavy Chain + Light Chain",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 10,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6064,
+    "ColumnKey": "CGE (REDUCING)^^^OTHER",
+    "ColumnLabels": "CGE (Reducing)^^^Other",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 11,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6065,
+    "ColumnKey": "ENDOTOXIN^^^ENDOTOXIN",
+    "ColumnLabels": "Endotoxin^^^Endotoxin",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 12,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6066,
+    "ColumnKey": "INHIBITION ASSAY^^^RELATIVE POTENCY",
+    "ColumnLabels": "Inhibition Assay^^^Relative Potency",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 13,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6067,
+    "ColumnKey": "PS80^^^POLYSORBATE 80",
+    "ColumnLabels": "PS80^^^Polysorbate 80",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 14,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6068,
+    "ColumnKey": "PARTICULATE MATTER IN INJECTIONS^^^SUBVISIBLE PARTICLES >= 10 M",
+    "ColumnLabels": "Particulate Matter in Injections^^^Subvisible Particles >= 10 µm",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 15,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6069,
+    "ColumnKey": "PARTICULATE MATTER IN INJECTIONS^^^SUBVISIBLE PARTICLES >= 25 M",
+    "ColumnLabels": "Particulate Matter in Injections^^^Subvisible Particles >= 25 µm",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 16,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6070,
+    "ColumnKey": "PEPTIDE MAP^^^METHIONINE OXIDATION",
+    "ColumnLabels": "Peptide Map^^^Methionine Oxidation",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 17,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6071,
+    "ColumnKey": "SE-HPLC^^^HMMS",
+    "ColumnLabels": "SE-HPLC^^^HMMS",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 18,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6072,
+    "ColumnKey": "SE-HPLC^^^MONOMER",
+    "ColumnLabels": "SE-HPLC^^^Monomer",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 19,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6073,
+    "ColumnKey": "STERILITY^^^STERILITY",
+    "ColumnLabels": "Sterility^^^Sterility",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 20,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6074,
+    "ColumnKey": "UV SPECTROSCOPY^^^PROTEIN CONCENTRATION",
+    "ColumnLabels": "UV Spectroscopy^^^Protein Concentration",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 21,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6075,
+    "ColumnKey": "ICE^^^ACIDIC SPECIES",
+    "ColumnLabels": "iCE^^^Acidic Species",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 22,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6076,
+    "ColumnKey": "ICE^^^BASIC SPECIES",
+    "ColumnLabels": "iCE^^^Basic Species",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 23,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6077,
+    "ColumnKey": "ICE^^^CHARGE ISOFORMS",
+    "ColumnLabels": "iCE^^^Charge Isoforms",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 24,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6078,
+    "ColumnKey": "ICE^^^MAIN SPECIES",
+    "ColumnLabels": "iCE^^^Main Species",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 25,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6079,
+    "ColumnKey": "PH^^^PH",
+    "ColumnLabels": "pH^^^pH",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 26,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6080,
+    "ColumnKey": "CGE (NON-REDUCING)^^^OTHER",
+    "ColumnLabels": "CGE (Non-Reducing)^^^Other",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 27,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6081,
+    "ColumnKey": "CONTAINER CLOSURE INTEGRITY^^^DYE INGRESS",
+    "ColumnLabels": "Container Closure Integrity^^^Dye Ingress",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 28,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6110,
+    "ColumnKey": "APPEARANCE (CLARITY)^^^APPEARANCE (CLARITY)^^^",
+    "ColumnLabels": "Appearance (Clarity)^^^Appearance (Clarity)^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 29,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6111,
+    "ColumnKey": "APPEARANCE (COLORATION)^^^APPEARANCE (COLORATION)^^^",
+    "ColumnLabels": "Appearance (Coloration)^^^Appearance (Coloration)^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 30,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6112,
+    "ColumnKey": "APPEARANCE (VISIBLE PARTICULATES)^^^APPEARANCE (VISIBLE PARTICULATES)^^^",
+    "ColumnLabels": "Appearance (Visible Particulates)^^^Appearance (Visible Particulates)^^^Essentially free from visible particulates",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 31,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6113,
+    "ColumnKey": "BLEF^^^BREAK LOOSE FORCE^^^",
+    "ColumnLabels": "BLEF^^^Break Loose Force^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 32,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6114,
+    "ColumnKey": "BLEF^^^EXTRUSION FORCE^^^",
+    "ColumnLabels": "BLEF^^^Extrusion Force^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 33,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6115,
+    "ColumnKey": "BLEF^^^MAXIMUM FORCE^^^",
+    "ColumnLabels": "BLEF^^^Maximum Force^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 34,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6116,
+    "ColumnKey": "CGE (NON-REDUCING)^^^FRAGMENTS^^^",
+    "ColumnLabels": "CGE (Non-Reducing)^^^Fragments^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 35,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6117,
+    "ColumnKey": "CGE (NON-REDUCING)^^^INTACT IGG^^^",
+    "ColumnLabels": "CGE (Non-Reducing)^^^Intact IgG^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 36,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6118,
+    "ColumnKey": "CGE (REDUCING)^^^FRAGMENTS^^^",
+    "ColumnLabels": "CGE (Reducing)^^^Fragments^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 37,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6119,
+    "ColumnKey": "CGE (REDUCING)^^^HEAVY CHAIN + LIGHT CHAIN^^^",
+    "ColumnLabels": "CGE (Reducing)^^^Heavy Chain + Light Chain^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 38,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6120,
+    "ColumnKey": "CGE (REDUCING)^^^OTHER^^^",
+    "ColumnLabels": "CGE (Reducing)^^^Other^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 39,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6121,
+    "ColumnKey": "ENDOTOXIN^^^ENDOTOXIN^^^",
+    "ColumnLabels": "Endotoxin^^^Endotoxin^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 40,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6122,
+    "ColumnKey": "INHIBITION ASSAY^^^RELATIVE POTENCY^^^",
+    "ColumnLabels": "Inhibition Assay^^^Relative Potency^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 41,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6123,
+    "ColumnKey": "PS80^^^POLYSORBATE 80^^^",
+    "ColumnLabels": "PS80^^^Polysorbate 80^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 42,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6124,
+    "ColumnKey": "PARTICULATE MATTER IN INJECTIONS^^^SUBVISIBLE PARTICLES >= 10 M^^^",
+    "ColumnLabels": "Particulate Matter in Injections^^^Subvisible Particles >= 10 µm^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 43,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6125,
+    "ColumnKey": "PARTICULATE MATTER IN INJECTIONS^^^SUBVISIBLE PARTICLES >= 25 M^^^",
+    "ColumnLabels": "Particulate Matter in Injections^^^Subvisible Particles >= 25 µm^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 44,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6126,
+    "ColumnKey": "PEPTIDE MAP^^^METHIONINE OXIDATION^^^",
+    "ColumnLabels": "Peptide Map^^^Methionine Oxidation^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 45,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6127,
+    "ColumnKey": "SE-HPLC^^^HMMS^^^",
+    "ColumnLabels": "SE-HPLC^^^HMMS^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 46,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6128,
+    "ColumnKey": "SE-HPLC^^^MONOMER^^^",
+    "ColumnLabels": "SE-HPLC^^^Monomer^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 47,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6129,
+    "ColumnKey": "STERILITY^^^STERILITY^^^",
+    "ColumnLabels": "Sterility^^^Sterility^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 48,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6130,
+    "ColumnKey": "UV SPECTROSCOPY^^^PROTEIN CONCENTRATION^^^",
+    "ColumnLabels": "UV Spectroscopy^^^Protein Concentration^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 49,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6131,
+    "ColumnKey": "ICE^^^ACIDIC SPECIES^^^",
+    "ColumnLabels": "iCE^^^Acidic Species^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 50,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6132,
+    "ColumnKey": "ICE^^^BASIC SPECIES^^^",
+    "ColumnLabels": "iCE^^^Basic Species^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 51,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6133,
+    "ColumnKey": "ICE^^^CHARGE ISOFORMS^^^",
+    "ColumnLabels": "iCE^^^Charge Isoforms^^^Comparable to Reference Material",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 52,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6134,
+    "ColumnKey": "ICE^^^MAIN SPECIES^^^",
+    "ColumnLabels": "iCE^^^Main Species^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 53,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6135,
+    "ColumnKey": "PH^^^PH^^^",
+    "ColumnLabels": "pH^^^pH^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 54,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6136,
+    "ColumnKey": "CGE (NON-REDUCING)^^^OTHER^^^",
+    "ColumnLabels": "CGE (Non-Reducing)^^^Other^^^",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 55,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  },
+  {
+    "PivotedDataConfigId": 6137,
+    "ColumnKey": "CONTAINER CLOSURE INTEGRITY^^^DYE INGRESS^^^",
+    "ColumnLabels": "Container Closure Integrity^^^Dye Ingress^^^Pass",
+    "Active": true,
+    "SuppressIfNoDataForAllRows": true,
+    "ColumnIndex": 56,
+    "SubTableIndex": 1,
+    "ColumnWidth": 10
+  }
+]
