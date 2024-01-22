@@ -35,22 +35,23 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // --- main logic --- //
 
     LinkedHashMap headerRow = [:]
+    typesRowArr = []
     rowArr = []
 
     Boolean firstItem = true
     root.each { item ->
 
       LinkedHashMap row = [:]
+      LinkedHashMap typesRow = [:]
 
       def columnLabelsArr = item.ColumnLabels.split(DBIFS)
       for(int k = 0; k < numKeys; k++ ) {
         if (firstItem) {
           headerRow << ["Col$k": "Column Label ${k+1}"]
-          row << ["Col$k": "String"]
+          typesRow << ["Col$k": "String"]
         }
-        else {
-          row << ["Col$k": columnLabelsArr[k]]
-        }
+
+        row << ["Col$k": columnLabelsArr[k]]
       }
 
       if (firstItem) {
@@ -62,25 +63,26 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         headerRow << ["Col17": "ColumnLabels"]
         headerRow << ["Col18": "PivotedDataConfigId"]
         headerRow << ["Col19": "ColumnIndex"]
-        row << ["Col${numKeys+0}": true]
-        row << ["Col${numKeys+1}": "int"]
-        row << ["Col${numKeys+2}": "int"]
-        row << ["Col${numKeys+3}": true]
-        row << ["Col16": "String"]
-        row << ["Col17": "String"]
-        row << ["Col18": "int"]
-        row << ["Col19": "int"]
+        typesRow << ["Col${numKeys+0}": true]
+        typesRow << ["Col${numKeys+1}": "int"]
+        typesRow << ["Col${numKeys+2}": "int"]
+        typesRow << ["Col${numKeys+3}": true]
+        typesRow << ["Col16": "String"]
+        typesRow << ["Col17": "String"]
+        typesRow << ["Col18": "int"]
+        typesRow << ["Col19": "int"]
+
+        rowArr << typesRow
       }
-      else {
-        row << ["Col${numKeys+0}": item.Active]
-        row << ["Col${numKeys+1}": item.SubTableIndex]
-        row << ["Col${numKeys+2}": item.ColumnWidth]
-        row << ["Col${numKeys+3}": item.SuppressIfNoDataForAllRows]
-        row << ["Col16": item.ColumnKey]
-        row << ["Col17": item.ColumnLabels]
-        row << ["Col18": item.PivotedDataConfigId]
-        row << ["Col19": item.ColumnIndex]
-      }
+
+      row << ["Col${numKeys+0}": item.Active]
+      row << ["Col${numKeys+1}": item.SubTableIndex]
+      row << ["Col${numKeys+2}": item.ColumnWidth]
+      row << ["Col${numKeys+3}": item.SuppressIfNoDataForAllRows]
+      row << ["Col16": item.ColumnKey]
+      row << ["Col17": item.ColumnLabels]
+      row << ["Col18": item.PivotedDataConfigId]
+      row << ["Col19": item.ColumnIndex]
 
       rowArr << row
 
