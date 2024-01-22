@@ -1,0 +1,15 @@
+OPTIONS:
+  - no data
+  - no props
+  - no assertions
+  # - no guides
+
+GLOBALS:
+  scripts:
+    - pivotConfigs_Flow2Db.groovy
+# ---
+
+Test 1:
+  docs:
+    - datafile: stab1_table.json
+# ---
