@@ -29,15 +29,15 @@ GLOBALS:
 #       # ext: html
 # # ---
 
-# Stability:
-#   dppsFile: _testfiles/ST3.properties
-#   docs:
-#     - dataile: _testfiles/ST3.dat
-#       propsfile: _testfiles/ST3.properties
-#       props:
-#         document.dynamic.userdefined.ddp_transpose: true
-#       ext: html
-# # ---
+Stability:
+  dppsFile: _testfiles/ST3.properties
+  docs:
+    - datafile: _testfiles/ST3.dat
+      propsfile: _testfiles/ST3.properties
+      props:
+        document.dynamic.userdefined.ddp_transpose: true
+      ext: html
+# ---
 
 # BatchAnalysis:
 #   dppsFile: _testfiles/ba3.properties
@@ -49,10 +49,10 @@ GLOBALS:
 #       ext: html
 # # ---
 
-Plasmid:
-  dppsFile: _testfiles/plas1.properties
-  docs:
-    - datafile: _testfiles/plas1.dat
-      propsfile: _testfiles/plas1.properties
-      # ext: html
-# ---
+# Plasmid:
+#   dppsFile: _testfiles/plas1.properties
+#   docs:
+#     - datafile: _testfiles/plas1.dat
+#       propsfile: _testfiles/plas1.properties
+#       # ext: html
+# # ---
