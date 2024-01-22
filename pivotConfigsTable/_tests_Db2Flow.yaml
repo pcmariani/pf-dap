@@ -2,11 +2,11 @@ OPTIONS:
   # - no data
   - no props
   - no assertions
-  # - no guides
+  - no guides
 
 GLOBALS:
   scripts:
-    - pivotConfigsJsonFlowTable.groovy
+    - pivotConfigs_Db2Flow.groovy
 # ---
 
 Test 1:
@@ -15,9 +15,9 @@ Test 1:
       assertions:
 # ---
 
-Null Case:
-  docs:
-    - data: |
-        []
-      assertions:
+# Null Case:
+#   docs:
+#     - data: |
+#         []
+#       assertions:
 # ---
