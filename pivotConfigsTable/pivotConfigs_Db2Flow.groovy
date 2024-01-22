@@ -11,7 +11,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
 
-    ArrayList root = new JsonSlurper().parse(is)
+    ArrayList root = new JsonSlurper().parse(is).Records
 
 
 
