@@ -9,18 +9,6 @@
   "Message": null,
   "PivotOnConfigs": [
     {
-      "Col0": "String",
-      "Col1": "String",
-      "Col2": true,
-      "Col3": "int",
-      "Col4": "int",
-      "Col5": true,
-      "Col16": "String",
-      "Col17": "String",
-      "Col18": "int",
-      "Col19": "int"
-    },
-    {
       "Col0": "Appearance (Coloration)",
       "Col1": "Appearance (Coloration)",
       "Col2": true,

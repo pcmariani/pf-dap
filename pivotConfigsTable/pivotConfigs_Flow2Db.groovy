@@ -11,50 +11,68 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
 
-    ArrayList root = new JsonSlurper().parse(is).PivotOnConfigs[1..-1]
+    LinkedHashMap root = new JsonSlurper().parse(is)
+    ArrayList configsArr = root.PivotOnConfigs
+
+    // println configsArr
+
+    if (!configsArr) {
+      is = new ByteArrayInputStream(prettyJson(root).getBytes("UTF-8"));
+    } 
+
+    else {
+
+
+      // --- calculate numKeys --- //
+
+      ArrayList numKeysArr = []
+      configsArr.each { item ->
+        numKeysArr << item.Col16.split(DBIFS).size()
+      }
+      // println numKeysArr
+
+      int numKeys
+      if (numKeysArr.unique().size() == 1) {
+        numKeys = numKeysArr.unique()[0]
+      } else {
+        println "UH OH"
+      }
 
 
 
-    // --- calculate numKeys --- //
+      // --- main logic --- //
 
-    ArrayList numKeysArr = []
-    root.each { item ->
-      numKeysArr << item.Col16.split(DBIFS).size()
-    }
-    // println numKeysArr
+      rowArr = []
 
-    int numKeys
-    if (numKeysArr.unique().size() == 1) {
-      numKeys = numKeysArr.unique()[0]
-    } else {
-      println "UH OH"
-    }
+      configsArr.each { item ->
+        rowArr << [
+          PivotedDataConfigId: item.Col18,
+          ColumnKey: item.Col16,
+          ColumnLabels: item.Col17,
+          Active: item."Col${numKeys+0}",
+          SuppressIfNoDataForAllRows: item."Col${numKeys+3}",
+          ColumnIndex: item."Col19",
+          SubTableIndex: item."Col${numKeys+1}",
+          ColumnWidth: item."Col${numKeys+2}",
+        ]
+      }
+      // println prettyJson(rowArr)
 
 
+      // --- result --- //
 
-    // --- main logic --- //
-
-    rowArr = []
-
-    root.each { item ->
-      rowArr << [
-        PivotedDataConfigId: item.Col18,
-        ColumnKey: item.Col16,
-        ColumnLabels: item.Col17,
-        Active: item."Col${numKeys+0}",
-        SuppressIfNoDataForAllRows: item."Col${numKeys+3}",
-        ColumnIndex: item."Col19",
-        SubTableIndex: item."Col${numKeys+1}",
-        ColumnWidth: item."Col${numKeys+2}",
+      def result = [
+        Action: root.Action,
+        Requestor: root.Requestor,
+        ReportContentItem_DynamicTableId: root.ReportContentItem_DynamicTableId,
+        Records: rowArr
       ]
+      // println result
+
+      is = new ByteArrayInputStream(prettyJson(result).getBytes("UTF-8"));
     }
-    println prettyJson(rowArr)
 
 
-
-    // --- result --- //
-
-    is = new ByteArrayInputStream(prettyJson(rowArr).getBytes("UTF-8"));
     dataContext.storeStream(is, props);
 }
 
