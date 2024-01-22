@@ -19,7 +19,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     ArrayList numKeysArr = []
     root.each { item ->
-      numKeysArr << item.ColumnKey.split("\\^\\^\\^").size()
+      numKeysArr << item.ColumnKey.split(DBIFS).size()
     }
     // println numKeysArr
 
@@ -45,35 +45,41 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       def columnLabelsArr = item.ColumnLabels.split(DBIFS)
       for(int k = 0; k < numKeys; k++ ) {
         if (firstItem) {
-          headerRow << ["col$k": "Column Label ${k+1}"]
-          row << ["col$k": "String"]
+          headerRow << ["Col$k": "Column Label ${k+1}"]
+          row << ["Col$k": "String"]
         }
         else {
-          row << ["col$k": columnLabelsArr[k]]
+          row << ["Col$k": columnLabelsArr[k]]
         }
       }
 
       if (firstItem) {
-        headerRow << ["col${numKeys+0}": "Active"]
-        headerRow << ["col${numKeys+1}": "Sub-Table Index"]
-        headerRow << ["col${numKeys+2}": "Column Width"]
-        headerRow << ["col${numKeys+3}": "Suppress Column If No Data For All Rows"]
-        headerRow << ["col18": "Id"]
-        headerRow << ["col19": "ColumnIndex"]
-        row << ["col${numKeys+0}": true]
-        row << ["col${numKeys+1}": "int"]
-        row << ["col${numKeys+2}": "int"]
-        row << ["col${numKeys+3}": true]
-        row << ["col18": "int"]
-        row << ["col19": "int"]
+        headerRow << ["Col${numKeys+0}": "Active"]
+        headerRow << ["Col${numKeys+1}": "Sub-Table Index"]
+        headerRow << ["Col${numKeys+2}": "Column Width"]
+        headerRow << ["Col${numKeys+3}": "Suppress Column If No Data For All Rows"]
+        headerRow << ["Col16": "ColumnKey"]
+        headerRow << ["Col17": "ColumnLabels"]
+        headerRow << ["Col18": "PivotedDataConfigId"]
+        headerRow << ["Col19": "ColumnIndex"]
+        row << ["Col${numKeys+0}": true]
+        row << ["Col${numKeys+1}": "int"]
+        row << ["Col${numKeys+2}": "int"]
+        row << ["Col${numKeys+3}": true]
+        row << ["Col16": "String"]
+        row << ["Col17": "String"]
+        row << ["Col18": "int"]
+        row << ["Col19": "int"]
       }
       else {
-        row << ["col${numKeys+0}": item.Active]
-        row << ["col${numKeys+1}": item.SubTableIndex]
-        row << ["col${numKeys+2}": item.ColumnWidth]
-        row << ["col${numKeys+3}": item.SuppressIfNoDataForAllRows]
-        row << ["col18": item.PivotedDataConfigId]
-        row << ["col19": item.ColumnIndex]
+        row << ["Col${numKeys+0}": item.Active]
+        row << ["Col${numKeys+1}": item.SubTableIndex]
+        row << ["Col${numKeys+2}": item.ColumnWidth]
+        row << ["Col${numKeys+3}": item.SuppressIfNoDataForAllRows]
+        row << ["Col16": item.ColumnKey]
+        row << ["Col17": item.ColumnLabels]
+        row << ["Col18": item.PivotedDataConfigId]
+        row << ["Col19": item.ColumnIndex]
       }
 
       rowArr << row
