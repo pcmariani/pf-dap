@@ -13,7 +13,8 @@ def NO_RESULT = "NR"
 def NO_TEST = "NT"
 def IFS = /\|\^\|/  // Input Field Separator
 def OFS = "|^|"     // Output Field Separator
-def DBFS = "^^^"    // Database Field Separator
+def DBIFS = "\\^\\^\\^"    // Database Field Separator
+def DBOFS = "^^^"    // Database Field Separator
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
@@ -28,7 +29,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println columnNamesArr
 
     def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
-    // def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigs")
     def pivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
     // println prettyJson(pivotedDataConfigsArr)
     // println pivotedDataConfigsArr.size()
@@ -66,11 +66,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // 2. split the rowlabels into arrays
     def activeGroupByConfigsArr = groupByConfigsArr.findAll { it.Active == true }.eachWithIndex { item, r ->
         item.RowIndex = numHeaderRows + r
-        item.RowLabels = item.RowLabels.split(IFS) as ArrayList
+        item.RowLabels = item.RowLabels.split(DBIFS) as ArrayList
     }
     def activePivotedDataConfigsArr = pivotedDataConfigsArr.findAll { it.Active == true }.eachWithIndex { item, c ->
         item.ColumnIndex = numHeaderCols + c
-        item.ColumnLabels = item.ColumnLabels.split(IFS) as ArrayList
+        // println c + " " + item.ColumnLabels
+        item.ColumnLabels = item.ColumnLabels.split(DBIFS) as ArrayList
     }
     // println "#DEBUG activeGroupByConfigsArr: " + prettyJson(activeGroupByConfigsArr)
     // println "#DEBUG activePivotedDataConfigsArr: " + prettyJson(activePivotedDataConfigsArr)
@@ -112,10 +113,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def dataPoint = lineArr[dataColIndex]
         // println dataPoint
 
-        def groupByMapKey = upper(groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBFS))
+        def groupByMapKey = upper(groupByColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBOFS))
         // println "#DEBUG groupByMapKey: " + prettyJson(groupByMapKey)
 
-        def pivotOnMapKey = upper(pivotOnColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBFS))
+        def pivotOnMapKey = upper(pivotOnColsArr.collect{ if (it.IsKeyColumn) lineArr[it.Index]; else ""}.join(DBOFS))
         // println "#DEBUG pivotOnMapKey: " + prettyJson(pivotOnMapKey)
 
         def rowIndex = activeGroupByConfigsArr.find{ it.RowKey == groupByMapKey}?.RowIndex
@@ -231,9 +232,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     /* OUTPUT */
 
-    // DBFS = '\t'
+    // OFS = '\t'
     def outData = new StringBuffer()
-    pivotedDataArr.each {outData.append(it.join(DBFS) + NEWLINE)}
+    pivotedDataArr.each {outData.append(it.join(OFS) + NEWLINE)}
 
     props.setProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated", prettyJson(
         [Records:activeGroupByConfigsArr.collect{ it.subMap("RowKey","RowIndex") }]

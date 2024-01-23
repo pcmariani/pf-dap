@@ -8,7 +8,7 @@ import com.boomi.execution.ExecutionUtil;
 logger = ExecutionUtil.getBaseLogger()
 def IFS = /\|\^\|/  // Input Field Separater
 def OFS = "|^|"     // Output Field Separator
-def DBFS = "^^^"    // Database Field Separator
+def DBIFS = "^^^"    // Database Field Separator
 
 // def pivotedDataConfigsJson = ExecutionUtil.getDynamicProcessProperty("DPP_PivotedDataConfigs")
  
@@ -103,7 +103,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def columnsConfigArr = []
 
     if (isPivot) {
-        def rowHeaderKeysArr = topLeftCornerKeysArr.collect{ it.join(DBFS) } + activeGroupByConfigsArr.RowKey
+        def rowHeaderKeysArr = topLeftCornerKeysArr.collect{ it.join(DBIFS) } + activeGroupByConfigsArr.RowKey
         // println "#DEBUG rowHeaderKeysArr: " + rowHeaderKeysArr
 
         def rowHeaderColumnConfigsArr = []
@@ -127,7 +127,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             columnsConfigArr << [
                 ColumnKey: header,
                 ColumnWidth: 10,
-                RowHeaderKeys: rowHeaderKeysArr.collect{it.join(DBFS)}
+                RowHeaderKeys: rowHeaderKeysArr.collect{it.join(OFS)}
             ]
         }
     }
@@ -268,34 +268,3 @@ private static String md5(String str) {
     return str//.md5()
 }
 
-// private static def applyColumnWidths(columnsConfigArr) {
-//     def columnWithPercentages = columnWidthsToPercents(columnsConfigArr.ColumnWidth)
-//     columnsConfigArr.withIndex().collect { item, c ->
-//         item.ColumnWidth = columnWithPercentages[c]
-//     }
-// }
-//
-// private static def columnWidthsToPercents(rawWidthsArr) {
-//     // calculate percentage multiplier
-//     def multiplier = 100 / rawWidthsArr.sum()
-//     // create array with widths as percentages
-//     // can add up to more or less than 100 because of rounding
-//     def widthsArr = rawWidthsArr.collect { (it.multiply(multiplier) as double).round() }
-//     // logger.warning("widthsArr: " + widthsArr.toString())
-//     // calculate the difference between 100 and the sum of widths
-//     def difference = 100 - widthsArr.sum()
-//     // logger.warning("difference: " + difference)
-//     /* Distribute the difference among the highest/lowest widths */
-//     // create a sorted version of the widthsArr
-//     def widthsArrSorted = widthsArr.clone().sort()
-//     if (difference < 0) widthsArrSorted.reverse()
-//     // loops as many times as the difference between 100 and the sum of widths
-//     for (int j = 0; j < Math.abs(difference); j++) {
-//         // find the value of sorted array in the original arrray
-//         def width = widthsArr.indexOf(widthsArrSorted[j])
-//         // add one or subtract one from it
-//         if (difference > 0) widthsArr[width] = widthsArr[width] + 1
-//         else  widthsArr[width] = widthsArr[width] - 1
-//     }
-//     return widthsArr
-// }
