@@ -1,0 +1,23 @@
+OPTIONS:
+  # - no data
+  - no props
+  - no assertions
+  - no guides
+
+GLOBALS:
+  scripts:
+    - groupByConfigs_Db2Flow.groovy
+# ---
+
+Test 1:
+  docs:
+    - datafile: stab1_groupBy_db.json
+      assertions:
+# ---
+
+# Null Case:
+#   docs:
+#     - data: |
+#         []
+#       assertions:
+# ---

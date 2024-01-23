@@ -1,0 +1,40 @@
+OPTIONS:
+  # - no data
+  - no props
+  - no assertions
+  # - no guides
+
+GLOBALS:
+  scripts:
+    - groupByConfigs_Flow2Db.groovy
+# ---
+
+Test 1:
+  docs:
+    - datafile: stab1_groupBy_flow.json
+# ---
+
+Empty case:
+  docs:
+    - data: >
+        {
+          "Action": "UPSERT",
+          "Requestor": "Peter.Mariani@pfizer.com",
+          "ReportContentItem_DynamicTableId": 42,
+          "TableDefinitionId": null,
+          "PivotOnConfigs": []
+        }
+
+# ---
+
+Null case:
+  docs:
+    - data: >
+        {
+          "Action": "UPSERT",
+          "Requestor": "Peter.Mariani@pfizer.com",
+          "ReportContentItem_DynamicTableId": 42,
+          "TableDefinitionId": null,
+        }
+
+# ---
