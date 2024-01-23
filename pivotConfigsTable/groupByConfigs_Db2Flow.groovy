@@ -59,7 +59,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         headerRow << ["Col${numKeys+1}": "Suppress Row If No Data For All Cols"]
         headerRow << ["Col16": "RowKey"]
         headerRow << ["Col17": "RowLabels"]
-        headerRow << ["Col18": "PivotedDataConfigId"]
+        headerRow << ["Col18": "GroupByRowsConfigId"]
         headerRow << ["Col19": "RowIndex"]
         typesRow << ["Col${numKeys+0}": true]
         typesRow << ["Col${numKeys+1}": true]
@@ -94,7 +94,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     def outData = [ 
       HeaderColumns: headerRowArr,
-      GroupByRowConfigs: rowArr
+      GroupByRowsConfigs: rowArr
     ]
     // println prettyJson(outData)
        
