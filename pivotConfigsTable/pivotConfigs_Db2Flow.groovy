@@ -23,7 +23,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // UPDATE response from Db only contains Ids
     else if (root.ColumnKey.unique() == [null]) {
       outData = [
-        HeaderRows: ["Col18": "PivotedDataConfigId"],
+        HeaderRows: [["Col18": "PivotedDataConfigId"]],
         PivotOnConfigs: root.PivotedDataConfigId.collect{ ["Col18": it]}
       ]
     }

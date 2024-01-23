@@ -14,7 +14,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     ArrayList root = new JsonSlurper().parse(is).Records
 
     def outData
-    println "HELLO"
 
     // empty input
     if (!root) {
@@ -24,8 +23,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // UPDATE response from Db only contains Ids
     else if (root.RowKey.unique() == [null]) {
       outData = [
-        HeaderRows: ["Col18": "GroupByRowsConfigId"],
-        PivotOnConfigs: root.GroupByRowsConfigId.collect{ ["Col18": it]}
+        HeaderColumns: [["Col18": "GroupByRowsConfigId"]],
+        GroupByRowsConfigs: root.GroupByRowsConfigId.collect{ ["Col18": it]}
       ]
     }
 
