@@ -14,19 +14,16 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     LinkedHashMap root = new JsonSlurper().parse(is)
     ArrayList configsArr = root.PivotOnConfigs
 
-    // println configsArr
-
     if (!configsArr) {
       is = new ByteArrayInputStream(prettyJson(root).getBytes("UTF-8"));
     } 
 
     else {
 
-
       // --- calculate numKeys --- //
 
       ArrayList numKeysArr = []
-      configsArr.each { item ->
+      configsArr[1..-1].each { item ->
         numKeysArr << item.Col16.split(DBIFS).size()
       }
       // println numKeysArr
@@ -44,7 +41,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
       rowArr = []
 
-      configsArr.each { item ->
+      configsArr[1..-1].each { item ->
         rowArr << [
           GroupByRowsConfigId: item."Col18",
           RowKey: item."Col16",

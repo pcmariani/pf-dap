@@ -2,7 +2,7 @@ OPTIONS:
   # - no data
   - no props
   - no assertions
-  - no guides
+  # - no guides
 
 GLOBALS:
   scripts:
@@ -15,9 +15,20 @@ Test 1:
       assertions:
 # ---
 
-# Null Case:
-#   docs:
-#     - data: |
-#         []
-#       assertions:
+Null Case:
+  docs:
+    - data: |
+        []
+      assertions:
 # ---
+
+Update Case:
+  docs:
+    - data: >
+        {
+          "Records": [
+            { "PivotedDataConfigId": 6110 },
+            { "PivotedDataConfigId": 6111 },
+            { "PivotedDataConfigId": 6112 }
+          ]
+        }
