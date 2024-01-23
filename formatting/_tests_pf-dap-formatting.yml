@@ -9,16 +9,17 @@ GLOBALS:
     - 02_CREATE_PivotOnGroupBy_Configs.groovy:
         - no data
         # - no props
-    # - 02b_CONSOLIDATE_Configs.groovy:
-    # - 03_CREATE_RowHeaderConfigs.groovy:
-    # #     - no data
-    # - 04_PIVOT_Data.groovy:
-    # #     - no data
-    # - 05_BUILD_Html.groovy:
-    # #     - no data
-    # - 06_WRAP_Table.groovy:
-    # - 07_APPLY_ColumnWidths.groovy:
-    # - 08_MERGE_Cells_Html.groovy:
+    - 02b_CONSOLIDATE_Configs.groovy:
+        - no data
+    - 03_CREATE_RowHeaderConfigs.groovy:
+        - no data
+    - 04_PIVOT_Data.groovy:
+        - no data
+    - 05_BUILD_Html.groovy:
+        - no data
+    - 06_WRAP_Table.groovy:
+    - 07_APPLY_ColumnWidths.groovy:
+    - 08_MERGE_Cells_Html.groovy:
 # ---
 
 # PHRD:
@@ -39,15 +40,15 @@ Stability:
       ext: html
 # ---
 
-# BatchAnalysis:
-#   dppsFile: _testfiles/ba3.properties
-#   docs:
-#     - datafile: _testfiles/ba3.dat
-#       propsfile: _testfiles/ba3.properties
-#       assert:
-#         - is.text =~ /<th colSpan="3".*?>Lot Number<\/th>/
-#       ext: html
-# # ---
+BatchAnalysis:
+  dppsFile: _testfiles/ba3.properties
+  docs:
+    - datafile: _testfiles/ba3.dat
+      propsfile: _testfiles/ba3.properties
+      assert:
+        - is.text =~ /<th colSpan="3".*?>Lot Number<\/th>/
+      ext: html
+# ---
 
 # Plasmid:
 #   dppsFile: _testfiles/plas1.properties
