@@ -30,17 +30,17 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // READ response
     else {
-        // --- calculate numKeys --- //
+        // --- calculate numKeysCols --- //
 
-        ArrayList numKeysArr = []
+        ArrayList numKeysColsArr = []
         root.each { item ->
-          numKeysArr << item.RowKey.split(DBIFS).size()
+          numKeysColsArr << item.RowKey.split(DBIFS).size()
         }
-        // println numKeysArr
+        // println numKeysColsArr
 
-        int numKeys
-        if (numKeysArr.unique().size() == 1) {
-          numKeys = numKeysArr.unique()[0]
+        int numKeysCols
+        if (numKeysColsArr.unique().size() == 1) {
+          numKeysCols = numKeysColsArr.unique()[0]
         } else {
           println "UH OH"
         }
@@ -60,7 +60,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           LinkedHashMap typesRow = [:]
 
           def columnLabelsArr = item.RowLabels.split(DBIFS)
-          for(int k = 0; k < numKeys; k++ ) {
+          for(int k = 0; k < numKeysCols; k++ ) {
             if (firstItem) {
               headerRow << ["Col$k": "Row Label ${k+1}"]
               typesRow << ["Col$k": "String"]
@@ -70,28 +70,34 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           }
 
           if (firstItem) {
-            headerRow << ["Col${numKeys+0}": "Active"]
-            headerRow << ["Col${numKeys+1}": "Suppress Row If No Data For All Cols"]
-            headerRow << ["Col16": "RowKey"]
-            headerRow << ["Col17": "RowLabels"]
-            headerRow << ["Col18": "GroupByRowsConfigId"]
-            headerRow << ["Col19": "RowIndex"]
-            typesRow << ["Col${numKeys+0}": true]
-            typesRow << ["Col${numKeys+1}": true]
-            typesRow << ["Col16": "String"]
-            typesRow << ["Col17": "String"]
-            typesRow << ["Col18": "int"]
-            typesRow << ["Col19": "int"]
+            headerRow << [
+              "Col9": "Active",
+              "Col10": "Suppress Row If No Data For All Cols",
+              "Col16": "RowKey",
+              "Col17": "RowLabels",
+              "Col18": "GroupByRowsConfigId",
+              "Col19": "RowIndex"
+            ]
+            typesRow << [
+              "Col9": true,
+              "Col10": true,
+              "Col16": "String",
+              "Col17": "String",
+              "Col18": "int",
+              "Col19": "int"
+            ]
 
             rowArr << typesRow
           }
 
-          row << ["Col${numKeys+0}": item.Active]
-          row << ["Col${numKeys+1}": item.SuppressIfNoDataForAllCols]
-          row << ["Col16": item.RowKey]
-          row << ["Col17": item.RowLabels]
-          row << ["Col18": item.GroupByRowsConfigId]
-          row << ["Col19": item.RowIndex]
+          row << [
+            "Col9": item.Active,
+            "Col10": item.SuppressIfNoDataForAllCols,
+            "Col16": item.RowKey,
+            "Col17": item.RowLabels,
+            "Col18": item.GroupByRowsConfigId,
+            "Col19": item.RowIndex
+          ]
 
           rowArr << row
 

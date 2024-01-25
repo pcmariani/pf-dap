@@ -47,11 +47,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           PivotedDataConfigId: item.Col18,
           ColumnKey: item.Col16,
           ColumnLabels: item.Col17,
-          Active: item."Col${numKeys+0}",
-          SuppressIfNoDataForAllRows: item."Col${numKeys+3}",
+          Active: item."Col9",
+          SuppressIfNoDataForAllRows: item."Col10",
           ColumnIndex: item."Col19",
-          SubTableIndex: item."Col${numKeys+1}",
-          ColumnWidth: item."Col${numKeys+2}",
+          SubTableIndex: item."Col11",
+          ColumnWidth: item."Col12",
         ]
       }
       // println prettyJson(rowArr)

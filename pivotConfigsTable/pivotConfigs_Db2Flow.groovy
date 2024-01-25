@@ -70,34 +70,40 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           }
 
           if (firstItem) {
-            headerRow << ["Col${numKeys+0}": "Active"]
-            headerRow << ["Col${numKeys+1}": "Sub-Table Index"]
-            headerRow << ["Col${numKeys+2}": "Column Width"]
-            headerRow << ["Col${numKeys+3}": "Suppress Column If No Data For All Rows"]
-            headerRow << ["Col16": "ColumnKey"]
-            headerRow << ["Col17": "ColumnLabels"]
-            headerRow << ["Col18": "PivotedDataConfigId"]
-            headerRow << ["Col19": "ColumnIndex"]
-            typesRow << ["Col${numKeys+0}": true]
-            typesRow << ["Col${numKeys+1}": "int"]
-            typesRow << ["Col${numKeys+2}": "int"]
-            typesRow << ["Col${numKeys+3}": true]
-            typesRow << ["Col16": "String"]
-            typesRow << ["Col17": "String"]
-            typesRow << ["Col18": "int"]
-            typesRow << ["Col19": "int"]
+            headerRow << [
+              "Col9": "Active",
+              "Col10": "Suppress Column If No Data For All Rows",
+              "Col11": "Sub-Table Index",
+              "Col12": "Column Width",
+              "Col16": "ColumnKey",
+              "Col17": "ColumnLabels",
+              "Col18": "PivotedDataConfigId",
+              "Col19": "ColumnIndex"
+            ]
+            typesRow << [
+              "Col9": true,
+              "Col10": "int",
+              "Col11": "int",
+              "Col12": true,
+              "Col16": "String",
+              "Col17": "String",
+              "Col18": "int",
+              "Col19": "int"
+            ]
 
             rowArr << typesRow
           }
 
-          row << ["Col${numKeys+0}": item.Active]
-          row << ["Col${numKeys+1}": item.SubTableIndex]
-          row << ["Col${numKeys+2}": item.ColumnWidth]
-          row << ["Col${numKeys+3}": item.SuppressIfNoDataForAllRows]
-          row << ["Col16": item.ColumnKey]
-          row << ["Col17": item.ColumnLabels]
-          row << ["Col18": item.PivotedDataConfigId]
-          row << ["Col19": item.ColumnIndex]
+          row << [
+            "Col9": item.Active,
+            "Col10": item.SubTableIndex,
+            "Col11": item.ColumnWidth,
+            "Col12": item.SuppressIfNoDataForAllRows,
+            "Col16": item.ColumnKey,
+            "Col17": item.ColumnLabels,
+            "Col18": item.PivotedDataConfigId,
+            "Col19": item.ColumnIndex
+          ]
 
           rowArr << row
 

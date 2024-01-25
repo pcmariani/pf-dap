@@ -46,8 +46,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           GroupByRowsConfigId: item."Col18",
           RowKey: item."Col16",
           RowLabels: item."Col17",
-          Active: item."Col${numKeys+0}",
-          SuppressIfNoDataForAllCols: item."Col${numKeys+3}",
+          Active: item."Col9",
+          SuppressIfNoDataForAllCols: item."Col10",
           RowIndex: item."Col19",
         ]
       }
