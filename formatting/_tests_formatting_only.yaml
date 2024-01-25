@@ -1,0 +1,28 @@
+OPTIONS:
+  # - no data
+  - no props
+  - no assertions
+  # - no guides
+
+GLOBALS:
+  scripts:
+    # - 04_PIVOT_Data.groovy:
+    #     - no data
+    - 05_BUILD_Html.groovy:
+        # - no data
+    - 06_WRAP_Table.groovy:
+        - no data
+    - 07_APPLY_ColumnWidths.groovy:
+        - no data
+    - 08_MERGE_Cells_Html.groovy:
+        - no data
+# ---
+
+ST1 Summary Table:
+  dppsFile: _testfiles/ST1.properties
+  docs:
+    - datafile: _testfiles/ST1.dat
+      propsfile: _testfiles/ST1.properties
+      # ext: html
+# ---
+
