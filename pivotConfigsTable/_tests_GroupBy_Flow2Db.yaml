@@ -2,7 +2,7 @@ OPTIONS:
   # - no data
   - no props
   - no assertions
-  - no guides
+  # - no guides
 
 GLOBALS:
   scripts:

@@ -1,7 +1,7 @@
 OPTIONS:
   # - no data
-  - no props
-  - no assertions
+  # - no props
+  # - no assertions
   # - no guides
 
 GLOBALS:
@@ -11,7 +11,8 @@ GLOBALS:
 
 Test 1:
   docs:
-    - datafile: stab1_groupBy_db.json
+    # - datafile: stab1_groupBy_db.json
+    - data: stab1_groupBy_db.json
       assertions:
 # ---
 
