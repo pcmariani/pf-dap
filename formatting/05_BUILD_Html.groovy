@@ -61,11 +61,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def sqlParamValues = props.getProperty("document.dynamic.userdefined.ddp_sqlParamValues")
     // println sqlParamValues
     def sqlColumnNames = props.getProperty("document.dynamic.userdefined.ddp_sqlColumnNames")
-    def sqlColumnNamesArr = sqlColumnNames ? sqlColumnNames.split(/\s*$IFS\s*/) : []
+    ArrayList sqlColumnNamesArr = sqlColumnNames ? sqlColumnNames.split(/\s*$IFS\s*/) : []
     // println sqlColumnNamesArr
-
-    // should probably be moved - the logic for summary tables is disorganized
-    if (resultTableType == "summary") sqlColumnNamesArr << "Data Table Location"
 
     def groupByColsArr = sourcesJson ? sources.PivotGroupByColumns : []
     // println groupByColsArr
@@ -76,6 +73,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int numHeaderCols = isPivot ? groupByColsArr.size() : sqlColumnNamesArr.size()
     // println numHeaderCols
  
+    // should probably be moved - the logic for summary tables is disorganized
+    if (resultTableType == "summary") sqlColumnNamesArr << "Data Table Location"
+
 
 
     /* LOGIC */
@@ -132,7 +132,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         }
     }
 
-    // applyColumnWidths(columnsConfigArr)
     // println "#DEBUG columnsConfigArr" + prettyJson(columnsConfigArr)
     // println "#DEBUG columnsConfigArr SIZE:" + columnsConfigArr.size()
  
@@ -172,30 +171,31 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 dataArr.eachWithIndex{ rowArr, r ->
 
                     /* --- tr --- */
+
                     if (!displayHeaders && r < numHeaderRows) true // skip header row if displayHeaders == false
-                                                                //
+
                     else {
                         'tr'() {
                             rowArr.eachWithIndex { item, c ->
                                 // println columnsConfigArr[c]
 
                                 if (isPivot && !displayHeadersOnSide && c < numHeaderCols) true // skip header col if displayHeadersOnSide == false
-                                                                                                //
+
                                 else {
 
                                     def columnWidth =  columnsConfigArr[c].ColumnWidth
                                     def itemId = tableId + idDelim + columnsConfigArr[0].RowHeaderKeys[r] + idDelim + columnsConfigArr[c].ColumnKey
 
-                                    if (r < numHeaderRows) {
+                                    if (isPivot && r < numHeaderRows) {
                                         def allValuesSameForThisHeaderRow = rowArr[numHeaderCols..-1].unique().size() == 1
                                         if (pivotOnColsArr[r].IsKeyColumn || allValuesSameForThisHeaderRow) itemId += idDelim + item
                                     }
 
                                     if (debugIds) {
                                         println ([(r>9?r:"0"+r),(c>9?c:"0"+c),itemId].join("   |   ")).toString()
-                                        if (itemId in itemIdsArr) {
+                                        // if (itemId in itemIdsArr) {
                                             // println (["D"+(r>9?r:"0"+r),(c>9?c:"0"+c),itemId].join("   |   ")).toString()
-                                        }
+                                        // }
                                         itemIdsArr.add(itemId)
                                         itemIdsSet.add(itemId)
                                     }
