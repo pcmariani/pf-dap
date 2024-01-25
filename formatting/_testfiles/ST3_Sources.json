@@ -33,22 +33,22 @@
           "Column": "Assay Name",
           "Label": "Time (Months)",
           "IsKeyColumn": true,
-          "MergeRows": false,
-          "MergeCols": true
+          "MergeVertical": false,
+          "MergeHorizontal": true
         },
         {
           "Column": "Parameter Field Name",
           "Label": "Time (Months)",
           "IsKeyColumn": true,
-          "MergeRows": true,
-          "MergeCols": false
+          "MergeVertical": true,
+          "MergeHorizontal": false
         },
         {
           "Column": "Spec Description",
           "Label": "Clinical Acceptance Criteria",
           "IsKeyColumn": false,
-          "MergeRows": false,
-          "MergeCols": false
+          "MergeVertical": false,
+          "MergeHorizontal": false
         }
       ],
       "PivotGroupByColumns": [
@@ -56,8 +56,8 @@
           "Column": "Protocol Months On Stability",
           "Label": "Time (Months)",
           "IsKeyColumn": true,
-          "MergeRows": false,
-          "MergeCols": false
+          "MergeVertical": false,
+          "MergeHorizontal": false
         }
       ],
       "PivotDataColumn": "Text Parameter Value",

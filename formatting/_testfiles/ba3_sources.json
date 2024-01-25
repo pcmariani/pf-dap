@@ -27,22 +27,22 @@
           "Column": "Lot Number Label",
           "Label": null,
           "IsKeyColumn": false,
-          "MergeRows": false,
-          "MergeCols": true
+          "MergeVertical": false,
+          "MergeHorizontal": true
         },
         {
           "Column": "Batch Number",
           "Label": null,
           "IsKeyColumn": true,
-          "MergeRows": false,
-          "MergeCols": false
+          "MergeVertical": false,
+          "MergeHorizontal": false
         },
         {
           "Column": "Results Label",
           "Label": null,
           "IsKeyColumn": false,
-          "MergeRows": false,
-          "MergeCols": true
+          "MergeVertical": false,
+          "MergeHorizontal": true
         }
       ],
       "PivotGroupByColumns": [
@@ -50,22 +50,22 @@
           "Column": "Analytical Procedure",
           "Label": null,
           "IsKeyColumn": true,
-          "MergeRows": true,
-          "MergeCols": false
+          "MergeVertical": true,
+          "MergeHorizontal": false
         },
         {
           "Column": "Quality Attribute",
           "Label": null,
           "IsKeyColumn": true,
-          "MergeRows": true,
-          "MergeCols": false
+          "MergeVertical": true,
+          "MergeHorizontal": false
         },
         {
           "Column": "Acceptance Criteria",
           "Label": null,
           "IsKeyColumn": false,
-          "MergeRows": false,
-          "MergeCols": false
+          "MergeVertical": false,
+          "MergeHorizontal": false
         }
       ],
       "PivotDataColumn": "Text Parameter Value",

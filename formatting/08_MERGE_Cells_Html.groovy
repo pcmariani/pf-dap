@@ -32,14 +32,14 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     def mergeRangeArr = []
 
-    def mergeRange = { rowStart, rowEnd, colStart, colEnd, mergeRows, mergeCols ->
+    def mergeRange = { rowStart, rowEnd, colStart, colEnd, mergeVertical, mergeHorizontal ->
         mergeRangeArr << [
             rowStart: rowStart,
             rowEnd: rowEnd,
             colStart: colStart,
             colEnd: colEnd,
-            mergeRows: mergeRows,
-            mergeCols: mergeCols
+            mergeVertical: mergeVertical,
+            mergeHorizontal: mergeHorizontal
         ]
     }
 
@@ -48,24 +48,24 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // header rows across top
     pivotOnColumns.eachWithIndex { row, r ->
-        if (row.MergeRows) {
+        if (row.MergeVertical) {
             mergeRange(r-1, r, numHeaderCols, -1, true, false)
         }
     }
     pivotOnColumns.eachWithIndex { row, r ->
-        if (row.MergeCols) {
+        if (row.MergeHorizontal) {
             mergeRange(r, r, numHeaderCols, -1, false, true)
         }
     }
 
     // header cols on side
     groupByColumns.eachWithIndex { col, c ->
-        if (col.MergeRows) {
+        if (col.MergeVertical) {
             mergeRange(numHeaderRows, -1, c, c, true, false)
         }
     }
     groupByColumns.eachWithIndex { col, c ->
-        if (col.MergeCols) {
+        if (col.MergeHorizontal) {
             mergeRange(numHeaderRows, -1, c-1, c, false, true)
         }
     }
@@ -118,7 +118,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 (0..tableArr[r].size()-1).each { c ->
                     def cell = tableArr[r][c]
                     // calculate merging of rows (rowSpan)
-                    if (range.mergeRows && r != 0) {
+                    if (range.mergeVertical && r != 0) {
                         def cellFromPrevRow = tableArr[r-1][c]
                         if (cell.val == cellFromPrevRow.val) {
                             // this will add spans for all cells to be merged. We only need
@@ -134,7 +134,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                         }
                     }
                     // calculate merging of columns (colSpan)
-                    if (range.mergeCols && c != 0) {
+                    if (range.mergeHorizontal && c != 0) {
                         def cellFromPrevCol = tableArr[r][c-1]
                         if (cell.val == cellFromPrevCol.val) {
                             // check if we are already merging the rows for this cell.
