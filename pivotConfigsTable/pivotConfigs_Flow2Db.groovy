@@ -44,9 +44,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
       configsArr[1..-1].each { item ->
         rowArr << [
-          PivotedDataConfigId: item.Col18,
-          ColumnKey: item.Col16,
-          ColumnLabels: item.Col17,
+          PivotedDataConfigId: item."Col18",
+          ColumnKey: item."Col16",
+          ColumnLabels: item."Col17",
           Active: item."Col9",
           SuppressIfNoDataForAllRows: item."Col10",
           ColumnIndex: item."Col19",

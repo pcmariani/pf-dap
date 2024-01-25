@@ -82,9 +82,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             ]
             typesRow << [
               "Col9": true,
-              "Col10": "int",
+              "Col10": true,
               "Col11": "int",
-              "Col12": true,
+              "Col12": "int",
               "Col16": "String",
               "Col17": "String",
               "Col18": "int",
