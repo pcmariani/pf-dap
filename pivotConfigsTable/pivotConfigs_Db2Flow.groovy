@@ -96,9 +96,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
           row << [
             "Col9": item.Active,
-            "Col10": item.SubTableIndex,
-            "Col11": item.ColumnWidth,
-            "Col12": item.SuppressIfNoDataForAllRows,
+            "Col10": item.SuppressIfNoDataForAllRows,
+            "Col11": item.SubTableIndex,
+            "Col12": item.ColumnWidth,
             "Col16": item.ColumnKey,
             "Col17": item.ColumnLabels,
             "Col18": item.PivotedDataConfigId,
