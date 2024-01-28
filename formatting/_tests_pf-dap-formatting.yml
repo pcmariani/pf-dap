@@ -5,6 +5,10 @@ OPTIONS:
   # - no guides
 
 GLOBALS:
+  # DPPs: _testfiles/ba3.properties
+  # aaa: bbb
+  # DPP_Product_Name: BBBBB
+
   scripts:
     - 02_CREATE_PivotOnGroupBy_Configs.groovy:
         - no data
@@ -18,10 +22,15 @@ GLOBALS:
     - 05_BUILD_Html.groovy:
         - no data
     - 06_WRAP_Table.groovy:
-    - 07_APPLY_ColumnWidths.groovy:
-    - 08_MERGE_Cells_Html.groovy:
+    - 07_APPLY_ColumnWidths.groovy
+    - 08_MERGE_Cells_Html.groovy
 # ---
 
+IND:
+  DPPs: _testfiles/ind1.properties
+  docs:
+    - data: _testfiles/ind1.dat
+      ddps: _testfiles/ind1.properties
 # PHRD:
 #   dppsFile: _testfiles/phrd.properties
 #   docs:
@@ -30,25 +39,31 @@ GLOBALS:
 #       # ext: html
 # # ---
 
-Stability:
-  dppsFile: _testfiles/ST3.properties
-  docs:
-    - datafile: _testfiles/ST3.dat
-      propsfile: _testfiles/ST3.properties
-      props:
-        document.dynamic.userdefined.ddp_transpose: true
-      ext: html
-# ---
+# Stability:
+#   dppsFile: _testfiles/ST3.properties
+#   docs:
+#     - datafile: _testfiles/ST3.dat
+#       propsfile: _testfiles/ST3.properties
+#       props:
+#         document.dynamic.userdefined.ddp_transpose: true
+#       ext: html
+# # ---
 
-BatchAnalysis:
-  dppsFile: _testfiles/ba3.properties
-  docs:
-    - datafile: _testfiles/ba3.dat
-      propsfile: _testfiles/ba3.properties
-      assert:
-        - is.text =~ /<th colSpan="3".*?>Lot Number<\/th>/
-      ext: html
-# ---
+# BatchAnalysis:
+#   DPPs:
+#     aaa: aaaa
+#     bbb: bbbb
+#   DPPsOverride:
+#     aaa: ddd
+#     DPP_Product_Name: balsadsfa
+#   # dppsFile: _testfiles/ba3.properties
+#   docs:
+#     - data: _testfiles/ba3.dat
+#       props: _testfiles/ba3.properties
+#       assert:
+#         - is.text =~ /<th colSpan="3".*?>Lot Number<\/th>/
+#       ext: html
+# # ---
 
 # Plasmid:
 #   dppsFile: _testfiles/plas1.properties
