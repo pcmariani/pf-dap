@@ -79,7 +79,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int numDataRows = activeGroupByConfigsArr.size()
     int numDataCols = activePivotedDataConfigsArr.size()
     int numRows = numHeaderRows + numDataRows
+    // println "#DEBUG numRows: " + numRows
     int numCols = numHeaderCols + numDataCols
+    // println "#DEBUG numCols: " + numCols
 
 
 
@@ -196,7 +198,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         }
     }
-    // pivotedDataArr.each { println it }
+    // pivotedDataArr.eachWithIndex { item, c -> println "r"+c + ": c" +item.size() + " | " + item }
     // println rowsToRemove
     // println colsToRemove
 
@@ -209,19 +211,25 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // remove rows/cols if necessary from data and config
     // data contains headers, so index is just r/c
     // configs do not contain headers, so index is r/c - numHeaderRows/Cols
-    for (r = 0; r < numRows; r++) {
+    for (r = 0; r < pivotedDataArr.size(); r++) {
         if (r in rowsToRemove) {
             pivotedDataArr.removeAt(r)
             activeGroupByConfigsArr.removeAt(r - numHeaderRows)
-
+            rowsToRemove = rowsToRemove.collect { it - 1 }
+            r--
         }
     }
-    for (c = 0; c < numCols; c++) {
+
+    for (c = 0; c < pivotedDataArr[0].size(); c++) {
+        // println (["-------\n", numCols-1, pivotedDataArr[0].size() - 1, (c>9?c:c+" "), colsToRemove, "\n-------"].join(" ")).toString()
         if (c in colsToRemove) {
             for (r = 0; r < numRows; r++) {
+                // println ([(r>9?r:r+" "),(c>9?c:c+" "),pivotedDataArr[r][c]].join("  ")).toString()
                 pivotedDataArr[r].removeAt(c)
             }
             activePivotedDataConfigsArr.removeAt(c - numHeaderCols)
+            colsToRemove = colsToRemove.collect { it - 1 }
+            c--
         }
     }
     // pivotedDataArr.each { println it.size() }
