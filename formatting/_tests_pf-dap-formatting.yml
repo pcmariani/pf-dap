@@ -1,8 +1,11 @@
-OPTIONS:
-  - no data
-  - no props
-  - no assertions
-  # - no guides
+OPTS:
+  # - data
+  # - ddps
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
 
 GLOBALS:
   # DPPs: _testfiles/ba3.properties
@@ -11,43 +14,35 @@ GLOBALS:
 
   scripts:
     - 02_CREATE_PivotOnGroupBy_Configs.groovy:
-        - no data
-        # - no props
     - 02b_CONSOLIDATE_Configs.groovy:
-        - no data
     - 03_CREATE_RowHeaderConfigs.groovy:
-        - no data
     - 04_PIVOT_Data.groovy:
-        - no data
     - 05_BUILD_Html.groovy:
-        - no data
     - 06_WRAP_Table.groovy:
-    - 07_APPLY_ColumnWidths.groovy
-    - 08_MERGE_Cells_Html.groovy
+    - 07_APPLY_ColumnWidths.groovy:
+    - 08_MERGE_Cells_Html.groovy:
+        # - DPPs
+        - ddps
 # ---
 
-IND:
-  DPPs: _testfiles/ind1.properties
-  docs:
-    - data: _testfiles/ind1.dat
-      ddps: _testfiles/ind1.properties
 # PHRD:
-#   dppsFile: _testfiles/phrd.properties
+#   DPPs: _testfiles/phrd.properties
 #   docs:
-#     - datafile: _testfiles/phrd.dat
-#       propsfile: _testfiles/phrd.properties
+#     - data: _testfiles/phrd.dat
+#       ddps: _testfiles/phrd.properties
 #       # ext: html
 # # ---
 
-# Stability:
-#   dppsFile: _testfiles/ST3.properties
-#   docs:
-#     - datafile: _testfiles/ST3.dat
-#       propsfile: _testfiles/ST3.properties
-#       props:
-#         document.dynamic.userdefined.ddp_transpose: true
-#       ext: html
-# # ---
+Stability:
+  DPPs: _testfiles/ST3.properties
+  docs:
+    - data: _testfiles/ST3.dat
+      ddps: _testfiles/ST3.properties
+      ddpsOverride:
+        # document.dynamic.userdefined.ddp_displayHeaders: false
+        # document.dynamic.userdefined.ddp_displayHeadersOnSide: false
+      ext: html
+# ---
 
 # BatchAnalysis:
 #   DPPs:
@@ -56,7 +51,7 @@ IND:
 #   DPPsOverride:
 #     aaa: ddd
 #     DPP_Product_Name: balsadsfa
-#   # dppsFile: _testfiles/ba3.properties
+#   # dpps: _testfiles/ba3.properties
 #   docs:
 #     - data: _testfiles/ba3.dat
 #       props: _testfiles/ba3.properties
@@ -66,7 +61,7 @@ IND:
 # # ---
 
 # Plasmid:
-#   dppsFile: _testfiles/plas1.properties
+#   dpps: _testfiles/plas1.properties
 #   docs:
 #     - datafile: _testfiles/plas1.dat
 #       propsfile: _testfiles/plas1.properties

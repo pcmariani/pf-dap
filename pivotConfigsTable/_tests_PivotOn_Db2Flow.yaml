@@ -11,7 +11,9 @@ GLOBALS:
 
 Test 1:
   docs:
-    - datafile: stab1_pivotOn_db.json
+    - data: stab1_pivotOn_db.json
+      ddps:
+        - hello: world
       assertions:
 # ---
 
