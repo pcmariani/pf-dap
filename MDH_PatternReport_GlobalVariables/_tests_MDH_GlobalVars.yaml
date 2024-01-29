@@ -1,0 +1,27 @@
+OPTS:
+  - data
+  # - ddps
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
+
+GLOBALS:
+  script: mashup_GlobalVariables.groovy
+  DPPs: TableBuilder.properties
+
+# ----------------------------------
+
+happy:
+  ddps: TableBuilder.properties
+
+empty case:
+  ddps: TableBuilder.properties
+  ddpsOverride: |
+    document.dynamic.userdefined.ddp_UserInputs={"Records": [] }
+
+null case:
+  ddps: TableBuilder.properties
+  ddpsOverride: |
+    document.dynamic.userdefined.ddp_UserInputs=
