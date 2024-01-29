@@ -1,1 +1,40 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><RecordQueryResponse resultCount="1" totalCount="1"><Record recordId="04848131-1d07-44d2-9619-6bf639fd10ae" createdDate="2023-10-17T21:21:59Z" updatedDate="2024-01-29T20:25:05Z"><Fields><tr1reporttemplate><pattern_name>Pete Test 2 Stability</pattern_name><pattern_description>Pete Tet 2 Stability</pattern_description><patternid>26</patternid><variant>a</variant><version>1</version><variables><variable><search_text>Product Name</search_text></variable><variable><search_text>TEST_VAR_1</search_text></variable></variables><designers><designer>peter.mariani@pfizer.com</designer></designers><status>Test</status><toc><display_title_page>true</display_title_page><has_table_of_contents>false</has_table_of_contents><toc_start_no>1</toc_start_no><has_table_of_tables>false</has_table_of_tables><tot_no_style>No Prefix</tot_no_style><has_table_of_figures>false</has_table_of_figures><tof_no_style>No Prefix</tof_no_style></toc><locked_by>peter.mariani@pfizer.com</locked_by><lock_acquired_timestamp>2024-01-29T14:40:01-0500</lock_acquired_timestamp></tr1reporttemplate></Fields><links><link source="TR1Designer" entityId="20231017_052158032" establishedDate="2023-10-17T21:21:59Z"/></links></Record></RecordQueryResponse>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RecordQueryResponse resultCount="1" totalCount="1">
+  <Record createdDate="2023-10-17T21:21:59Z" recordId="04848131-1d07-44d2-9619-6bf639fd10ae" updatedDate="2024-01-29T20:25:05Z">
+    <Fields>
+      <tr1reporttemplate>
+        <pattern_name>Pete Test 2 Stability</pattern_name>
+        <pattern_description>Pete Tet 2 Stability</pattern_description>
+        <patternid>26</patternid>
+        <variant>a</variant>
+        <version>1</version>
+        <variables>
+          <variable>
+            <search_text>TEST_VAR_1</search_text>
+          </variable>
+          <variable>
+            <search_text>TEST_VAR_22</search_text>
+          </variable>
+        </variables>
+        <designers>
+          <designer>peter.mariani@pfizer.com</designer>
+        </designers>
+        <status>Test</status>
+        <toc>
+          <display_title_page>true</display_title_page>
+          <has_table_of_contents>false</has_table_of_contents>
+          <toc_start_no>1</toc_start_no>
+          <has_table_of_tables>false</has_table_of_tables>
+          <tot_no_style>No Prefix</tot_no_style>
+          <has_table_of_figures>false</has_table_of_figures>
+          <tof_no_style>No Prefix</tof_no_style>
+        </toc>
+        <locked_by>peter.mariani@pfizer.com</locked_by>
+        <lock_acquired_timestamp>2024-01-29T14:40:01-0500</lock_acquired_timestamp>
+      </tr1reporttemplate>
+    </Fields>
+    <links>
+      <link entityId="20231017_052158032" establishedDate="2023-10-17T21:21:59Z" source="TR1Designer"></link>
+    </links>
+  </Record>
+</RecordQueryResponse>
