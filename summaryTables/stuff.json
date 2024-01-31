@@ -1,0 +1,21 @@
+{
+  "Records" : [
+    {
+      "TableInstanceId" : 65,
+      "TableDefinitionId" : 17,
+      "ReportContentItem_DynamicTableId" : 15,
+      "UserInputValues" : [
+        {
+          "UserInputId" : 11,
+          "UserInputValue" : "TFPI"
+        },
+        {
+          "UserInputId" : 12,
+          "UserInputValue" : "127-001-14-290039, 127-002-14-290039, 127-104-250L-01"
+        }
+      ],
+      "UserInputsIdentifier" : "TFPI; 127-001-14-290039, 127-002-14-290039, 127-104-250L-01",
+      "TableInstanceSequenceNum" : 1
+    }
+  ]
+}
