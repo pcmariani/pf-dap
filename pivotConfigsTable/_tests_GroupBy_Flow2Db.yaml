@@ -1,7 +1,7 @@
 OPTS:
   - data
-  - ddps
-  - DPPs
+  # - ddps
+  # - DPPs
   # - assertions
   # - no labels
   # - no println
@@ -10,40 +10,41 @@ OPTS:
 GLOBALS:
   scripts:
     - groupByConfigs_Flow2Db.groovy:
-  DPPs:
-    hello: world
+  # DPPs:
+  #   hello: world
 
 # ---
 
-Test 1:
-  # script: groupByConfigs_Flow2Db.groovy
-  docs:
-    - data: stab1_groupBy_flow.json
-      ddps:
-        ddp_hello: world
-# ---
+# Test 1:
+#   # script: groupByConfigs_Flow2Db.groovy
+#   docs:
+#     - data: stab1_groupBy_flow.json
+#       # ddps:
+#       #   ddp_hello: world
+# # ---
 
 Empty case:
-  scripts: groupByConfigs_Flow2Db.groovy
+  # scripts: groupByConfigs_Flow2Db.groovy
   data: >
     {
       "Action": "UPSERT",
       "Requestor": "Peter.Mariani@pfizer.com",
       "ReportContentItem_DynamicTableId": 42,
       "TableDefinitionId": null,
-      "PivotOnConfigs": []
+      "GroupByRowsConfigs": []
     }
 
 # ---
 
-# Null case:
-#   docs:
-#     - data: >
-#         {
-#           "Action": "UPSERT",
-#           "Requestor": "Peter.Mariani@pfizer.com",
-#           "ReportContentItem_DynamicTableId": 42,
-#           "TableDefinitionId": null,
-#         }
+Null case:
+  docs:
+    - data: >
+        {
+          "Action": "UPSERT",
+          "Requestor": "Peter.Mariani@pfizer.com",
+          "ReportContentItem_DynamicTableId": 42,
+          "TableDefinitionId": null,
+          "GroupByRowsConfigs": null
+        }
 
 # ---

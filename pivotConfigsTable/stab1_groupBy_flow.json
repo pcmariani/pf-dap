@@ -7,7 +7,7 @@
   "Records": null,
   "Status": null,
   "Message": null,
-  "PivotOnConfigs": [
+  "GroupByRowsConfigs": [
     {
       "Col0": "String",
       "Col1": "String",

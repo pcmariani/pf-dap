@@ -24,7 +24,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       // --- calculate numKeys --- //
 
       ArrayList numKeysArr = []
-      configsArr[1..-1].each { item ->
+      configsArr.each { item ->
         numKeysArr << item.Col16.split(DBIFS).size()
       }
       // println numKeysArr
@@ -42,7 +42,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
       rowArr = []
 
-      configsArr[1..-1].each { item ->
+      configsArr.each { item ->
         rowArr << [
           PivotedDataConfigId: item."Col18",
           ColumnKey: item."Col16",
