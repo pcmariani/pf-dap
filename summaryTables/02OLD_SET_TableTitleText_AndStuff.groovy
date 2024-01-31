@@ -41,22 +41,48 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     /* LOGIC */
 
-    sources.each { source ->
+    def pivotOnUserInputIdsArr
+    def groupByUserInputIdsArr
+    def masterValuesMap = [:]
+
+    sources.sort { ["Data Table","Summary Table","Calculations Table"].indexOf(it.ResultTableType) }.each { source ->
 
         /* --- collect all values (from userInputValues or from a global variable) --- */
 
-        def paramUserInputMap = source.ParamUserInputMap
+        // println "\n---------- $source.ResultTableType -----------\n"
+
         def valuesArr = []
         def valuesMap = [:]
-        paramUserInputMap.findAll{it.UserInputId != null}.each { param ->
-            // println param
+        def valuesArr2 = []
+        source.ParamUserInputMap.findAll{it.UserInputId != null}.each { param ->
+            def valuesMap2 = [:]
+
             def userInput = userInputs.find{it.UserInputId == param.UserInputId}
             def userInputName = userInput.UserInputName
+
+            valuesMap2.userInputName = userInputName
+            valuesMap2.userInputId = userInput.UserInputId
+            valuesMap2.paramName = param.ParamName
+
+            if (source.ResultTableType =~ /(?i)data/) {
+                valuesMap2.sourceConfigLocation = 
+                    source.PivotOnColumns.findAll { it.Column == param.ParamName } ? "PivotOn" :
+                    source.PivotGroupByColumns.findAll { it.Column == param.ParamName } ? "GroupBy" :
+                    "none"
+            }
+            else if (source.ResultTableType =~ /(?i)summary/) {
+                valuesMap2.sourceConfigLocation = masterValuesMap.'Data Table'.find { 
+                    it.userInputId == userInput.UserInputId
+                }?.sourceConfigLocation
+            }
+
+            
             def globalVariableName = userInput.GlobalVariableName?.replaceAll(" ","_")
             def userInputValue = userInputValues.find{it.UserInputId == param.UserInputId}?.UserInputValue
             if (userInputValue) {
                 valuesArr << userInputValue
                 valuesMap[userInputName] = userInputValue
+                valuesMap2.value = userInputValue
                 // println userInputValue
             }
             else if (globalVariableName) {
@@ -66,23 +92,36 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 if (!globalVarValue) globalVarValue = reportContentItem.SampleGlobalVariables.find{it.Name.replaceAll(" ","_") == globalVariableName}?.Value
                 valuesArr << globalVarValue
                 valuesMap[userInputName] = globalVarValue
+                valuesMap2.value = globalVarValue
                 // println globalVarValue
             }
+            valuesArr2 << valuesMap2
         }
+
         if (virtualColumns) {
             virtualColumns.each { vc ->
+                def valuesMap2 = [:]
                 def virtualColumnLabel = vc.ColumnLabel
                 def virtualColumnValue = vc.VirtualColumnRows?.find{
                     it.TableInstanceId == tableInstanceRoot.TableInstanceId
                 }?.Value
                 if (virtualColumnValue) {
                     valuesMap[virtualColumnLabel] = virtualColumnValue
+                    valuesMap2.userInputName = virtualColumnLabel
+                    valuesMap2.userInputId = "VIRTUAL"
+                    valuesMap2.value = virtualColumnValue
                 }
+                valuesArr2 << valuesMap2
             }
         }
 
-        // println valuesArr
+
+        // println "-----"
+        // valuesArr.each { println it }
         // println valuesMap
+        masterValuesMap."$source.ResultTableType" = valuesArr2
+        masterValuesMap.each { m -> m.each { it.each { println it } }; println ""}
+
 
         /* --- construct table title --- */
 
@@ -102,8 +141,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                      : tableTitleText )
             }
             else {
-                println tableTitleText
-                println tableDefinition.TableTitleText
+                // println tableTitleText
+                // println tableDefinition.TableTitleText
                 tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " +
                     ( tableDefinition.TableTitleText != null && tableDefinition.TableTitleText != ""
                      ? tableDefinition.TableTitleText
@@ -165,6 +204,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         is = new ByteArrayInputStream(JsonOutput.prettyPrint(JsonOutput.toJson(outData)).getBytes("UTF-8"));
         dataContext.storeStream(is, props);
     }
+    // println masterValuesMap
 }
 
 private static String prettyJson(def thing) { return JsonOutput.prettyPrint(JsonOutput.toJson(thing)) }
