@@ -14,7 +14,7 @@ Properties props = dataContext.getProperties(i);
 
     def userInputsJson = props.getProperty("document.dynamic.userdefined.ddp_UserInputs")
     def userInputs = userInputsJson ? new JsonSlurper().parseText(userInputsJson).Records : []
-    // println prettyJson(userInputs)
+    println Helpers.prettyJson(userInputs)
 
     def newGlobalVars = userInputs.GlobalVariableName.findAll{ it != null }
     println newGlobalVars
@@ -22,7 +22,7 @@ Properties props = dataContext.getProperties(i);
     def outData = prettyJson([
       gr_id: patternGrid,
       entity_id: patternEntityId,
-      variables: [ newGlobalVars.collect { [search_text: it] } ]
+      variables: newGlobalVars.collect { [search_text: it] }
     ])
 
     is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));

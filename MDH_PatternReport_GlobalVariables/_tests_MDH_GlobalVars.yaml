@@ -1,5 +1,5 @@
 OPTS:
-  - data
+  # - data
   # - ddps
   # - DPPs
   # - assertions
@@ -8,7 +8,8 @@ OPTS:
   # - no files
 
 GLOBALS:
-  script: mashup_GlobalVariables.groovy
+  scripts:
+    - mashup_GlobalVariables.groovy
   DPPs: TableBuilder.properties
 
 # ----------------------------------
