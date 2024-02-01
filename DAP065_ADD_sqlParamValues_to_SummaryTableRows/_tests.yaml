@@ -1,0 +1,20 @@
+OPTS:
+  - data
+  # - ddps
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
+
+GLOBALS:
+  scripts:
+    - ./s01_ADD_sqlParamValues_to_SummaryTableRows.groovy
+
+# ---
+
+Test 1:
+  DPPs: summaryTable.properties
+  docs:
+    - data: summaryTable.dat
+      ddps: summaryTable.properties
