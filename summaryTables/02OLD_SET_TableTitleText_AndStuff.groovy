@@ -116,7 +116,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         props.setProperty("document.dynamic.userdefined.ddp_Sources", JsonOutput.toJson([Records:[source]]))
         props.setProperty("document.dynamic.userdefined.ddp_TableInstanceId", tableInstanceRoot.TableInstanceId.toString())
-        props.setProperty("document.dynamic.userdefined.ddp_sqlParamValues", valuesMapArr.value.join(";"))
+        props.setProperty("document.dynamic.userdefined.ddp_sqlParamValues", valuesMapArr.Value.join(";"))
         props.setProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson", prettyJson(valuesMapArr))
 
         is = new ByteArrayInputStream(prettyJson(outData).getBytes("UTF-8"));
