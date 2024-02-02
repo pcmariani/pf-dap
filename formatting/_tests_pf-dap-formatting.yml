@@ -21,8 +21,8 @@ GLOBALS:
     - 06_WRAP_Table.groovy:
     - 07_APPLY_ColumnWidths.groovy:
     - 08_MERGE_Cells_Html.groovy:
-        # - DPPs
         - ddps
+
 # ---
 
 # PHRD:
@@ -33,32 +33,25 @@ GLOBALS:
 #       # ext: html
 # # ---
 
-Stability:
-  DPPs: _testfiles/ST3.properties
-  docs:
-    - data: _testfiles/ST3.dat
-      ddps: _testfiles/ST3.properties
-      ddpsOverride:
-        # document.dynamic.userdefined.ddp_displayHeaders: false
-        # document.dynamic.userdefined.ddp_displayHeadersOnSide: false
-      ext: html
-# ---
-
-# BatchAnalysis:
-#   DPPs:
-#     aaa: aaaa
-#     bbb: bbbb
-#   DPPsOverride:
-#     aaa: ddd
-#     DPP_Product_Name: balsadsfa
-#   # dpps: _testfiles/ba3.properties
+# Stability:
+#   DPPs: _testfiles/ST3.properties
 #   docs:
-#     - data: _testfiles/ba3.dat
-#       props: _testfiles/ba3.properties
-#       assert:
-#         - is.text =~ /<th colSpan="3".*?>Lot Number<\/th>/
+#     - data: _testfiles/ST3.dat
+#       ddps: _testfiles/ST3.properties
+#       ddpsOverride:
+#         # document.dynamic.userdefined.ddp_displayHeaders: false
+#         # document.dynamic.userdefined.ddp_displayHeadersOnSide: false
 #       ext: html
 # # ---
+
+BatchAnalysis:
+  docs:
+    - data: _testfiles/ba3.dat
+      props: _testfiles/ba3.properties
+      # assertions:
+      #   - is.text =~ /<th colSpan="1".*?>Lot Number<\/th>/
+      # ext: html
+# ---
 
 # Plasmid:
 #   dpps: _testfiles/plas1.properties
