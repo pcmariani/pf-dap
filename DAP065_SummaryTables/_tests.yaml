@@ -1,6 +1,7 @@
 OPTS:
-  # - data
-  # - ddps
+  - data
+  - ddps:
+      - ddp_sqlColumnNames
   # - DPPs
   # - assertions
   # - no labels
@@ -9,6 +10,8 @@ OPTS:
 
 GLOBALS:
   scripts:
+    - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
+        # - ddps: ddp_sqlParamUserInputValuesJson
     - s01_DO_SummaryTables.groovy
 
 # --------

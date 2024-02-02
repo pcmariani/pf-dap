@@ -60,6 +60,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println prettyJson(multiSelectParam)
 
     props.setProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson", prettyJson(sqlParamUserInputValues))
+    // println prettyJson(sqlParamUserInputValues)
 
     dataContext.storeStream(is, props);
 

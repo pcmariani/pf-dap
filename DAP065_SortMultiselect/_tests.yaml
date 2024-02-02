@@ -1,16 +1,21 @@
 OPTS:
   # - data
-  - ddps
-  # - DPPs
+  - DPPs:
+      - DPP_HasSummarySource
+      - DPP_CurrentScript
   # - assertions
   # - no labels
   # - no println
+  # - no errors
   # - no files
 
 GLOBALS:
   DPPs: ba1.properties
   scripts:
-    - s01_SORT_MultiSelectParam.groovy
+    - s01_SORT_MultiSelectParam.groovy:
+        - data
+        - ddps:
+            - ddp_UserInputs
 
 # --------
 
@@ -19,7 +24,7 @@ Happy Case:
   ddps: ba1.properties
   ddpsOverride:
     document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
-# --------
+# -------
 
 # Empty Case:
 #   data: ba1.dat
@@ -27,3 +32,30 @@ Happy Case:
 #   ddpsOverride:
 #     document.dynamic.userdefined.ddp_GroupByConfigsConsolidated:
 #       { "Records": [] }
+
+# No MultiSelects Case:
+#   data: ba1.dat
+#   ddps: ba1.properties
+#   ddpsOverride:
+#     document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
+#     document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson: >
+#       [
+#         {
+#           "UserInputId": 11,
+#           "UserInputName": "Product Name",
+#           "ParamName": "Product",
+#           "PivotConfig": null,
+#           "Value": "TFPI",
+#           "MultiSelect": false,
+#         },
+#         {
+#           "UserInputId": 12,
+#           "UserInputName": "Batch Number",
+#           "ParamName": "Batch Number",
+#           "PivotConfig": "GroupBy",
+#           "Value": "127-001-14-290039, 127-002-14-290039, 127-104-250L-01",
+#           "MultiSelect": false,
+#         }
+#       ]
+# assertions:
+#   - 2 + 2 == 5
