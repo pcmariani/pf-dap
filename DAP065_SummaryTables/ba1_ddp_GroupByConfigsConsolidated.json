@@ -1,0 +1,28 @@
+{
+  "Records": [
+    {
+      "GroupByRowsConfigId": 647,
+      "RowKey": "127-001-14-290039",
+      "RowLabels": "127-001-14-290039",
+      "Active": true,
+      "RowIndex": 1,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 649,
+      "RowKey": "127-104-250L-01",
+      "RowLabels": "127-104-250L-01",
+      "Active": true,
+      "RowIndex": 2,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 648,
+      "RowKey": "127-002-14-290039",
+      "RowLabels": "127-002-14-290039",
+      "Active": true,
+      "RowIndex": 3,
+      "SuppressIfNoDataForAllCols": true
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+OPTS:
+  # - data
+  # - ddps
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
+
+GLOBALS:
+  scripts:
+    - s01_DO_SummaryTables.groovy
+
+# --------
+
+Test 1:
+  DPPs: ba1.properties
+  data: ba1.dat
+  ddps: ba1.properties
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
+    document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
+      { "Records": [] }
