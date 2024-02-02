@@ -1,0 +1,26 @@
+OPTS:
+  - data
+  - ddps:
+      - ddp_sqlColumnNames
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
+
+GLOBALS:
+  scripts:
+    - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
+        # - ddps: ddp_sqlParamUserInputValuesJson
+    - s01_CONSTRUCT_TableTitles.groovy
+
+# --------
+
+Test 1:
+  DPPs: ba1.properties
+  data: ba1.dat
+  ddps: ba1.properties
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
+    document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
+      { "Records": [] }
