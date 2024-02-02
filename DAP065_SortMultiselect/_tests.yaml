@@ -1,0 +1,29 @@
+OPTS:
+  # - data
+  - ddps
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
+
+GLOBALS:
+  DPPs: ba1.properties
+  scripts:
+    - s01_SORT_MultiSelectParam.groovy
+
+# --------
+
+Happy Case:
+  data: ba1.dat
+  ddps: ba1.properties
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
+# --------
+
+# Empty Case:
+#   data: ba1.dat
+#   ddps: ba1.properties
+#   ddpsOverride:
+#     document.dynamic.userdefined.ddp_GroupByConfigsConsolidated:
+#       { "Records": [] }
