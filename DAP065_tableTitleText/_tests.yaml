@@ -1,8 +1,9 @@
 OPTS:
-  - data
-  - ddps:
-      - ddp_sqlColumnNames
-  # - DPPs
+  # - data
+  # - ddps:
+  #     - ddp_sqlColumnNames
+  # - DPPs:
+  #     - Compound Name
   # - assertions
   # - no labels
   # - no println
@@ -11,13 +12,18 @@ OPTS:
 GLOBALS:
   scripts:
     - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
-        # - ddps: ddp_sqlParamUserInputValuesJson
-    - s01_CONSTRUCT_TableTitles.groovy
+    - s01_CONSTRUCT_TableTitles.groovy:
+        - ddps:
+            - ddp_TableDefinition
+            - ddp_sqlParamUserInputValuesJson
+        - DPPs: Compound_Name
 
 # --------
 
 Test 1:
   DPPs: ba1.properties
+  DPPsOverride:
+    Compound_Name: YESSSSS
   data: ba1.dat
   ddps: ba1.properties
   ddpsOverride:
