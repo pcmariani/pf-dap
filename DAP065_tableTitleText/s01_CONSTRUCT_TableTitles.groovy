@@ -20,15 +20,17 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // INPUTS //
 
-    def resultTableType = props.getProperty("document.dynamic.userdefined.ddp_ResultTableType")
-
+    def tableInstanceJson = props.getProperty("document.dynamic.userdefined.ddp_TableInstance")
+    def tableInstance = tableInstanceJson ? new JsonSlurper().parseText(tableInstanceJson) : []
+    println tableInstance
+    def resultTableType = props.getProperty("document.dynamic.userdefined.ddp_resultTableType")
+    // println resultTableType
     def sqlParamUserInputValuesJson = props.getProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson")
     def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
-
+    // println sqlParamUserInputValues
     def tableDefinitionJson = props.getProperty("document.dynamic.userdefined.ddp_TableDefinition")
     def tableDefinition = new JsonSlurper().parseText(tableDefinitionJson).Records[0]
     // println tableDefinition
-
 
     // LOGIC //
 
@@ -43,7 +45,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
 
     else if (resultTableType =~ /(?i)Data/) {
-      if (tableInstanceRoot.TableTitleOverride) {
+      if (tableInstance.TableTitleOverride) {
         tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " +
         ( tableDefinition.TableTitleOverride != null && tableDefinition.TableTitleOverride != ""
         ? tableDefinition.TableTitleOverride
