@@ -1,0 +1,67 @@
+127-001-14-290039|^|Report Results (%)|^|iCE|^|Acidic Species|^|19.3
+127-001-14-290039|^|<= 30 NTU|^|Appearance (Clarity)|^|Appearance (Clarity)|^|12
+127-001-14-290039|^|Not more intensely colored than level 3 of the color standard|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=B9
+127-001-14-290039|^|Report Results|^|Appearance (Visible Particles)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates
+127-001-14-290039|^|Report Results (%)|^|iCE|^|Basic Species|^|10.6
+127-001-14-290039|^|<= 1 CFU/10mL|^|Bioburden|^|Bioburden|^|0
+127-001-14-290039|^|Comparable to Reference Material|^|iCE|^|Charge Heterogeneity|^|Comparable to Reference Material
+127-001-14-290039|^|<= 0.075 EU/mg|^|Endotoxin|^|Endotoxin|^|NMT 0.004
+127-001-14-290039|^|Report Results (%)|^|CGE (Reducing)|^|Fragments|^|NMT 0.3
+127-001-14-290039|^|>= 90.0% IgG as heavy + light chain|^|CGE (Reducing)|^|Heavy Chain and Light Chain|^|98.5
+127-001-14-290039|^|<= 5.0% HMMS|^|SE-HPLC|^|HMMS|^|NMT 0.5
+127-001-14-290039|^|<= 2.5 pg/mg|^|qPCR DNA Analysis|^|Host Cell DNA|^|NMT 2.5
+127-001-14-290039|^|<= 100 ng/mg|^|HCP ELISA|^|Host Cell Protein|^|NMT 10
+127-001-14-290039|^|Report Results (%)|^|CGE (Non-reducing)|^|Intact IgG|^|96.3
+127-001-14-290039|^|Report Results (%)|^|iCE|^|Main Species|^|70.1
+127-001-14-290039|^|>= 90.0% monomer|^|SE-HPLC|^|Monomer|^|99.0
+127-001-14-290039|^|Comparable to Reference|^|N-linked Oligosaccharide Profile|^|N-Linked Glycan Profile|^|Comparable to Reference
+127-001-14-290039|^|Report Results (mOsm/kg)|^|Osmolality|^|Osmolality|^|362
+127-001-14-290039|^|Comparable to Reference|^|Peptide Mapping|^|Peptide Profile|^|Comparable to Reference
+127-001-14-290039|^|5.8 +/- 0.5|^|pH|^|pH|^|5.8
+127-001-14-290039|^|50 - 150% potency relative to reference|^|Inhibition Assay|^|Potency / Biological Activity|^|93
+127-001-14-290039|^|<= 10.0 ng/mg|^|rProtein A ELISA|^|Protein A|^|3.1
+127-001-14-290039|^|115.0 +/- 17.3 mg/mL|^|UV Spectroscopy|^|Protein Concentration|^|112.8
+127-001-14-290039|^|500 - 1500 U/mg|^|Inhibition Assay|^|TFPI_BIOASSAY_ELISA_Specific Activity_U/mg|^|933
+127-002-14-290039|^|Report Results (%)|^|iCE|^|Acidic Species|^|18.2
+127-002-14-290039|^|<= 30 NTU|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10
+127-002-14-290039|^|Not more intensely colored than level 3 of the color standard|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=BY6
+127-002-14-290039|^|Report Results|^|Appearance (Visible Particles)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates
+127-002-14-290039|^|Report Results (%)|^|iCE|^|Basic Species|^|8.3
+127-002-14-290039|^|<= 1 CFU/10mL|^|Bioburden|^|Bioburden|^|0
+127-002-14-290039|^|Comparable to Reference Material|^|iCE|^|Charge Heterogeneity|^|Comparable to Reference Material
+127-002-14-290039|^|<= 0.075 EU/mg|^|Endotoxin|^|Endotoxin|^|NMT 0.005
+127-002-14-290039|^|Report Results (%)|^|CGE (Reducing)|^|Fragments|^|NMT 0.3
+127-002-14-290039|^|>= 90.0% IgG as heavy + light chain|^|CGE (Reducing)|^|Heavy Chain and Light Chain|^|99.3
+127-002-14-290039|^|<= 5.0% HMMS|^|SE-HPLC|^|HMMS|^|NMT 0.5
+127-002-14-290039|^|<= 2.5 pg/mg|^|qPCR DNA Analysis|^|Host Cell DNA|^|NMT 2.5
+127-002-14-290039|^|<= 100 ng/mg|^|HCP ELISA|^|Host Cell Protein|^|NMT 10
+127-002-14-290039|^|Report Results (%)|^|CGE (Non-reducing)|^|Intact IgG|^|96.0
+127-002-14-290039|^|Report Results (%)|^|iCE|^|Main Species|^|73.6
+127-002-14-290039|^|>= 90.0% monomer|^|SE-HPLC|^|Monomer|^|99.0
+127-002-14-290039|^|Comparable to Reference|^|N-linked Oligosaccharide Profile|^|N-Linked Glycan Profile|^|Comparable to Reference
+127-002-14-290039|^|Report Results (mOsm/kg)|^|Osmolality|^|Osmolality|^|355
+127-002-14-290039|^|Comparable to Reference|^|Peptide Mapping|^|Peptide Profile|^|Comparable to Reference
+127-002-14-290039|^|5.8 +/- 0.5|^|pH|^|pH|^|5.8
+127-002-14-290039|^|50 - 150% potency relative to reference|^|Inhibition Assay|^|Potency / Biological Activity|^|104
+127-002-14-290039|^|<= 10.0 ng/mg|^|rProtein A ELISA|^|Protein A|^|2.8
+127-002-14-290039|^|115.0 +/- 17.3 mg/mL|^|UV Spectroscopy|^|Protein Concentration|^|110.5
+127-002-14-290039|^|500 - 1500 U/mg|^|Inhibition Assay|^|TFPI_BIOASSAY_ELISA_Specific Activity_U/mg|^|1045
+127-104-250L-01|^|Report Results (%)|^|iCE|^|Acidic Species|^|20.6
+127-104-250L-01|^|Report Results (NTU)|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10
+127-104-250L-01|^|Report Results|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=B9
+127-104-250L-01|^|Report Results|^|Appearance (Visible Particles)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates
+127-104-250L-01|^|Report Results (%)|^|iCE|^|Basic Species|^|9.3
+127-104-250L-01|^|Report Results (CFU/10mL)|^|Bioburden|^|Bioburden|^|0
+127-104-250L-01|^|Report Results (EU/mg)|^|Endotoxin|^|Endotoxin|^|0.06
+127-104-250L-01|^|Report Results (%)|^|CGE (Reducing)|^|Fragments|^|NMT 0.3
+127-104-250L-01|^|Report Results (%)|^|CGE (Reducing)|^|Heavy Chain and Light Chain|^|98.9
+127-104-250L-01|^|Report Results (%)|^|SE-HPLC|^|HMMS|^|NMT 0.5
+127-104-250L-01|^|Report Results (pg/mg)|^|qPCR DNA Analysis|^|Host Cell DNA|^|NMT 3
+127-104-250L-01|^|Report Results (ng/mg)|^|HCP ELISA|^|Host Cell Protein|^|NMT 10
+127-104-250L-01|^|Report Results (%)|^|CGE (Non-reducing)|^|Intact IgG|^|96.6
+127-104-250L-01|^|Report Results (%)|^|iCE|^|Main Species|^|70.1
+127-104-250L-01|^|Report Results (%)|^|SE-HPLC|^|Monomer|^|98.9
+127-104-250L-01|^|Report Results|^|pH|^|pH|^|5.7
+127-104-250L-01|^|Report Results (ng/mg)|^|rProtein A ELISA|^|Protein A|^|2
+127-104-250L-01|^|Report Results (mg/mL)|^|UV Spectroscopy|^|Protein Concentration|^|118.6
+127-104-250L-01|^|Report Results|^|Binding ELISA|^|Relative Potency|^|Dose dependent response curve observed
