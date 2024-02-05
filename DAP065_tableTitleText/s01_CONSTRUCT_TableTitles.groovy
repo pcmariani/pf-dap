@@ -42,7 +42,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       : tableTitleText )
     }
 
-    else if (source.ResultTableType =~ /(?i)Data/) {
+    else if (resultTableType =~ /(?i)Data/) {
       if (tableInstanceRoot.TableTitleOverride) {
         tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " +
         ( tableDefinition.TableTitleOverride != null && tableDefinition.TableTitleOverride != ""
@@ -83,6 +83,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
     tableTitleText = tableTitleText.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
     // println tableTitleText
+
+    props.setProperty("document.dynamic.userdefined.ddp_tableTitleText", tableTitleText)
 
     // is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));
     dataContext.storeStream(is, props);
