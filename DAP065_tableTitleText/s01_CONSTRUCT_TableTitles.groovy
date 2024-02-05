@@ -20,9 +20,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // INPUTS //
 
+    int tableInstanceIndex = (props.getProperty("document.dynamic.userdefined.ddp_tableInstanceIndex") ?: "1") as int
+    // println tableInstanceIndex
     def tableInstanceJson = props.getProperty("document.dynamic.userdefined.ddp_TableInstance")
     def tableInstance = tableInstanceJson ? new JsonSlurper().parseText(tableInstanceJson) : []
-    println tableInstance
+    // println tableInstance
     def resultTableType = props.getProperty("document.dynamic.userdefined.ddp_resultTableType")
     // println resultTableType
     def sqlParamUserInputValuesJson = props.getProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson")
