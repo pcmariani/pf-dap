@@ -5,6 +5,7 @@ import groovy.json.JsonOutput;
 import com.boomi.execution.ExecutionUtil;
 
 String DBIFS = /\^\^\^/
+String DBOFS = "^^^"
 logger = ExecutionUtil.getBaseLogger()
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
@@ -42,10 +43,22 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       rowArr = []
 
       configsArr.each { item ->
+        def newLabelsArr = item.values().toArray()[0..8]
+        def labelsArr = item.Col17.split(DBIFS)
+        // println labelsArr
+
+        labelsArr.eachWithIndex { label, j ->
+          def newLabel = newLabelsArr[j]
+          if (newLabel) {
+            labelsArr[j] = newLabel
+          }
+        }
+        // println labelsArr
+
         rowArr << [
           GroupByRowsConfigId: item."Col18",
           RowKey: item."Col16",
-          RowLabels: item."Col17",
+          RowLabels: labelsArr.join(DBOFS),
           Active: item."Col9",
           SuppressIfNoDataForAllCols: item."Col10",
           RowIndex: item."Col19",

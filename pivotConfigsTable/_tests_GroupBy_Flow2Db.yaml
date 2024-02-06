@@ -23,28 +23,30 @@ GLOBALS:
 #       #   ddp_hello: world
 # # ---
 
-Empty case:
-  # scripts: groupByConfigs_Flow2Db.groovy
-  data: >
-    {
-      "Action": "UPSERT",
-      "Requestor": "Peter.Mariani@pfizer.com",
-      "ReportContentItem_DynamicTableId": 42,
-      "TableDefinitionId": null,
-      "GroupByRowsConfigs": []
-    }
+Ba1:
+  data: ba1_groupBy_flow.json
+# Empty case:
+#   # scripts: groupByConfigs_Flow2Db.groovy
+#   data: >
+#     {
+#       "Action": "UPSERT",
+#       "Requestor": "Peter.Mariani@pfizer.com",
+#       "ReportContentItem_DynamicTableId": 42,
+#       "TableDefinitionId": null,
+#       "GroupByRowsConfigs": []
+#     }
 
 # ---
 
-Null case:
-  docs:
-    - data: >
-        {
-          "Action": "UPSERT",
-          "Requestor": "Peter.Mariani@pfizer.com",
-          "ReportContentItem_DynamicTableId": 42,
-          "TableDefinitionId": null,
-          "GroupByRowsConfigs": null
-        }
+# Null case:
+#   docs:
+#     - data: >
+#         {
+#           "Action": "UPSERT",
+#           "Requestor": "Peter.Mariani@pfizer.com",
+#           "ReportContentItem_DynamicTableId": 42,
+#           "TableDefinitionId": null,
+#           "GroupByRowsConfigs": null
+#         }
 
 # ---
