@@ -5,6 +5,7 @@ import groovy.json.JsonOutput;
 import com.boomi.execution.ExecutionUtil;
 
 String DBIFS = /\^\^\^/
+String DBOFS = "^^^"
 logger = ExecutionUtil.getBaseLogger()
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
@@ -12,7 +13,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     Properties props = dataContext.getProperties(i);
 
     LinkedHashMap root = new JsonSlurper().parse(is)
-    ArrayList configsArr = root.PivotOnConfigs
+    ArrayList configsArr = root.PivotOnConfigs[1..-1]
 
     if (!configsArr) {
       is = new ByteArrayInputStream(prettyJson(root).getBytes("UTF-8"));
@@ -43,10 +44,26 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       rowArr = []
 
       configsArr.each { item ->
+        def newLabelsArr = []
+        (0..8).each { j ->
+          newLabelsArr << item."Col$j"
+        }
+        // println newLabelsArr
+        def labelsArr = item.Col17.split(DBIFS)
+        // println labelsArr
+
+        labelsArr.eachWithIndex { label, j ->
+          def newLabel = newLabelsArr[j]
+          if (newLabel) {
+            labelsArr[j] = newLabel
+          }
+        }
+        // println labelsArr
+
         rowArr << [
           PivotedDataConfigId: item."Col18",
           ColumnKey: item."Col16",
-          ColumnLabels: item."Col17",
+          ColumnLabels: labelsArr.join(DBOFS),
           Active: item."Col9",
           SuppressIfNoDataForAllRows: item."Col10",
           ColumnIndex: item."Col19",

@@ -13,7 +13,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     Properties props = dataContext.getProperties(i);
 
     LinkedHashMap root = new JsonSlurper().parse(is)
-    ArrayList configsArr = root.GroupByRowsConfigs
+    ArrayList configsArr = root.GroupByRowsConfigs[1..-1]
 
     if (!configsArr) {
       is = new ByteArrayInputStream(prettyJson(root).getBytes("UTF-8"));
@@ -43,7 +43,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       rowArr = []
 
       configsArr.each { item ->
-        def newLabelsArr = item.values().toArray()[0..8]
+        def newLabelsArr = []
+        (0..8).each { j ->
+          newLabelsArr << item."Col$j"
+        }
+        println newLabelsArr
         def labelsArr = item.Col17.split(DBIFS)
         // println labelsArr
 

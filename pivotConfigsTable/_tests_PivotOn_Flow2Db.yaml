@@ -1,7 +1,7 @@
 OPTIONS:
-  # - no data
-  - no props
-  - no assertions
+  - data
+  # - props
+  # - assertions
   # - no guides
 
 GLOBALS:
@@ -10,31 +10,30 @@ GLOBALS:
 # ---
 
 Test 1:
-  docs:
-    - datafile: stab1_pivotOn_flow.json
+  data: stab1_pivotOn_flow.json
 # ---
 
-Empty case:
-  docs:
-    - data: >
-        {
-          "Action": "UPSERT",
-          "Requestor": "Peter.Mariani@pfizer.com",
-          "ReportContentItem_DynamicTableId": 42,
-          "TableDefinitionId": null,
-          "PivotOnConfigs": []
-        }
+# Empty case:
+#   docs:
+#     - data: >
+#         {
+#           "Action": "UPSERT",
+#           "Requestor": "Peter.Mariani@pfizer.com",
+#           "ReportContentItem_DynamicTableId": 42,
+#           "TableDefinitionId": null,
+#           "PivotOnConfigs": []
+#         }
 
 # ---
 
-Null case:
-  docs:
-    - data: >
-        {
-          "Action": "UPSERT",
-          "Requestor": "Peter.Mariani@pfizer.com",
-          "ReportContentItem_DynamicTableId": 42,
-          "TableDefinitionId": null,
-        }
+# Null case:
+#   docs:
+#     - data: >
+#         {
+#           "Action": "UPSERT",
+#           "Requestor": "Peter.Mariani@pfizer.com",
+#           "ReportContentItem_DynamicTableId": 42,
+#           "TableDefinitionId": null,
+#         }
 
 # ---
