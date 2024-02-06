@@ -1,7 +1,6 @@
 OPTS:
   # - data
-  # - ddps:
-  #     - ddp_sqlColumnNames
+  - ddps:
   # - DPPs
   # - assertions
   # - no labels
