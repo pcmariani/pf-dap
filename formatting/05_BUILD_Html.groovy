@@ -28,11 +28,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     def topLeftCornerKeysArrJson = props.getProperty("document.dynamic.userdefined.ddp_topLeftCornerKeysArrJson")
     def topLeftCornerKeysArr = topLeftCornerKeysArrJson ? new JsonSlurper().parseText(topLeftCornerKeysArrJson) : []
-    // println prettyJson(topLeftCornerKeysArr)
+    println prettyJson(topLeftCornerKeysArr)
 
     def rowHeaderConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_RowHeaderConfig")
     def rowHeaderConfigArr = rowHeaderConfigsJson ? new JsonSlurper().parseText(rowHeaderConfigsJson)?.Records[0].RowHeaderConfig : []
-    // println prettyJson(rowHeaderConfigArr)
+    println prettyJson(rowHeaderConfigArr)
     // println rowHeaderConfigArr.size()
 
     def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
@@ -123,6 +123,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     else if (!isPivot) {
         def rowHeaderKeysArr = dataArr.collect{it[0..numHeaderCols-1]}
+        // println "#DEBUG rowHeaderKeysArr: " + rowHeaderKeysArr
+
         dataArr[0].each { header ->
             columnsConfigArr << [
                 ColumnKey: header,
@@ -184,6 +186,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                                 else {
 
                                     def columnWidth =  columnsConfigArr[c].ColumnWidth
+                                    println r + " " + columnsConfigArr[0]
                                     def itemId = tableId + idDelim + columnsConfigArr[0].RowHeaderKeys[r] + idDelim + columnsConfigArr[c].ColumnKey
 
                                     if (isPivot && r < numHeaderRows) {
