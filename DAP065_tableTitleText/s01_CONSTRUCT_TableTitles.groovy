@@ -47,13 +47,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def virtualColumnsMap = [:]
     if (virtualColumns) {
         virtualColumns.each { vcConfig ->
-            // println prettyJson(vcConfig)
             def vcColumnLabel = vcConfig.ColumnLabel
             // println vcColumnLabel
             def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
             // println vcValue
             if (vcValue) {
-                props.setProperty("document.dynamic.userdefined.ddp_$vcColumnLabel", vcValue)
+                sqlParamUserInputValues << [UserInputName: vcColumnLabel, Value: vcValue]
             }
         }
     }
@@ -96,11 +95,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       // println value
       if (!value || value == null) {
         def propName = name.replaceAll(" ","_")
+        // println propName
         value = ExecutionUtil.getDynamicProcessProperty("DPP_" + propName)
         if (!value) value = ExecutionUtil.getDynamicProcessProperty(propName)
         else if (!value) value = props.getProperty("document.dynamic.userdefined.ddp_" + propName)
         else if (!value) value = props.getProperty("document.dynamic.userdefined." + propName)
       }
+      // println value
       if (value) {
         def replacementsArr = stringReplacementsArr.findAll{ name == it.PlaceHolder.replaceAll(/[\{\{\}\}]/,"") }
         replacementsArr.each { replacement ->
