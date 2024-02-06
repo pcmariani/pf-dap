@@ -26,9 +26,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def reportContentItemJson = props.getProperty("document.dynamic.userdefined.ddp_ReportContentItem")
     def reportContentItem = reportContentItemJson ? new JsonSlurper().parseText(reportContentItemJson).Records[0] : []
     // println reportContentItem
-    def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
-    def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
-    // println prettyJson(virtualColumns)
+
+    // def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
+    // def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
+    // // println prettyJson(virtualColumns)
 
 
     /* LOGIC */
@@ -85,30 +86,24 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             valuesMapArr << valuesMap
         }
 
-        // if (virtualColumns) {
-        //     virtualColumns.each { vc ->
-        //       // println prettyJson(vc)
-        //         def valuesMap = [:]
-        //         def virtualColumnLabel = vc.ColumnLabel
-        //         def virtualColumnValue = vc.VirtualColumnRows?.find{
-        //             it.TableInstanceId == tableInstanceRoot.TableInstanceId
-        //         }?.Value
-        //         if (virtualColumnValue) {
-        //             valuesMap.'UserInputId' = "VIRTUAL"
-        //             valuesMap.'UserInputName' = virtualColumnLabel
-        //             valuesMap.'ParamName' = virtualColumnLabel
-        //             valuesMap.'PivotConfig' = "none"
-        //             valuesMap.'Value' = virtualColumnValue
-        //             // valuesMap.'MultiSelect' = value.contains(",") ? true : false
-        //         }
-        //         valuesMapArr << valuesMap
-        //     }
-        // }
-
         // valuesMapArr.each { println it }
         // println valuesMapArr.value.join(";")
         tempValuesPerSourcePerTableType."$source.ResultTableType" = valuesMapArr
         // tempValuesPerSourcePerTableType.each { println it ; println "----"}
+
+        // if (virtualColumns) {
+        //     virtualColumns.each { vcConfig ->
+        //       // println prettyJson(vcConfig)
+        //       def tableInstanceId = tableInstanceRoot.TableInstanceId
+        //       def vcColumnLabel = vcConfig.ColumnLabel
+        //       // println vcColumnLabel
+        //       def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
+        //       // println vcValue
+        //       if (vcValue) {
+        //         props.setProperty("document.dynamic.userdefined.ddp_$vcColumnLabel", vcValue)
+        //       }
+        //     }
+        // }
 
 
         /* OUTPUT */

@@ -33,8 +33,32 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def tableDefinitionJson = props.getProperty("document.dynamic.userdefined.ddp_TableDefinition")
     def tableDefinition = new JsonSlurper().parseText(tableDefinitionJson).Records[0]
     // println tableDefinition
+    def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
+    def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
+    // println prettyJson(virtualColumns)
+    int tableInstanceId = props.getProperty("document.dynamic.userdefined.ddp_TableInstanceId") as int
+    // println tableInstanceId
 
     // LOGIC //
+
+
+    // Virtual Columns
+
+    def virtualColumnsMap = [:]
+    if (virtualColumns) {
+        virtualColumns.each { vcConfig ->
+            // println prettyJson(vcConfig)
+            def vcColumnLabel = vcConfig.ColumnLabel
+            // println vcColumnLabel
+            def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
+            // println vcValue
+            if (vcValue) {
+                props.setProperty("document.dynamic.userdefined.ddp_$vcColumnLabel", vcValue)
+            }
+        }
+    }
+
+
 
     // set tableTitleText
     def tableTitleText = "Table Title Text Not Yet Configured"
@@ -95,4 +119,4 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
 }
 
-// private static String prettyJson(def thing) { return JsonOutput.prettyPrint(JsonOutput.toJson(thing)) }
+private static String prettyJson(def thing) { return JsonOutput.prettyPrint(JsonOutput.toJson(thing)) }

@@ -12,7 +12,6 @@ GLOBALS:
   scripts:
     - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_DO_SummaryTables.groovy:
-        - ddps: ddp_Process
         # - ddps: ddp_sqlParamUserInputValuesJson
 
 # --------

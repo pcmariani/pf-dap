@@ -29,7 +29,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int tableInstanceIndex = (props.getProperty("document.dynamic.userdefined.ddp_tableInstanceIndex") ?: "1") as int
     // println tableInstanceIndex
     int tableInstanceId = props.getProperty("document.dynamic.userdefined.ddp_TableInstanceId") as int
-    println tableInstanceId
+    // println tableInstanceId
     def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
     def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
     // println prettyJson(virtualColumns)
@@ -47,15 +47,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     if (virtualColumns) {
         virtualColumns.each { vcConfig ->
             // println prettyJson(vcConfig)
-            def vcColumnLabel = vcConfig.ColumnLabel
-            // println vcColumnLabel
             def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
             // println vcValue
             int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1
             // println columnToInsertAfterIndex
             if (vcValue) {
                 virtualColumnsMap[columnToInsertAfterIndex] = vcValue
-                props.setProperty("document.dynamic.userdefined.ddp_$vcColumnLabel", vcValue)
             }
             // Add VirtualColumn Label to column names
             sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)

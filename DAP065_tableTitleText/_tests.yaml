@@ -1,5 +1,5 @@
 OPTS:
-  - data
+  # - data
   # - ddps:
   #     - ddp_sqlColumnNames
   # - DPPs:
@@ -14,9 +14,10 @@ GLOBALS:
     # - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_CONSTRUCT_TableTitles.groovy:
         - ddps:
-            # - ddp_TableDefinition
-            # - ddp_sqlParamUserInputValuesJson
-            - ddp_tableTitleText
+            - ddp_Process
+        # - ddp_TableDefinition
+        # - ddp_sqlParamUserInputValuesJson
+        # - ddp_tableTitleText
         # - DPPs: Compound_Name
 
 # --------
