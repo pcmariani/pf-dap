@@ -47,7 +47,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         (0..8).each { j ->
           newLabelsArr << item."Col$j"
         }
-        println newLabelsArr
+        // println newLabelsArr
         def labelsArr = item.Col17.split(DBIFS)
         // println labelsArr
 

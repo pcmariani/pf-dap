@@ -1,7 +1,7 @@
 OPTS:
-  - data
-  - ddps:
-      - ddp_sqlColumnNames
+  # - data
+  # - ddps:
+  #     - ddp_sqlColumnNames
   # - DPPs
   # - assertions
   # - no labels
@@ -10,9 +10,10 @@ OPTS:
 
 GLOBALS:
   scripts:
-    # - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
+    - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_DO_SummaryTables.groovy:
-        - ddps: ddp_sqlParamUserInputValuesJson
+        - ddps: ddp_Process
+        # - ddps: ddp_sqlParamUserInputValuesJson
 
 # --------
 
@@ -20,7 +21,7 @@ Test 1:
   DPPs: ba1.properties
   data: ba1.dat
   ddps: ba1.properties
-  ddpsOverride:
-    document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
-    document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
-      { "Records": [] }
+  # ddpsOverride:
+  #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
+  #   document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
+  #     { "Records": [] }

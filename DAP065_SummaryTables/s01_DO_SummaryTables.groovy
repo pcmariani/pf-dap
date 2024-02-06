@@ -29,7 +29,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int tableInstanceIndex = (props.getProperty("document.dynamic.userdefined.ddp_tableInstanceIndex") ?: "1") as int
     // println tableInstanceIndex
     int tableInstanceId = props.getProperty("document.dynamic.userdefined.ddp_TableInstanceId") as int
-    // println tableInstanceId
+    println tableInstanceId
     def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
     def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
     // println prettyJson(virtualColumns)
@@ -45,17 +45,20 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println sqlColumnNamesArr
     def virtualColumnsMap = [:]
     if (virtualColumns) {
-        virtualColumns.each { vc ->
-            // println vc
-            def virtualColumnValue = vc.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
-            // println virtualColumnValue
-            int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vc.ColumnToInsertAfter) + 1
+        virtualColumns.each { vcConfig ->
+            // println prettyJson(vcConfig)
+            def vcColumnLabel = vcConfig.ColumnLabel
+            // println vcColumnLabel
+            def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
+            // println vcValue
+            int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1
             // println columnToInsertAfterIndex
-            if (virtualColumnValue) {
-                virtualColumnsMap[columnToInsertAfterIndex] = virtualColumnValue
+            if (vcValue) {
+                virtualColumnsMap[columnToInsertAfterIndex] = vcValue
+                props.setProperty("document.dynamic.userdefined.ddp_$vcColumnLabel", vcValue)
             }
             // Add VirtualColumn Label to column names
-            sqlColumnNamesArr.add(columnToInsertAfterIndex, vc.ColumnLabel)
+            sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
         }
     }
     // println sqlColumnNamesArr
@@ -73,8 +76,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             .collect{ it == "LAST_ELEMENT_IS_BLANK" ? "" : it }
 
         // Add VirtualColumn value to lineArr
-        virtualColumnsMap.each { columnToInsertAfterIndex, virtualColumnValue ->
-            lineArr.add(columnToInsertAfterIndex, virtualColumnValue)
+        virtualColumnsMap.each { columnToInsertAfterIndex, vcValue ->
+            lineArr.add(columnToInsertAfterIndex, vcValue)
         }
         // println lineArr
 

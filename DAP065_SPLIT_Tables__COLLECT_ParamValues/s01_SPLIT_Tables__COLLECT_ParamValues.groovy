@@ -85,24 +85,25 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             valuesMapArr << valuesMap
         }
 
-        if (virtualColumns) {
-            virtualColumns.each { vc ->
-                def valuesMap = [:]
-                def virtualColumnLabel = vc.ColumnLabel
-                def virtualColumnValue = vc.VirtualColumnRows?.find{
-                    it.TableInstanceId == tableInstanceRoot.TableInstanceId
-                }?.Value
-                if (virtualColumnValue) {
-                    valuesMap.'UserInputId' = "VIRTUAL"
-                    valuesMap.'UserInputName' = virtualColumnLabel
-                    valuesMap.'ParamName' = virtualColumnLabel
-                    valuesMap.'PivotConfig' = "none"
-                    valuesMap.'Value' = virtualColumnValue
-                    valuesMap.'MultiSelect' = value.contains(",") ? true : false
-                }
-                valuesMapArr << valuesMap
-            }
-        }
+        // if (virtualColumns) {
+        //     virtualColumns.each { vc ->
+        //       // println prettyJson(vc)
+        //         def valuesMap = [:]
+        //         def virtualColumnLabel = vc.ColumnLabel
+        //         def virtualColumnValue = vc.VirtualColumnRows?.find{
+        //             it.TableInstanceId == tableInstanceRoot.TableInstanceId
+        //         }?.Value
+        //         if (virtualColumnValue) {
+        //             valuesMap.'UserInputId' = "VIRTUAL"
+        //             valuesMap.'UserInputName' = virtualColumnLabel
+        //             valuesMap.'ParamName' = virtualColumnLabel
+        //             valuesMap.'PivotConfig' = "none"
+        //             valuesMap.'Value' = virtualColumnValue
+        //             // valuesMap.'MultiSelect' = value.contains(",") ? true : false
+        //         }
+        //         valuesMapArr << valuesMap
+        //     }
+        // }
 
         // valuesMapArr.each { println it }
         // println valuesMapArr.value.join(";")
