@@ -10,9 +10,9 @@ OPTS:
 
 GLOBALS:
   scripts:
-    - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
-        # - ddps: ddp_sqlParamUserInputValuesJson
-    - s01_DO_SummaryTables.groovy
+    # - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
+    - s01_DO_SummaryTables.groovy:
+        - ddps: ddp_sqlParamUserInputValuesJson
 
 # --------
 

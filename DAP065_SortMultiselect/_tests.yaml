@@ -2,7 +2,7 @@ OPTS:
   - data
   - DPPs:
       - DPP_HasSummarySource
-      - DPP_CurrentScript
+      - DPP_CurrientScript
   # - ddps
   - assertions
   # - no labels
@@ -23,11 +23,17 @@ GLOBALS:
 Happy Case:
   data: ba1.dat
   ddps: ba1.properties
+  DPPsOverride:
+    foo: >
+      {
+        "foo":"bar"
+      }
   ddpsOverride:
     document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
   assertions:
     # - assert data.contains("Supppportive")
     - DPP_HasSummarySource == "true"
+    - foo == "hello"
     - ddp_UserInputs == "hello"
     - asdfasdf == asdf
 # -------

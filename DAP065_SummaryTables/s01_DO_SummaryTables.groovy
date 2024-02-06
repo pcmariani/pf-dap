@@ -38,7 +38,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println prettyJson(sqlParamUserInputValues)
 
 
-    ArrayList sortKeysArr = sqlParamUserInputValues.findAll { it.isSorted }.Value[0].split(/\s*,\s*/)
+    ArrayList sortKeysArr = sqlParamUserInputValues.findAll { it.isSorted }?.Value[0]?.split(/\s*,\s*/)
     // println sortKeysArr
 
     // Virtual Columns
