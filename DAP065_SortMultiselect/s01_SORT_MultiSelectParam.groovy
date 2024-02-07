@@ -41,24 +41,23 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
         def pivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
         // println prettyJson(pivotedDataConfigsArr)
-        activePivotKeysArrsArr = pivotedDataConfigsArr.findAll{it.Active == true}.ColumnKey.collect { it.toUpperCase().split(DBIFS) }.transpose()
+        activePivotKeysArrsArr = pivotedDataConfigsArr.findAll{it.Active == true}.ColumnKey.collect{ it.toUpperCase().split(DBIFS).findAll{ it!=""} }.transpose()
       }
       // println activePivotKeysArrsArr
 
       if (activePivotKeysArrsArr) {
         activePivotKeysArrsArr.each { activePivotKeysArr ->
+          // println activePivotKeysArr
           ArrayList paramValuesArr = multiSelectParam.Value[0].toUpperCase().split(/\s*,\s*/)
-          // if (!paramValuesArr.disjoint(it)) {                                  // NO - if one param value exists in pivotKeysArr
-          // if (paramValuesArr.clone().sort() == it.clone().sort()) {            // NO - if param values and pivotKeysArr are all the same (not in same order)
-          // if (paramValuesArr.intersect(it).size() == paramValuesArr.size()) {  // NO - if all param values exist in pivotKeysArr (but pivotKeysArr could have more values)
-          def activePivotKeysAlsoInParamValuesArr = activePivotKeysArr.intersect(paramValuesArr)
-          if (activePivotKeysAlsoInParamValuesArr.size() == activePivotKeysArr.size()) {                 // YES - if all pivot keys exist in paramValuesArr (but paramValuesArr could have more values)
-            // sortedParamValuesArr = paramValuesArr.sort{ m -> activePivotKeysArr.indexOf(m) } 
-            // println sortedParamValuesArr
-            // param.Value = sortedParamValuesArr.join(", ")
-            param.Value = activePivotKeysAlsoInParamValuesArr.join(", ")
+          // println paramValuesArr
+          def intersection = paramValuesArr.intersect(activePivotKeysArr)
+          // println intersection
+          if (intersection) {
+            param.Value = intersection.sort{ m -> activePivotKeysArr.indexOf(m) }.join(", ")
+            // println param.Value
             param.isSorted = true
           }
+
         }
       }
     }
