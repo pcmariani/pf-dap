@@ -37,9 +37,21 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
     // println prettyJson(sqlParamUserInputValues)
 
+    def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
+    def pivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
+    // println prettyJson(pivotedDataConfigsArr)
+    activePivotOnKeysArrsArr = pivotedDataConfigsArr.findAll{it.Active == true}.ColumnKey.collect{ it.toUpperCase().split(DBIFS).findAll{ it!=""} }.transpose()
+    // println activePivotOnKeysArrsArr
+
+    def groupByConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated")
+    def groupByConfigsArr = groupByConfigsJson ? new JsonSlurper().parseText(groupByConfigsJson)?.Records : []
+    // println prettyJson(groupByConfigsArr)
+    activeGroupByKeysArrsArr = groupByConfigsArr.findAll{it.Active == true}.RowKey.collect { it.toUpperCase().split(DBIFS) }.transpose()
+    // println activeGroupByKeysArrsArr
 
     ArrayList sortKeysArr = sqlParamUserInputValues.findAll { it.isSorted }?.Value[0]?.split(/\s*,\s*/)
     // println sortKeysArr
+    // println ""
 
     // Virtual Columns
     // println sqlColumnNamesArr
@@ -58,6 +70,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
         }
     }
+    // println virtualColumnsMap
     // println sqlColumnNamesArr
 
 
@@ -71,12 +84,14 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             .replaceFirst(/$IFS\s*$/, "${IFS}LAST_ELEMENT_IS_BLANK")
             .split(/\s*$IFS\s*/)
             .collect{ it == "LAST_ELEMENT_IS_BLANK" ? "" : it }
+        // println lineArr
 
         // Add VirtualColumn value to lineArr
         virtualColumnsMap.each { columnToInsertAfterIndex, vcValue ->
+            // println columnToInsertAfterIndex
             lineArr.add(columnToInsertAfterIndex, vcValue)
         }
-        // println lineArr
+        // println lineArr.size()
 
         // Create the Data Table Location
         def dataTableLocation = sectionNumber + "-" + tableInstanceIndex.toString()
@@ -86,6 +101,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // which is a reference to the tableGroup with the same id
         lineArr += dataTableLocation + "###" + sqlParamValues
 
+        sortKeysArr = []
         if (sortKeysArr) {
             // find the item in the sortKeysArr which exists in this line make it the key for the line
             // the value will be an array of lines in case you had multiple lines for one key
@@ -97,11 +113,25 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             }
         }
         else {
-            // if we don't have a sortKeysList, just use an index for the map key to make it work with the map
-            dataMap[lineIndex] = [lineArr]
+            lineArr.collect { it ->
+                activeGroupByKeysArrsArr.each { activePivotKeysArr ->
+                  if (it in activePivotKeysArr) {
+                      dataMap[lineIndex] = [lineArr]
+                  }
+                }
+                activePivotOnKeysArrsArr.each { activePivotKeysArr ->
+                  if (it in activePivotKeysArr) {
+                      dataMap[lineIndex] = [lineArr]
+                  }
+                }
+            }
+
         }
         lineIndex++
     }
+    // dataMap.each { println it}
+    // println dataMap
+    // println ""
 
     // sort rows
     if (sortKeysArr) {
