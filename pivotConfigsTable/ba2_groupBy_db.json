@@ -1,0 +1,196 @@
+{
+  "Records": [
+    {
+      "GroupByRowsConfigId": 676,
+      "RowKey": "APPEARANCE (CLARITY)^^^APPEARANCE (CLARITY)^^^",
+      "RowLabels": "Appearance^^^Clarity^^^<= 30 NTU",
+      "Active": true,
+      "RowIndex": 1,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 677,
+      "RowKey": "APPEARANCE (COLORATION)^^^APPEARANCE (COLORATION)^^^",
+      "RowLabels": "Appearance^^^Coloration^^^Not more intensely colored than level 3 of the color standard",
+      "Active": true,
+      "RowIndex": 2,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 678,
+      "RowKey": "APPEARANCE (VISIBLE PARTICULATES)^^^APPEARANCE (VISIBLE PARTICULATES)^^^",
+      "RowLabels": "Appearance^^^Visible Particulates^^^Essentially free from visible particulates",
+      "Active": true,
+      "RowIndex": 3,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 679,
+      "RowKey": "CGE (NON-REDUCING)^^^INTACT IGG^^^",
+      "RowLabels": "CGE (Non-reducing)^^^Intact IgG^^^>= 90.0% IgG",
+      "Active": true,
+      "RowIndex": 4,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 680,
+      "RowKey": "CGE (REDUCING)^^^FRAGMENTS^^^",
+      "RowLabels": "CGE (Reducing)^^^Fragments^^^Report Results",
+      "Active": true,
+      "RowIndex": 5,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 681,
+      "RowKey": "CGE (REDUCING)^^^HEAVY CHAIN AND LIGHT CHAIN^^^",
+      "RowLabels": "CGE (Reducing)^^^Heavy Chain and Light Chain^^^>= 90.0% IgG as heavy + light chain",
+      "Active": true,
+      "RowIndex": 6,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 682,
+      "RowKey": "ENDOTOXIN^^^ENDOTOXIN^^^",
+      "RowLabels": "Endotoxin^^^Endotoxin^^^<= 0.125 EU/mg",
+      "Active": true,
+      "RowIndex": 7,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 683,
+      "RowKey": "EXTRACTABLE VOLUME^^^CONTAINER CONTENT FOR INJECTIONS^^^",
+      "RowLabels": "Extractable Volume^^^Container Content for Injections^^^Not less than labeled volume",
+      "Active": true,
+      "RowIndex": 8,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 684,
+      "RowKey": "INHIBITION ASSAY^^^POTENCY / BIOLOGICAL ACTIVITY^^^",
+      "RowLabels": "Inhibition Assay^^^Potency / Biological Activity^^^50 - 150% potency relative to reference material",
+      "Active": true,
+      "RowIndex": 9,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 685,
+      "RowKey": "INHIBITION ASSAY^^^TFPI_BIOASSAY_ELISA_SPECIFIC ACTIVITY_U/MG^^^",
+      "RowLabels": "Inhibition Assay^^^TFPI_BIOASSAY_ELISA_Specific Activity_U/mg^^^500 - 1500 U/mg",
+      "Active": true,
+      "RowIndex": 10,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 686,
+      "RowKey": "OSMOLALITY^^^OSMOLALITY^^^",
+      "RowLabels": "Osmolality^^^Osmolality^^^Report Results",
+      "Active": true,
+      "RowIndex": 11,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 687,
+      "RowKey": "PEPTIDE MAPPING^^^PEPTIDE PROFILE^^^",
+      "RowLabels": "Peptide Mapping^^^Peptide Profile^^^Comparable to Reference",
+      "Active": true,
+      "RowIndex": 12,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 688,
+      "RowKey": "SE-HPLC^^^HMMS^^^",
+      "RowLabels": "SE-HPLC^^^HMMS^^^<= 5.0%",
+      "Active": true,
+      "RowIndex": 13,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 689,
+      "RowKey": "SE-HPLC^^^MONOMER^^^",
+      "RowLabels": "SE-HPLC^^^Monomer^^^>= 90.0%",
+      "Active": true,
+      "RowIndex": 14,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 690,
+      "RowKey": "STERILITY^^^STERILITY^^^",
+      "RowLabels": "Sterility^^^Sterility^^^No growth detected",
+      "Active": true,
+      "RowIndex": 15,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 691,
+      "RowKey": "SUBVISIBLE PARTICLES^^^SUBVISIBLE PARTICLES >= 10 M^^^",
+      "RowLabels": "Subvisible Particles^^^Subvisible Particles >= 10 µm^^^Report Results",
+      "Active": true,
+      "RowIndex": 16,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 692,
+      "RowKey": "SUBVISIBLE PARTICLES^^^SUBVISIBLE PARTICLES >= 25 M^^^",
+      "RowLabels": "Subvisible Particles^^^Subvisible Particles >= 25 µm^^^Report Results",
+      "Active": true,
+      "RowIndex": 17,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 693,
+      "RowKey": "SUBVISIBLE PARTICLES^^^TFPI_PARTICULATE_MATTER_USP788_PARTICULATE MATTER_^^^",
+      "RowLabels": "Subvisible Particles^^^TFPI_PARTICULATE_MATTER_USP788_Particulate Matter_^^^Meets compendial requirements",
+      "Active": true,
+      "RowIndex": 18,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 694,
+      "RowKey": "UV SPECTROSCOPY^^^PROTEIN CONCENTRATION^^^",
+      "RowLabels": "UV Spectroscopy^^^Protein Concentration^^^100.0 +/- 15.0 mg/mL",
+      "Active": true,
+      "RowIndex": 19,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 695,
+      "RowKey": "ICE^^^ACIDIC SPECIES^^^",
+      "RowLabels": "iCE^^^Acidic Species^^^Report Results (%)",
+      "Active": true,
+      "RowIndex": 20,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 696,
+      "RowKey": "ICE^^^BASIC SPECIES^^^",
+      "RowLabels": "iCE^^^Basic Species^^^Report Results (%)",
+      "Active": true,
+      "RowIndex": 21,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 697,
+      "RowKey": "ICE^^^CHARGE HETEROGENEITY^^^",
+      "RowLabels": "iCE^^^Charge Heterogeneity^^^Comparable to Reference Material",
+      "Active": true,
+      "RowIndex": 22,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 698,
+      "RowKey": "ICE^^^MAIN SPECIES^^^",
+      "RowLabels": "iCE^^^Main Species^^^Report Results (%)",
+      "Active": true,
+      "RowIndex": 23,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 699,
+      "RowKey": "PH^^^PH^^^",
+      "RowLabels": "pH^^^pH^^^5.8 +/- 0.5",
+      "Active": true,
+      "RowIndex": 24,
+      "SuppressIfNoDataForAllCols": true
+    }
+  ]
+}
