@@ -101,7 +101,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // which is a reference to the tableGroup with the same id
         lineArr += dataTableLocation + "###" + sqlParamValues
 
-        sortKeysArr = []
         if (sortKeysArr) {
             // find the item in the sortKeysArr which exists in this line make it the key for the line
             // the value will be an array of lines in case you had multiple lines for one key

@@ -16,14 +16,14 @@ GLOBALS:
 
 # --------
 
-Test 1:
-  DPPs: ba1.properties
-  data: ba1.dat
-  ddps: ba1.properties
-  # ddpsOverride:
-  #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
-  #   document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
-  #     { "Records": [] }
+# Test 1:
+#   DPPs: ba1.properties
+#   data: ba1.dat
+#   ddps: ba1.properties
+#   # ddpsOverride:
+#   #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
+#   #   document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
+#   #     { "Records": [] }
 
 ba2:
   DPPs: ba2-1.properties
