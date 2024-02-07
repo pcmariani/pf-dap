@@ -1,0 +1,26 @@
+OPTS:
+  # - data
+  - ddps:
+      - ddp_NewPivotedDataConfigs
+      - ddp_NewGroupByConfigs
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
+
+GLOBALS:
+  scripts:
+    - 02_CREATE_PivotOnGroupBy_Configs.groovy:
+    # - 02b_CONSOLIDATE_Configs.groovy:
+    # - 03_CREATE_RowHeaderConfigs.groovy:
+
+# ---
+
+ba5:
+  DPPs: _testfiles/ba5.properties
+  docs:
+    - data: _testfiles/ba5.dat
+      ddps: _testfiles/ba5.properties
+      # ext: html
+# ---

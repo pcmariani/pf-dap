@@ -1,0 +1,48 @@
+15-001718|^|<= 30 NTU|^|Appearance (Clarity)|^|Appearance (Clarity)|^|8|^|Results|^|Lot Number
+16-004757|^|<= 30 NTU|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|Results|^|Lot Number
+15-001718|^|Not more intensely colored than level 3 of the color standard|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=Y6|^|Results|^|Lot Number
+16-004757|^|Not more intensely colored than level 3 of the color standard|^|Appearance (Coloration)|^|Appearance (Coloration)|^|<=BY6|^|Results|^|Lot Number
+15-001718|^|Essentially free from visible particulates|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|Results|^|Lot Number
+16-004757|^|Essentially free from visible particulates|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|Results|^|Lot Number
+15-001718|^|Report Results (%)|^|CGE (Non-reducing)|^|Intact IgG|^|96.4|^|Results|^|Lot Number
+16-004757|^|>= 90.0% IgG|^|CGE (Non-reducing)|^|Intact IgG|^|96.4|^|Results|^|Lot Number
+15-001718|^|Report Results|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|Results|^|Lot Number
+15-001718|^|>= 90.0% IgG as heavy + light chain|^|CGE (Reducing)|^|Heavy Chain and Light Chain|^|98.8|^|Results|^|Lot Number
+16-004757|^|Report Results|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|Results|^|Lot Number
+16-004757|^|>= 90.0% IgG as heavy + light chain|^|CGE (Reducing)|^|Heavy Chain and Light Chain|^|98.7|^|Results|^|Lot Number
+15-001718|^|<= 0.125 EU/mg|^|Endotoxin|^|Endotoxin|^|0.015|^|Results|^|Lot Number
+16-004757|^|<= 0.125 EU/mg|^|Endotoxin|^|Endotoxin|^|0.012|^|Results|^|Lot Number
+15-001718|^|Not less than labeled volume|^|Extractable Volume|^|Container Content for Injections|^|Not less than labeled volume|^|Results|^|Lot Number
+16-004757|^|Not less than labeled volume|^|Extractable Volume|^|Container Content for Injections|^|Not less than labeled volume|^|Results|^|Lot Number
+15-001718|^|50 - 150% potency relative to reference material|^|Inhibition Assay|^|Potency / Biological Activity|^|107|^|Results|^|Lot Number
+15-001718|^|500 - 1500 U/mg|^|Inhibition Assay|^|TFPI_BIOASSAY_ELISA_Specific Activity_U/mg|^|1068|^|Results|^|Lot Number
+16-004757|^|50 - 150% potency relative to reference material|^|Inhibition Assay|^|Potency / Biological Activity|^|106|^|Results|^|Lot Number
+16-004757|^|500 - 1500 U/mg|^|Inhibition Assay|^|TFPI_BIOASSAY_ELISA_Specific Activity_U/mg|^|1059|^|Results|^|Lot Number
+15-001718|^|Report Results|^|Osmolality|^|Osmolality|^|362|^|Results|^|Lot Number
+16-004757|^|Report Results|^|Osmolality|^|Osmolality|^|360|^|Results|^|Lot Number
+15-001718|^|Comparable to Reference|^|Peptide Mapping|^|Peptide Profile|^|Comparable to Reference|^|Results|^|Lot Number
+16-004757|^|Comparable to Reference|^|Peptide Mapping|^|Peptide Profile|^|Comparable to Reference|^|Results|^|Lot Number
+15-001718|^|<= 5.0%|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|Results|^|Lot Number
+15-001718|^|>= 90.0%|^|SE-HPLC|^|Monomer|^|98.8|^|Results|^|Lot Number
+16-004757|^|<= 5.0%|^|SE-HPLC|^|HMMS|^|NMT 0.5|^|Results|^|Lot Number
+16-004757|^|>= 90.0%|^|SE-HPLC|^|Monomer|^|98.9|^|Results|^|Lot Number
+15-001718|^|No growth detected|^|Sterility|^|Sterility|^|No growth detected|^|Results|^|Lot Number
+16-004757|^|No growth detected|^|Sterility|^|Sterility|^|No growth detected|^|Results|^|Lot Number
+15-001718|^|Report Results|^|Subvisible Particles|^|Subvisible Particles >= 10 µm|^|70|^|Results|^|Lot Number
+15-001718|^|Report Results|^|Subvisible Particles|^|Subvisible Particles >= 25 µm|^|3|^|Results|^|Lot Number
+15-001718|^|Meets compendial requirements|^|Subvisible Particles|^|TFPI_PARTICULATE_MATTER_USP788_Particulate Matter_|^|Meets compendial requirements|^|Results|^|Lot Number
+16-004757|^|Report Results|^|Subvisible Particles|^|Subvisible Particles >= 10 µm|^|226|^|Results|^|Lot Number
+16-004757|^|Report Results|^|Subvisible Particles|^|Subvisible Particles >= 25 µm|^|23|^|Results|^|Lot Number
+16-004757|^|Meets compendial requirements|^|Subvisible Particles|^|TFPI_PARTICULATE_MATTER_USP788_Particulate Matter_|^|Meets compendial requirements|^|Results|^|Lot Number
+15-001718|^|100.0 +/- 15.0 mg/mL|^|UV Spectroscopy|^|Protein Concentration|^|98.0|^|Results|^|Lot Number
+16-004757|^|100.0 +/- 15.0 mg/mL|^|UV Spectroscopy|^|Protein Concentration|^|101.3|^|Results|^|Lot Number
+15-001718|^|Report Results (%)|^|iCE|^|Acidic Species|^|18.8|^|Results|^|Lot Number
+15-001718|^|Report Results (%)|^|iCE|^|Basic Species|^|8.2|^|Results|^|Lot Number
+15-001718|^|Comparable to Reference Material|^|iCE|^|Charge Heterogeneity|^|Comparable to Reference Material|^|Results|^|Lot Number
+15-001718|^|Report Results (%)|^|iCE|^|Main Species|^|73.0|^|Results|^|Lot Number
+16-004757|^|Report Results (%)|^|iCE|^|Acidic Species|^|18.5|^|Results|^|Lot Number
+16-004757|^|Report Results (%)|^|iCE|^|Basic Species|^|6.0|^|Results|^|Lot Number
+16-004757|^|Comparable to Reference Material|^|iCE|^|Charge Heterogeneity|^|Comparable to Reference Material|^|Results|^|Lot Number
+16-004757|^|Report Results (%)|^|iCE|^|Main Species|^|75.6|^|Results|^|Lot Number
+15-001718|^|5.8 +/- 0.5|^|pH|^|pH|^|5.8|^|Results|^|Lot Number
+16-004757|^|5.8 +/- 0.5|^|pH|^|pH|^|5.8|^|Results|^|Lot Number
