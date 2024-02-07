@@ -1,20 +1,17 @@
 OPTIONS:
-  # - no data
-  - no props
-  - no assertions
-  - no guides
+  - data
+  # - props
+  # - assertions
+  # - no labels
 
 GLOBALS:
   scripts:
     - pivotConfigs_Db2Flow.groovy
 # ---
 
-Test 1:
+ba2:
   docs:
-    - data: stab1_pivotOn_db.json
-      ddps:
-        - hello: world
-      assertions:
+    - data: ba2_pivotOn_db.json
 # ---
 
 # Null Case:

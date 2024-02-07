@@ -46,7 +46,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         }
 
 
-
         // --- main logic --- //
 
         LinkedHashMap headerRow = [:]
@@ -59,14 +58,17 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           LinkedHashMap row = [:]
           LinkedHashMap typesRow = [:]
 
+          def columnKeyArr = item.ColumnKey.split(DBIFS)
           def columnLabelsArr = item.ColumnLabels.split(DBIFS)
-          for(int k = 0; k < numKeys; k++ ) {
+
+          columnKeyArr.eachWithIndex { key, k ->
             if (firstItem) {
               headerRow << ["Col$k": "Column Label ${k+1}"]
               typesRow << ["Col$k": "String"]
             }
-
-            row << ["Col$k": columnLabelsArr[k]]
+            if (key) {
+              row << ["Col$k": columnLabelsArr[k]]
+            }
           }
 
           if (firstItem) {
