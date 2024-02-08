@@ -37,21 +37,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
     // println prettyJson(sqlParamUserInputValues)
 
-    def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
-    def pivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
-    // println prettyJson(pivotedDataConfigsArr)
-    activePivotOnKeysArrsArr = pivotedDataConfigsArr.findAll{it.Active == true}.ColumnKey.collect{ it.toUpperCase().split(DBIFS).findAll{ it!=""} }.transpose()
-    // println activePivotOnKeysArrsArr
-
-    def groupByConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated")
-    def groupByConfigsArr = groupByConfigsJson ? new JsonSlurper().parseText(groupByConfigsJson)?.Records : []
-    // println prettyJson(groupByConfigsArr)
-    activeGroupByKeysArrsArr = groupByConfigsArr.findAll{it.Active == true}.RowKey.collect { it.toUpperCase().split(DBIFS) }.transpose()
-    // println activeGroupByKeysArrsArr
-
-    ArrayList sortKeysArr = sqlParamUserInputValues.findAll { it.isSorted }?.Value[0]?.split(/\s*,\s*/)
-    // println sortKeysArr
-    // println ""
+    def keysLabelsMapJson = props.getProperty("document.dynamic.userdefined.ddp_pivotConfigsKeysLabelsMapJson")
+    def keysLabelsMap = keysLabelsMapJson ? new JsonSlurper().parseText(keysLabelsMapJson) : []
+    // println keysLabelsMap
+    ArrayList keysLabelsMapKeySet = keysLabelsMap ? keysLabelsMap.keySet() : []
+    // println keysLabelsMapKeySet
 
     // Virtual Columns
     // println sqlColumnNamesArr
@@ -73,11 +63,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println virtualColumnsMap
     // println sqlColumnNamesArr
 
+    props.setProperty("document.dynamic.userdefined.ddp_sqlColumnNames", sqlColumnNamesArr.join(OFS))
+
 
     def reader = new BufferedReader(new InputStreamReader(is))
 
     def dataMap = [:]
-    def lineIndex = 0
+
     while ((line = reader.readLine()) != null ) {
 
         def lineArr = line
@@ -101,51 +93,40 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // which is a reference to the tableGroup with the same id
         lineArr += dataTableLocation + "###" + sqlParamValues
 
-        if (sortKeysArr) {
-            // find the item in the sortKeysArr which exists in this line make it the key for the line
-            // the value will be an array of lines in case you had multiple lines for one key
-            lineArr.collect {
-                if (it in sortKeysArr) {
-                    if (dataMap[it]) dataMap[it] << lineArr
-                    else dataMap[it] = [lineArr]
-                }
-            }
-        }
-        else {
-            lineArr.collect { it ->
-                activeGroupByKeysArrsArr.each { activePivotKeysArr ->
-                  if (it in activePivotKeysArr) {
-                      dataMap[lineIndex] = [lineArr]
-                  }
-                }
-                activePivotOnKeysArrsArr.each { activePivotKeysArr ->
-                  if (it in activePivotKeysArr) {
-                      dataMap[lineIndex] = [lineArr]
-                  }
-                }
-            }
+        def newLineArr = []
+        if (keysLabelsMap) {
+            String lineKey
 
+            lineArr.collect {
+                if (it in keysLabelsMapKeySet) {
+                    lineKey = it
+                    newLineArr << keysLabelsMap[it]
+                } else {
+                    newLineArr << it
+                }
+                if (lineKey) {
+                    dataMap[lineKey] = newLineArr
+                }
+            }
+        } else {
+            newLineArr = lineArr
         }
-        lineIndex++
+
     }
-    // dataMap.each { println it}
-    // println dataMap
-    // println ""
+    // dataMap.each { println it; println ""}
 
     // sort rows
-    if (sortKeysArr) {
-        dataMap = dataMap.sort { sortKeysArr.indexOf(it.key) }
+    if (keysLabelsMapKeySet) {
+        dataMap = dataMap.sort{ m -> keysLabelsMapKeySet.indexOf(m.key) }
     }
+    // dataMap.each { println it }
 
     /* OUTPUT */
+
     def outData = new StringBuilder()
     dataMap.each { k, v ->
-        v.each {
-            outData.append(it.join(OFS) + NEWLINE)
-        }
+        outData.append(v.join(OFS) + NEWLINE)
     }
-
-    props.setProperty("document.dynamic.userdefined.ddp_sqlColumnNames", sqlColumnNamesArr.join(OFS))
 
 
     is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));

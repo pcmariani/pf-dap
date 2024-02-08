@@ -1,11 +1,11 @@
 OPTS:
   # - data
   # - DPPs
-  - ddps:
-      - ddp_sqlParamUserInputValuesJson
+  # - ddps:
+  #     - ddp_sqlParamUserInputValuesJson
   #     - DPP_HasSummarySource
   #     - DPP_CurrientScript
-  # - assertions
+  - assertions
   # - no labels
   # - no println
   # - no errors
@@ -31,12 +31,12 @@ Happy Case:
   #     }
   # ddpsOverride:
   #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
-  # assertions:
-  #   # - assert data.contains("Supppportive")
-  #   - DPP_HasSummarySource == "true"
-  #   - foo == "hello"
-  #   - ddp_UserInputs == "hello"
-  #   - asdfasdf == asdf
+  assertions:
+    # - assert data.contains("Supppportive")
+    - DPP_HasSummarySource == "true"
+    - foo == "hello"
+    - ddp_UserInputs == "hello"
+    - asdfasdf == asdf
 # -------
 
 # Empty Case:
