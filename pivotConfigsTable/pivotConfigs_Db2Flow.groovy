@@ -62,11 +62,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           def columnLabelsArr = item.ColumnLabels.split(DBIFS)
 
           columnKeyArr.eachWithIndex { key, k ->
-            if (firstItem) {
-              headerRow << ["Col$k": "Column Label ${k+1}"]
-              typesRow << ["Col$k": "String"]
-            }
             if (key) {
+              if (firstItem) {
+                headerRow << ["Col$k": "Column Label ${k+1}"]
+                typesRow << ["Col$k": "String"]
+              }
               row << ["Col$k": columnLabelsArr[k]]
             }
           }

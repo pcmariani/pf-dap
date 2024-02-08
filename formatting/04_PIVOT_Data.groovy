@@ -22,8 +22,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     /* INPUTS */
 
-    // --- for pivot --- //
-
     def columnNames = props.getProperty("document.dynamic.userdefined.ddp_sqlColumnNames") ?: ""
     def columnNamesArr = columnNames ? columnNames.split(IFS).collect{it.toUpperCase()} : []
     // println columnNamesArr
