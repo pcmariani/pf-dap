@@ -11,7 +11,7 @@ OPTS:
 
 GLOBALS:
   scripts:
-    # - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
+    - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_CONSTRUCT_TableTitles.groovy:
         - ddps:
             - ddp_tableTitleText
@@ -33,8 +33,14 @@ GLOBALS:
 #     document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
 #       { "Records": [] }
 
-ba2:
+# ba2:
+#   # script: s01_CONSTRUCT_TableTitles.groovy
+#   DPPs: ba2.properties
+#   data: ba2.dat
+#   ddps: ba2.properties
+
+ba2_data:
   # script: s01_CONSTRUCT_TableTitles.groovy
-  DPPs: ba2.properties
-  data: ba2.dat
-  ddps: ba2.properties
+  DPPs: ba2_data.properties
+  data: ba2_data.dat
+  ddps: ba2_data.properties
