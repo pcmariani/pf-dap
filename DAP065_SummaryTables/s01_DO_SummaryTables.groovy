@@ -69,6 +69,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def reader = new BufferedReader(new InputStreamReader(is))
 
     def dataMap = [:]
+    int lineIndex = 0
 
     while ((line = reader.readLine()) != null ) {
 
@@ -92,6 +93,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // This id will become the value of the attribute "link" on the td for this cell
         // which is a reference to the tableGroup with the same id
         lineArr += dataTableLocation + "###" + sqlParamValues
+        // println lineArr
 
         def newLineArr = []
         if (keysLabelsMap) {
@@ -106,10 +108,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 }
                 if (lineKey) {
                     dataMap[lineKey] = newLineArr
+                } else {
+                    dataMap[lineIndex] = lineArr
                 }
             }
         } else {
-            newLineArr = lineArr
+           dataMap[lineIndex] = lineArr
         }
 
     }
