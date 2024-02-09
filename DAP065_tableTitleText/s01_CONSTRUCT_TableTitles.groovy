@@ -91,7 +91,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     (tableTitleText =~ /\{\{(.*?)\}\}/).collect{match -> match[1]}.unique().each() { name ->
       // println name
-      def value = sqlParamUserInputValues?.find{it.UserInputName == name}?.Value
+      def value = sqlParamUserInputValues?.find{it.UserInputName == name}?.DisplayValue
       // println value
       if (!value || value == null) {
         def propName = name.replaceAll(" ","_")
