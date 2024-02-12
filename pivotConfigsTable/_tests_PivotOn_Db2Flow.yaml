@@ -12,6 +12,7 @@ GLOBALS:
 ba2:
   docs:
     - data: ba2_pivotOn_db.json
+      ddps: ba2_pivotOn_db.properties
 # ---
 
 # Null Case:

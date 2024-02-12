@@ -12,8 +12,7 @@ GLOBALS:
 Test 1:
   docs:
     - data: ba2_groupBy_db.json
-      # - data: stab1_groupBy_db.json
-      assertions:
+      ddps: ba2_pivotOn_db.properties
 # ---
 
 # Null Case:
