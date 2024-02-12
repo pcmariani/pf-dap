@@ -27,10 +27,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def reportContentItem = reportContentItemJson ? new JsonSlurper().parseText(reportContentItemJson).Records[0] : []
     // println reportContentItem
 
-    // def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
-    // def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
-    // // println prettyJson(virtualColumns)
-
 
     /* LOGIC */
 
@@ -60,9 +56,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                     null
             }
             else if (source.ResultTableType =~ /(?i)summary/) {
-                valuesMap.'PivotConfig' = tempValuesPerSourcePerTableType.'Data Table'.find { 
+                def dataTableValuesMap = tempValuesPerSourcePerTableType.'Data Table'.find { 
                     it.UserInputId == userInput.UserInputId
-                }?.PivotConfig
+                }
+                valuesMap.'PivotConfig' = dataTableValuesMap?.PivotConfig
+                valuesMap.'DataTableParamName' = dataTableValuesMap?.ParamName
             }
 
             value = userInputValues.find{it.UserInputId == param.UserInputId}?.UserInputValue
@@ -91,21 +89,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         tempValuesPerSourcePerTableType."$source.ResultTableType" = valuesMapArr
         // tempValuesPerSourcePerTableType.each { println it ; println "----"}
 
-        // if (virtualColumns) {
-        //     virtualColumns.each { vcConfig ->
-        //       // println prettyJson(vcConfig)
-        //       def tableInstanceId = tableInstanceRoot.TableInstanceId
-        //       def vcColumnLabel = vcConfig.ColumnLabel
-        //       // println vcColumnLabel
-        //       def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
-        //       // println vcValue
-        //       if (vcValue) {
-        //         props.setProperty("document.dynamic.userdefined.ddp_$vcColumnLabel", vcValue)
-        //       }
-        //     }
-        // }
-
-
         /* OUTPUT */
 
         def outData = [Records: [source]]
@@ -118,6 +101,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         is = new ByteArrayInputStream(prettyJson(outData).getBytes("UTF-8"));
         dataContext.storeStream(is, props);
     }
+    // tempValuesPerSourcePerTableType.each { println it ; println "----"}
 }
 
 private static String prettyJson(def thing) { return JsonOutput.prettyPrint(JsonOutput.toJson(thing)) }
