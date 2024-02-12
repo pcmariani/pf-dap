@@ -22,6 +22,8 @@
       "DisplayHeadersOnSide": true,
       "Transpose": false,
       "IsPivot": true,
+      "PivotOnConfigColLabelsEditable": true,
+      "GroupByConfigRowLabelsEditable": true,
       "PivotOnColumns": [
         {
           "Column": "Lot Number Label",
