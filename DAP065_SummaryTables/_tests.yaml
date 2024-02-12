@@ -1,5 +1,5 @@
 OPTS:
-  - data
+  # - data
   # - ddps:
   # - DPPs
   # - assertions
@@ -11,7 +11,7 @@ GLOBALS:
   scripts:
     - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_DO_SummaryTables.groovy:
-    # - data
+        - data
     # - ddps:
     #     - ddp_sqlParamUserInputValuesJson
     #     - ddp_pivotConfigsKeysLabelsMap
@@ -27,14 +27,14 @@ GLOBALS:
 #   #   document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
 #   #     { "Records": [] }
 
-# ba2:
-#   DPPs: ba2-1.properties
-#   docs:
-#     - data: ba2-1.dat
-#       ddps: ba2-1.properties
-#     - data: ba2-2.dat
-#       ddps: ba2-2.properties
-# #------
+ba2:
+  DPPs: ba2-1.properties
+  docs:
+    - data: ba2-1.dat
+      ddps: ba2-1.properties
+    - data: ba2-2.dat
+      ddps: ba2-2.properties
+#------
 
 stab1:
   DPPs: stab1-1_summary.properties

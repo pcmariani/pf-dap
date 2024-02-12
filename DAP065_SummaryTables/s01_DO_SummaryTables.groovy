@@ -71,6 +71,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def dataMap = [:]
     int lineIndex = 0
 
+    def columnInPivotConfigArr = [false]*sqlColumnNamesArr.size()
+    def firstLine = true
     while ((line = reader.readLine()) != null ) {
 
         def lineArr = line
@@ -95,27 +97,39 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         lineArr += dataTableLocation + "###" + sqlParamValues
         // println lineArr
 
-        def newLineArr = []
-        if (keysLabelsMap) {
-            String lineKey
+        ArrayList newLineArr = []
+        String lineKey
+        Boolean addLineOnlyIfInKeysLabels = false
 
-            lineArr.collect {
-                if (it in keysLabelsMapKeySet) {
-                    lineKey = it
-                    newLineArr << keysLabelsMap[it]
-                } else {
-                    newLineArr << it
-                }
-                if (lineKey) {
-                    dataMap[lineKey] = newLineArr
-                } else {
-                    dataMap[lineIndex] = lineArr
+        lineArr.withIndex().collect { item, j ->
+            if (firstLine) {
+                // println j + " -- " + sqlColumnNamesArr[j] + " -- " + item
+                def columnInPivotConfig = sqlParamUserInputValues.find{it.ParamName == sqlColumnNamesArr[j]}?.PivotConfig
+
+                if (columnInPivotConfig) {
+                    columnInPivotConfigArr[j] = true
+                    addLineOnlyIfInKeysLabels = true
                 }
             }
-        } else {
-           dataMap[lineIndex] = lineArr
+            
+            if (item in keysLabelsMapKeySet && columnInPivotConfigArr[j]) {
+                lineKey = item
+                newLineArr << keysLabelsMap[item]
+            } else {
+                newLineArr << item
+            }
+
         }
 
+        if (addLineOnlyIfInKeysLabels && lineKey) {
+            dataMap[lineKey] = newLineArr
+        }
+        else {
+            dataMap[lineIndex] = lineArr
+        }
+
+        // println columnInPivotConfigArr
+        firstLine = false
     }
     // dataMap.each { println it; println ""}
 
