@@ -105,53 +105,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     props.setProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson", prettyJson(sqlParamUserInputValues))
 
-
-    //
-    //
-    // def filteredSortedParamValuesArr = []
-    //
-    // def multiSelectParam = sqlParamUserInputValues.findAll { it.MultiSelect == true} ?: []
-    // // println multiSelectParam.Value
-    //
-    // if (multiSelectParam) {
-    //   def param = multiSelectParam[0]
-    //   ArrayList pivotKeysArr = []
-    //   ArrayList activePivotKeysArrsArr = []
-    //
-    //   if (param.PivotConfig == "GroupBy") {
-    //     def groupByConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_GroupByConfigsConsolidated")
-    //     def groupByConfigsArr = groupByConfigsJson ? new JsonSlurper().parseText(groupByConfigsJson)?.Records : []
-    //     // println prettyJson(groupByConfigsArr)
-    //     activePivotKeysArrsArr = groupByConfigsArr.findAll{it.Active == true}.RowKey.collect { it.toUpperCase().split(DBIFS) }.transpose()
-    //   }
-    //   else if (param.PivotConfig == "PivotOn") {
-    //     def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
-    //     def pivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
-    //     // println prettyJson(pivotedDataConfigsArr)
-    //     activePivotKeysArrsArr = pivotedDataConfigsArr.findAll{it.Active == true}.ColumnKey.collect{ it.toUpperCase().split(DBIFS).findAll{ it!=""} }.transpose()
-    //   }
-    //   // println activePivotKeysArrsArr
-    //
-    //   if (activePivotKeysArrsArr) {
-    //     activePivotKeysArrsArr.each { activePivotKeysArr ->
-    //       // println activePivotKeysArr
-    //       ArrayList paramValuesArr = multiSelectParam.Value[0].toUpperCase().split(/\s*,\s*/)
-    //       // println paramValuesArr
-    //       def intersection = paramValuesArr.intersect(activePivotKeysArr)
-    //       // println intersection
-    //       if (intersection) {
-    //         param.Value = intersection.sort{ m -> activePivotKeysArr.indexOf(m) }.join(", ")
-    //         // println param.Value
-    //         param.isSorted = true
-    //       }
-    //
-    //     }
-    //   }
-    // }
-    // // println prettyJson(multiSelectParam)
-    //
-    // // println prettyJson(sqlParamUserInputValues)
-    //
     dataContext.storeStream(is, props);
 
 }
