@@ -8,12 +8,17 @@ String DBIFS = /\^\^\^/
 logger = ExecutionUtil.getBaseLogger()
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
+
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
 
+    def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
+    def sources = sourcesJson ? new JsonSlurper().parseText(sourcesJson).Records[0] : []
+    // println prettyJson(sources)
+
     ArrayList root = new JsonSlurper().parse(is).Records
 
-    def outData
+    LinkedHashMap outData
 
     // empty input
     if (!root) {
@@ -63,36 +68,29 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
           rowKeyArr.eachWithIndex { key, k ->
             if (key) {
+              int rowIndex = sources.GroupByConfigRowLabelsEditable ? k : k + 5
+              def rowConfig = sources.PivotGroupByColumns[k]
+              def rowLabel = rowConfig.Label ?: rowConfig.Column
               if (firstItem) {
-                headerRow << ["Col$k": "Column Label ${k+1}"]
-                typesRow << ["Col$k": "String"]
+                headerRow << ["Col$rowIndex": rowLabel]
+                typesRow << ["Col$rowIndex": "String"]
               }
-              row << ["Col$k": rowLabelsArr[k]]
+              row << ["Col$rowIndex": rowLabelsArr[k]]
             }
-          }
-
-
-          for(int k = 0; k < numKeysCols; k++ ) {
-            if (firstItem) {
-              headerRow << ["Col$k": "Row Label ${k+1}"]
-              typesRow << ["Col$k": "String"]
-            }
-
-            row << ["Col$k": rowLabelsArr[k]]
           }
 
           if (firstItem) {
             headerRow << [
-              "Col9": "Active",
-              "Col10": "Suppress Row If No Data For All Cols",
+              "Col10": "Active",
+              "Col11": "Suppress Row If No Data For All Cols",
               "Col16": "RowKey",
               "Col17": "RowLabels",
               "Col18": "GroupByRowsConfigId",
               "Col19": "RowIndex"
             ]
             typesRow << [
-              "Col9": true,
               "Col10": true,
+              "Col11": true,
               "Col16": "String",
               "Col17": "String",
               "Col18": "int",
@@ -103,8 +101,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           }
 
           row << [
-            "Col9": item.Active,
-            "Col10": item.SuppressIfNoDataForAllCols,
+            "Col10": item.Active,
+            "Col11": item.SuppressIfNoDataForAllCols,
             "Col16": item.RowKey,
             "Col17": item.RowLabels,
             "Col18": item.GroupByRowsConfigId,

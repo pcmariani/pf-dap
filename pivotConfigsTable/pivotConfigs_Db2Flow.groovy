@@ -8,12 +8,17 @@ String DBIFS = /\^\^\^/
 logger = ExecutionUtil.getBaseLogger()
 
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
+
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
 
+    def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
+    def sources = sourcesJson ? new JsonSlurper().parseText(sourcesJson).Records[0] : []
+    // println prettyJson(sources)
+
     ArrayList root = new JsonSlurper().parse(is).Records
 
-    def outData
+    LinkedHashMap outData
 
     // empty input
     if (!root) {
@@ -63,30 +68,33 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
           columnKeyArr.eachWithIndex { key, k ->
             if (key) {
+              int colIndex = sources.PivotOnConfigColLabelsEditable ? k : k + 5
+              def columnConfig = sources.PivotOnColumns[k]
+              def columnLabel = columnConfig.Label ?: columnConfig.Column
               if (firstItem) {
-                headerRow << ["Col$k": "Column Label ${k+1}"]
-                typesRow << ["Col$k": "String"]
+                headerRow << ["Col$colIndex": columnLabel]
+                typesRow << ["Col$colIndex": "String"]
               }
-              row << ["Col$k": columnLabelsArr[k]]
+              row << ["Col$colIndex": columnLabelsArr[k]]
             }
           }
 
           if (firstItem) {
             headerRow << [
-              "Col9": "Active",
-              "Col10": "Suppress Column If No Data For All Rows",
-              "Col11": "Sub-Table Index",
-              "Col12": "Column Width",
+              "Col10": "Active",
+              "Col11": "Suppress Column If No Data For All Rows",
+              "Col12": "Sub-Table Index",
+              "Col13": "Column Width",
               "Col16": "ColumnKey",
               "Col17": "ColumnLabels",
               "Col18": "PivotedDataConfigId",
               "Col19": "ColumnIndex"
             ]
             typesRow << [
-              "Col9": true,
               "Col10": true,
-              "Col11": "int",
+              "Col11": true,
               "Col12": "int",
+              "Col13": "int",
               "Col16": "String",
               "Col17": "String",
               "Col18": "int",
@@ -97,10 +105,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           }
 
           row << [
-            "Col9": item.Active,
-            "Col10": item.SuppressIfNoDataForAllRows,
-            "Col11": item.SubTableIndex,
-            "Col12": item.ColumnWidth,
+            "Col10": item.Active,
+            "Col11": item.SuppressIfNoDataForAllRows,
+            "Col12": item.SubTableIndex,
+            "Col13": item.ColumnWidth,
             "Col16": item.ColumnKey,
             "Col17": item.ColumnLabels,
             "Col18": item.PivotedDataConfigId,
