@@ -43,14 +43,23 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       rowArr = []
 
       configsArr.each { item ->
+
         def newLabelsArr = []
-        (0..8).each { j ->
-          newLabelsArr << item."Col$j"
+        (0..4).each { j ->
+          if (item."Col${j}") {
+            newLabelsArr << item."Col${j}"
+          }
+          else if (item."Col${j+5}") {
+            newLabelsArr << item."Col${j+5}"
+          }
+          else {
+            newLabelsArr << null
+          }
         }
         // println newLabelsArr
+
         def labelsArr = item.Col17.split(DBIFS)
         // println labelsArr
-
         labelsArr.eachWithIndex { label, j ->
           def newLabel = newLabelsArr[j]
           if (newLabel) {

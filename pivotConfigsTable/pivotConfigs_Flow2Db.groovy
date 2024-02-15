@@ -21,7 +21,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     else {
 
-
       // --- calculate numKeys --- //
 
       ArrayList numKeysArr = []
@@ -44,15 +43,25 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       rowArr = []
 
       configsArr.each { item ->
+
         def newLabelsArr = []
-        (0..8).each { j ->
-          newLabelsArr << item."Col$j"
+        (0..4).each { j ->
+          if (item."Col${j}") {
+            newLabelsArr << item."Col${j}"
+          }
+          else if (item."Col${j+5}") {
+            newLabelsArr << item."Col${j+5}"
+          }
+          else {
+            newLabelsArr << null
+          }
         }
         // println newLabelsArr
+
         def labelsArr = item.Col17.split(DBIFS)
         // println labelsArr
-
         labelsArr.eachWithIndex { label, j ->
+          // println label
           def newLabel = newLabelsArr[j]
           if (newLabel) {
             labelsArr[j] = newLabel
@@ -64,11 +73,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           PivotedDataConfigId: item."Col18",
           ColumnKey: item."Col16",
           ColumnLabels: labelsArr.join(DBOFS),
-          Active: item."Col9",
-          SuppressIfNoDataForAllRows: item."Col10",
+          Active: item."Col10",
+          SuppressIfNoDataForAllRows: item."Col11",
           ColumnIndex: item."Col19",
-          SubTableIndex: item."Col11",
-          ColumnWidth: item."Col12",
+          SubTableIndex: item."Col12",
+          ColumnWidth: item."Col13",
         ]
       }
       // println prettyJson(rowArr)

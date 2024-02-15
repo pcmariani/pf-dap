@@ -69,10 +69,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           rowKeyArr.eachWithIndex { key, k ->
             if (key) {
               int rowIndex = sources.GroupByConfigRowLabelsEditable ? k : k + 5
-              def rowConfig = sources.PivotGroupByColumns[k]
-              def rowLabel = rowConfig.Label ?: rowConfig.Column
+              def config = sources.PivotGroupByColumns[k]
+              def headerLabel = config.Label ?: config.Column
               if (firstItem) {
-                headerRow << ["Col$rowIndex": rowLabel]
+                headerRow << ["Col$rowIndex": headerLabel]
                 typesRow << ["Col$rowIndex": "String"]
               }
               row << ["Col$rowIndex": rowLabelsArr[k]]
