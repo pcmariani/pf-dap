@@ -24,11 +24,12 @@ GLOBALS:
 Happy Case:
   data: ba1.dat
   ddps: ba1.properties
-  # DPPsOverride:
-  #   foo: >
-  #     {
-  #       "foo":"bar"
-  #     }
+  DPPsOverride:
+    # foo: >
+    #   {
+    #     "foo":"bar"
+    #   }
+    foo: "hello world"
   # ddpsOverride:
   #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
   assertions:
