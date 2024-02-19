@@ -70,7 +70,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             if (key) {
               int rowIndex = sources.GroupByConfigRowLabelsEditable ? k : k + 5
               def config = sources.PivotGroupByColumns[k]
-              def headerLabel = config.Label ?: config.Column
+              def headerLabel = config.Column + (config.Label ? " ("+config.Label+")" : "")
               if (firstItem) {
                 headerRow << ["Col$rowIndex": headerLabel]
                 typesRow << ["Col$rowIndex": "String"]
