@@ -72,8 +72,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           GroupByRowsConfigId: item."Col18",
           RowKey: item."Col16",
           RowLabels: labelsArr.join(DBOFS),
-          Active: item."Col9",
-          SuppressIfNoDataForAllCols: item."Col10",
+          Active: item."Col10",
+          SuppressIfNoDataForAllCols: item."Col11",
           RowIndex: item."Col19",
         ]
       }
