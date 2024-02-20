@@ -61,7 +61,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def labelsArr = item.Col17.split(DBIFS)
         // println labelsArr
         labelsArr.eachWithIndex { label, j ->
-          // println label
           def newLabel = newLabelsArr[j]
           if (newLabel) {
             labelsArr[j] = newLabel
