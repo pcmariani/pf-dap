@@ -152,8 +152,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             // println r + " " + pivotedDataArr[r].clone().unique() + " " + activeGroupByConfigsArr[r - numHeaderRows].SuppressIfNoDataForAllCols
             if (pivotedDataArr[r].clone().unique() == [NO_TEST]
                 && activeGroupByConfigsArr[r - numHeaderRows].SuppressIfNoDataForAllCols) {
-                println c + " " + activeGroupByConfigsArr[r - numHeaderRows].RowKey
-                rowsToRemove << c
+                // println r + " " + c + " " + activeGroupByConfigsArr[r - numHeaderRows].RowKey
+                rowsToRemove << r
             }
             // suppressIfNoDataForAllCols = true
         }
@@ -221,7 +221,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     for (c = 0; c < pivotedDataArr[0].size(); c++) {
         // println (["-------\n", numCols-1, pivotedDataArr[0].size() - 1, (c>9?c:c+" "), colsToRemove, "\n-------"].join(" ")).toString()
         if (c in colsToRemove) {
-            for (r = 0; r < numRows; r++) {
+            for (r = 0; r < pivotedDataArr.size(); r++) {
                 // println ([(r>9?r:r+" "),(c>9?c:c+" "),pivotedDataArr[r][c]].join("  ")).toString()
                 pivotedDataArr[r].removeAt(c)
             }

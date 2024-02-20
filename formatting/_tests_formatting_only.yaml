@@ -1,22 +1,21 @@
-OPTIONS:
-  # - no data
-  - no props
-  - no assertions
+OPTS:
+  # - data
+  # - DPPs
+  # - ddps
+  # - assertions
+  # - no labels
   # - no println
-  # - no guides
+  # - no errors
+  # - no files
 
 GLOBALS:
   scripts:
     - 04_PIVOT_Data.groovy:
-        - no data
     - 05_BUILD_Html.groovy:
-        - no data
     - 06_WRAP_Table.groovy:
-        - no data
     - 07_APPLY_ColumnWidths.groovy:
-        - no data
     - 08_MERGE_Cells_Html.groovy:
-        - no data
+        # - data
 
 # ST1 Summary Table:
 #   DPPs: _testfiles/ST1.properties
@@ -25,11 +24,19 @@ GLOBALS:
 #       props: _testfiles/ST1.properties
 #       # ext: html
 
-IND:
-  DPPs: _testfiles/ind1.properties
+# IND:
+#   DPPs: _testfiles/ind1.properties
+#   docs:
+#     # - data: _testfiles/ind1.dat
+#     #   ddps: _testfiles/ind1.properties
+#     - data: _testfiles/ind2.dat
+#       ddps: _testfiles/ind2.properties
+#       # ext: html
+
+stab4:
+  DPPs: stab4/stab4.properties
   docs:
-    # - data: _testfiles/ind1.dat
-    #   ddps: _testfiles/ind1.properties
-    - data: _testfiles/ind2.dat
-      ddps: _testfiles/ind2.properties
+    - data: stab4/stab4.dat
+      ddps: stab4/stab4.properties
       ext: html
+# ---
