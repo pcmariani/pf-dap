@@ -71,6 +71,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def dataMap = [:]
     int lineIndex = 0
 
+    Boolean addLineOnlyIfInKeysLabels = false
     def columnInPivotConfigArr = [false]*sqlColumnNamesArr.size()
     def firstLine = true
     while ((line = reader.readLine()) != null ) {
@@ -99,7 +100,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         ArrayList newLineArr = []
         String lineKey
-        Boolean addLineOnlyIfInKeysLabels = false
 
         lineArr.withIndex().collect { item, j ->
             if (firstLine) {
@@ -112,7 +112,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 }
             }
             
+            // println item in keysLabelsMapKeySet
+            // if (columnInPivotConfigArr[j]) {
+            //   println j + " " + addLineOnlyIfInKeysLabels + " " + (item in keysLabelsMapKeySet) + " " + item
+            // }
             if (item in keysLabelsMapKeySet && columnInPivotConfigArr[j]) {
+            // if (item in keysLabelsMapKeySet) {
+                // println item
                 lineKey = item
                 newLineArr << keysLabelsMap[item]
             } else {
@@ -120,11 +126,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             }
 
         }
+        // println addLineOnlyIfInKeysLabels.toString() + " " + lineKey + " " + newLineArr
 
         if (addLineOnlyIfInKeysLabels && lineKey) {
             dataMap[lineKey] = newLineArr
         }
-        else {
+        else if (!addLineOnlyIfInKeysLabels) {
             dataMap[lineIndex] = lineArr
         }
 
