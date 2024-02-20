@@ -27,13 +27,22 @@ GLOBALS:
 #   #   document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
 #   #     { "Records": [] }
 
-ba2:
-  DPPs: ba2-1.properties
+# ba2:
+#   DPPs: ba2-1.properties
+#   docs:
+#     - data: ba2-1.dat
+#       ddps: ba2-1.properties
+#     - data: ba2-2.dat
+#       ddps: ba2-2.properties
+# #------
+
+ba3:
+  DPPs: ba3-1.properties
   docs:
-    - data: ba2-1.dat
-      ddps: ba2-1.properties
-    - data: ba2-2.dat
-      ddps: ba2-2.properties
+    - data: ba3-1.dat
+      ddps: ba3-1.properties
+    - data: ba3-2.dat
+      ddps: ba3-2.properties
 #------
 
 stab1:
@@ -43,3 +52,7 @@ stab1:
       ddps: stab1-1_summary.properties
     - data: stab1-2_summary.dat
       ddps: stab1-2_summary.properties
+    - data: stab1-3_summary.dat
+      ddps: stab1-3_summary.properties
+    - data: stab1-4_summary.dat
+      ddps: stab1-4_summary.properties

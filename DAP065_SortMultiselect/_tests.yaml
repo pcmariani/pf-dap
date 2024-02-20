@@ -1,5 +1,5 @@
 OPTS:
-  # - data
+  - data
   # - DPPs
   # - ddps:
   #     - ddp_sqlParamUserInputValuesJson
@@ -25,19 +25,22 @@ Happy Case:
   data: ba1.dat
   ddps: ba1.properties
   DPPsOverride:
-    # foo: >
-    #   {
-    #     "foo":"bar"
-    #   }
-    foo: "hello world"
+    foo: >
+      {
+        "foo":"bar"
+      }
+    # foo: "hello world"
   # ddpsOverride:
   #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
   assertions:
-    # - assert data.contains("Supppportive")
-    - DPP_HasSummarySource == "true"
+    - assert data.contains("Supppportive")
+    - desc: this is my first assertion
+      assert: DPP_HasSummarySource == "false"
     - foo == "hello"
-    - ddp_UserInputs == "hello"
+    - DPP_HasSummarySource == "true"
     - asdfasdf == asdf
+    - ddp_UserInputs == "hello"
+    # - ddp_Sources == "hello"
 # -------
 
 # Empty Case:
