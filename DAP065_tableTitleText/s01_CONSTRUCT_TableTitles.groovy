@@ -23,7 +23,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int tableInstanceIndex = (props.getProperty("document.dynamic.userdefined.ddp_tableInstanceIndex") ?: "1") as int
     // println tableInstanceIndex
     def tableInstanceJson = props.getProperty("document.dynamic.userdefined.ddp_TableInstance")
-    def tableInstance = tableInstanceJson ? new JsonSlurper().parseText(tableInstanceJson) : []
+    def tableInstance = tableInstanceJson ? new JsonSlurper().parseText(tableInstanceJson).Records[0] : []
     // println tableInstance
     def resultTableType = props.getProperty("document.dynamic.userdefined.ddp_resultTableType")
     // println resultTableType
@@ -52,11 +52,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
             // println vcValue
             if (vcValue) {
-                sqlParamUserInputValues << [UserInputName: vcColumnLabel, Value: vcValue]
+                sqlParamUserInputValues << [UserInputName: vcColumnLabel, DisplayValue: vcValue]
             }
         }
     }
-
+    // println prettyJson(sqlParamUserInputValues)
 
 
     // set tableTitleText
@@ -72,8 +72,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     else if (resultTableType =~ /(?i)Data/) {
       if (tableInstance.TableTitleOverride) {
         tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " +
-        ( tableDefinition.TableTitleOverride != null && tableDefinition.TableTitleOverride != ""
-        ? tableDefinition.TableTitleOverride
+        ( tableInstance.TableTitleOverride != null && tableInstance.TableTitleOverride != ""
+        ? tableInstance.TableTitleOverride
         : tableTitleText )
       }
       else {
