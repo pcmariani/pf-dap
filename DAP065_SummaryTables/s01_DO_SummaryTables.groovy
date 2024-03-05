@@ -53,9 +53,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             // println vcValue
             int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1
             // println columnToInsertAfterIndex
-            if (vcValue) {
-                virtualColumnsMap[columnToInsertAfterIndex] = vcValue
-            }
+            virtualColumnsMap[columnToInsertAfterIndex] = vcValue ?: ""
             // Add VirtualColumn Label to column names
             sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
         }
