@@ -33,10 +33,23 @@ GLOBALS:
 #       ddps: _testfiles/ind2.properties
 #       # ext: html
 
-stab4:
-  DPPs: stab4/stab4.properties
+# stab4:
+#   DPPs: stab4/stab4.properties
+#   docs:
+#     - data: stab4/stab4.dat
+#       ddps: stab4/stab4.properties
+#       ext: html
+# # ---
+
+stab5:
+  scripts:
+    - 05_BUILD_Html.groovy:
+    - 06_WRAP_Table.groovy:
+    - 07_APPLY_ColumnWidths.groovy:
+    - 08_MERGE_Cells_Html.groovy:
+  DPPs: stab5/stab5_summary.properties
   docs:
-    - data: stab4/stab4.dat
-      ddps: stab4/stab4.properties
+    - data: stab5/stab5_summary.dat
+      ddps: stab5/stab5_summary.properties
       ext: html
 # ---
