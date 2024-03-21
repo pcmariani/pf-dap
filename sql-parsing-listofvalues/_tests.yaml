@@ -1,12 +1,20 @@
-tests:
-  # - sqlMetaList
-  # - PHRD_SqlMeta
-  # - IND_Meta
-  # - eln_sqlMeta
-  # - data/phrd_091
-  - data/snowflake_meta
-  - data/DAP061_snowflake_robert
+OPTS:
+  # - data
+  # - ddps:
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no files
 
-scripts:
-  - 061_PARSE_SqlStatement -o -xp -xd
-  # - 091_GEN_ListOfValues -o -xp -xd
+GLOBALS:
+  scripts:
+    - s061_PARSE_SqlStatement_current.groovy
+    # - 091_GEN_ListOfValues.groovy
+
+# --------
+
+test 1:
+  data: ba-ds.dat
+  ddps: ba-ds.properties
+#------
