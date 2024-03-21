@@ -57,31 +57,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         /*
          * --- parse the COLUMNS ---
          */
-        // // TODO: Account for column aliases with no AS which are inside double-quotes
-        // def selectClause = sqlStatementArr[0].replaceAll(/(?si)(.*?)\bJOIN.*/,"\$1").replaceAll(/(?si)(.*)\bFROM.*/,"\$1").replaceAll(/SELECT\s*?\n*/,"")
-        // // println selectClause
-        // if (uIndex == unionedSqlStatementsArr.size()-1) {
-        //     columnsArr = selectClause
-        //         .split(/,(?![^(]*\))/)
-        //         .collect {
-        //             it.trim()
-        //         }
-        //         .collect {
-        //             if (it =~/(?i)\bAS\b/)                     // if column contains AS
-        //                 it.split(/(?i)\s*\bAS\b\s*/)[-1]       // split on AS and use the last element
-        //             else if (it =~ /\) /)                      // else if column contains a space after a )
-        //                 it.split(/\) +/)[-1]                   // split on space ) and use the last element
-        //             // else if (it =~ / /)                       // else if column contains a space
-        //             // it.split(/ +/)[-1]                        // split on space and use the last element
-        //             else it                                    // else use the column as is
-        //         }
-        //         .collect {
-        //             it.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
-        //         }
-        // }
-        // // columnsArr.each{ println it }
-        // // println columnsArr.size()
-
         def selectClause = sqlStatementArr[0]
             .replaceAll(/(?si)(.*?)\bJOIN.*/,"\$1")
             .replaceAll(/(?si)(.*)\bFROM.*/,"\$1")
