@@ -37,6 +37,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
     // println prettyJson(sqlParamUserInputValues)
 
+    def sqlColumnsMapJson = props.getProperty("document.dynamic.userdefined.ddp_sqlColumnsMap")
+    // println sqlColumnsMapJson
+    def sqlColumnsMap = sqlColumnsMapJson ? new JsonSlurper().parseText(sqlColumnsMapJson) : []
+    // println sqlColumnsMap
+    def sqlColumnsMapNoQuotes = sqlColumnsMap ? sqlColumnsMap.collectEntries{ [(it.ColumnExp.replaceAll(/\"/,"")): it.Alias.replaceAll(/\"/,"")]} : []
+    // println prettyJson(sqlColumnsMapNoQuotes)
+
     def keysLabelsMapJson = props.getProperty("document.dynamic.userdefined.ddp_pivotConfigsKeysLabelsMapJson")
     def keysLabelsMap = keysLabelsMapJson ? new JsonSlurper().parseText(keysLabelsMapJson) : []
     // println keysLabelsMap
@@ -105,8 +112,17 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         lineArr.withIndex().collect { item, j ->
             if (firstLine) {
-                // println j + " -- " + sqlColumnNamesArr[j] + " -- " + item
-                def columnInPivotConfig = sqlParamUserInputValues.find{it.ParamName == sqlColumnNamesArr[j]}?.PivotConfig
+                def columnInPivotConfig
+                // println sqlColumnsMapNoQuotes
+                if (sqlColumnsMapNoQuotes) {
+                  columnInPivotConfig = sqlParamUserInputValues.find{sqlColumnsMapNoQuotes[it.ParamName] == sqlColumnNamesArr[j]}?.PivotConfig
+                } else {
+                  columnInPivotConfig = sqlParamUserInputValues.find{it.ParamName == sqlColumnNamesArr[j]}?.PivotConfig
+                }
+                // println sqlColumnNamesArr[j]
+                // println sqlParamUserInputValues.find{sqlColumnsMapNoQuotes[it.ParamName] == sqlColumnNamesArr[j]}?.PivotConfig
+                // println j + " -- " + columnInPivotConfig + "---" + sqlColumnNamesArr[j] + " -- " + item
+
 
                 if (columnInPivotConfig) {
                     columnInPivotConfigArr[j] = true
