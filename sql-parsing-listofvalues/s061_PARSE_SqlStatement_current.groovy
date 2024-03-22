@@ -64,10 +64,39 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println selectClause
 
         if (uIndex == unionedSqlStatementsArr.size()-1) {
-            columnsArr = selectClause .split(/,(?![^(]*\))/).collect { it.trim() }.collect { 
-                if (it =~ /"\s*$/) it.replaceAll(/.*\s+(.*".*".*)/,"\$1") // alias surrounded in doublequotes
-                else if (it =~ /\s+/) it.replaceAll(/.*\s+/,"")           // alias not surrounded in doublequotes
-                else it                                                   // no alias
+            columnsArr = selectClause.split(/,(?![^(]*\))/).collect { it.trim() }.collect { 
+                String columnExp
+                String colAlias
+                // alias surrounded in doublequotes 
+                if (it =~ /\s+.*".*".*\s*$/) {
+                    (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*".*".*)\s*/)[0]
+                    [ 
+                        ColumnExp: columnExp.replaceFirst(/(?i)\s+as\s*$/, ""),
+                        Alias: colAlias
+                    ]
+                } 
+                // no alias, surrounded in doublequotes
+                else if (it =~ /"/) {
+                    [
+                        ColumnExp:it,
+                        Alias:it
+                    ]
+                }
+                // alias, no quotes
+                else if (it =~ /\s+/) {
+                    (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*)/)[0]
+                    [
+                        ColumnExp:columnExp.replaceFirst(/(?i)\s+as\s*$/, ""),
+                        Alias:colAlias
+                    ]
+                }
+                // no alias
+                else {
+                    [
+                        ColumnExp:it,
+                        Alias:it
+                    ]
+                }
             }
         }
         // println columnsArr.size()
