@@ -1,5 +1,5 @@
 OPTS:
-  - data
+  # - data
   # - ddps:
   # - ddp_outputs
   # - ddp_sqlColumnsMap
@@ -13,22 +13,31 @@ OPTS:
 GLOBALS:
   scripts:
     - s061_PARSE_SqlStatement_current.groovy
-    # - 091_GEN_ListOfValues.groovy
+    - 091_GEN_ListOfValues.groovy:
+        - data
 
 batchAnalysi-ds:
   script: s061_PARSE_SqlStatement_current.groovy
   data: generic_061.dat
   ddps: ba-ds.properties
-  # ddpsOverride:
-  #   document.dynamic.userdefined.ddp_outputs: ddp_sqlColumnsMap
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_outputs: ddp_sqlColumnsMap
 
 ind:
   script: s061_PARSE_SqlStatement_current.groovy
   data: generic_061.dat
   ddps: ind.properties
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_outputs: ddp_sqlColumnsMap
 
 ind-091:
   data: ./testdata/IND_Meta.dat
   ddps: ./testdata/IND_Meta.properties
-  # ddpsOverride:
-  #   document.dynamic.userdefined.ddp_outputs: ddp_sqlMetadataJson, addSqlMetadataToSourceSqlQuery
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_outputs: addSqlMetadataToSourceSqlQuery
+
+phrd:
+  data: ./testdata/phrd_091.dat
+  ddps: ./testdata/phrd_091.properties
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_outputs: addSqlMetadataToSourceSqlQuery
