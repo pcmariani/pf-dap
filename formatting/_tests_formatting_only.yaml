@@ -15,14 +15,15 @@ GLOBALS:
     - 06_WRAP_Table.groovy:
     - 07_APPLY_ColumnWidths.groovy:
     - 08_MERGE_Cells_Html.groovy:
-        # - data
+        - data
 
-# ST1 Summary Table:
-#   DPPs: _testfiles/ST1.properties
-#   docs:
-#     - data: _testfiles/ST1.dat
-#       props: _testfiles/ST1.properties
-#       # ext: html
+ST1 Summary Table:
+  DPPs: _testfiles/stab_dp_1.properties
+  docs:
+    - data: _testfiles/stab_dp_1.dat
+      props: _testfiles/stab_dp_1.properties
+      # ext: html
+# ---
 
 # IND:
 #   DPPs: _testfiles/ind1.properties
@@ -41,15 +42,15 @@ GLOBALS:
 #       ext: html
 # # ---
 
-stab5:
-  scripts:
-    - 05_BUILD_Html.groovy:
-    - 06_WRAP_Table.groovy:
-    - 07_APPLY_ColumnWidths.groovy:
-    - 08_MERGE_Cells_Html.groovy:
-  DPPs: stab5/stab5_summary.properties
-  docs:
-    - data: stab5/stab5_summary.dat
-      ddps: stab5/stab5_summary.properties
-      ext: html
-# ---
+# stab5:
+#   scripts:
+#     - 05_BUILD_Html.groovy:
+#     - 06_WRAP_Table.groovy:
+#     - 07_APPLY_ColumnWidths.groovy:
+#     - 08_MERGE_Cells_Html.groovy:
+#   DPPs: stab5/stab5_summary.properties
+#   docs:
+#     - data: stab5/stab5_summary.dat
+#       ddps: stab5/stab5_summary.properties
+#       ext: html
+# # ---

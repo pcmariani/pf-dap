@@ -186,7 +186,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                                 else {
 
                                     def columnWidth =  columnsConfigArr[c].ColumnWidth
-                                    println r + " " + columnsConfigArr[0]
+                                    // println r + " " + columnsConfigArr[0]
                                     def itemId = tableId + idDelim + columnsConfigArr[0].RowHeaderKeys[r] + idDelim + columnsConfigArr[c].ColumnKey
 
                                     if (isPivot && r < numHeaderRows) {

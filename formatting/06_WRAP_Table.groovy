@@ -50,7 +50,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
             (1..numSubTables).each { subTableIndex ->
                 // println "\n::: SubTableIndex: " + subTableIndex + " :::\n"
-                // activePivotedDataConfigsArr.findAll { it.SubTableIndex == subTableIndex }.eachWithIndex { item, j -> println j + ": " + item.ColumnIndex + ": " + item.ColumnKey + ": " + tableGroup.table.tr[0].children()[item.ColumnIndex]}
+                // activePivotedDataConfigsArr.findAll { it.SubTableIndex == subTableIndex }.eachWithIndex { item, j -> println j + ": " + item.ColumnIndex + ": " + item.ColumnKey + ": " + tableGroup.table.tr[1].children()[item.ColumnIndex].text()}
 
                 def subTableConfigArr = activePivotedDataConfigsArr.findAll { it.SubTableIndex == subTableIndex }
 
