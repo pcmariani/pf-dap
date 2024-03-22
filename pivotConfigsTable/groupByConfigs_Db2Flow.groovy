@@ -75,7 +75,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 headerRow << ["Col$rowIndex": headerLabel]
                 typesRow << ["Col$rowIndex": "String"]
               }
-              row << ["Col$rowIndex": rowLabelsArr[k]]
+              row << ["Col$rowIndex": rowLabelsArr[k].replaceAll(/\\n/,"\n")]
             }
           }
 
@@ -104,7 +104,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             "Col10": item.Active,
             "Col11": item.SuppressIfNoDataForAllCols,
             "Col16": item.RowKey,
-            "Col17": item.RowLabels,
+            "Col17": item.RowLabels.replaceAll(/\\n/,"\n"),
             "Col18": item.GroupByRowsConfigId,
             "Col19": item.RowIndex
           ]

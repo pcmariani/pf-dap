@@ -47,10 +47,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def newLabelsArr = []
         (0..4).each { j ->
           if (item."Col${j}") {
-            newLabelsArr << item."Col${j}"
+            newLabelsArr << item."Col${j}".replaceAll(/\n/, "\\\\n")
           }
           else if (item."Col${j+5}") {
-            newLabelsArr << item."Col${j+5}"
+            newLabelsArr << item."Col${j+5}".replaceAll(/\n/, "\\\\n")
           }
           else {
             newLabelsArr << null

@@ -75,7 +75,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 headerRow << ["Col$colIndex": headerLabel]
                 typesRow << ["Col$colIndex": "String"]
               }
-              row << ["Col$colIndex": columnLabelsArr[k]]
+              row << ["Col$colIndex": columnLabelsArr[k].replaceAll(/\\n/,"\n")]
             }
           }
 
@@ -110,7 +110,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             "Col12": item.SubTableIndex,
             "Col13": item.ColumnWidth,
             "Col16": item.ColumnKey,
-            "Col17": item.ColumnLabels,
+            "Col17": item.ColumnLabels.replaceAll(/\\n/,"\n"),
             "Col18": item.PivotedDataConfigId,
             "Col19": item.ColumnIndex
           ]

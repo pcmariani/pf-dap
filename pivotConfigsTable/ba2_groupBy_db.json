@@ -187,7 +187,7 @@
     {
       "GroupByRowsConfigId": 699,
       "RowKey": "PH^^^PH^^^",
-      "RowLabels": "pH^^^pH^^^5.8 +/- 0.5",
+      "RowLabels": "p\\nH^^^p\\nH^^^5.8 +/- 0.5",
       "Active": true,
       "RowIndex": 24,
       "SuppressIfNoDataForAllCols": true
