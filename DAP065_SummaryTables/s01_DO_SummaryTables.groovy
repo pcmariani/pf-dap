@@ -47,17 +47,21 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println sqlColumnNamesArr
     def virtualColumnsMap = [:]
     if (virtualColumns) {
+        vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
+        // println vcColToInsertAfterCountMap
         virtualColumns.each { vcConfig ->
             // println prettyJson(vcConfig)
             def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
             // println vcValue
-            int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1
+            int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1 + vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]
             // println columnToInsertAfterIndex
             virtualColumnsMap[columnToInsertAfterIndex] = vcValue ?: ""
             // Add VirtualColumn Label to column names
             sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
+            vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]++
         }
     }
+    // println vcColToInsertAfterCountMap
     // println virtualColumnsMap
     // println sqlColumnNamesArr
 
