@@ -1,0 +1,225 @@
+0|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+0|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|
+0|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^|Complies|^|-
+0|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^||^|
+0|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|-
+0|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^||^|
+0|^|BLEF|^|Break Loose Force|^|5.6|^|Newton|^||^|Newton
+0|^|BLEF|^|Break Loose Force|^|5.6|^|Newton|^||^|
+0|^|BLEF|^|Extrusion Force|^|11.1|^|Newton|^||^|Newton
+0|^|BLEF|^|Extrusion Force|^|11.1|^|Newton|^||^|
+0|^|BLEF|^|Maximum Force|^|11.9|^|Newton|^||^|Newton
+0|^|BLEF|^|Maximum Force|^|11.9|^|Newton|^||^|
+0|^|CGE (Non-Reducing)|^|Fragments|^|2.1|^|%|^||^|%
+0|^|CGE (Non-Reducing)|^|Fragments|^|2.1|^|%|^||^|
+0|^|CGE (Non-Reducing)|^|Intact IgG|^|97.9|^|%|^||^|%
+0|^|CGE (Non-Reducing)|^|Intact IgG|^|97.9|^|%|^||^|
+0|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+0|^|CGE (Reducing)|^|Fragments|^|0.6|^|%|^||^|%
+0|^|CGE (Reducing)|^|Fragments|^|0.6|^|%|^||^|
+0|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.6|^|%|^||^|%
+0|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.6|^|%|^||^|
+0|^|CGE (Reducing)|^|Other|^|1.9|^|%|^||^|%
+0|^|CGE (Reducing)|^|Other|^|1.9|^|%|^||^|
+0|^|Container Closure Integrity|^|Dye Ingress|^|No blue colouring inside the syringes|^|-|^|No blue colouring inside the syringes|^|-
+0|^|Container Closure Integrity|^|Dye Ingress|^|No blue colouring inside the syringes|^|-|^||^|
+0|^|Container Volume for Injections|^|Container Volume for Injections|^|1.0254758364|^|mL|^||^|
+0|^|Inhibition Assay|^|Relative Potency|^|99|^|%|^||^|%
+0|^|Inhibition Assay|^|Relative Potency|^|99|^|%|^||^|
+0|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|72|^|Particles/container|^||^|-
+0|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|72|^|Particles/container|^||^|
+0|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|1|^|Particles/container|^||^|-
+0|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|1|^|Particles/container|^||^|
+0|^|SE-HPLC|^|HMMS|^|0.7|^|%|^||^|%
+0|^|SE-HPLC|^|HMMS|^|0.7|^|%|^||^|
+0|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|%
+0|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|
+0|^|SE-HPLC|^|Monomer|^|99.2|^|%|^||^|%
+0|^|SE-HPLC|^|Monomer|^|99.2|^|%|^||^|
+0|^|Sterility|^|Sterility|^|MEETS TEST|^|-|^||^|
+0|^|UV Spectroscopy|^|Protein Concentration|^|153.6|^|mg/mL|^||^|mg/mL
+0|^|UV Spectroscopy|^|Protein Concentration|^|153.6|^|mg/mL|^||^|
+0|^|Volume of Injection in Container|^|Container Content for Injections|^|Not less than labeled volume|^|-|^|Not less than labeled volume|^|-
+0|^|Volume of Injection in Container|^|Container Content for Injections|^|Not less than labeled volume|^|-|^||^|
+0|^|iCE|^|Acidic Species|^|22.9|^|%|^||^|%
+0|^|iCE|^|Acidic Species|^|22.9|^|%|^||^|
+0|^|iCE|^|Basic Species|^|8.3|^|%|^||^|%
+0|^|iCE|^|Basic Species|^|8.3|^|%|^||^|
+0|^|iCE|^|Main Species|^|68.8|^|%|^||^|%
+0|^|iCE|^|Main Species|^|68.8|^|%|^||^|
+0|^|pH|^|pH|^|5.7|^|-|^||^|-
+0|^|pH|^|pH|^|5.7|^|-|^||^|
+1|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|NTU
+1|^|Appearance (Clarity)|^|Appearance (Clarity)|^|10|^|NTU|^||^|
+1|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^|Complies|^|-
+1|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^||^|
+1|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|-
+1|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^||^|
+1|^|CGE (Non-Reducing)|^|Fragments|^|2.7|^|%|^||^|%
+1|^|CGE (Non-Reducing)|^|Fragments|^|2.7|^|%|^||^|
+1|^|CGE (Non-Reducing)|^|Intact IgG|^|97.3|^|%|^||^|%
+1|^|CGE (Non-Reducing)|^|Intact IgG|^|97.3|^|%|^||^|
+1|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+1|^|CGE (Reducing)|^|Fragments|^|0.8|^|%|^||^|%
+1|^|CGE (Reducing)|^|Fragments|^|0.8|^|%|^||^|
+1|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.3|^|%|^||^|%
+1|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.3|^|%|^||^|
+1|^|CGE (Reducing)|^|Other|^|1.9|^|%|^||^|%
+1|^|CGE (Reducing)|^|Other|^|1.9|^|%|^||^|
+1|^|Inhibition Assay|^|Relative Potency|^|101|^|%|^||^|%
+1|^|Inhibition Assay|^|Relative Potency|^|101|^|%|^||^|
+1|^|SE-HPLC|^|HMMS|^|0.8|^|%|^||^|%
+1|^|SE-HPLC|^|HMMS|^|0.8|^|%|^||^|
+1|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|%
+1|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|
+1|^|SE-HPLC|^|Monomer|^|99.1|^|%|^||^|%
+1|^|SE-HPLC|^|Monomer|^|99.1|^|%|^||^|
+1|^|UV Spectroscopy|^|Protein Concentration|^|150.6|^|mg/mL|^||^|mg/mL
+1|^|UV Spectroscopy|^|Protein Concentration|^|150.6|^|mg/mL|^||^|
+1|^|iCE|^|Acidic Species|^|22.3|^|%|^||^|%
+1|^|iCE|^|Acidic Species|^|22.3|^|%|^||^|
+1|^|iCE|^|Basic Species|^|6.5|^|%|^||^|%
+1|^|iCE|^|Basic Species|^|6.5|^|%|^||^|
+1|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|-
+1|^|iCE|^|Main Species|^|71.2|^|%|^||^|%
+1|^|iCE|^|Main Species|^|71.2|^|%|^||^|
+1|^|pH|^|pH|^|5.8|^|-|^||^|-
+1|^|pH|^|pH|^|5.8|^|-|^||^|
+3|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|NTU
+3|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|
+3|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^|Complies|^|-
+3|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^||^|
+3|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|-
+3|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^||^|
+3|^|CGE (Non-Reducing)|^|Fragments|^|2.3|^|%|^||^|%
+3|^|CGE (Non-Reducing)|^|Fragments|^|2.3|^|%|^||^|
+3|^|CGE (Non-Reducing)|^|Intact IgG|^|97.7|^|%|^||^|%
+3|^|CGE (Non-Reducing)|^|Intact IgG|^|97.7|^|%|^||^|
+3|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+3|^|CGE (Reducing)|^|Fragments|^|0.6|^|%|^||^|%
+3|^|CGE (Reducing)|^|Fragments|^|0.6|^|%|^||^|
+3|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.5|^|%|^||^|%
+3|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.5|^|%|^||^|
+3|^|CGE (Reducing)|^|Other|^|1.9|^|%|^||^|%
+3|^|CGE (Reducing)|^|Other|^|1.9|^|%|^||^|
+3|^|Inhibition Assay|^|Relative Potency|^|99|^|%|^||^|%
+3|^|Inhibition Assay|^|Relative Potency|^|99|^|%|^||^|
+3|^|SE-HPLC|^|HMMS|^|0.8|^|%|^||^|%
+3|^|SE-HPLC|^|HMMS|^|0.8|^|%|^||^|
+3|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|%
+3|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|
+3|^|SE-HPLC|^|Monomer|^|99.1|^|%|^||^|%
+3|^|SE-HPLC|^|Monomer|^|99.1|^|%|^||^|
+3|^|UV Spectroscopy|^|Protein Concentration|^|149.7|^|mg/mL|^||^|mg/mL
+3|^|UV Spectroscopy|^|Protein Concentration|^|149.7|^|mg/mL|^||^|
+3|^|iCE|^|Acidic Species|^|23.5|^|%|^||^|%
+3|^|iCE|^|Acidic Species|^|23.5|^|%|^||^|
+3|^|iCE|^|Basic Species|^|7.0|^|%|^||^|%
+3|^|iCE|^|Basic Species|^|7.0|^|%|^||^|
+3|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|-
+3|^|iCE|^|Main Species|^|69.6|^|%|^||^|%
+3|^|iCE|^|Main Species|^|69.6|^|%|^||^|
+3|^|pH|^|pH|^|5.9|^|-|^||^|-
+3|^|pH|^|pH|^|5.9|^|-|^||^|
+6|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|NTU
+6|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|
+6|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^|Complies|^|-
+6|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^||^|
+6|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|-
+6|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^||^|
+6|^|BLEF|^|Break Loose Force|^|7.3|^|Newton|^||^|Newton
+6|^|BLEF|^|Break Loose Force|^|7.3|^|Newton|^||^|
+6|^|BLEF|^|Extrusion Force|^|11.6|^|Newton|^||^|Newton
+6|^|BLEF|^|Extrusion Force|^|11.6|^|Newton|^||^|
+6|^|BLEF|^|Maximum Force|^|12.1|^|Newton|^||^|Newton
+6|^|BLEF|^|Maximum Force|^|12.1|^|Newton|^||^|
+6|^|CGE (Non-Reducing)|^|Fragments|^|1.5|^|%|^||^|%
+6|^|CGE (Non-Reducing)|^|Fragments|^|1.5|^|%|^||^|
+6|^|CGE (Non-Reducing)|^|Intact IgG|^|98.5|^|%|^||^|%
+6|^|CGE (Non-Reducing)|^|Intact IgG|^|98.5|^|%|^||^|
+6|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+6|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|%
+6|^|CGE (Reducing)|^|Fragments|^|NMT 0.3|^|%|^||^|
+6|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.0|^|%|^||^|%
+6|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|98.0|^|%|^||^|
+6|^|CGE (Reducing)|^|Other|^|1.7|^|%|^||^|%
+6|^|CGE (Reducing)|^|Other|^|1.7|^|%|^||^|
+6|^|Container Closure Integrity|^|Dye Ingress|^|No blue colouring inside the syringes|^|-|^|No blue colouring inside the syringes|^|-
+6|^|Container Closure Integrity|^|Dye Ingress|^|No blue colouring inside the syringes|^|-|^||^|
+6|^|Container Volume for Injections|^|Container Volume for Injections|^|1.0233438662|^|mL|^||^|
+6|^|Inhibition Assay|^|Relative Potency|^|90|^|%|^||^|%
+6|^|Inhibition Assay|^|Relative Potency|^|90|^|%|^||^|
+6|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|51|^|Particles/container|^||^|-
+6|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|51|^|Particles/container|^||^|
+6|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|0|^|Particles/container|^||^|-
+6|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|0|^|Particles/container|^||^|
+6|^|SE-HPLC|^|HMMS|^|0.8|^|%|^||^|%
+6|^|SE-HPLC|^|HMMS|^|0.8|^|%|^||^|
+6|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|%
+6|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|
+6|^|SE-HPLC|^|Monomer|^|99.1|^|%|^||^|%
+6|^|SE-HPLC|^|Monomer|^|99.1|^|%|^||^|
+6|^|UV Spectroscopy|^|Protein Concentration|^|150.5|^|mg/mL|^||^|mg/mL
+6|^|UV Spectroscopy|^|Protein Concentration|^|150.5|^|mg/mL|^||^|
+6|^|Volume of Injection in Container|^|Container Content for Injections|^|Not less than labeled volume|^|-|^|Not less than labeled volume|^|-
+6|^|Volume of Injection in Container|^|Container Content for Injections|^|Not less than labeled volume|^|-|^||^|
+6|^|iCE|^|Acidic Species|^|22.1|^|%|^||^|%
+6|^|iCE|^|Acidic Species|^|22.1|^|%|^||^|
+6|^|iCE|^|Basic Species|^|8.0|^|%|^||^|%
+6|^|iCE|^|Basic Species|^|8.0|^|%|^||^|
+6|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|-
+6|^|iCE|^|Main Species|^|69.9|^|%|^||^|%
+6|^|iCE|^|Main Species|^|69.9|^|%|^||^|
+6|^|pH|^|pH|^|5.9|^|-|^||^|-
+6|^|pH|^|pH|^|5.9|^|-|^||^|
+12|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|NTU
+12|^|Appearance (Clarity)|^|Appearance (Clarity)|^|9|^|NTU|^||^|
+12|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^|Complies|^|-
+12|^|Appearance (Coloration)|^|Appearance (Coloration)|^|Complies|^|-|^||^|
+12|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^|Essentially free from visible particulates|^|-
+12|^|Appearance (Visible Particulates)|^|Appearance (Visible Particulates)|^|Essentially free from visible particulates|^|-|^||^|
+12|^|BLEF|^|Break Loose Force|^|7.9|^|Newton|^||^|Newton
+12|^|BLEF|^|Break Loose Force|^|7.9|^|Newton|^||^|
+12|^|BLEF|^|Extrusion Force|^|12.2|^|Newton|^||^|Newton
+12|^|BLEF|^|Extrusion Force|^|12.2|^|Newton|^||^|
+12|^|BLEF|^|Maximum Force|^|12.7|^|Newton|^||^|Newton
+12|^|BLEF|^|Maximum Force|^|12.7|^|Newton|^||^|
+12|^|CGE (Non-Reducing)|^|Fragments|^|2.2|^|%|^||^|%
+12|^|CGE (Non-Reducing)|^|Fragments|^|2.2|^|%|^||^|
+12|^|CGE (Non-Reducing)|^|Intact IgG|^|97.8|^|%|^||^|%
+12|^|CGE (Non-Reducing)|^|Intact IgG|^|97.8|^|%|^||^|
+12|^|CGE (Non-Reducing)|^|Other|^|NMT 0.3|^|%|^||^|
+12|^|CGE (Reducing)|^|Fragments|^|0.8|^|%|^||^|%
+12|^|CGE (Reducing)|^|Fragments|^|0.8|^|%|^||^|
+12|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.1|^|%|^||^|%
+12|^|CGE (Reducing)|^|Heavy Chain + Light Chain|^|97.1|^|%|^||^|
+12|^|CGE (Reducing)|^|Other|^|2.1|^|%|^||^|%
+12|^|CGE (Reducing)|^|Other|^|2.1|^|%|^||^|
+12|^|Container Closure Integrity|^|Dye Ingress|^|No blue colouring inside the syringes|^|-|^|No blue colouring inside the syringes|^|-
+12|^|Container Closure Integrity|^|Dye Ingress|^|No blue colouring inside the syringes|^|-|^||^|
+12|^|Container Volume for Injections|^|Container Volume for Injections|^|1.0230836431|^|mL|^||^|
+12|^|Inhibition Assay|^|Relative Potency|^|99|^|%|^||^|%
+12|^|Inhibition Assay|^|Relative Potency|^|99|^|%|^||^|
+12|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|147|^|Particles/container|^||^|-
+12|^|Particulate Matter in Injections|^|Subvisible Particles >= 10 µm|^|147|^|Particles/container|^||^|
+12|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|3|^|Particles/container|^||^|-
+12|^|Particulate Matter in Injections|^|Subvisible Particles >= 25 µm|^|3|^|Particles/container|^||^|
+12|^|SE-HPLC|^|HMMS|^|0.9|^|%|^||^|%
+12|^|SE-HPLC|^|HMMS|^|0.9|^|%|^||^|
+12|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|%
+12|^|SE-HPLC|^|LMMS|^|NMT 0.2|^|%|^||^|
+12|^|SE-HPLC|^|Monomer|^|99.0|^|%|^||^|%
+12|^|SE-HPLC|^|Monomer|^|99.0|^|%|^||^|
+12|^|UV Spectroscopy|^|Protein Concentration|^|146.5|^|mg/mL|^||^|mg/mL
+12|^|UV Spectroscopy|^|Protein Concentration|^|146.5|^|mg/mL|^||^|
+12|^|Volume of Injection in Container|^|Container Content for Injections|^|Not less than labeled volume|^|-|^|Not less than labeled volume|^|-
+12|^|Volume of Injection in Container|^|Container Content for Injections|^|Not less than labeled volume|^|-|^||^|
+12|^|iCE|^|Acidic Species|^|23.9|^|%|^||^|%
+12|^|iCE|^|Acidic Species|^|23.9|^|%|^||^|
+12|^|iCE|^|Basic Species|^|7.3|^|%|^||^|%
+12|^|iCE|^|Basic Species|^|7.3|^|%|^||^|
+12|^|iCE|^|Charge Isoforms|^|Comparable to Reference Material|^|-|^|Comparable to Reference Material|^|-
+12|^|iCE|^|Main Species|^|68.8|^|%|^||^|%
+12|^|iCE|^|Main Species|^|68.8|^|%|^||^|
+12|^|pH|^|pH|^|5.8|^|-|^||^|-
+12|^|pH|^|pH|^|5.8|^|-|^||^|
