@@ -11,11 +11,15 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
 
+    def outputs = (props.getProperty("document.dynamic.userdefined.ddp_outputs") ?: "ddp_sqlMetadataJson").split(/\s*,\s*/)
+    // def outputs = props.getProperty("document.dynamic.userdefined.ddp_outputs")
+    // println outputs
+
     def sqlRaw = props.getProperty("document.dynamic.userdefined.ddp_sqlStatement")
         .replaceAll(/\\n/, "\n")
         .replaceAll(/--.*/,"")
         .replaceAll(/\n+/, "\n")
-    println sqlRaw
+    // println sqlRaw
 
     def sqlRawArr = sqlRaw.split(/\s*;\s*/)
     // sqlRawArr.each { println it + "\n---------\n" }
@@ -232,29 +236,38 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
      */
 
     /* Output for display in Flow when attaching UserInputs to Params, and for selecting Columns for pivot config */
-    def sqlMetadataForUser = [
-        Columns: columnsArr.collect{ ["Name": it] },
-        Params: paramsArrForUser
-    ]
-    // println prettyJson(sqlMetadataForUser)
-    props.setProperty("document.dynamic.userdefined.ddp_sqlMetadataJson", JsonOutput.toJson(sqlMetadataForUser))
+    if ("ddp_sqlMetadataJson" in outputs) {
+        def sqlMetadataForUser = [
+            Columns: columnsArr.collect{ ["Name": it.Alias] },
+            Params: paramsArrForUser
+        ]
+        // println prettyJson(sqlMetadataForUser)
+        props.setProperty("document.dynamic.userdefined.ddp_sqlMetadataJson", JsonOutput.toJson(sqlMetadataForUser))
+    }
+
+    if ("ddp_sqlColumnsMap" in outputs) {
+        props.setProperty("document.dynamic.userdefined.ddp_sqlColumnsMap", JsonOutput.toJson(columnsArr))
+    }
 
 
-    /* Output for feeding into the script which generates a new SQL statement to get the list of values */
-    def sqlMetadataForListOfValues = [
-        PreSelectSql: sqlRawPreSelect,
-        Columns: columnsArr.collect{ ["Name": it] },
-        Params: paramsArrForListOfValues,
-        // ParamsWithValues: paramsWithValuesArr,
-        FromTables: fromTablesArr,
-        Tables: fromAndJoinTablesArr,
-        UnionOperator: hasUnion ? (sqlRaw =~ /\bUNION(?: ALL)?\b/)[0] : null
-    ]
-    // println prettyJson(sqlMetadataForListOfValues)
-    def root = new JsonSlurper().parse(is)
-    if (root.Records) root.Records[0].SqlMetadata = sqlMetadataForListOfValues
+    if ("addSqlMetadataToSourceSqlQuery" in outputs) {
+        def root = new JsonSlurper().parse(is)
+        /* Output for feeding into the script which generates a new SQL statement to get the list of values */
+        def sqlMetadataForListOfValues = [
+            PreSelectSql: sqlRawPreSelect,
+            // Columns: columnsArr.collect{ ["Name": it] },
+            Columns: columnsArr.collect{ it },
+            Params: paramsArrForListOfValues,
+            // ParamsWithValues: paramsWithValuesArr,
+            FromTables: fromTablesArr,
+            Tables: fromAndJoinTablesArr,
+            UnionOperator: hasUnion ? (sqlRaw =~ /\bUNION(?: ALL)?\b/)[0] : null
+        ]
+        // println prettyJson(sqlMetadataForListOfValues)
+        if (root.Records) root.Records[0].SqlMetadata = sqlMetadataForListOfValues
+        is = new ByteArrayInputStream(prettyJson(root).getBytes("UTF-8"));
+    }
 
-    is = new ByteArrayInputStream(prettyJson(root).getBytes("UTF-8"));
     // is = new ByteArrayInputStream("-------".getBytes("UTF-8"));
     dataContext.storeStream(is, props);
 }
