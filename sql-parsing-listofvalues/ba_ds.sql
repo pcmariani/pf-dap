@@ -1,5 +1,5 @@
 SELECT
-     "Batch Number" as "Drug Substance Batch"
+     "Batch Number" "Drug Substance Batch"
      , "Date of Manufacture"
      , "Production Site" as "Site of Manufacture"
      , "Scale _L_" as "Scale (L)"
