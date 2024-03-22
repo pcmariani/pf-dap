@@ -43,7 +43,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def hasUnion = unionedSqlStatementsArr.size() > 1
     // println hasUnion
 
-    def columnsArr = []
+    def columnsMap = []
     def fromTablesArr = []
     def fromAndJoinTablesArr = []
     def paramsArrForListOfValues = []
@@ -68,43 +68,42 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println selectClause
 
         if (uIndex == unionedSqlStatementsArr.size()-1) {
-            columnsArr = selectClause.split(/,(?![^(]*\))/).collect { it.trim() }.collect { 
+            columnsMap = selectClause.split(/,(?![^(]*\))/).collect { it.trim() }.collectEntries { 
                 String columnExp
                 String colAlias
-                // alias surrounded in doublequotes 
+                // alias, surrounded in doublequotes 
                 if (it =~ /\s+.*".*".*\s*$/) {
                     (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*".*".*)\s*/)[0]
-                    [ 
-                        ColumnExp: columnExp.replaceFirst(/(?i)\s+as\s*$/, ""),
-                        Alias: colAlias
-                    ]
+                    columnExp = columnExp.replaceFirst(/(?i)\s+as\s*$/, "")
                 } 
                 // no alias, surrounded in doublequotes
                 else if (it =~ /"/) {
-                    [
-                        ColumnExp:it,
-                        Alias:it
-                    ]
+                    columnExp = it
+                    colAlias = it
                 }
                 // alias, no quotes
                 else if (it =~ /\s+/) {
                     (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*)/)[0]
-                    [
-                        ColumnExp:columnExp.replaceFirst(/(?i)\s+as\s*$/, ""),
-                        Alias:colAlias
-                    ]
+                    columnExp = columnExp.replaceFirst(/(?i)\s+as\s*$/, "")
                 }
-                // no alias
+                // no alias, no quotes
                 else {
-                    [
-                        ColumnExp:it,
-                        Alias:it
-                    ]
+                    columnExp = it
+                    colAlias = it
                 }
+                // remove doublequotes and table prefix
+                // these will need to match with column names return from the db query
+                // which don't have them
+                columnExp = columnExp.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
+                colAlias = colAlias.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
+                // key is the column expression - the thing which is not the alias
+                // value is the column alias
+                // if there is no alias, the key and value will be the same
+                [(columnExp): colAlias]
             }
         }
-        // println columnsArr.size()
-        // columnsArr.each { println it }
+        // println columnsMap.size()
+        // columnsMap.each { println it }
 
         /*
          * --- parse the FROM clause ---
@@ -238,7 +237,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     /* Output for display in Flow when attaching UserInputs to Params, and for selecting Columns for pivot config */
     if ("ddp_sqlMetadataJson" in outputs) {
         def sqlMetadataForUser = [
-            Columns: columnsArr.collect{ ["Name": it.Alias] },
+            // Columns: columnsMap,
+            Columns: columnsMap.collect{ k,v -> ["Name": v] },
             Params: paramsArrForUser
         ]
         // println prettyJson(sqlMetadataForUser)
@@ -246,7 +246,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
 
     if ("ddp_sqlColumnsMap" in outputs) {
-        props.setProperty("document.dynamic.userdefined.ddp_sqlColumnsMap", JsonOutput.toJson(columnsArr))
+        props.setProperty("document.dynamic.userdefined.ddp_sqlColumnsMap", JsonOutput.toJson(columnsMap))
     }
 
 
@@ -255,8 +255,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         /* Output for feeding into the script which generates a new SQL statement to get the list of values */
         def sqlMetadataForListOfValues = [
             PreSelectSql: sqlRawPreSelect,
-            // Columns: columnsArr.collect{ ["Name": it] },
-            Columns: columnsArr.collect{ it },
+            // Columns: columnsMap.collect{ ["Name": it] },
+            Columns: columnsMap.collect{ it },
             Params: paramsArrForListOfValues,
             // ParamsWithValues: paramsWithValuesArr,
             FromTables: fromTablesArr,
