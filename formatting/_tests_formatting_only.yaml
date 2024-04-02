@@ -17,11 +17,19 @@ GLOBALS:
     - 08_MERGE_Cells_Html.groovy:
         - data
 
-ST1 Summary Table:
-  DPPs: _testfiles/stab_dp_1.properties
+# ST1 Summary Table:
+#   DPPs: _testfiles/stab_dp_1.properties
+#   docs:
+#     - data: _testfiles/stab_dp_1.dat
+#       props: _testfiles/stab_dp_1.properties
+#       # ext: html
+# # ---
+
+Plasid:
+  DPPs: ./plasmid/plasmid.properties
   docs:
-    - data: _testfiles/stab_dp_1.dat
-      props: _testfiles/stab_dp_1.properties
+    - data: ./plasmid/plasmid.dat
+      props: ./plasmid/plasmid.properties
       # ext: html
 # ---
 
