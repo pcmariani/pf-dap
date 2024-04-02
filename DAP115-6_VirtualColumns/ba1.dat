@@ -1,0 +1,46 @@
+{
+  "Records": [
+    {
+      "TableInstanceId": 50,
+      "TableDefinitionId": 14,
+      "ReportContentItem_DynamicTableId": 54,
+      "UserInputValues": [
+        {
+          "UserInputId": 5,
+          "UserInputValue": "TFPI"
+        },
+        {
+          "UserInputId": 6,
+          "UserInputValue": "16-004757, 15-001718, 18-000391"
+        },
+        {
+          "UserInputId": 6,
+          "UserInputValue": "AAA"
+        }
+      ],
+      "TableInstanceSequenceNum": 1,
+      "UserInputsIdentifier": "TFPI; 16-004757, 15-001718, 18-000391"
+    },
+    {
+      "TableInstanceId": 54,
+      "TableDefinitionId": 14,
+      "ReportContentItem_DynamicTableId": 54,
+      "UserInputValues": [
+        {
+          "UserInputId": 5,
+          "UserInputValue": "TFPI"
+        },
+        {
+          "UserInputId": 6,
+          "UserInputValue": "20-004757, 21-001718, 22-000391"
+        },
+        {
+          "UserInputId": 6,
+          "UserInputValue": "BBB"
+        }
+      ],
+      "TableInstanceSequenceNum": 1,
+      "UserInputsIdentifier": "TFPI; 16-004757, 15-001718, 18-000391"
+    }
+  ]
+}

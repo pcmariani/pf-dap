@@ -1,0 +1,20 @@
+OPTS:
+  - data
+  # - DPPs
+  # - ddps
+  # - assertions
+  # - no labels
+  # - no println
+  # - no errors
+  # - no files
+
+GLOBALS:
+  scripts:
+    s01_EXECUTE_VirtualColumns.getSummaryTableMetadata.groovy
+
+
+Batch Analysis - multiple values:
+  DPPs: ba1.properties
+  docs:
+    - data: ba1.dat
+      ddps: ba1.properties

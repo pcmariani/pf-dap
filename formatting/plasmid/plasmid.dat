@@ -1,0 +1,48 @@
+Parameter (Attribute)|^||^|FVE (L)|^|45|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Volumetric Throughput % (v/v)|^|46|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Filter Throughput (L/m2)|^|47|^|3|^|NR_18637
+Parameter (Attribute)|^||^|CaCl2 Precipitation Molarity (M)|^|48|^|3|^|NR_18637
+Parameter (Attribute)|^||^|PD SE-HPLC (g/L)|^|49|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Filter Challenge (L/m2)|^|50|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Filter Challenge (L/m2)|^|51|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Load Challenge (g/Lr)|^|52|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Filter Challenge (g/m2)|^|53|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Incubation Time (hr)|^|54|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Filter Challenge (L/m2)|^|55|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Filter Challenge (L/m2)|^|56|^|3|^|NR_18637
+Value|^||^|TBD|^|41|^|4|^|NR_18638
+Value|^||^||^|42|^|4|^|NR_18638
+Value|^||^|-|^|43|^|4|^|NR_18638
+Value|^||^|56|^|44|^|4|^|NR_18638
+Value|^||^|67|^|45|^|4|^|NR_18638
+Value|^||^|32|^|46|^|4|^|NR_18638
+Value|^||^|68|^|47|^|4|^|NR_18638
+Value|^||^|345|^|48|^|4|^|NR_18638
+Value|^||^|12|^|49|^|4|^|NR_18638
+Value|^||^|34|^|50|^|4|^|NR_18638
+Value|^||^|26|^|51|^|4|^|NR_18638
+Value|^||^|87|^|52|^|4|^|NR_18638
+Value|^||^|65|^|53|^|4|^|NR_18638
+Value|^||^|94|^|54|^|4|^|NR_18638
+Value|^||^|56|^|55|^|4|^|NR_18638
+Value|^||^|98|^|56|^|4|^|NR_18638
+Unit Op|^||^|1. Fermentation|^|45|^|2|^|NR_18636
+Unit Op|^||^|2. Lysis & Depth Filtration|^|46|^|2|^|NR_18636
+Unit Op|^||^|2. Lysis & Depth Filtration|^|47|^|2|^|NR_18636
+Unit Op|^||^|2. Lysis & Depth Filtration|^|48|^|2|^|NR_18636
+Unit Op|^||^|2. Lysis < Depth Filtration|^|49|^|2|^|NR_18636
+Unit Op|^||^|3. Pre-UFDF1 0.45/0.2um Filtration|^|50|^|2|^|NR_18636
+Unit Op|^||^|4. UF/DF1|^|51|^|2|^|NR_18636
+Unit Op|^||^|5. TMAE|^|52|^|2|^|NR_18636
+Unit Op|^||^|6. UF/DF2|^|53|^|2|^|NR_18636
+Unit Op|^||^|7. Linearization|^|54|^|2|^|NR_18636
+Unit Op|^||^|8. UF/DF3|^|55|^|2|^|NR_18636
+Unit Op|^||^|9. Final 0.45/0.2um Filtration|^|56|^|2|^|NR_18636
+Parameter (Attribute)|^||^|Cell Strain|^|41|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Fermentation Titer from Upstream (mg/L)|^|42|^|3|^|NR_18637
+Parameter (Attribute)|^||^|Cell Solids by bottle centrifuge (%)|^|43|^|3|^|NR_18637
+Parameter (Attribute)|^||^|kg Cell Solids|^|44|^|3|^|NR_18637
+Unit Op|^||^|1. Fermentation|^|41|^|2|^|NR_18636
+Unit Op|^||^|1. Fermentation|^|42|^|2|^|NR_18636
+Unit Op|^||^|1. Fermentation|^|43|^|2|^|NR_18636
+Unit Op|^||^|1. Fermentation|^|44|^|2|^|NR_18636

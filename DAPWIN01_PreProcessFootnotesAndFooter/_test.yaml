@@ -1,0 +1,19 @@
+OPTS:
+  - data
+  # - DPPs
+  # - ddps
+  # - assertions
+  # - no labels
+  # - no println
+  # - no errors
+  # - no files
+
+GLOBALS:
+  scripts:
+    - s01_PreProcessFootnotesAndFooter.groovy
+
+# --------
+
+Plasmid Error:
+    data: ./plasmid.xml
+#------
