@@ -68,42 +68,46 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println selectClause
 
         if (uIndex == unionedSqlStatementsArr.size()-1) {
-            columnsMap = selectClause.split(/,(?![^(]*\))/).collect { it.trim() }.collectEntries { 
-                String columnExp
-                String colAlias
-                // alias, surrounded in doublequotes 
-                if (it =~ /\s+.*".*".*\s*$/) {
-                    (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*".*".*)\s*/)[0]
-                    columnExp = columnExp.replaceFirst(/(?i)\s+as\s*$/, "")
-                } 
-                // no alias, surrounded in doublequotes
-                else if (it =~ /"/) {
-                    columnExp = it
-                    colAlias = it
+            columnsMap = selectClause.split(/(?s),(?![^(]*\))/)
+                .collect {
+                    it.trim().replaceAll(/\s*\n+\s*/," ")
                 }
-                // alias, no quotes
-                else if (it =~ /\s+/) {
-                    (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*)/)[0]
-                    columnExp = columnExp.replaceFirst(/(?i)\s+as\s*$/, "")
+                .collectEntries {
+                    String columnExp
+                    String colAlias
+                    // alias, surrounded in doublequotes
+                    if (it =~ /\s+.*".*".*\s*$/) {
+                        (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*".*".*)\s*/)[0]
+                        columnExp = columnExp.replaceFirst(/(?i)\s+as\s*$/, "")
+                    }
+                    // no alias, surrounded in doublequotes
+                    else if (it =~ /"/) {
+                        columnExp = it
+                        colAlias = it
+                    }
+                    // alias, no quotes
+                    else if (it =~ /\s+/) {
+                        (_, columnExp, colAlias) = (it =~ /(.*)\s+(.*)/)[0]
+                        columnExp = columnExp.replaceFirst(/(?i)\s+as\s*$/, "")
+                    }
+                    // no alias, no quotes
+                    else {
+                        columnExp = it
+                        colAlias = it
+                    }
+                    // remove doublequotes and table prefix
+                    // these will need to match with column names return from the db query
+                    // which don't have them
+                    columnExp = columnExp.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
+                    colAlias = colAlias.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
+                    // key is the column expression - the thing which is not the alias
+                    // value is the column alias
+                    // if there is no alias, the key and value will be the same
+                    [(columnExp): colAlias]
                 }
-                // no alias, no quotes
-                else {
-                    columnExp = it
-                    colAlias = it
-                }
-                // remove doublequotes and table prefix
-                // these will need to match with column names return from the db query
-                // which don't have them
-                columnExp = columnExp.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
-                colAlias = colAlias.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
-                // key is the column expression - the thing which is not the alias
-                // value is the column alias
-                // if there is no alias, the key and value will be the same
-                [(columnExp): colAlias]
-            }
         }
         // println columnsMap.size()
-        // columnsMap.each { println it }
+        columnsMap.each { k,v -> println k + "  :::  " + v + "\n" }
 
         /*
          * --- parse the FROM clause ---
