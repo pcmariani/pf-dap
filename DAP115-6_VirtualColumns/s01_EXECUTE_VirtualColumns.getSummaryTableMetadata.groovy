@@ -18,14 +18,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def virtualColumnRows = virtualColumns.VirtualColumnRows
     // println prettyJson(virtualColumnRows)
 
-    // def outData = tableInstances.collect { ti ->
-    //     [
-    //         "TableInstanceId": ti.TableInstanceId,
-    //         "TableIdentifier": ti.UserInputsIdentifier,
-    //         "Value": virtualColumnRows.find { vc -> ti.TableInstanceId == vc.TableInstanceId }?.Value ?: ""
-    //     ]
-    // }
-
     // def userInputValsArrArr = []
     def outData = []
     tableInstances.collect { ti ->
@@ -65,14 +57,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         }
 
     }
-
-    // def outData = tableInstances.collect { ti ->
-    //     [
-    //         "TableInstanceId": ti.TableInstanceId,
-    //         "TableIdentifier": ti.UserInputsIdentifier,
-    //         "Value": virtualColumnRows.find { vc -> ti.TableInstanceId == vc.TableInstanceId }?.Value ?: ""
-    //     ]
-    // }
 
     def sqlMetadataJson = props.getProperty("document.dynamic.userdefined.ddp_sqlMetadataJson")
     def sqlColumnNames = new JsonSlurper().parseText(sqlMetadataJson).Columns
