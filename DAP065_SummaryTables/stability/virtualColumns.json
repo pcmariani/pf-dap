@@ -1,0 +1,56 @@
+{
+  "Records": [
+    {
+      "VirtualColumnId": 8,
+      "ReportContentItem_DynamicTableId": 48,
+      "TableDefinitionId": 1,
+      "SourceId": 31,
+      "Active": true,
+      "ColumnLabel": "TEST",
+      "ColumnToInsertAfter": "Lot Number",
+      "VirtualColumnRows": [
+        {
+          "TableInstanceId": 105,
+          "TableIdentifier": "TFPI; EK9875; 05C; HORIZONTAL",
+          "Value": "T1"
+        },
+        {
+          "TableInstanceId": 207,
+          "TableIdentifier": "TFPI; 17-001163; 25C_60RH; INVERTED",
+          "Value": "T2"
+        },
+        {
+          "TableInstanceId": 208,
+          "TableIdentifier": "TFPI; 15-001718; 25C_60RH; INVERTED",
+          "Value": "T3"
+        }
+      ]
+    },
+    {
+      "VirtualColumnId": 9,
+      "ReportContentItem_DynamicTableId": 48,
+      "TableDefinitionId": 1,
+      "SourceId": 31,
+      "Active": true,
+      "ColumnLabel": "TEST 2",
+      "ColumnToInsertAfter": "Stability Study Start",
+      "VirtualColumnRows": [
+        {
+          "TableInstanceId": 105,
+          "TableIdentifier": "TFPI; EK9875; 05C; HORIZONTAL",
+          "Value": "T2A"
+        },
+        {
+          "TableInstanceId": 207,
+          "TableIdentifier": "TFPI; 17-001163; 25C_60RH; INVERTED",
+          "Value": "T2B"
+        },
+        {
+          "TableInstanceId": 208,
+          "TableIdentifier": "TFPI; 15-001718; 25C_60RH; INVERTED",
+          "Value": "T2C"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "Records": [
+    {
+      "VirtualColumnId": 2,
+      "ReportContentItem_DynamicTableId": 62,
+      "TableDefinitionId": 17,
+      "SourceId": 9,
+      "Active": true,
+      "ColumnLabel": "Process",
+      "ColumnToInsertAfter": "Purpose of Material",
+      "VirtualColumnRows": [
+        {
+          "TableInstanceId": 180,
+          "TableIdentifier": "TFPI; 18L150K101",
+          "Value": "p1"
+        },
+        {
+          "TableInstanceId": 180,
+          "TableIdentifier": "TFPI; 18L150K102",
+          "Value": "p2"
+        },
+        {
+          "TableInstanceId": 180,
+          "TableIdentifier": "TFPI; 18L150K103",
+          "Value": "p3"
+        },
+        {
+          "TableInstanceId": 181,
+          "TableIdentifier": "TFPI; 20L150K001",
+          "Value": "p4"
+        },
+        {
+          "TableInstanceId": 181,
+          "TableIdentifier": "TFPI; 20L150K101",
+          "Value": "p5"
+        }
+      ]
+    },
+    {
+      "VirtualColumnId": 22,
+      "ReportContentItem_DynamicTableId": 62,
+      "TableDefinitionId": 17,
+      "SourceId": 9,
+      "Active": true,
+      "ColumnLabel": "TESTVC2",
+      "ColumnToInsertAfter": "Purpose of Material",
+      "VirtualColumnRows": [
+        {
+          "TableInstanceId": 180,
+          "TableIdentifier": "TFPI; 18L150K101",
+          "Value": "T1"
+        },
+        {
+          "TableInstanceId": 180,
+          "TableIdentifier": "TFPI; 18L150K102",
+          "Value": "T2"
+        },
+        {
+          "TableInstanceId": 180,
+          "TableIdentifier": "TFPI; 18L150K103",
+          "Value": "T3"
+        },
+        {
+          "TableInstanceId": 181,
+          "TableIdentifier": "TFPI; 20L150K001",
+          "Value": "T4"
+        },
+        {
+          "TableInstanceId": 181,
+          "TableIdentifier": "TFPI; 20L150K101",
+          "Value": "T5"
+        }
+      ]
+    }
+  ]
+}
