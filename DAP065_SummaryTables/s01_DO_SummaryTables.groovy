@@ -48,31 +48,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     ArrayList keysLabelsMapKeySet = keysLabelsMap ? keysLabelsMap.keySet() : []
     // println keysLabelsMapKeySet
 
-    // Virtual Columns
-    // println sqlColumnNamesArr
-    // def virtualColumnsMap = [:]
-    // if (virtualColumns) {
-    //     vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
-    //     // println vcColToInsertAfterCountMap
-    //     virtualColumns.each { vcConfig ->
-    //         // println prettyJson(vcConfig)
-    //         // def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
-    //         def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
-    //         // println vcValue
-    //         int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1 + vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]
-    //         // println columnToInsertAfterIndex
-    //         virtualColumnsMap[columnToInsertAfterIndex] = vcValue ?: ""
-    //         // Add VirtualColumn Label to column names
-    //         sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
-    //         vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]++
-    //     }
-    // }
-    // println vcColToInsertAfterCountMap
-    // println virtualColumnsMap
-    // println sqlColumnNamesArr
-
-
-
     def reader = new BufferedReader(new InputStreamReader(is))
 
     def dataMap = [:]
@@ -88,13 +63,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             .split(/\s*$IFS\s*/)
             .collect{ it == "LAST_ELEMENT_IS_BLANK" ? "" : it }
         // println lineArr
-
-        // Add VirtualColumn value to lineArr
-        // virtualColumnsMap.each { columnToInsertAfterIndex, vcValue ->
-        //     // println columnToInsertAfterIndex
-        //     lineArr.add(columnToInsertAfterIndex, vcValue)
-        // }
-        // println lineArr.size()
 
         // Create the Data Table Location
         def dataTableLocation = sectionNumber + "-" + tableInstanceIndex.toString()
@@ -156,6 +124,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
     // dataMap.each { println it; println ""}
 
+    // Add Virtual Columns
     if (virtualColumns) {
         vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
         // println vcColToInsertAfterCountMap
