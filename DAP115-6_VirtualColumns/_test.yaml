@@ -18,3 +18,9 @@ Batch Analysis - multiple values:
   docs:
     - data: ba1.dat
       ddps: ba1.properties
+
+Stability:
+  DPPs: stab.properties
+  docs:
+    - data: stab.dat
+      ddps: stab.properties
