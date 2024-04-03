@@ -1,0 +1,79 @@
+{
+    "Records": [
+    {
+        "TableInstanceId": 105,
+        "TableDefinitionId": 1,
+        "ReportContentItem_DynamicTableId": 48,
+        "UserInputValues": [
+            {
+                "UserInputId": 1,
+                "UserInputValue": "TFPI"
+            },
+            {
+                "UserInputId": 2,
+                "UserInputValue": "EK9875"
+            },
+            {
+                "UserInputId": 3,
+                "UserInputValue": "05C"
+            },
+            {
+                "UserInputId": 4,
+                "UserInputValue": "HORIZONTAL"
+            }
+        ],
+        "TableInstanceSequenceNum": 3,
+        "UserInputsIdentifier": "TFPI; EK9875; 05C; HORIZONTAL"
+    },
+    {
+        "TableInstanceId": 207,
+        "TableDefinitionId": 1,
+        "ReportContentItem_DynamicTableId": 48,
+        "UserInputValues": [
+            {
+                "UserInputId": 1,
+                "UserInputValue": "TFPI"
+            },
+            {
+                "UserInputId": 2,
+                "UserInputValue": "17-001163"
+            },
+            {
+                "UserInputId": 3,
+                "UserInputValue": "25C_60RH"
+            },
+            {
+                "UserInputId": 4,
+                "UserInputValue": "INVERTED"
+            }
+        ],
+        "TableInstanceSequenceNum": 4,
+        "UserInputsIdentifier": "TFPI; 17-001163; 25C_60RH; INVERTED"
+    },
+    {
+        "TableInstanceId": 208,
+        "TableDefinitionId": 1,
+        "ReportContentItem_DynamicTableId": 48,
+        "UserInputValues": [
+            {
+                "UserInputId": 1,
+                "UserInputValue": "TFPI"
+            },
+            {
+                "UserInputId": 2,
+                "UserInputValue": "15-001718"
+            },
+            {
+                "UserInputId": 3,
+                "UserInputValue": "25C_60RH"
+            },
+            {
+                "UserInputId": 4,
+                "UserInputValue": "INVERTED"
+            }
+        ],
+        "TableInstanceSequenceNum": 5,
+        "UserInputsIdentifier": "TFPI; 15-001718; 25C_60RH; INVERTED"
+    }
+]
+}
