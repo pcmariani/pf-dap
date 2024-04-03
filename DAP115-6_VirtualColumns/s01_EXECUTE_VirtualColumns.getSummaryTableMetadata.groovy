@@ -25,6 +25,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         def userInputValsArr = ti.UserInputValues.UserInputValue
         def userInputValsArrArr = userInputValsArr.collect{ it.split(/\s*,\s*/) }
         def maxArrSize = userInputValsArrArr.collect{ it.size() }.max()
+        // println maxArrSize
 
         def summaryTableRowTableIdentifiersArr = []
         if (maxArrSize > 1) {
@@ -41,10 +42,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                     summaryTableRowArrArr << valsArr
                 }
             }
-            summaryTableRowTableIdentifiersArr = summaryTableRowArrArr.transpose().collect{ it.join(", ") }
+            summaryTableRowTableIdentifiersArr = summaryTableRowArrArr.transpose().collect{ it.join("; ") }
         }
         else {
-            summaryTableRowTableIdentifiersArr = userInputValsArr
+            summaryTableRowTableIdentifiersArr = [userInputValsArr.join("; ")]
         }
         // println summaryTableRowTableIdentifiersArr
 
