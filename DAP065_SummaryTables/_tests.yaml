@@ -23,8 +23,14 @@ bugfix:
   docs:
     - data: bugfix/summary1.dat
       ddps: bugfix/summary1.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_VirtualColumns: bugfix/virtualColumns.json
+        document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ./bugfix/groupByConfigs.json
     - data: bugfix/summary2.dat
       ddps: bugfix/summary2.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_VirtualColumns: bugfix/virtualColumns.json
+        document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ./bugfix/groupByConfigs.json
 #------
 
 # Test 1:
@@ -36,14 +42,14 @@ bugfix:
 #   #   document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated:
 #   #     { "Records": [] }
 
-ba2:
-  DPPs: ba2-1.properties
-  docs:
-    - data: ba2-1.dat
-      ddps: ba2-1.properties
-    - data: ba2-2.dat
-      ddps: ba2-2.properties
-#------
+# ba2:
+#   DPPs: ba2-1.properties
+#   docs:
+#     - data: ba2-1.dat
+#       ddps: ba2-1.properties
+#     - data: ba2-2.dat
+#       ddps: ba2-2.properties
+# #------
 
 # ba3:
 #   DPPs: ba3-1.properties
@@ -65,3 +71,20 @@ ba2:
 #       ddps: stab1-3_summary.properties
 #     - data: stab1-4_summary.dat
 #       ddps: stab1-4_summary.properties
+
+
+stabiliy with virtual columns:
+  DPPs: stability/stab1.properties
+  docs:
+    - data: stability/stab1.dat
+      ddps: stability/stab1.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
+    - data: stability/stab2.dat
+      ddps: stability/stab2.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
+    - data: stability/stab3.dat
+      ddps: stability/stab3.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
