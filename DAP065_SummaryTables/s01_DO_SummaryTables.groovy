@@ -50,27 +50,27 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // Virtual Columns
     // println sqlColumnNamesArr
-    def virtualColumnsMap = [:]
-    if (virtualColumns) {
-        vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
-        // println vcColToInsertAfterCountMap
-        virtualColumns.each { vcConfig ->
-            // println prettyJson(vcConfig)
-            def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
-            // println vcValue
-            int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1 + vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]
-            // println columnToInsertAfterIndex
-            virtualColumnsMap[columnToInsertAfterIndex] = vcValue ?: ""
-            // Add VirtualColumn Label to column names
-            sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
-            vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]++
-        }
-    }
+    // def virtualColumnsMap = [:]
+    // if (virtualColumns) {
+    //     vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
+    //     // println vcColToInsertAfterCountMap
+    //     virtualColumns.each { vcConfig ->
+    //         // println prettyJson(vcConfig)
+    //         // def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
+    //         def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
+    //         // println vcValue
+    //         int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vcConfig.ColumnToInsertAfter) + 1 + vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]
+    //         // println columnToInsertAfterIndex
+    //         virtualColumnsMap[columnToInsertAfterIndex] = vcValue ?: ""
+    //         // Add VirtualColumn Label to column names
+    //         sqlColumnNamesArr.add(columnToInsertAfterIndex, vcConfig.ColumnLabel)
+    //         vcColToInsertAfterCountMap[vcConfig.ColumnToInsertAfter]++
+    //     }
+    // }
     // println vcColToInsertAfterCountMap
     // println virtualColumnsMap
     // println sqlColumnNamesArr
 
-    props.setProperty("document.dynamic.userdefined.ddp_sqlColumnNames", sqlColumnNamesArr.join(OFS))
 
 
     def reader = new BufferedReader(new InputStreamReader(is))
@@ -90,10 +90,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println lineArr
 
         // Add VirtualColumn value to lineArr
-        virtualColumnsMap.each { columnToInsertAfterIndex, vcValue ->
-            // println columnToInsertAfterIndex
-            lineArr.add(columnToInsertAfterIndex, vcValue)
-        }
+        // virtualColumnsMap.each { columnToInsertAfterIndex, vcValue ->
+        //     // println columnToInsertAfterIndex
+        //     lineArr.add(columnToInsertAfterIndex, vcValue)
+        // }
         // println lineArr.size()
 
         // Create the Data Table Location
@@ -155,6 +155,40 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         firstLine = false
     }
     // dataMap.each { println it; println ""}
+
+    if (virtualColumns) {
+        vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
+        // println vcColToInsertAfterCountMap
+        virtualColumns.each { vc ->
+            int columnToInsertAfterIndex = sqlColumnNamesArr.indexOf(vc.ColumnToInsertAfter) + 1 + vcColToInsertAfterCountMap[vc.ColumnToInsertAfter]
+            // println columnToInsertAfterIndex
+            dataMap.each { line ->
+                vc.VirtualColumnRows.each { vcr ->
+                    def tableIdentifierArr = vcr.TableIdentifier.split(/\s*;\s*/) as ArrayList
+                    // println tableIdentifierArr
+                    // println line.value
+                    // println line.value.intersect(tableIdentifierArr)
+                    // if (line.key in tableIdentifierArr) {
+                    //     // println vc.ColumnToInsertAfter + ": " + vcr.Value
+                    //     line.value.add(columnToInsertAfterIndex, vcr.Value)
+                    // }
+                    if (line.value.intersect(tableIdentifierArr)) {
+                    //     println line
+                    //     println tableIdentifierArr
+                        line.value.add(columnToInsertAfterIndex, vcr.Value)
+                    }
+                }
+                // println line.value
+            }
+            // // Add VirtualColumn Label to column names
+            sqlColumnNamesArr.add(columnToInsertAfterIndex, vc.ColumnLabel)
+            vcColToInsertAfterCountMap[vc.ColumnToInsertAfter]++
+        }
+    }
+    // dataMap.each { println it}
+    props.setProperty("document.dynamic.userdefined.ddp_sqlColumnNames", sqlColumnNamesArr.join(OFS))
+    println sqlColumnNamesArr
+
 
     // sort rows
     if (keysLabelsMapKeySet) {
