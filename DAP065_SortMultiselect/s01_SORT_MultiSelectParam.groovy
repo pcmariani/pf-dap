@@ -74,6 +74,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println keysLabelsMapKeySet
         def intersection = paramValuesArr.intersect(keysLabelsMapKeySet)
         // println intersection
+        if (!intersection) {
+            props.setProperty("document.dynamic.userdefined.ddp_noActiveGroupByConfigs", "true")
+        }
 
         if (intersection) {
           def filteredSortedParamValuesArr = intersection.sort{ m -> keysLabelsMapKeySet.indexOf(m) }

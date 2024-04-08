@@ -71,6 +71,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println c + " " + item.ColumnLabels
         item.ColumnLabels = item.ColumnLabels.split(DBIFS) as ArrayList
     }
+    // println activeGroupByConfigsArr.size()
     // println "#DEBUG activeGroupByConfigsArr: " + prettyJson(activeGroupByConfigsArr)
     // println "#DEBUG activePivotedDataConfigsArr: " + prettyJson(activePivotedDataConfigsArr)
 
@@ -216,6 +217,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             rowsToRemove = rowsToRemove.collect { it - 1 }
             r--
         }
+    }
+    // println activeGroupByConfigsArr.size()
+    if (activeGroupByConfigsArr.size() == 0) {
+        props.setProperty("document.dynamic.userdefined.ddp_noActiveGroupByConfigs", "true")
     }
 
     for (c = 0; c < pivotedDataArr[0].size(); c++) {
