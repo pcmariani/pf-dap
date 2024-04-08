@@ -1,0 +1,92 @@
+{
+  "Records": [
+    {
+      "GroupByRowsConfigId": 750,
+      "RowKey": "3",
+      "RowLabels": "3",
+      "Active": false,
+      "RowIndex": 1,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 751,
+      "RowKey": "6",
+      "RowLabels": "6",
+      "Active": false,
+      "RowIndex": 2,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 748,
+      "RowKey": "0",
+      "RowLabels": "0",
+      "Active": false,
+      "RowIndex": 3,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 749,
+      "RowKey": "1",
+      "RowLabels": "1",
+      "Active": true,
+      "RowIndex": 4,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 752,
+      "RowKey": "9",
+      "RowLabels": "9",
+      "Active": true,
+      "RowIndex": 5,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 753,
+      "RowKey": "12",
+      "RowLabels": "12",
+      "Active": true,
+      "RowIndex": 6,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 754,
+      "RowKey": "18",
+      "RowLabels": "18",
+      "Active": true,
+      "RowIndex": 7,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 755,
+      "RowKey": "24",
+      "RowLabels": "24",
+      "Active": true,
+      "RowIndex": 8,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 756,
+      "RowKey": "30",
+      "RowLabels": "30",
+      "Active": true,
+      "RowIndex": 9,
+      "SuppressIfNoDataForAllCols": true
+    },
+    {
+      "GroupByRowsConfigId": 757,
+      "RowKey": "36",
+      "RowLabels": "36",
+      "Active": false,
+      "RowIndex": 10,
+      "SuppressIfNoDataForAllCols": false
+    },
+    {
+      "GroupByRowsConfigId": 758,
+      "RowKey": "48",
+      "RowLabels": "48",
+      "Active": false,
+      "RowIndex": 11,
+      "SuppressIfNoDataForAllCols": false
+    }
+  ]
+}
