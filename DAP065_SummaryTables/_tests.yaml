@@ -12,6 +12,9 @@ GLOBALS:
     - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_DO_SummaryTables.groovy:
         - data
+        - ddps:
+            - ddp_noActiveGroupByConfigs
+            - ddp_sqlParamUserInputValuesJson
     # - ddps:
     #     - ddp_sqlParamUserInputValuesJson
     #     - ddp_pivotConfigsKeysLabelsMap
@@ -73,18 +76,18 @@ bugfix:
 #       ddps: stab1-4_summary.properties
 
 
-stabiliy with virtual columns:
-  DPPs: stability/stab1.properties
-  docs:
-    - data: stability/stab1.dat
-      ddps: stability/stab1.properties
-      ddpsOverride:
-        document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
-    - data: stability/stab2.dat
-      ddps: stability/stab2.properties
-      ddpsOverride:
-        document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
-    - data: stability/stab3.dat
-      ddps: stability/stab3.properties
-      ddpsOverride:
-        document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
+# stabiliy with virtual columns:
+#   DPPs: stability/stab1.properties
+#   docs:
+#     - data: stability/stab1.dat
+#       ddps: stability/stab1.properties
+#       ddpsOverride:
+#         document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
+#     - data: stability/stab2.dat
+#       ddps: stability/stab2.properties
+#       ddpsOverride:
+#         document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json
+#     - data: stability/stab3.dat
+#       ddps: stability/stab3.properties
+#       ddpsOverride:
+#         document.dynamic.userdefined.ddp_VirtualColumns: stability/virtualColumns.json

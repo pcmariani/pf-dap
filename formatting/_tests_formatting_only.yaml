@@ -11,11 +11,13 @@ OPTS:
 GLOBALS:
   scripts:
     - 04_PIVOT_Data.groovy:
+        - ddps: ddp_noActiveGroupByConfigs
+        - data
     - 05_BUILD_Html.groovy:
     - 06_WRAP_Table.groovy:
     - 07_APPLY_ColumnWidths.groovy:
     - 08_MERGE_Cells_Html.groovy:
-        - data
+        # - data
 
 # ST1 Summary Table:
 #   DPPs: _testfiles/stab_dp_1.properties
@@ -25,13 +27,13 @@ GLOBALS:
 #       # ext: html
 # # ---
 
-Plasid:
-  DPPs: ./plasmid/plasmid.properties
-  docs:
-    - data: ./plasmid/plasmid.dat
-      props: ./plasmid/plasmid.properties
-      # ext: html
-# ---
+# Plasid:
+#   DPPs: ./plasmid/plasmid.properties
+#   docs:
+#     - data: ./plasmid/plasmid.dat
+#       props: ./plasmid/plasmid.properties
+#       # ext: html
+# # ---
 
 # IND:
 #   DPPs: _testfiles/ind1.properties
@@ -42,13 +44,15 @@ Plasid:
 #       ddps: _testfiles/ind2.properties
 #       # ext: html
 
-# stab4:
-#   DPPs: stab4/stab4.properties
-#   docs:
-#     - data: stab4/stab4.dat
-#       ddps: stab4/stab4.properties
-#       ext: html
-# # ---
+stab4:
+  DPPs: stab4/stab4.properties
+  docs:
+    - data: stab4/stab4.dat
+      ddps: stab4/stab4.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: stab4/groupByConfigs.json
+      # ext: html
+# ---
 
 # stab5:
 #   scripts:
