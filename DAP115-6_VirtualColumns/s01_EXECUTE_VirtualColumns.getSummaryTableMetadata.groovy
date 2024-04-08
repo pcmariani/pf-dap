@@ -16,7 +16,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records[0] : []
     // println prettyJson(virtualColumns)
     def virtualColumnRows = virtualColumns.VirtualColumnRows
-    // println prettyJson(virtualColumnRows)
+    println prettyJson(virtualColumnRows)
 
     // def userInputValsArrArr = []
     def outData = []
@@ -53,7 +53,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             outData << [
                 "TableInstanceId": ti.TableInstanceId,
                 "TableIdentifier": tableIdentifier,
-                "Value": virtualColumnRows.find { vc -> ti.TableIdentifier == vc.TableIdentifier }?.Value ?: ""
+                "Value": virtualColumnRows.find { vc -> tableIdentifier == vc.TableIdentifier }?.Value ?: ""
             ]
         }
 
