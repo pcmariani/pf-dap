@@ -2,3 +2,4 @@ sql-parsing-listofvalues/_exec
 formatting/_outfiles
 formatting/_tests_pf-dap-formatting.yml
 DAP065_SPLIT_Tables__COLLECT_ParamValues/_tests.yaml
+DAP065_SummaryTables/.projectile
