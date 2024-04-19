@@ -1,3 +1,34 @@
+// This script outputs one or more |^| delimited rows which will be later put
+// together to form the summary table for all the data tables generated
+// in the process execution
+//
+// When a source of resultTableType "Summary Table" goes into the step which
+// executes the sql statements, the result is a row or rows of summary table
+// data.
+//
+// The output of this script is similar to the input. The differences are:
+//
+// 1. A new column is added as the last column: the "Data Table Location"
+//    - There are two parts to it:
+//      1. a concatenation of the section number and the tableInstanceIndex
+//         - example: 3.7.S.2.8-2   -- the tableInstanceIndex is 2
+//      2. the sqlParamValues
+//         - these are appended to the same data table location value
+//           but delimted with a #
+//         - these are used later in the formatting subprocess so that
+//           a hyperlink can be created from the summary table row,
+//           specifically this newly created column, and the data table
+//           this row corresponds to. The sqlParamValues are unique key
+//           that links them.
+//
+// 2. Virtual columns are added
+//
+// 3. The rows are sorted
+//
+// What makes this complicated is the rows have to be sorted by a key in
+// the data row, but we don't know whick value is the key.
+// The sorting is determined by the order of records in the pivotConfig
+
 import java.util.Properties;
 import java.io.InputStream;
 import groovy.json.JsonSlurper
@@ -135,15 +166,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 vc.VirtualColumnRows.each { vcr ->
                     def tableIdentifierArr = vcr.TableIdentifier.split(/\s*;\s*/) as ArrayList
                     // println tableIdentifierArr
-                    // println line.value
                     // println line.value.intersect(tableIdentifierArr)
-                    // if (line.key in tableIdentifierArr) {
-                    //     // println vc.ColumnToInsertAfter + ": " + vcr.Value
-                    //     line.value.add(columnToInsertAfterIndex, vcr.Value)
-                    // }
                     if (line.value.intersect(tableIdentifierArr)) {
-                    //     println line
-                    //     println tableIdentifierArr
                         line.value.add(columnToInsertAfterIndex, vcr.Value)
                     }
                 }
@@ -156,7 +180,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
     // dataMap.each { println it}
     props.setProperty("document.dynamic.userdefined.ddp_sqlColumnNames", sqlColumnNamesArr.join(OFS))
-    println sqlColumnNamesArr
+    // println sqlColumnNamesArr
 
 
     // sort rows
