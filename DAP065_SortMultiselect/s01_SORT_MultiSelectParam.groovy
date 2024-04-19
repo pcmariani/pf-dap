@@ -29,7 +29,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def groupByConfigsArr = groupByConfigsJson ? new JsonSlurper().parseText(groupByConfigsJson)?.Records : []
     // println prettyJson(groupByConfigsArr)
 
-
+    // 1. filter on active records
+    // 2. in the Db, the RowKey and RowLabels (ColumnKey, ColumnLabels) fields are lists delimited by the DBIFS
+    //    - convert them into arrays
     def activeGroupByConfigsArr = groupByConfigsArr.findAll { it.Active == true }.eachWithIndex { item, r ->
         item.RowKey = item.RowKey.split(DBIFS) as ArrayList
         item.RowLabels = item.RowLabels.split(DBIFS) as ArrayList
@@ -42,6 +44,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println "#DEBUG activePivotedDataConfigsArr: " + prettyJson(activePivotedDataConfigsArr)
 
 
+    // Create a map where the keys are the RowKey/ColumnKey and values are RowLabels/ColumnLabels
+    // It is formed from both activeGroupByConfigsArr and activePivotedDataConfigsArr
+    // Its purpose is to provide a quick reference for:
+    // - matching keys with labels
+    // - sorting - the list is taking from the configs in order
     def keysLabelsMap = [:]
 
     activeGroupByConfigsArr.RowKey.eachWithIndex { keysArr, keysArrIndex ->
@@ -62,28 +69,39 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
     // println prettyJson(keysLabelsMap)
 
+    // output this as a property so it's usable in the summary tables script
     props.setProperty("document.dynamic.userdefined.ddp_pivotConfigsKeysLabelsMapJson", prettyJson(keysLabelsMap))
 
 
+    // Sort the sqlParamUserInputValues:
+    // - It loops though the sqlParamUserInputValues array (which is a junction of UserInputs and sqlParamValues)
+    // and compares it with the keysLabelsMap so that the items in the sqlParamUserInputValues array in 
+    // in the same order as the keysLabelsMap.
+    // - The complexity is when the param is a MultiSelect param (means the sql param has an IN operator
+    // and so it's a list). If that's the case, the value field is a comma separated list and that list
+    // needs to be sorted. We do an intersection of the two arrays. The intersection is sorted and then 
+    // the value field of the sqlParamUserInputValues array item is replaced with the intersection.
     sqlParamUserInputValues.each { param ->
       if (param.MultiSelect) {
 
+        // split the MultiSelect value (which is a comma separated list of values)
         ArrayList paramValuesArr = param.Value.split(/\s*,\s*/)
         // println paramValuesArr
-        ArrayList keysLabelsMapKeySet = keysLabelsMap.keySet()
-        // println keysLabelsMapKeySet
-        def intersection = paramValuesArr.intersect(keysLabelsMapKeySet)
+        def intersection = paramValuesArr.intersect(keysLabelsMap.keySet())
         // println intersection
-        if (!intersection) {
-            props.setProperty("document.dynamic.userdefined.ddp_noActiveGroupByConfigs", "true")
-        }
+
+        // This is a hack and I don't think it works
+        // if (!intersection) {
+        //     props.setProperty("document.dynamic.userdefined.ddp_noActiveGroupByConfigs", "true")
+        // }
 
         if (intersection) {
-          def filteredSortedParamValuesArr = intersection.sort{ m -> keysLabelsMapKeySet.indexOf(m) }
+          def filteredSortedParamValuesArr = intersection.sort{ m -> (keysLabelsMap.keySet() as ArrayList).indexOf(m) }
           // println filteredSortedParamValuesArr
           def filteredSortedParamDisplayValuesArr = filteredSortedParamValuesArr.collect { keysLabelsMap[it] }
           // println filteredSortedParamDisplayValuesArr
 
+          // replace/add fields
           param.Value = filteredSortedParamValuesArr.join(", ")
           param.isSorted = true
           param.DisplayValue = filteredSortedParamDisplayValuesArr.join(", ")
