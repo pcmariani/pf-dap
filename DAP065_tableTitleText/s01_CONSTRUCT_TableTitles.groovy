@@ -75,17 +75,17 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // The above will be parsed into a LinkedHashMap:
         //      [ _ :---, SET:ZZZ]
         // Notes:
-        // - the string between the #s is a list of key/value pairs, each representing a
+        // - the string between the ##s is a list of key/value pairs, each representing a
         //   string substitution.
         // - the key is the text to be replaced
         // - the value is the replacement
         // - the string substitution pairs are delimited by a ##
         // - all occurances will be replaced
         // - uses regex
-        // - there can be any amount of whitespace before the inition ## and after the
+        // - there can be any amount of whitespace before the initial ## and after the
         //   terminating ##
         // - all whitespace between the delimiting ##s is respected
-        // - , is exscaped by doubling ,,
+        // - , is escaped by doubling ,
         ArrayList placeholderPartsArr = placeholder
             .replaceFirst(/##\s*$/,"")                              // remove ending ##
             .split(/##/)                                            // split
