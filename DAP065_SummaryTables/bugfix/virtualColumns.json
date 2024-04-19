@@ -12,27 +12,27 @@
         {
           "TableInstanceId": 180,
           "TableIdentifier": "TFPI; 18L150K101",
-          "Value": "p1"
+          "Value": ""
         },
         {
           "TableInstanceId": 180,
           "TableIdentifier": "TFPI; 18L150K102",
-          "Value": "p2"
+          "Value": ""
         },
         {
           "TableInstanceId": 180,
           "TableIdentifier": "TFPI; 18L150K103",
-          "Value": "p3"
+          "Value": ""
         },
         {
           "TableInstanceId": 181,
           "TableIdentifier": "TFPI; 20L150K001",
-          "Value": "p4"
+          "Value": ""
         },
         {
           "TableInstanceId": 181,
           "TableIdentifier": "TFPI; 20L150K101",
-          "Value": "p5"
+          "Value": ""
         }
       ]
     },

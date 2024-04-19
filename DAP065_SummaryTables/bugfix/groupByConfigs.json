@@ -28,7 +28,7 @@
       "GroupByRowsConfigId": 1102,
       "RowKey": "18L150K103",
       "RowLabels": "18L150K103",
-      "Active": false,
+      "Active": true,
       "RowIndex": 5,
       "SuppressIfNoDataForAllCols": true
     },
@@ -36,7 +36,7 @@
       "GroupByRowsConfigId": 1100,
       "RowKey": "18L150K101",
       "RowLabels": "18L150K101",
-      "Active": false,
+      "Active": true,
       "RowIndex": 6,
       "SuppressIfNoDataForAllCols": true
     },
@@ -44,7 +44,7 @@
       "GroupByRowsConfigId": 1103,
       "RowKey": "20L150K001",
       "RowLabels": "20L150K001",
-      "Active": false,
+      "Active": true,
       "RowIndex": 7,
       "SuppressIfNoDataForAllCols": true
     },
@@ -60,7 +60,7 @@
       "GroupByRowsConfigId": 1105,
       "RowKey": "16L150K101",
       "RowLabels": "16L150K101",
-      "Active": false,
+      "Active": true,
       "RowIndex": 9,
       "SuppressIfNoDataForAllCols": true
     }

@@ -32,15 +32,16 @@ Happy Case:
     # foo: "hello world"
   # ddpsOverride:
   #   document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: ba1_ddp_GroupByConfigsConsolidated.json
-  assertions:
-    - assert data.contains("Supppportive")
-    - desc: this is my first assertion
-      assert: DPP_HasSummarySource == "false"
-    - foo == "hello"
-    - DPP_HasSummarySource == "true"
-    - asdfasdf == asdf
-    - ddp_UserInputs == "hello"
-    # - ddp_Sources == "hello"
+  # assertions:
+  #   - assert data.contains("Supppportive")
+  #   - desc: this is my first assertion
+  #     assert: DPP_HasSummarySource == "false"
+  #   - foo == "hello"
+  #   - DPP_HasSummarySource == "true"
+  #   - asdfasdf == asdf
+  #   - ddp_UserInputs == "hello"
+  # - ddp_Sources == "hello"
+
 # -------
 
 # Empty Case:

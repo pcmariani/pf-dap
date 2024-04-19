@@ -1,0 +1,28 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 34,
+      "TableDefinitionId": 48,
+      "SourceType": "Db Query",
+      "ResultTableType": "Summary Table",
+      "Description": "Summary Tables for BLA Batch Analysis DS",
+      "TableTitleTemplate": "TABLE TITLE SUMMARY TABLE",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Product",
+          "UserInputId": 72
+        },
+        {
+          "ParamName": "Batch Number",
+          "UserInputId": 73
+        }
+      ],
+      "DbSystem": "INFORMA",
+      "SqlStatement": "SELECT \"Batch Number\", \"Acceptance Criteria\", \"Analytical Procedure\", \"Quality Attribute\", \"Text Parameter Value\", 'Results' as \"RESULTS\", 'Lot Number' as \"LOT NUMBER\"\\nFROM MIPRANS_OWNER.DELL_CQA_BA\\nWHERE \"Product\" = ? AND \"Batch Number\" IN (?)\\nGROUP BY \"Batch Number\", \"Analytical Procedure\", \"Quality Attribute\", \"Acceptance Criteria\", \"Text Parameter Value\"\\nORDER BY \"Analytical Procedure\"",
+      "DisplayHeaders": true,
+      "DisplayHeadersOnSide": true,
+      "Transpose": false,
+      "IsPivot": false
+    }
+  ]
+}
