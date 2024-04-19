@@ -2,6 +2,7 @@ import java.util.Properties;
 import java.io.InputStream;
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput;
+import java.util.regex.Pattern;
 import com.boomi.execution.ExecutionUtil;
 
 logger = ExecutionUtil.getBaseLogger()
@@ -25,34 +26,26 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def tableInstanceJson = props.getProperty("document.dynamic.userdefined.ddp_TableInstance")
     def tableInstance = tableInstanceJson ? new JsonSlurper().parseText(tableInstanceJson).Records[0] : []
     // println tableInstance
-    // def resultTableType = props.getProperty("document.dynamic.userdefined.ddp_resultTableType")
-    // println resultTableType
-    def sqlParamUserInputValuesJson = props.getProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson")
-    def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
-    // println sqlParamUserInputValues
-    def tableDefinitionJson = props.getProperty("document.dynamic.userdefined.ddp_TableDefinition")
-    def tableDefinition = new JsonSlurper().parseText(tableDefinitionJson).Records[0]
-    // println tableDefinition
     def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
     def source = new JsonSlurper().parseText(sourcesJson).Records[0]
     // println prettyJson(source)
+    def sqlParamUserInputValuesJson = props.getProperty("document.dynamic.userdefined.ddp_sqlParamUserInputValuesJson")
+    def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
+    // println sqlParamUserInputValues
     def virtualColumnsJson = props.getProperty("document.dynamic.userdefined.ddp_VirtualColumns")
     def virtualColumns = virtualColumnsJson ? new JsonSlurper().parseText(virtualColumnsJson).Records : []
     // println prettyJson(virtualColumns)
-    int tableInstanceId = props.getProperty("document.dynamic.userdefined.ddp_TableInstanceId") as int
-    // println tableInstanceId
 
     // LOGIC //
 
-
-    // Virtual Columns
-
+    // --- add virtual columns ---
+    // add virtual column values to the User Inputs list so that they are available for string replacements below
     def virtualColumnsMap = [:]
     if (virtualColumns) {
         virtualColumns.each { vcConfig ->
             def vcColumnLabel = vcConfig.ColumnLabel
             // println vcColumnLabel
-            def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstanceId}?.Value
+            def vcValue = vcConfig.VirtualColumnRows?.find {it.TableInstanceId == tableInstance.TableInstanceId}?.Value
             // println vcValue
             if (vcValue) {
                 sqlParamUserInputValues << [UserInputName: vcColumnLabel, DisplayValue: vcValue]
@@ -62,110 +55,62 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println prettyJson(sqlParamUserInputValues)
 
 
-    // set tableTitleText
+    // --- set tableTitleText ---
     def tableTitleText = "Table Title Text Not Yet Configured"
-    def resultTableType = source.ResultTableType
-
-    if (resultTableType =~ /(?i)Summary/){
+    if (source.ResultTableType =~ /(?i)Summary/){
         tableTitleText = sectionNumber + "-1. " + source.TableTitleTemplate ?: tableTitleText
     }
-
-    else if (resultTableType =~ /(?i)Data/) {
+    else if (source.ResultTableType =~ /(?i)Data/) {
         tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " + (tableInstance.TableTitleOverride ?: tableTitleText)
     }
 
-    // if (resultTableType =~ /(?i)Summary/){
-    //   tableTitleText = sectionNumber + "-1. " +
-    //   ( tableDefinition.TableTitleText_Summary != null && tableDefinition.TableTitleText_Summary != ""
-    //   ? tableDefinition.TableTitleText_Summary
-    //   : tableTitleText )
-    // }
-
-    // else if (resultTableType =~ /(?i)Data/) {
-    //   if (tableInstance.TableTitleOverride) {
-    //     tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " +
-    //     ( tableInstance.TableTitleOverride != null && tableInstance.TableTitleOverride != ""
-    //     ? tableInstance.TableTitleOverride
-    //     : tableTitleText )
-    //   }
-    //   else {
-    //     tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " +
-    //     ( tableDefinition.TableTitleText != null && tableDefinition.TableTitleText != ""
-    //     ? tableDefinition.TableTitleText
-    //     : tableTitleText )
-    //   }
-    // }
-    // println tableTitleText
-
-    // for tableTitleText, replace placeholders with values, apply stringReplacements
-    def stringReplacementsArr = tableDefinition.TableTitleStringReplacements
-    // println stringReplacementsArr
-
+    // --- process placeholders ---
     (tableTitleText =~ /\{\{(.*?)\}\}/).collect{match -> match[1]}.unique().each() { placeholder ->
         // println placeholder
 
+        // --- process string substitutions ---
         // Process the part of the placeholder containing the string substituions
-        // which is surrounded in at least 2 ##s:
-        //      e.g. with quotes:     {{STORAGE_CONDITION ##" _ ":"---", "SET":"ZZZ"## }}
-        //      e.g. without quotes:  {{STORAGE_CONDITION ## _ :---,SET:ZZZ## }}
-        // Both of the above will be parsed into a LinkedHashMap:
+        // which is surrounded by (and delimited by) 2 #s:
+        //      e.g.  {{STORAGE_CONDITION ## _ ,---##SET,ZZZ## }}
+        // The above will be parsed into a LinkedHashMap:
         //      [ _ :---, SET:ZZZ]
         // Notes:
         // - the string between the #s is a list of key/value pairs, each representing a
         //   string substitution.
         // - the key is the text to be replaced
         // - the value is the replacement
-        // - the string substitution pairs are delimited by a comma
+        // - the string substitution pairs are delimited by a ##
         // - all occurances will be replaced
-        // - there has to be at least 2 #s, but there can be more
-        // - there can be any amount of whitespace before the inition #s and after the
-        //   terminating #s
-        // - keys and values can be surrounded in single or double quotes, or nothing
-        // - if quotes are used
-        //      - whitespace within the quotes will be respected
-        //      - whitespace/stray characters outside the quotes will be ignored
-        // - if dbl-qotes are not used
-        //      - all whitespace between the #s is respected
-        placeholderPartsArr = placeholder.split(/\s*#{2,}/,2)
-        def placeholderName = ""
-        def substitutions = [:]
-        if (placeholderPartsArr.size() > 1) {
-            placeholderName = placeholderPartsArr[0]
-            substitutions = placeholderPartsArr[1]
-            // println placeholderName
-            // println substitutions
-
-            // // if the whole string contains a quote
-            // if (substitutions =~ /(?<!\\)["']/) {
-            //     println "HAS Q"
-            //     substitutions = substitutions
-            //         .replaceFirst(/\s*(?=["'])/,"")
-            //         .replaceFirst(/\s*#{2,}\s*$/,"")
-            //         .split(/\s*,\s*(?=(?:[^"']|["'][^"']*["'])*$)/)
-            //         .collectEntries{
-            //             def itemArr = it.split(/\s*:\s*/)
-            //             def key = itemArr[0].replaceAll(/^.*?["']/,"").replaceAll(/["'].*?$/,"")
-            //             def val = itemArr[1].replaceAll(/^.*?["']/,"").replaceAll(/["'].*?$/,"")
-            //             [(key):val]
-            //         }
-            // }
-            // else {
-                substitutions = substitutions
-                    .replaceFirst(/#{2,}\s*$/,"")
-                    .split(/,/)
-                    .collectEntries{
-                        def itemArr = it.split(/:/)
-                        [(itemArr[0].replaceAll(/"/,"")):itemArr[1].replaceAll(/"/,"")]
-                    }
-            // }
+        // - uses regex
+        // - there can be any amount of whitespace before the inition ## and after the
+        //   terminating ##
+        // - all whitespace between the delimiting ##s is respected
+        // - , is exscaped by doubling ,,
+        ArrayList placeholderPartsArr = placeholder
+            .replaceFirst(/##\s*$/,"")                              // remove ending ##
+            .split(/##/)                                            // split
+        String placeholderName = placeholderPartsArr.remove(0).trim()  // first el is the name withough substitutiions
+        // println placeholderPartsArr
+        LinkedHashMap substitutionsMap = [:]
+        if (placeholderPartsArr) {
+            substitutionsMap = placeholderPartsArr
+                .collectEntries{ substitutionItem ->
+                    ArrayList substitutionItemArr = substitutionItem
+                        .split(/(?<!,),(?!,)/)                      // split on , but not ,,
+                        .collect { it.replaceAll(",,",",") }        // replace ,, with ,
+                    [(substitutionItemArr[0]): substitutionItemArr[1]]
+                }
         }
-        else {
-            placeholderName = placeholder
-        }
-        // println substitutions
+        // println substitutionsMap
 
+        // --- get value for placeholder ---
+        // look in a few different places to get the value of the placeholder (placeholderName)
+
+        // first, look for a match in the User Inputs
         def value = sqlParamUserInputValues?.find{it.UserInputName == placeholderName}?.DisplayValue
         // println value
+
+        // second, look for a property that matchs (DPP first, then ddp)
         if (!value || value == null) {
             def propName = placeholderName.replaceAll(" ","_")
             // println propName
@@ -175,13 +120,18 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             else if (!value) value = props.getProperty("document.dynamic.userdefined." + propName)
         }
         // println value
+
+        // --- replace placeholders ---
         if (value) {
-            substitutions.each { search, replace ->
-                value = value.replaceAll(search, replace)
+            // apply string replacements to value
+            substitutionsMap.each { search, replace ->
+                value = value.replaceAll(/$search/, replace) // will treat search string as regex
             }
-            tableTitleText = tableTitleText.replaceAll(/\{\{$placeholder\}\}/, value)
+            // quotes all regex metacharacters
+            tableTitleText = tableTitleText.replaceAll(/\{\{${Pattern.quote(placeholder)}\}\}/, value)
         }
     }
+    // watch out for xml chars
     tableTitleText = tableTitleText.replaceAll("<", "&lt;").replaceAll(">", "&gt;")
     println tableTitleText
 
