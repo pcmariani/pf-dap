@@ -4,7 +4,7 @@
       "SourceSqlQueryId": 34,
       "TableDefinitionId": 48,
       "SourceType": "Db Query",
-      "ResultTableType": "Summary Table",
+      "ResultTableType": "Data Table",
       "Description": "Summary Tables for BLA Batch Analysis DS",
       "TableTitleTemplate": "TABLE TITLE SUMMARY TABLE",
       "ParamUserInputMap": [

@@ -13,8 +13,9 @@ GLOBALS:
   scripts:
     - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_CONSTRUCT_TableTitles.groovy:
-        # - ddps:
-        #     - ddp_tableTitleText
+        - ddps:
+            - ddp_tableTitleText
+            - ddp_TableInstance
         # - ddp_TableDefinition
         # - ddp_sqlParamUserInputValuesJson
         # - ddp_tableTitleText
@@ -44,5 +45,5 @@ ba2_data:
   DPPs: ba2_data.properties
   data: ba2_data.dat
   ddps: ba2_data.properties
-  # ddpsOverride:
-  #   document.dynamic.userdefined.ddp_Sources: ba2_data_sources.json
+  ddpsOverride:
+    document.dynamic.userdefined.ddp_Sources: ba2_data_sources.json
