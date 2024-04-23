@@ -140,7 +140,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println tableTitleText
 
     tableInstance.TableTitleOverride = tableTitleText
-    props.setProperty("document.dynamic.userdefined.ddp_TableInstance", prettyJson([Records:tableInstance]))
+    props.setProperty("document.dynamic.userdefined.ddp_TableInstance", prettyJson([
+        Requestor: props.getProperty("document.dynamic.userdefined.ddp_Requestor"),
+        Records:[tableInstance]
+    ]))
     props.setProperty("document.dynamic.userdefined.ddp_tableTitleText", tableTitleText)
 
     // is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));
