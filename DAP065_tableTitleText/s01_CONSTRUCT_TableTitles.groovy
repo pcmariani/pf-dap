@@ -62,8 +62,13 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         tableTitleText = sectionNumber + "-1. " + tableTitleText
     }
     else if (source.ResultTableType =~ /(?i)Data/) {
+        if (tableInstance.TableTitleIsOverridden) {
+            println tableInstance.TableTitleOverride.replaceAll(/^.*\. /,"")
+        }
         tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " + (
-            tableInstance.TableTitleIsOverridden ? tableInstance.TableTitleOverride : tableTitleText
+            tableInstance.TableTitleIsOverridden ?
+                tableInstance.TableTitleOverride.replaceAll(/^.*-\d{1,2}.*\.\s*/,"") :
+                tableTitleText
         )
     }
     println tableTitleText
