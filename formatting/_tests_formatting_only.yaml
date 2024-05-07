@@ -11,12 +11,14 @@ OPTS:
 GLOBALS:
   scripts:
     - 04_PIVOT_Data.groovy:
-        - ddps: ddp_noActiveGroupByConfigs
-        - data
+      # - ddps: ddp_noActiveGroupByConfigs
+      # - data
     - 05_BUILD_Html.groovy:
     - 06_WRAP_Table.groovy:
     - 07_APPLY_ColumnWidths.groovy:
     - 08_MERGE_Cells_Html.groovy:
+        # - data
+    - 09_FORMAT_LeftMostColAsRows.groovy:
         # - data
 
 # ST1 Summary Table:
@@ -51,7 +53,7 @@ stab4:
       ddps: stab4/stab4.properties
       ddpsOverride:
         document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: stab4/groupByConfigs.json
-      # ext: html
+      ext: html
 # ---
 
 # stab5:

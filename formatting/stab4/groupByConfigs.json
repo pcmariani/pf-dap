@@ -12,7 +12,7 @@
       "GroupByRowsConfigId": 751,
       "RowKey": "6",
       "RowLabels": "6",
-      "Active": false,
+      "Active": true,
       "RowIndex": 2,
       "SuppressIfNoDataForAllCols": true
     },
@@ -20,7 +20,7 @@
       "GroupByRowsConfigId": 748,
       "RowKey": "0",
       "RowLabels": "0",
-      "Active": false,
+      "Active": true,
       "RowIndex": 3,
       "SuppressIfNoDataForAllCols": true
     },

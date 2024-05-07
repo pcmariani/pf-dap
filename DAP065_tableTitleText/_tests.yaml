@@ -13,9 +13,9 @@ GLOBALS:
   scripts:
     - ../DAP065_SortMultiselect/s01_SORT_MultiSelectParam.groovy:
     - s01_CONSTRUCT_TableTitles.groovy:
-        - ddps:
-            - ddp_tableTitleText
-            - ddp_TableInstance
+        # - ddps:
+        #     - ddp_tableTitleText
+        #     - ddp_TableInstance
         # - ddp_TableDefinition
         # - ddp_sqlParamUserInputValuesJson
         # - ddp_tableTitleText

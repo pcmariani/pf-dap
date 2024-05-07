@@ -13,9 +13,9 @@ GLOBALS:
   # DPP_Product_Name: BBBBB
 
   scripts:
-    # - 02_CREATE_PivotOnGroupBy_Configs.groovy:
-    # - 02b_CONSOLIDATE_Configs.groovy:
-    # - 03_CREATE_RowHeaderConfigs.groovy:
+    - 02_CREATE_PivotOnGroupBy_Configs.groovy:
+    - 02b_CONSOLIDATE_Configs.groovy:
+    - 03_CREATE_RowHeaderConfigs.groovy:
     - 04_PIVOT_Data.groovy:
     - 05_BUILD_Html.groovy:
     - 06_WRAP_Table.groovy:
@@ -48,7 +48,9 @@ BA4_DATA:
   docs:
     - data: _testfiles/ba4_data.dat
       props: _testfiles/ba4_data.properties
-# # BatchAnalysis:
+# ---
+
+# BatchAnalysis:
 #   docs:
 #     - data: _testfiles/ba3.dat
 #       props: _testfiles/ba3.properties
