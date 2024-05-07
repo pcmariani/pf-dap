@@ -124,7 +124,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
           // create new tr and append to bottom of parent table
           def newtr = new Node(table, 'tr')
           // create new td and append to new tr, add attributes
-          def newtd = new Node(newtr, 'th', [colSpan:numCols, style:firstCellInRow.@style, id:firstCellInRow.@id] , categoryRowPrependText + (firstCellInRow.value()[0] as String))
+          def newtd = new Node(newtr, 'th', [colSpan:numCols, style:"width:100%", id:firstCellInRow.@id] , categoryRowPrependText + (firstCellInRow.value()[0] as String))
           // the best we can do above is append the new row (tr) to the bottom of the parent table
           // we need to basically cut (remove) it and paste (add) it at the correct row index
           // we need the numRowsAdded so that we don't keep pasting the new rows at the same index
