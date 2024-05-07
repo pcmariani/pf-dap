@@ -64,41 +64,79 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int numRowsAdded = 0
 
     // loop though the TRs
+    Boolean firstDataRow = true
+    int numCols
     table.tr.eachWithIndex { tr, f ->
       // save the node
       def firstCellInRow = tr.children()[0]
+      // println firstCellInRow
       int firstCellInRow_rowSpan = firstCellInRow.@rowSpan ? firstCellInRow.@rowSpan as int : 0
+      // println firstCellInRow_rowSpan
+      // def numSpan = firstCellInRow.parent().children().@rowSpan
+      // // println numCols + " " + numSpan
 
+      // figure out which rows need action taken, mark the cell if:
+      // - the first col has a rowspan 
+      // - the row is within the span of a first col rowspan
+      // - the first col does not have a rowspan and is not within
+      //   the span of a first col rowspan
       // save the rowspan or decriment the saved one
-      Boolean firstCellInRow_hasRowSpan = false
-      if (firstCellInRow_rowSpan != 0) {
-        firstCellInRow_hasRowSpan = true
-        rowSpanValSaved = firstCellInRow_rowSpan
-      } else if (rowSpanValSaved) {
+      Boolean markedForAction = false
+      // if (!rowSpanValSaved && firstCellInRow_rowSpan != 0) {
+      //   markedForAction = true
+      //   rowSpanValSaved = firstCellInRow_rowSpan -1
+      // } else if (!rowSpanValSaved) {
+      //   markedForAction = true
+      // } else if (rowSpanValSaved) {
+      //   rowSpanValSaved--
+      // }
+      if (!rowSpanValSaved) {
+        markedForAction = true
+        if (firstCellInRow_rowSpan != 0) {
+          rowSpanValSaved = firstCellInRow_rowSpan -1
+        }
+      } else {
         rowSpanValSaved--
       }
 
-      // if the row is not a header row (it's children are td's and not th's)
-      // create the category row
-      if (firstCellInRow.name() == "td") {
-        int numCols = firstCellInRow.parent().children().size()
-        // new tr
-        def newtr = new Node(table, 'tr')
-        // new td - adds colSpan attribute and copies all attributes from firstCellInRow
-        def newtd = new Node(newtr, 'td', [colSpan:numCols] + firstCellInRow.attributes(), categoryRowPrependText + (firstCellInRow.value()[0] as String))
-        // the best we can do above is append the new row to the bottom of the table
-        // we need to basically cut (remove) it and paste (add) it at the correct row index
-        // we need the numRowsAdded so that we don't keep pasting the new rows at the same index
-        table.remove(newtr)
-        table.children().add(f+numRowsAdded, newtr)
-        numRowsAdded++
-      }
+      // println ([
+      //   w(3,  f.toString()),
+      //   w(3,  firstCellInRow.name()),
+      //   w(30, firstCellInRow.value()[0]),
+      //   w(12, "rowspan: " + firstCellInRow_rowSpan),
+      //   w(10, "saved: " + rowSpanValSaved),
+      //   w(7,  markedForAction ? "*MARKED*" : "")
+      // ].join("  "))
 
-      // delete all the cells in the first column (if they haven't been spanned)
-      if (firstCellInRow_hasRowSpan || !rowSpanValSaved) {
+      if (markedForAction) {
+        // delete cell
+
+        // if the row is not a header row (it's children are td's and not th's)
+        // create the category row
+        if (firstCellInRow.name() == "td") {
+          // determine the width of the table by getting the width of first data row
+          // which will contain all the tds, whereas other rows might be missing
+          // tds because they are spanned by a rowspan in a row above.
+          if (firstDataRow) {
+            numCols = table.tr[f].children().size()
+            firstDataRow = false
+          }
+          // create new tr and append to bottom of parent table
+          def newtr = new Node(table, 'tr')
+          // create new td and append to new tr, add attributes
+          def newtd = new Node(newtr, 'th', [colSpan:numCols, style:firstCellInRow.@style, id:firstCellInRow.@id] , categoryRowPrependText + (firstCellInRow.value()[0] as String))
+          // the best we can do above is append the new row (tr) to the bottom of the parent table
+          // we need to basically cut (remove) it and paste (add) it at the correct row index
+          // we need the numRowsAdded so that we don't keep pasting the new rows at the same index
+          table.remove(newtr)
+          table.children().add(f+numRowsAdded, newtr)
+          numRowsAdded++
+        }
+
+        // delete all the cells in the first column
         firstCellInRow.replaceNode{}
+
       }
-      // println "@rowSpan: " + firstCellInRow_rowSpan + " ::: rowSpanValSaved: " + rowSpanValSaved
     }
   }
 
@@ -109,3 +147,4 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
   dataContext.storeStream(is, props);
 }
 
+private String w(int width, String str) { while (str.size() < width) str += " " ; return str }
