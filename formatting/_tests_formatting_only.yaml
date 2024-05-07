@@ -15,29 +15,29 @@ GLOBALS:
       # - data
     - 05_BUILD_Html.groovy:
     - 06_WRAP_Table.groovy:
-    # - 07_APPLY_ColumnWidths.groovy:
+    - 07_APPLY_ColumnWidths.groovy:
     - 08_MERGE_Cells_Html.groovy:
         # - data
     - 09_FORMAT_LeftMostColAsRows.groovy:
     # - data
 
-# PHRD:
-#   DPPs: ./phrd/phrd.properties
-#   docs:
-#     - data: ./phrd/phrd.dat
-#       props: ./phrd/phrd.properties
-#       ext: html
-# # ---
-
-stab4:
-  DPPs: stab4/stab4.properties
+PHRD:
+  DPPs: ./phrd/phrd.properties
   docs:
-    - data: stab4/stab4.dat
-      ddps: stab4/stab4.properties
-      ddpsOverride:
-        document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: stab4/groupByConfigs.json
+    - data: ./phrd/phrd.dat
+      props: ./phrd/phrd.properties
       ext: html
 # ---
+
+# stab4:
+#   DPPs: stab4/stab4.properties
+#   docs:
+#     - data: stab4/stab4.dat
+#       ddps: stab4/stab4.properties
+#       ddpsOverride:
+#         document.dynamic.userdefined.ddp_GroupByConfigsConsolidated: stab4/groupByConfigs.json
+#       ext: html
+# # ---
 
 # ST1 Summary Table:
 #   DPPs: _testfiles/stab_dp_1.properties
