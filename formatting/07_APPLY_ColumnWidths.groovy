@@ -12,19 +12,33 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     Properties props = dataContext.getProperties(i);
 
     def respectColumnWidths = (props.getProperty("document.dynamic.userdefined.ddp_respectColumnWidths") ?: "true").toBoolean()
+    int numCategoryRows = (props.getProperty("document.dynamic.userdefined.ddp_numCategoryRows") ?: "0") as int
 
     // if (isPivot) {
     def tableGroup = new XmlSlurper().parseText(is.text.replaceFirst(/(?i)(<\/tablegroup>).*$/,"\$1"))
     // println tableGroup
 
     tableGroup.table.each { table ->
+        // extract column widths from table cells
         def widthsArr = table.tr[0].children().findAll{it.@columnWidth != ""}.collect{
             if (it.@columnWidth == "null") 10
             else it.@columnWidth.toInteger()
         }
+
+        // removes an item at the from of the array for each categoryRow (to data there is only one possible)
+        // the category rows are created in a later script
+        (0..numCategoryRows-1).each{ widthsArr.remove(0) }
+        // println widthsArr
+
+        // calculate the width percentages
         def widthsPercentsArr = toPercents(widthsArr.collect{it as int})
         // println widthsPercentsArr
 
+        // for each category row item that was removed, add back a 0
+        (0..numCategoryRows-1).each{ widthsPercentsArr.add(0, 0) }
+        // println widthsPercentsArr
+
+        // replace the columnWidth attribute with a style attribute containing the width percentage
         table.tr.each { tr ->
             tr.children().findAll{it.@columnWidth != ""}.eachWithIndex{ cell, c ->
                 // println c + "  |  " + cell

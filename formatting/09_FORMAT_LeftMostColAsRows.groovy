@@ -41,7 +41,7 @@
  *           | c            | x  | x  | x  | x  |
  *           +--------------+----+----+----+----+
  *
-*/
+ */
 
 import java.util.Properties;
 import java.io.InputStream;
@@ -82,14 +82,6 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
       //   the span of a first col rowspan
       // save the rowspan or decriment the saved one
       Boolean markedForAction = false
-      // if (!rowSpanValSaved && firstCellInRow_rowSpan != 0) {
-      //   markedForAction = true
-      //   rowSpanValSaved = firstCellInRow_rowSpan -1
-      // } else if (!rowSpanValSaved) {
-      //   markedForAction = true
-      // } else if (rowSpanValSaved) {
-      //   rowSpanValSaved--
-      // }
       if (!rowSpanValSaved) {
         markedForAction = true
         if (firstCellInRow_rowSpan != 0) {
