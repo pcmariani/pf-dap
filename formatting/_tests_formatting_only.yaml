@@ -27,7 +27,7 @@ PHRD:
   docs:
     - data: ./phrd/phrd.dat
       props: ./phrd/phrd.properties
-      # ext: html
+      ext: html
 # ---
 
 # stab4:
