@@ -7,143 +7,155 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
   Properties props = dataContext.getProperties(i);
 
   /* INPUTS */
+
   def categoryRowPrependText = props.getProperty("document.dynamic.userdefined.ddp_categoryRowPrependText") ?: ""
   int numCategoryRows = (props.getProperty("document.dynamic.userdefined.ddp_numCategoryRows") ?: "0") as int
   numCategoryRows = 2
 
   /* LOGIC */
+
   def root = new XmlParser().parse(is)
   root.'**'.findAll() { node -> node.name() == "table" }.eachWithIndex() { table, t ->
 
+    // --- vars for loop --- //
     // when there is a rowspan, save it and then decriment it for each row that is spanned
-    int rowSpanValSaved = 0
     ArrayList<Integer> rowSpansSavedArr = [0] * numCategoryRows
+    ArrayList<Integer> rowSpansSavedArrPrev = [0] * numCategoryRows
+    Boolean firstDataRow = true
+    int rowSpanValSaved = 0
+    int numRowsAdded = 0
+    int numCols = 0
+    ArrayList outArr = []
     // println rowSpansSavedArr
 
-    // for each category row that is added add one to this var
-    int numRowsAdded = 0
-
-    // loop though the TRs
-    ArrayList outArr = []
-    Boolean firstDataRow = true
-    int numCols
-
+    // --- loop though TRs --- //
     table.tr.eachWithIndex { tr, f ->
+
+      // --- vars for loop --- //
       // save the node
-      def rowCellsArr = tr.children()[0..numCategoryRows - 1]
-      // println rowCellsArr.collect{w(25, it.value()[0])}.join("  ")
-
-      ArrayList<Integer> rowSpansArr = rowCellsArr.collect{ it.@rowSpan ? it.@rowSpan as int : 0 }
+      ArrayList rowCellsArr = tr.children()[0..numCategoryRows - 1]
+      // println rowCellsArr
+      ArrayList rowSpansArr = rowCellsArr.collect{ it.@rowSpan ? it.@rowSpan as int : 0 }
       // println rowSpansArr
-
-
       Boolean markedForAction = false
-      ArrayList markedArr = []
+      Boolean firstDataCol = true
 
-      
+      // --- loop though cells (TH/TD) --- //
       rowCellsArr.eachWithIndex{ cell, c ->
         if (!rowSpansSavedArr[c]) {
-          markedArr[c] = true
+          markedForAction = true
           if (rowSpansArr[c] != 0) {
             rowSpansSavedArr[c] = rowSpansArr[c] - 1
+          } else {
+            rowSpansSavedArr[c] = rowSpansArr[c]
           }
+        }
+        else if (numCategoryRows > 1 && rowSpansSavedArr[c] && rowSpansArr[c] != 0) {
+          markedForAction = true
+          rowSpansSavedArr[c+1] = rowSpansArr[c]
+          rowSpansSavedArr[c]--
         }
         else {
           rowSpansSavedArr[c]--
         }
-        // if (c == 0) {
-        //
-        // }
       }
 
-      println ([
-        w(3, f),
-        w(3, rowCellsArr[0].name()),
-        // rowSpansArr.collect{w(3,it)}.join(","),
-        w(7, rowSpansArr != [0,0] ? rowSpansArr.join(",") : ""),
-        rowCellsArr.collect{w(30, it.value()[0])}.join(),
-        w(7, rowSpansSavedArr.join(",")),
-        markedArr
-      ].join("  "))
 
 
-      // rowSpansArr.eachWithIndex{ span, s ->
-      //   if (!rowSpansSavedArr.sum()) {
-      //     markedForAction = true
-      //     if (span != 0) {
-      //       rowSpansSavedArr[s] = span -1
-      //     }
-      //   } else {
-      //     rowSpansSavedArr[s]--
-      //   }
-      // }
+      if (markedForAction) {
 
-      // if (!rowSpanValSaved) {
-      //   markedForAction = true
-      //   if (rowCells_rowSpan != 0) {
-      //     rowSpanValSaved = rowCells_rowSpan -1
-      //   }
-      // } else {
-      //   rowSpanValSaved--
-      // }
+        if (rowCellsArr[0].name() == "td") {
 
-      // println ([
-      //   w(3,  f.toString()),
-      //   w(3,  rowCells.name()),
-      //   w(30, rowCells.value()[0]),
-      //   w(12, "rowspan: " + rowCells_rowSpan),
-      //   w(10, "saved: " + rowSpanValSaved),
-      //   w(7,  markedForAction ? "*MARKED*" : "")
-      // ].join("  "))
+          // --- set vars for loop --- //
+          int countAdded = 0
 
-      // if (markedForAction) {
-      //   // delete cell
-      //
-      //   // if the row is not a header row (it's children are td's and not th's)
-      //   // create the category row
-      //   if (rowCells.name() == "td") {
-      //     // determine the width of the table by getting the width of first data row
-      //     // which will contain all the tds, whereas other rows might be missing
-      //     // tds because they are spanned by a rowspan in a row above.
-      //     if (firstDataRow) {
-      //       numCols = table.tr[f].children().size()
-      //       firstDataRow = false
-      //     }
-      //     // create new tr and append to bottom of parent table
-      //     def newtr = new Node(table, 'tr')
-      //     // create new td and append to new tr, add attributes
-      //     def newtd = new Node(newtr, 'th', [colSpan:numCols, style:"width:100%", id:rowCells.@id] , categoryRowPrependText + (rowCells.value()[0] as String))
-      //     // the best we can do above is append the new row (tr) to the bottom of the parent table
-      //     // we need to basically cut (remove) it and paste (add) it at the correct row index
-      //     // we need the numRowsAdded so that we don't keep pasting the new rows at the same index
-      //     table.remove(newtr)
-      //     table.children().add(f+numRowsAdded, newtr)
-      //     numRowsAdded++
-      //   }
-      //
-      //   // delete all the cells in the first column
-      //   rowCells.replaceNode{}
-      //
-      // }
+          // --- loop through cells (TH/TD) again --- //
+          rowSpansSavedArrPrev.eachWithIndex{ span, s ->
+            if (span == 0) {
+              outArr[s] = rowCellsArr[countAdded].value()[0]
+              countAdded++
+            }
+          }
+
+          if (firstDataRow && firstDataCol) {
+            numCols = table.tr[f].children().size() - numCategoryRows
+            firstDataRow = false
+            firstDataCol = false
+          }
+          def newtr = new Node(table, 'tr')
+          def newtd = new Node(newtr,
+            'td',
+            [
+              colSpan: numCols,
+              style: "width:100%; font-weight:bold; text-align:center;",
+              id: rowCellsArr[rowSpansSavedArrPrev.count(0)-1].@id
+            ],
+            categoryRowPrependText + outArr.join(" - ")
+          )
+          table.remove(newtr)
+          table.children().add(f+numRowsAdded, newtr)
+          numRowsAdded++
+        }
+
+        (0..rowSpansSavedArrPrev.count(0)-1).each {
+          rowCellsArr[it].replaceNode{}
+        }
+
+      }
+
+      // --- for debugging --- //
+      if (markedForAction) {  // <-- comment line to see all
+        println nicetable(
+          f,
+          "  ",
+          [3, 4, 10, 10, 15, rowCellsArr.size()*26, 7, 30],
+          ["ROW", "TYPE", "RSPAN", "RSPAN-SAVE", "RSPAN-SAVE-PREV", "ROW-VALUES", "MARKED", "OUT"],
+          [
+            f,
+            rowCellsArr[0].name(),
+            rowSpansArr.sum() != 0 ? rowSpansArr.join(",") : "",
+            rowSpansSavedArr.join(","),
+            rowSpansSavedArrPrev.join(","),
+            rowCellsArr.collect{ it.value()[0] }.join("  .  "),
+            markedForAction ? "x" : "",
+            outArr.join("  .  ")
+          ]
+        )
+      }  // <-- comment line to see all
+
+      rowSpansSavedArrPrev = rowSpansSavedArr.clone()
     }
+
   }
 
   /* OUTPUT */
   String outData
-  // outData = groovy.xml.XmlUtil.serialize(root).replaceFirst("\\<\\?xml(.+?)\\?\\>", "").trim() //.replaceAll(/<tr\s*?\/\s*>/,"")
+  outData = groovy.xml.XmlUtil.serialize(root).replaceFirst("\\<\\?xml(.+?)\\?\\>", "").trim() //.replaceAll(/<tr\s*?\/\s*>/,"")
   is = new ByteArrayInputStream(outData.toString().getBytes("UTF-8"));
   dataContext.storeStream(is, props);
 }
 
-private String w(int width, def thing) {
-  def prepend = false
-  if (thing instanceof Integer) {
-    prepend = true
-    thing = thing.toString()
+private String nicetable(int index, String delimiter, ArrayList widthsArr, ArrayList headersArr, ArrayList valuesArr) {
+  StringBuilder outStr = new StringBuilder()
+  
+  def processArray = { ArrayList arr, String padChar ->
+    def lineArr = [""] * arr.size()
+    arr.eachWithIndex{ val, i ->
+      int padSize = widthsArr[i] - val.toString().size()
+      if (val instanceof Integer) {
+        lineArr[i] = (padChar * (padSize > 0 ? padSize : 0)) + val.toString()
+      } else {
+        lineArr[i] = val + (padChar * (padSize > 0 ? padSize : 0))
+      }
+    }
+    return lineArr
   }
-  while (thing.size() < width) {
-    if (prepend) thing = " " + thing
-    else thing += " "
+
+  if (index == 0) {
+    outStr.append(processArray(headersArr, ".").join("." * delimiter.size()) + System.lineSeparator())
   }
-  return thing
+  outStr.append(processArray(valuesArr, " ").join(delimiter))
+
+  return outStr.toString()
 }
+
