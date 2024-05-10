@@ -26,7 +26,10 @@ PHRD:
   DPPs: ./phrd/phrd.properties
   docs:
     - data: ./phrd/phrd.dat
-      props: ./phrd/phrd.properties
+      ddps: ./phrd/phrd.properties
+      ddpsOverride:
+        document.dynamic.userdefined.ddp_Sources: ./phrd/phrd_sources.json
+
       ext: html
 # ---
 
