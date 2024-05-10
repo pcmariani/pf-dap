@@ -73,9 +73,9 @@
       "PivotOnConfigColLabelsEditable": false,
       "GroupByConfigRowLabelsEditable": true,
       "PivotGroupByCategoryRows": {
-        "NumGroupByColsToConvert": 2,
+        "NumGroupByColsToConvert": 1,
         "TextToPrepend": "",
-        "Delimiter": " -- "
+        "Delimiter": " - "
       }
     }
   ]
