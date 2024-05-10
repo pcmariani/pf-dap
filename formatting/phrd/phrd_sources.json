@@ -1,0 +1,82 @@
+{
+  "Records": [
+    {
+      "SourceSqlQueryId": 32,
+      "TableDefinitionId": 47,
+      "SourceType": "Db Query",
+      "ResultTableType": "Data Table",
+      "Description": "Data Tables for PHRD Tech Report (NO TRANSPOSITION)",
+      "ParamUserInputMap": [
+        {
+          "ParamName": "Statement#0_S1.PROTOCOL",
+          "UserInputId": 71
+        },
+        {
+          "ParamName": "Statement#1_TZ1.PROTOCOL",
+          "UserInputId": 71
+        }
+      ],
+      "DbSystem": "PharmSci Labware",
+      "SqlStatement": "",
+      "DisplayHeaders": true,
+      "DisplayHeadersOnSide": true,
+      "Transpose": false,
+      "IsPivot": true,
+      "PivotOnColumns": [
+        {
+          "Column": "Timepoint_Str",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": true,
+          "MergeVertical": false
+        },
+        {
+          "Column": "Condition",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": false,
+          "MergeVertical": true
+        }
+      ],
+      "PivotGroupByColumns": [
+        {
+          "Column": "Analysis",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": false,
+          "MergeVertical": true
+        },
+        {
+          "Column": "Reported Name",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": false,
+          "MergeVertical": true
+        },
+        {
+          "Column": "Formulation",
+          "Label": null,
+          "IsKeyColumn": true,
+          "MergeHorizontal": false,
+          "MergeVertical": true
+        },
+        {
+          "Column": "Description",
+          "Label": null,
+          "IsKeyColumn": false,
+          "MergeHorizontal": false,
+          "MergeVertical": false
+        }
+      ],
+      "PivotDataColumn": "Reported Value",
+      "PivotTopLeftCornerOpt": "Group By Label",
+      "PivotOnConfigColLabelsEditable": false,
+      "GroupByConfigRowLabelsEditable": true,
+      "PivotGroupByCategoryRows": {
+        "NumGroupByColsToConvert": 2,
+        "TextToPrepend": "",
+        "Delimiter": " -- "
+      }
+    }
+  ]
+}
