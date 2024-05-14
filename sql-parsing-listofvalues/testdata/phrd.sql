@@ -1,0 +1,57 @@
+SELECT 
+  R3."ANALYSIS" AS "Analysis",
+  R3."REPORTED_NAME" AS "Reported Name",
+  S1."LOT_NAME" AS "Formulation",
+  X1."TITLE" AS "Description",
+ROUND(DECODE(TP1.NUM_MONTHS,0,TP1.INTERVAL/86400/30.4167, tp1.num_months), 2) as "Timepoint_Num",
+  TP1.DISPLAY_STRING AS "Timepoint_Str",
+  REGEXP_REPLACE(REGEXP_REPLACE(S1."CONDITION", '_', ' / '), 'C', '°C') AS "Condition",
+  R3."REPORTED_VALUE" AS "Reported Value"
+--S1."PROTOCOL", 
+--S1."PROTOCOL_LEVEL" AS "Protocol Level",
+
+FROM GLIMS_OWNER.SAMPLE S1
+
+LEFT JOIN GLIMS_OWNER.TEST T2 on S1.SAMPLE_NUMBER = T2.SAMPLE_NUMBER
+LEFT JOIN GLIMS_OWNER.RESULT R3 on T2.TEST_NUMBER = R3.TEST_NUMBER
+LEFT JOIN GLIMS_OWNER.X_COMPOUNDS X4 on S1.X_COMPOUND_ID = X4.COMPOUND_ID
+LEFT JOIN GLIMS_OWNER.PROTOCOL P1 on S1.PROTOCOL = P1.NAME
+LEFT JOIN GLIMS_OWNER.X_MATERIAL X1 on X1.NAME = S1.LOT_NAME
+LEFT OUTER JOIN GLIMS_OWNER.TIMEPOINT TP1 ON S1.TIMEPOINT = TP1.NAME
+
+WHERE R3."STATUS" != 'X'
+AND T2."STATUS" != 'X'
+AND S1."PROTOCOL" = ?
+--AND R3.REPORTED_NAME IN ('Color Intensity','Clarity','Color','pH','Relative Potency','Visible Particles','Fragments')
+AND R3."REPORTED_NAME" NOT IN ('Test Location','Method No. & Version/Effective Date', 'Data Reference', 'Test Date', 'Total Area', 'Result ID', 'T_mTCA', 'Empower Result ID', 'LOQ (% Area)')
+
+UNION 
+
+SELECT DISTINCT
+  R3."ANALYSIS" AS "Analysis",
+  R3."REPORTED_NAME" AS "Reported Name",
+  TZ1."TEST_ARTICLE" AS "Formulation",
+  M1."TITLE" AS "Description",
+  0 as "Timepoint_Num",
+  'T-0' AS "Timepoint_Str",
+  'T-0' AS "Condition",
+  R3."REPORTED_VALUE" AS "Reported Value"
+
+FROM GLIMS_OWNER.PROTOCOL PR1
+
+INNER JOIN GLIMS_OWNER.TIME_ZERO TZ1 ON PR1.NAME = TZ1.PROTOCOL AND TZ1.OBJECT_CLASS = 'SAMPLE'
+INNER JOIN GLIMS_OWNER.SAMPLE S1 ON TZ1.OBJECT_ID = S1.SAMPLE_NUMBER
+INNER JOIN GLIMS_OWNER.TEST T2 on S1.SAMPLE_NUMBER = T2.SAMPLE_NUMBER
+INNER JOIN GLIMS_OWNER.RESULT R3 on T2.TEST_NUMBER = R3.TEST_NUMBER
+LEFT OUTER JOIN GLIMS_OWNER.X_MATERIAL M1 on M1.NAME = TZ1."TEST_ARTICLE"
+LEFT OUTER JOIN GLIMS_OWNER.TIMEPOINT TP1 ON S1.TIMEPOINT = TP1.NAME
+
+WHERE R3."STATUS" != 'X'
+AND T2."STATUS" != 'X'
+AND TZ1."PROTOCOL" = ?
+--AND R3.REPORTED_NAME IN ('Color Intensity','Clarity','Color','pH','Relative Potency','Visible Particles','Fragments')
+AND R3."REPORTED_NAME" NOT IN ('Test Location','Method No. & Version/Effective Date', 'Data Reference', 'Test Date', 'Total Area', 'Result ID', 'T_mTCA', 'Empower Result ID', 'LOQ (% Area)')
+
+ORDER BY "Analysis", "Reported Name", "Formulation", "Timepoint_Num", "Condition"
+
+;
