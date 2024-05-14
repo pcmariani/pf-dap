@@ -44,6 +44,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println hasUnion
 
     def columnsMap = []
+    def columnsArr = []
     def fromTablesArr = []
     def fromAndJoinTablesArr = []
     def paramsArrForListOfValues = []
@@ -100,6 +101,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                     // which don't have them
                     columnExp = columnExp.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
                     colAlias = colAlias.replaceAll(/\s*"\s*/,"").replaceFirst(/.+\./,"")
+                    // There is a problem with the map. The expressions are not necessarily unique.
+                    columnsArr << colAlias
                     // key is the column expression - the thing which is not the alias
                     // value is the column alias
                     // if there is no alias, the key and value will be the same
@@ -107,7 +110,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 }
         }
         // println columnsMap.size()
-        columnsMap.each { k,v -> println k + "  :::  " + v + "\n" }
+        // println prettyJson(columnsMap)
+        // println prettyJson(columnsArr)
 
         /*
          * --- parse the FROM clause ---
@@ -242,10 +246,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     if ("ddp_sqlMetadataJson" in outputs) {
         def sqlMetadataForUser = [
             // Columns: columnsMap,
-            Columns: columnsMap.collect{ k,v -> ["Name": v] },
+            // Columns: columnsMap.collect{ k,v -> ["Name": v] },
+            Columns: columnsArr.collect{ ["Name": it] },
             Params: paramsArrForUser
         ]
-        // println prettyJson(sqlMetadataForUser)
+        println prettyJson(sqlMetadataForUser)
         props.setProperty("document.dynamic.userdefined.ddp_sqlMetadataJson", JsonOutput.toJson(sqlMetadataForUser))
     }
 
