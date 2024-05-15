@@ -1,6 +1,8 @@
 import java.util.Properties;
 import java.io.InputStream;
 import groovy.xml.XmlUtil
+import groovy.json.JsonSlurper
+import groovy.json.JsonOutput;
 import com.boomi.execution.ExecutionUtil;
  
 // def NEWLINE = System.lineSeparator()
@@ -12,7 +14,11 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     Properties props = dataContext.getProperties(i);
 
     def respectColumnWidths = (props.getProperty("document.dynamic.userdefined.ddp_respectColumnWidths") ?: "true").toBoolean()
-    int numCategoryRows = (props.getProperty("document.dynamic.userdefined.ddp_numCategoryRows") ?: "0") as int
+
+    def sourcesJson = props.getProperty("document.dynamic.userdefined.ddp_Sources")
+    def categoryRowconfig = new JsonSlurper().parseText(sourcesJson).Records[0]?.PivotGroupByCategoryRows
+    int numCategoryRows = categoryRowconfig?.NumGroupByColsToConvert ?: 0
+    // println numCategoryRows
 
     // if (isPivot) {
     def tableGroup = new XmlSlurper().parseText(is.text.replaceFirst(/(?i)(<\/tablegroup>).*$/,"\$1"))
@@ -27,7 +33,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         // removes an item at the from of the array for each categoryRow (to data there is only one possible)
         // the category rows are created in a later script
-        (0..numCategoryRows-1).each{ widthsArr.remove(0) }
+        if (numCategoryRows > 0) {
+            (0..numCategoryRows-1).each{ widthsArr.remove(0) }
+        }
         // println widthsArr
 
         // calculate the width percentages
@@ -35,7 +43,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println widthsPercentsArr
 
         // for each category row item that was removed, add back a 0
-        (0..numCategoryRows-1).each{ widthsPercentsArr.add(0, 0) }
+        if (numCategoryRows > 0) {
+            (0..numCategoryRows-1).each{ widthsPercentsArr.add(0, 0) }
+        }
         // println widthsPercentsArr
 
         // replace the columnWidth attribute with a style attribute containing the width percentage
