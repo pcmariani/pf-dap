@@ -219,25 +219,25 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
         }
 
-        // --- for debugging --- //
-        if (markedForAction) {  // <-- comment line to see all
-          println niceTableForDebugging(
-            f,
-            "  ",
-            [3, 3, 10, 10, 15, cellsArr.size()*26, 7, 30],
-            ["ROW", "TAG", "RSPAN", "RSPAN-SAVE", "RSPAN-SAVE-PREV", "ROW-VALUES", "MARKED", "RESULT-STRING"],
-            [
-              f,
-              cellsArr[0].name(),
-              rowSpansArr.sum() != 0 ? rowSpansArr.join(",") : "",
-              rowSpansSavedArr.join(","),
-              rowSpansSavedArrPrev.join(","),
-              cellsArr.collect{ it.value()[0] }.join("  .  "),
-              markedForAction ? "x" : "",
-              config.TextToPrepend + resultStringArr.join(config.Delimiter)
-            ]
-          )
-        }  // <-- comment line to see all
+        // // --- for debugging --- //
+        // if (markedForAction) {  // <-- comment line to see all
+        //   println niceTableForDebugging(
+        //     f,
+        //     "  ",
+        //     [3, 3, 10, 10, 15, cellsArr.size()*26, 7, 30],
+        //     ["ROW", "TAG", "RSPAN", "RSPAN-SAVE", "RSPAN-SAVE-PREV", "ROW-VALUES", "MARKED", "RESULT-STRING"],
+        //     [
+        //       f,
+        //       cellsArr[0].name(),
+        //       rowSpansArr.sum() != 0 ? rowSpansArr.join(",") : "",
+        //       rowSpansSavedArr.join(","),
+        //       rowSpansSavedArrPrev.join(","),
+        //       cellsArr.collect{ it.value()[0] }.join("  .  "),
+        //       markedForAction ? "x" : "",
+        //       config.TextToPrepend + resultStringArr.join(config.Delimiter)
+        //     ]
+        //   )
+        // }  // <-- comment line to see all
 
         rowSpansSavedArrPrev = rowSpansSavedArr.clone()
       }
