@@ -71,12 +71,7 @@
       "PivotDataColumn": "Reported Value",
       "PivotTopLeftCornerOpt": "Group By Label",
       "PivotOnConfigColLabelsEditable": false,
-      "GroupByConfigRowLabelsEditable": true,
-      "PivotGroupByCategoryRows": {
-        "NumGroupByColsToConvert": 0,
-        "TextToPrepend": "",
-        "Delimiter": " - "
-      }
+      "GroupByConfigRowLabelsEditable": true
     }
   ]
 }
