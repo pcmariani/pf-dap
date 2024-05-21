@@ -68,13 +68,18 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
   def config = new JsonSlurper().parseText(sourcesJson).Records[0]?.PivotGroupByCategoryRows
   // println prettyJson(config)
 
-  int numGroupByColsToConvert = config?.NumGroupByColsToConvert
-
   // HACK FOR TESTING - remove once UI and API are complete {{{
   Boolean isPHRDReport = (props.getProperty("document.dynamic.userdefined.ddp_IsPHRDReport") ?: "false").toBoolean()
-  if (isPHRDReport) numGroupByColsToConvert = 1
-  // println isPHRDReport
+  if (isPHRDReport) {
+    config = [
+      NumGroupByColsToConvert: 1,
+      TextToPrepend: "",
+      Delimiter: " - "
+    ]
+  }
   // }}} END HACK
+
+  int numGroupByColsToConvert = config?.NumGroupByColsToConvert
 
   if (numGroupByColsToConvert && numGroupByColsToConvert != 0) {
 
