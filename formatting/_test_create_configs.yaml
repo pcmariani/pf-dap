@@ -2,7 +2,7 @@ OPTS:
   # - data
   - ddps:
       - ddp_NewPivotedDataConfigs
-      - ddp_NewGroupByConfigs
+      # - ddp_NewGroupByConfigs
   # - DPPs
   # - assertions
   # - no labels

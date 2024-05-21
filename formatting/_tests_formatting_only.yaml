@@ -16,12 +16,12 @@ GLOBALS:
     - 05_BUILD_Html.groovy:
     - 06_WRAP_Table.groovy:
     - 07_APPLY_ColumnWidths.groovy:
-        - data
-    # - 08_MERGE_Cells_Html.groovy:
+        # - data
+    - 08_MERGE_Cells_Html.groovy:
     # - data
     # - 09_FORMAT_LeftMostColAsRows.groovy:
-    # - 09_CONVERT_GroupByCols_CategoryRows.groovy:
-    # - data
+    - 09_CONVERT_GroupByCols_CategoryRows.groovy:
+        - data
 
 PHRD:
   DPPs: ./phrd/phrd.properties
@@ -30,7 +30,6 @@ PHRD:
       ddps: ./phrd/phrd.properties
       ddpsOverride:
         document.dynamic.userdefined.ddp_Sources: ./phrd/phrd_sources.json
-
       ext: html
 # ---
 
