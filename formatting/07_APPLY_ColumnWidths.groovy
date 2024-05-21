@@ -20,6 +20,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     int numCategoryRows = categoryRowconfig?.NumGroupByColsToConvert ?: 0
     // println numCategoryRows
 
+    // HACK FOR TESTING - remove once UI and API are complete {{{
+    Boolean isPHRDReport = (props.getProperty("document.dynamic.userdefined.ddp_IsPHRDReport") ?: "false").toBoolean()
+    if (isPHRDReport) numCategoryRows = 1
+    // println isPHRDReport
+    // }}} END HACK
+
     // if (isPivot) {
     def tableGroup = new XmlSlurper().parseText(is.text.replaceFirst(/(?i)(<\/tablegroup>).*$/,"\$1"))
     // println tableGroup
