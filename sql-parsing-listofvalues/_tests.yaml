@@ -14,14 +14,14 @@ GLOBALS:
   scripts:
     - s061_PARSE_SqlStatement_current.groovy:
         # - data
-    # - 091_GEN_ListOfValues.groovy:
+    - 091_GEN_ListOfValues.groovy:
     #     - data
 
-another:
-  script: s061_PARSE_SqlStatement_current.groovy
-  data: generic_061.dat
-  ddpsOverride:
-    document.dynamic.userdefined.ddp_sqlStatement: ./bs_summary.sql
+# another:
+#   script: s061_PARSE_SqlStatement_current.groovy
+#   data: generic_061.dat
+#   ddpsOverride:
+#     document.dynamic.userdefined.ddp_sqlStatement: ./bs_summary.sql
 
 # batchAnalysi-ds:
 #   script: s061_PARSE_SqlStatement_current.groovy
@@ -43,9 +43,17 @@ another:
 #   ddpsOverride:
 #     document.dynamic.userdefined.ddp_outputs: addSqlMetadataToSourceSqlQuery
 
-phrd:
+# phrd:
+#   data: ./testdata/phrd_091.dat
+#   ddps: ./testdata/phrd_091.properties
+#   ddpsOverride:
+#     # document.dynamic.userdefined.ddp_outputs: addSqlMetadataToSourceSqlQuery
+#     document.dynamic.userdefined.ddp_outputs: ddp_sqlMetadataJson
+
+phrd with condition:
   data: ./testdata/phrd_091.dat
   ddps: ./testdata/phrd_091.properties
   ddpsOverride:
-    # document.dynamic.userdefined.ddp_outputs: addSqlMetadataToSourceSqlQuery
-    document.dynamic.userdefined.ddp_outputs: ddp_sqlMetadataJson
+    document.dynamic.userdefined.ddp_sqlStatement: testdata/phrd_with_condition.sql
+    document.dynamic.userdefined.ddp_outputs: addSqlMetadataToSourceSqlQuery
+    # document.dynamic.userdefined.ddp_outputs: ddp_sqlMetadataJson

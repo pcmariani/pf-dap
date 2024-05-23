@@ -15,6 +15,10 @@
           "UserInputId" : 10
         },
         {
+          "ParamName" : "Statement#0_REGEXP_REPLACE(REGEXP_REPLACE(S1.CONDITION, '_', ' / '), 'C', '°C')",
+          "UserInputId" : 11
+        },
+        {
           "ParamName" : "Statement#1_TZ1.PROTOCOL",
           "UserInputId" : 10
         }
