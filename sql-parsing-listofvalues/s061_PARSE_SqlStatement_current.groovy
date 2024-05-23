@@ -187,6 +187,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             def whereClauseArr = whereClause.split(/\s*__\s*/)
             // println prettyJson(whereClauseArr)
             whereClauseArr.each { whereParam ->
+                // println whereParam
                 // if (whereParam.contains("NOT IN")) println "\n" + whereParam
                 def whereParamRegexMatcher = /(?xi)^
                         \s*(\))?                                                          #closeParens
@@ -200,7 +201,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 // println ([closeParen, conjunction, openParens, column, operator, predicate].join(" | "))
                 def table
                 if (column =~ /\./) {
-                    def alias = column.replaceFirst(/\..*$/,"")
+                    def alias = column.replaceFirst(/\..*$/,"").replaceFirst(/.*\(/,"")
+                    // println alias
                     table = fromAndJoinTablesArr.find{ it.UnionIndex == uIndex && it.Alias == alias }?.Table
                 } else {
                     table = fromTablesArr[uIndex].Table

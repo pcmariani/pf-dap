@@ -49,7 +49,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     Set paramUserInputsArr = []
 
     fromTablesArr.eachWithIndex { fromTable, uIndex ->
-        // println "\n------------------------------  UNION INDEX: $uIndex  -------------------------------"
+        println "\n------------------------------  UNION INDEX: $uIndex  -------------------------------"
         // println "fromTable: " + prettyJson(fromTable)
         // println "params: " + prettyJson(params)
 
@@ -97,9 +97,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                         Value: paramValue
                     ]
                 }
+                // println param.Column
                 // add to the aliases arr only if the alias isn't the same as the one in fromTable
-                if (param.Column =~ /\./ && param.Column.replaceFirst(/\..*/,"") != fromTable.Alias) {
-                    aliases << param.Column.replaceFirst(/\..*/,"")
+                if (param.Column =~ /\./ && param.Column.replaceFirst(/\..*/,"").replaceFirst(/.*\(/,"") != fromTable.Alias) {
+                    aliases << param.Column.replaceFirst(/\..*/,"").replaceFirst(/.*\(/,"")
                 }
             }
         }
@@ -107,6 +108,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         // println "paramUserInputsArr: " + prettyJson(paramUserInputsArr)
         // println "filters: " + prettyJson(filters)
         // println "aliases: " + prettyJson(aliases)
+        // println "tablesArrForUIndex: " + prettyJson(tablesArrForUIndex)
 
 
         // go through all the joins whose table alias are in aliases
@@ -134,8 +136,9 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
 
         def paramColumnNamesFormatted = paramColumnNamesArr.collect{
-            if (it =~ /\./) it.replace(".",".\"").replaceAll(/$/,"\"")
-            else "\"" + it + "\""
+            if (it =~ /\w+\s*\(\s*\w+\.\w+/) it  // expression has an alias and is in a function
+            else if (it =~ /\./) it.replace(".",".\"").replaceAll(/$/,"\"")  // expression has an alias
+            else "\"" + it + "\""  // expression does not have an alias
         }.join(", ")
         // println paramColumnNamesFormatted
 
@@ -162,7 +165,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     }
 
     def sqlQueryForParamValues = hasUnion ? sqlQueryForListOfValuesArr.join("\n\n$unionOperator\n\n") : sqlQueryForListOfValuesArr[0]
-    println sqlQueryForParamValues + "\n"
+    // println sqlQueryForParamValues + "\n"
     def isMultiSelect = paramUserInputsArr.Operator.contains("IN") ? "true" : "false"
     // println "isMultiSelect: " + isMultiSelect
 
