@@ -21,8 +21,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     // println numCategoryRows
 
     // HACK FOR TESTING - remove once UI and API are complete {{{
-    Boolean isPHRDReport = (props.getProperty("document.dynamic.userdefined.ddp_IsPHRDReport") ?: "false").toBoolean()
-    if (isPHRDReport) numCategoryRows = 1
+    // Boolean isPHRDReport = (props.getProperty("document.dynamic.userdefined.ddp_IsPHRDReport") ?: "false").toBoolean()
+    // if (isPHRDReport) numCategoryRows = 1
     // println isPHRDReport
     // }}} END HACK
 

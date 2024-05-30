@@ -69,14 +69,14 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
   // println prettyJson(config)
 
   // HACK FOR TESTING - remove once UI and API are complete {{{
-  Boolean isPHRDReport = (props.getProperty("document.dynamic.userdefined.ddp_IsPHRDReport") ?: "false").toBoolean()
-  if (isPHRDReport) {
-    config = [
-      NumGroupByColsToConvert: 1,
-      TextToPrepend: "",
-      Delimiter: " - "
-    ]
-  }
+  // Boolean isPHRDReport = (props.getProperty("document.dynamic.userdefined.ddp_IsPHRDReport") ?: "false").toBoolean()
+  // if (isPHRDReport) {
+  //   config = [
+  //     NumGroupByColsToConvert: 1,
+  //     TextToPrepend: "",
+  //     Delimiter: " - "
+  //   ]
+  // }
   // }}} END HACK
 
   int numGroupByColsToConvert = config?.NumGroupByColsToConvert
@@ -211,7 +211,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 style: "width:100%; font-weight:bold; text-align:center;",
                 id: cellsArr[rowSpansSavedArrPrev.count(0)-1].@id
               ],
-              config.TextToPrepend + resultStringArr.join(config.Delimiter)
+              ( config.TextToPrepend ?: "" ) + resultStringArr.join(config.Delimiter)
             )
             // The best we can do above is append the new row (tr) to the bottom of the parent table.
             // We need to basically cut (remove) it and paste (add) it at the correct row index.
