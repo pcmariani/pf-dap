@@ -12,16 +12,19 @@ def DBIFS = "^^^"    // Database Field Separator
 
 // def pivotedDataConfigsJson = ExecutionUtil.getDynamicProcessProperty("DPP_PivotedDataConfigs")
 def sectionNumber = ExecutionUtil.getDynamicProcessProperty("DPP_SectionNumber") ?: "0.0.0.0.0"
-println sectionNumber
+//println sectionNumber
 def tot_prefixOption = ExecutionUtil.getDynamicProcessProperty("DPP_TableOfTables_PrefixOption") ?: "Prefix"
-println tot_prefixOption
+//println tot_prefixOption
 def tot_text_to_prepend = (ExecutionUtil.getDynamicProcessProperty("DPP_TableOfTables_TextToPrepend") ?: "Table" ) - ~/\s*$/
-println tot_text_to_prepend
+//println tot_text_to_prepend
  
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
  
+    String tableInstanceIndex = props.getProperty("document.dynamic.userdefined.ddp_tableInstanceIndex") ?: "1"
+    // println tableInstanceIndex
+
     def pivotedDataConfigsJson = props.getProperty("document.dynamic.userdefined.ddp_PivotedDataConfigsConsolidated")
     def activePivotedDataConfigsArr = pivotedDataConfigsJson ? new JsonSlurper().parseText(pivotedDataConfigsJson)?.Records : []
     // println prettyJson(activePivotedDataConfigsArr)
@@ -168,7 +171,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
             props.setProperty("document.dynamic.userdefined.ddp_tableGroupRef", "id"+md5(tableGroupId))
 
-            'h3'('tableHeader':"yes", 'prefixPrependString':tot_text_to_prepend, 'sectionNumber':sectionNumber, tableTitleText)
+            'h3'('tableHeader':"yes", 'prefixPrependString':tot_text_to_prepend, 'sectionPrefix':sectionNumber+"-"+tableInstanceIndex, 'sectionNumber':sectionNumber, tableTitleText)
 
             /* --- table --- */
 

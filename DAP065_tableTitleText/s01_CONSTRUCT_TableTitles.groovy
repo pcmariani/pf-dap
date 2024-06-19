@@ -56,21 +56,25 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
 
     // --- set tableTitleText ---
-    def tableTitleText = source.TableTitleTemplate ?: "Table Title Text Not Yet Configured"
+    //.replaceAll(/^.*-\d{1,2}\.?\s*/,"")
 
-    if (source.ResultTableType =~ /(?i)Summary/){
-        tableTitleText = sectionNumber + "-1. " + tableTitleText
-    }
-    else if (source.ResultTableType =~ /(?i)Data/) {
-        if (tableInstance.TableTitleIsOverridden) {
-            println tableInstance.TableTitleOverride.replaceAll(/^.*\. /,"")
-        }
-        tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " + (
-            tableInstance.TableTitleIsOverridden ?
-                tableInstance.TableTitleOverride.replaceAll(/^.*-\d{1,2}.*\.\s*/,"") :
-                tableTitleText
-        )
-    }
+    def tableTitleText = tableInstance.TableTitleIsOverridden ?
+                            tableInstance.TableTitleOverride.replaceAll(/^.*-\d{1,2}\.?\s*/,"") :
+                            source.TableTitleTemplate ?: "Table Title Text Not Yet Configured"
+
+    //if (source.ResultTableType =~ /(?i)Summary/){
+    //    tableTitleText = sectionNumber + "-1. " + tableTitleText
+    //}
+    //else if (source.ResultTableType =~ /(?i)Data/) {
+    //    if (tableInstance.TableTitleIsOverridden) {
+    //        println tableInstance.TableTitleOverride.replaceAll(/^.*\. /,"")
+    //    }
+    //    tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " + (
+    //        tableInstance.TableTitleIsOverridden ?
+    //            tableInstance.TableTitleOverride.replaceAll(/^.*-\d{1,2}.*\.\s*/,"") :
+    //            tableTitleText
+    //    )
+    //}
     println tableTitleText
 
     // --- process placeholders ---

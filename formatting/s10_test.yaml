@@ -1,0 +1,19 @@
+OPTS:
+  - data
+  # - DPPs
+  # - ddps
+  # - assertions
+  # - no labels
+  # - no println
+  # - no errors
+  # - no files
+
+GLOBALS:
+  scripts: ./s10_FORMAT_TableTitles.groovy
+
+BA:
+  DPPs: ./s10_data.properties
+  docs:
+    - data: ./s10_data.dat
+      ddps: ./s10_data.properties
+# ---
