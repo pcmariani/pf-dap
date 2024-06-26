@@ -1,0 +1,20 @@
+OPTS:
+  - data
+  # - ddps
+  # - DPPs
+  # - assertions
+  # - no labels
+  # - no println
+  # - no errors
+  # - no files
+
+GLOBALS:
+  scripts:
+    - s02_CDATA_TableCells.groovy
+
+# ---
+
+test1:
+  docs:
+    - data: t02_data.xml
+# ---

@@ -1,0 +1,27 @@
+<tablegroup id="1">
+  <table parent_tablegroup="1" style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+      <tr>
+
+        <td style="width: 16.6667%;">Clone</td>
+
+        <td style="width: 16.6667%;">
+          <p><strong>Peak Viable Cell Density</strong><br />(x10<sup>6</sup> cells/mL · day)
+          </p>
+        </td>
+
+        <td style="width: 16.6667%;">
+          <p><strong>Integrated IVCC at Harvest</strong><br />(x10<sup>6</sup> cells/mL · day)</p>
+        </td>
+
+        <td style="width: 16.6667%; text-align: center;"><strong>Harvest Viability</strong><br />(%)</td>
+
+        <td style="width: 16.6667%; text-align: center;"><strong>Harvest Viability</strong><br />(mg/L)</td>
+
+        <td style="width: 16.6667%; text-align: center;"><strong>Harvest Viability</strong><br />(pf/cell · day)</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</tablegroup>
