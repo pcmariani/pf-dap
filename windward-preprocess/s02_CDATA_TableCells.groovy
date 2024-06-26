@@ -1,6 +1,5 @@
 import java.util.Properties;
 import java.io.InputStream;
-import groovy.xml.XmlUtil
 import com.boomi.execution.ExecutionUtil;
 
 logger = ExecutionUtil.getBaseLogger()
@@ -14,8 +13,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         /(?s)(<t[hd].*?>)(.*?)(<\/t[hd]>)/,
         "\$1<[CDATA[\$2]]>\$3"
     )
+
     is = new ByteArrayInputStream(data.getBytes("UTF-8"));
     dataContext.storeStream(is, props);
 }
-
 
