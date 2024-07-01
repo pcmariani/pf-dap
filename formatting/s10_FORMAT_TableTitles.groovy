@@ -16,19 +16,26 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     def data = is.text.replaceAll(/&/,"&amp;")
     def root = new XmlSlurper().parseText("<root>$data</root>")
+    def tablegroups = root.tablegroup
 
-    // if the table title contains the section prefix, remove it
-    def tableTitle = root.tablegroup.h3.toString().replaceAll(/^.*-\d{1,2}\.?\s*/,"")
+    tablegroups.each { tablegroup ->
+        //println tablegroup.h3
 
-    // if we want the section prefix, add it
-    if (tot_prefixOption =~ /(?i)section prefix/) {
-        tableTitle = root.tablegroup.h3.@sectionPrefix.toString() + ". " + tableTitle
+        // if the table title contains the section prefix, remove it
+        def tableTitle = tablegroup.h3.toString().replaceAll(/^.*-\d{1,2}\.?\s*/,"")
+
+        // if we want the section prefix, add it
+        if (tot_prefixOption =~ /(?i)section prefix/) {
+            tableTitle = tablegroup.h3.@sectionprefix.toString() + " " + tableTitle
+        }
+        //println tableTitle
+
+        tablegroup.h3 = tableTitle
     }
-    //println tableTitle
 
-    root.tablegroup.h3 = tableTitle
+    String outData = (XmlUtil.serialize(root) -~/^.*\?>/).replaceAll(/<\/?root>/, "").trim()
 
-    String outData = XmlUtil.serialize(root) - ~/^.*\?>/
+    //String outData = ""
     is = new ByteArrayInputStream(outData.getBytes("UTF-8"));
     dataContext.storeStream(is, props);
 }
