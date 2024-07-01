@@ -1,5 +1,5 @@
 <tablegroup reference="id396-----198-----00709170-0089">
-    <h3 sectionPrefix="1.1.1.1.1-1" prefixprependstring="Table" sectionnumber="1" tableheader="yes">1.1.1.1.1-1. Plasmid Process Dynamic Table</h3>
+    <h3 sectionPrefix="1-1" prefixprependstring="Table" sectionnumber="1" tableheader="yes">Plasmid Process Dynamic Table</h3>
     <table border="1" width="100%" parent_tablegroup="id396-----198-----00709170-0089" class="output-table">
       <tr>
         <th style="width:34%" class="">Parameter (Attribute)</th>
@@ -15,76 +15,6 @@
         <td style="width:34%" class="">Volumetric Throughput % (v/v)</td>
         <td style="width:33%" class="">32</td>
         <td style="width:33%" class="">2. Lysis & Depth Filtration</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Filter Throughput (L/m2)</td>
-        <td style="width:33%" class="">68</td>
-        <td style="width:33%" class="">2. Lysis & Depth Filtration</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">CaCl2 Precipitation Molarity (M)</td>
-        <td style="width:33%" class="">345</td>
-        <td style="width:33%" class="">2. Lysis & Depth Filtration</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">PD SE-HPLC (g/L)</td>
-        <td style="width:33%" class="">12</td>
-        <td style="width:33%" class="">2. Lysis & Depth Filtration</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Filter Challenge (L/m2)</td>
-        <td style="width:33%" class="">34</td>
-        <td style="width:33%" class="">3. Pre-UFDF1 0.45/0.2um Filtration</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Filter Challenge (L/m2)</td>
-        <td style="width:33%" class="">26</td>
-        <td style="width:33%" class="">4. UF/DF1</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Load Challenge (g/Lr)</td>
-        <td style="width:33%" class="">87</td>
-        <td style="width:33%" class="">5. TMAE</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Filter Challenge (g/m2)</td>
-        <td style="width:33%" class="">65</td>
-        <td style="width:33%" class="">6. UF/DF2</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Incubation Time (hr)</td>
-        <td style="width:33%" class="">94</td>
-        <td style="width:33%" class="">7. Linearization</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Filter Challenge (L/m2)</td>
-        <td style="width:33%" class="">56</td>
-        <td style="width:33%" class="">8. UF/DF3</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Filter Challenge (L/m2)</td>
-        <td style="width:33%" class="">98</td>
-        <td style="width:33%" class="">9. Final 0.45/0.2um Filtration</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Cell Strain</td>
-        <td style="width:33%" class="">TBD</td>
-        <td style="width:33%" class="">1. Fermentation</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Fermentation Titer from Upstream (mg/L)</td>
-        <td style="width:33%" class=""/>
-        <td style="width:33%" class="">1. Fermentation</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">Cell Solids by bottle centrifuge (%)</td>
-        <td style="width:33%" class="">-</td>
-        <td style="width:33%" class="">1. Fermentation</td>
-      </tr>
-      <tr>
-        <td style="width:34%" class="">kg Cell Solids</td>
-        <td style="width:33%" class="">56</td>
-        <td style="width:33%" class="">1. Fermentation</td>
       </tr>
     </table>
     <FooterText/>
