@@ -56,26 +56,17 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
 
     // --- set tableTitleText ---
-    //.replaceAll(/^.*-\d{1,2}\.?\s*/,"")
-
-    def tableTitleText = tableInstance.TableTitleIsOverridden ?
-                            tableInstance.TableTitleOverride.replaceAll(/^.*-\d{1,2}\.?\s*/,"") :
+    def tableTitleText = ""
+    if (source.ResultTableType =~ /(?i)Summary/) {
+        tableTitleText = source.TableTitleTemplate ?: "Table Title Text Not Yet Configured"
+    }
+    else if (source.ResultTableType =~ /(?i)Data/) {
+        tableTitleText = tableInstance.TableTitleIsOverridden ?
+                            tableInstance.TableTitleOverride :
                             source.TableTitleTemplate ?: "Table Title Text Not Yet Configured"
-
-    //if (source.ResultTableType =~ /(?i)Summary/){
-    //    tableTitleText = sectionNumber + "-1. " + tableTitleText
-    //}
-    //else if (source.ResultTableType =~ /(?i)Data/) {
-    //    if (tableInstance.TableTitleIsOverridden) {
-    //        println tableInstance.TableTitleOverride.replaceAll(/^.*\. /,"")
-    //    }
-    //    tableTitleText = sectionNumber + "-" + tableInstanceIndex.toString() + ". " + (
-    //        tableInstance.TableTitleIsOverridden ?
-    //            tableInstance.TableTitleOverride.replaceAll(/^.*-\d{1,2}.*\.\s*/,"") :
-    //            tableTitleText
-    //    )
-    //}
-    println tableTitleText
+    }
+    tableTitleText = tableTitleText.replaceAll(/^.*?-\d{1,2}\.? +/,"")
+    //println tableTitleText
 
     // --- process placeholders ---
     (tableTitleText =~ /\{\{(.*?)\}\}/).collect{match -> match[1]}.unique().each() { placeholder ->

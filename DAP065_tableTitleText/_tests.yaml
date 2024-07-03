@@ -40,10 +40,16 @@ GLOBALS:
 #   data: ba2.dat
 #   ddps: ba2.properties
 
-ba2_data:
+# ba2_data:
+#   # script: s01_CONSTRUCT_TableTitles.groovy
+#   DPPs: ba2_data.properties
+#   data: ba2_data.dat
+#   ddps: ba2_data.properties
+#   ddpsOverride:
+#     document.dynamic.userdefined.ddp_Sources: ba2_data_sources.json
+
+ba3:
   # script: s01_CONSTRUCT_TableTitles.groovy
-  DPPs: ba2_data.properties
-  data: ba2_data.dat
-  ddps: ba2_data.properties
-  ddpsOverride:
-    document.dynamic.userdefined.ddp_Sources: ba2_data_sources.json
+  DPPs: ba3.properties
+  data: ba3.dat
+  ddps: ba3.properties
