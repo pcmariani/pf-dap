@@ -1,14 +1,16 @@
-OPTIONS:
-  # - no data
-  - no props
-  - no assertions
+OPTS:
+  - data
+  - no labels
+  # - no props
+  # - no assertions
   # - no guides
 
 GLOBALS:
   scripts:
-    - casey_values.groovy
+    # - casey_values.groovy
+    - casey_values_llm.groovy
 # ---
 
 test1:
   docs:
-    - datafile: values.json
+    - data: values.json

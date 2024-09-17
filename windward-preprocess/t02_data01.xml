@@ -1,0 +1,57 @@
+<tablegroup id="1">
+  <table parent_tablegroup="1" style="border-collapse: collapse; width: 100%;" border="1">
+    <tbody>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">Harvest<sup>superscript</sup></td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">Lysis/Neutralization/Depth Filtration</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">UFDF 1</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">TMAE Chromatography<sup>superscript</sup></td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">UFDF 2</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">Final Filtration</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">Linearization</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">UFDF 3</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">|</td>
+      </tr>
+      <tr style="height: 18px;">
+        <td style="width: 99.9006%; height: 18px; text-align: center;">Filtration and Storage</td>
+      </tr>
+    </tbody>
+  </table>
+</tablegroup>

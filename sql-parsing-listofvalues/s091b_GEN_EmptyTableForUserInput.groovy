@@ -84,7 +84,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
                 ["Col$j": item ?: ""]
             }
         },
-        "UserInputsIdString": paramUserInputsValsArr[2].join(","),
+        "UserInputIdsString": paramUserInputsValsArr[2].join(","),
         "Multiselect": paramUserInputsArr.Operator.contains("IN"),
         "Operators": paramUserInputsValsArr[3].join(",")
     ]

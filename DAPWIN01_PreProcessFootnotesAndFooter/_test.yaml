@@ -15,5 +15,5 @@ GLOBALS:
 # --------
 
 Plasmid Error:
-    data: ./plasmid.xml
+  data: ./plasmid.xml
 #------

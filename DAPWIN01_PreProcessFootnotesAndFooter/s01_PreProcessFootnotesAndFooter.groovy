@@ -13,6 +13,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def content_grid = props.getProperty("document.dynamic.userdefined.ddp_content_grid")
 
     def data = is.text.replaceAll(/&/,"&amp;")
+    //def data = is.text
     def root = new XmlSlurper().parseText("<root>$data</root>")
     // println prettyJson(root)
 
@@ -108,7 +109,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // create output;; remove outter <newroot> tag
     String outData = ""
-    outData = (XmlUtil.serialize(newroot)-~/^.*\?>/).replaceAll(/<\/?newroot>/, "").trim()
+    outData = (XmlUtil.serialize(newroot)-~/^.*\?>/)
+                .replaceAll(/<\/?newroot>/, "")
+                //.replaceAll(/&amp;/,"&")
+                .trim()
                 // .replaceAll(/<sup>\n?\s*/, "<![CDATA[<sup>")
                 // .replaceAll(/\n\s*<\/sup>\n\s*/, "</sup>]]")
 

@@ -34,61 +34,6 @@
                         <td style="width:33%" id="id887b15ba2539517094bccac9a4d57fe0" class="">12</td>
                         <td style="width:33%" id="id928404fcc2c19dc77e064ef1d1aa445e" class="">2. Lysis & Depth Filtration</td>
                     </tr>
-                    <tr>
-                        <td style="width:34%" id="id955549bd741efde2f49374b4b47ce874" class="">Filter Challenge (L/m2)</td>
-                        <td style="width:33%" id="idaa13a18cf1b0f62add93a6df54842339" class="">34</td>
-                        <td style="width:33%" id="iddca04899abdf4f30401e255cba023703" class="">3. Pre-UFDF1 0.45/0.2um Filtration</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="idc54e91802755530d7765551c4001de96" class="">Filter Challenge (L/m2)</td>
-                        <td style="width:33%" id="idad357cd906314c2138424024bec37888" class="">26</td>
-                        <td style="width:33%" id="id32610c449ac09171a122bab97c9f1676" class="">4. UF/DF1</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id7cfaf814507968645d2a8930592417c1" class="">Load Challenge (g/Lr)</td>
-                        <td style="width:33%" id="id9bcceb3170cd1f90eaacd254ccd0a148" class="">87</td>
-                        <td style="width:33%" id="id3b0287ff513ed5b542a66aa03d6c4541" class="">5. TMAE</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="idcf309dec1b65671c8309d8524d8b5b57" class="">Filter Challenge (g/m2)</td>
-                        <td style="width:33%" id="idbab2d066e6d17f85237f2e4da4faf785" class="">65</td>
-                        <td style="width:33%" id="id411297056df60cccde260de5c1e1c41e" class="">6. UF/DF2</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id82d3139acf0123f4f1f45d20bc75e4c9" class="">Incubation Time (hr)</td>
-                        <td style="width:33%" id="id9c5232efdc0b07cb5d967e62bfd89592" class="">94</td>
-                        <td style="width:33%" id="id02ea60398224d90d409994fa8541a86a" class="">7. Linearization</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id53b0b25c4081ad36f4f4b162d57b19f0" class="">Filter Challenge (L/m2)</td>
-                        <td style="width:33%" id="id21eab37eef223de8c6c9810910357f56" class="">56</td>
-                        <td style="width:33%" id="id0914358dd869fbbd0732d7ccbbbec99e" class="">8. UF/DF3</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id7dff27906384a13a9eb4c0a296bed411" class="">Filter Challenge (L/m2)</td>
-                        <td style="width:33%" id="id64032fc1cacf0defa503fd52b3100404" class="">98</td>
-                        <td style="width:33%" id="id9727be96da25ee51610dd610cd526384" class="">9. Final 0.45/0.2um Filtration</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id0b612015a4133e6adbb37663733cf9ee" class="">Cell Strain</td>
-                        <td style="width:33%" id="idad8eb75ea5b832fb2e5b567d6a538f7b" class="">TBD</td>
-                        <td style="width:33%" id="id8b2d7de868404d42b4ed8bf2ad19aedb" class="">1. Fermentation</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id246a444f7279895aeca2cf4ec0f6f024" class="">Fermentation Titer from Upstream (mg/L)</td>
-                        <td style="width:33%" id="id1bc3f744d3158f875832c93b87fb311b" class=""></td>
-                        <td style="width:33%" id="iddc41a09bbe3112f7585e9d48a041ae28" class="">1. Fermentation</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="id988c77e99f8832739e5d67f8c338003c" class="">Cell Solids by bottle centrifuge (%)</td>
-                        <td style="width:33%" id="id448c085f1f540ef195a21e22536db87d" class="">-</td>
-                        <td style="width:33%" id="idcd77dc53b447e298af2faea9fbd60f1a" class="">1. Fermentation</td>
-                    </tr>
-                    <tr>
-                        <td style="width:34%" id="idc014875929234b94c29350e0ff8ae0f1" class="">kg Cell Solids</td>
-                        <td style="width:33%" id="id30873e2a80cbddf8d2762f7701c58c66" class="">56</td>
-                        <td style="width:33%" id="ide10ef6948a928bef8028e522b413cf1e" class="">1. Fermentation</td>
-                    </tr>
                 </table>
             </tablegroup>
         </body>

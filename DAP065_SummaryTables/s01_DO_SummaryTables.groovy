@@ -49,6 +49,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
     Properties props = dataContext.getProperties(i);
 
+    /* INPUTS */
+
     // int reportContentItemId = (props.getProperty("document.dynamic.userdefined.ddp_ReportContentItem_DynamicTableId") ?: "1") as int
     // int tableDefinitionId = (props.getProperty("document.dynamic.userdefined.ddp_TableDefinitionId") ?: "1") as int
     def sqlParamValues = props.getProperty("document.dynamic.userdefined.ddp_sqlParamValues")
@@ -68,26 +70,40 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     def sqlParamUserInputValues = sqlParamUserInputValuesJson ? new JsonSlurper().parseText(sqlParamUserInputValuesJson) : []
     // println prettyJson(sqlParamUserInputValues)
 
+    // this was 
     def sqlColumnsMapJson = props.getProperty("document.dynamic.userdefined.ddp_sqlColumnsMap")
-    // println sqlColumnsMapJson
+    //println sqlColumnsMapJson
     def sqlColumnsMap = sqlColumnsMapJson ? new JsonSlurper().parseText(sqlColumnsMapJson) : [:]
-    // println sqlColumnsMap
+    //println sqlColumnsMap
 
+    // the following object was created in the previous script: SORT_MultiSelectParam
+    // repeating the comment from that script:
+    //   Create a map where the keys are the RowKey/ColumnKey and values are RowLabels/ColumnLabels
+    //   It is formed from both activeGroupByConfigsArr and activePivotedDataConfigsArr
+    //   Its purpose is to provide a quick reference for:
+    //   - matching keys with labels
+    //   - sorting - the list is taking from the configs in order
     def keysLabelsMapJson = props.getProperty("document.dynamic.userdefined.ddp_pivotConfigsKeysLabelsMapJson")
     def keysLabelsMap = keysLabelsMapJson ? new JsonSlurper().parseText(keysLabelsMapJson) : []
     // println keysLabelsMap
     ArrayList keysLabelsMapKeySet = keysLabelsMap ? keysLabelsMap.keySet() : []
     // println keysLabelsMapKeySet
 
+    /* LOGIC */
+
     def reader = new BufferedReader(new InputStreamReader(is))
-
-    def dataMap = [:]
     int lineIndex = 0
-
+    def firstItem = true
     Boolean addLineOnlyIfInKeysLabels = false
     def columnInPivotConfigArr = [false]*sqlColumnNamesArr.size()
-    def firstLine = true
+    def dataMap = [:] // populated in while loop
+
     while ((line = reader.readLine()) != null ) {
+
+        /*
+         * dataTableLocation START
+         * Adds a column at the end of the summary row record called dataTableLocation
+         */
 
         def lineArr = line
             .replaceFirst(/$IFS\s*$/, "${IFS}LAST_ELEMENT_IS_BLANK")
@@ -104,13 +120,23 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
         lineArr += dataTableLocation + "###" + sqlParamValues
         // println lineArr
 
+        /* 
+         * END dataTableLocation
+         */
+
+        /*
+         * sort summary rows - step 1 craete map START
+         * Adds a column at the end of the summary row record called dataTableLocation
+         */
         ArrayList newLineArr = []
         String lineKey
 
         lineArr.withIndex().collect { item, j ->
-            if (firstLine) {
-                def columnInPivotConfig
-                // println sqlColumnsMap
+            // assumes that, if we are dealing with a multiSelectParam that we'll need to sort by,
+            // there will only be one key in the first column
+            if (firstItem) {
+                def columnInPivotConfig = false
+                //println sqlColumnsMap
                 if (sqlColumnsMap) {
                   columnInPivotConfig = sqlParamUserInputValues.find{sqlColumnsMap[it.ParamName] == sqlColumnNamesArr[j]}?.PivotConfig
                 } else {
@@ -128,11 +154,10 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             }
             
             // println item in keysLabelsMapKeySet
-            // if (columnInPivotConfigArr[j]) {
-            //   println j + " " + addLineOnlyIfInKeysLabels + " " + (item in keysLabelsMapKeySet) + " " + item
-            // }
+            //if (columnInPivotConfigArr[j]) {
+            //    println j + " " + addLineOnlyIfInKeysLabels + " " + (item in keysLabelsMapKeySet) + " " + item
+            //}
             if (item in keysLabelsMapKeySet && columnInPivotConfigArr[j]) {
-            // if (item in keysLabelsMapKeySet) {
                 // println item
                 lineKey = item
                 newLineArr << keysLabelsMap[item]
@@ -150,12 +175,20 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
             dataMap[lineIndex] = lineArr
         }
 
+        /* 
+         * END sort - step 1
+         */
+
         // println columnInPivotConfigArr
-        firstLine = false
+        firstItem = false
     }
     // dataMap.each { println it; println ""}
 
-    // Add Virtual Columns
+    /*
+     * Add Virtual Columns START
+     * Adds a column at the end of the summary row record called dataTableLocation
+     */
+
     if (virtualColumns) {
         vcColToInsertAfterCountMap = sqlColumnNamesArr.collectEntries{[(it):0]}
         // println vcColToInsertAfterCountMap
@@ -182,8 +215,12 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     props.setProperty("document.dynamic.userdefined.ddp_sqlColumnNames", sqlColumnNamesArr.join(OFS))
     // println sqlColumnNamesArr
 
+    /* 
+     * END add Virtual Columns
+     */
 
-    // sort rows
+
+    // sort rows - step 2 -> sort map keys by order in keysLabelsMapKeySet
     if (keysLabelsMapKeySet) {
         dataMap = dataMap.sort{ m -> keysLabelsMapKeySet.indexOf(m.key) }
     }

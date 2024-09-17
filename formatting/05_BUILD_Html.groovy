@@ -15,8 +15,6 @@ def sectionNumber = ExecutionUtil.getDynamicProcessProperty("DPP_SectionNumber")
 //println sectionNumber
 def tot_prefixOption = ExecutionUtil.getDynamicProcessProperty("DPP_TableOfTables_PrefixOption") ?: "Prefix"
 //println tot_prefixOption
-def tot_text_to_prepend = (ExecutionUtil.getDynamicProcessProperty("DPP_TableOfTables_TextToPrepend") ?: "Table" ) - ~/\s*$/
-//println tot_text_to_prepend
  
 for( int i = 0; i < dataContext.getDataCount(); i++ ) {
     InputStream is = dataContext.getStream(i);
@@ -171,7 +169,7 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
             props.setProperty("document.dynamic.userdefined.ddp_tableGroupRef", "id"+md5(tableGroupId))
 
-            'h3'('tableHeader':"yes", 'prefixPrependString':tot_text_to_prepend, 'sectionPrefix':sectionNumber+"-"+tableInstanceIndex, 'sectionNumber':sectionNumber, tableTitleText)
+            'h3'('tableHeader':"yes", 'sectionPrefix':sectionNumber+"-"+tableInstanceIndex, 'sectionNumber':sectionNumber, tableTitleText)
 
             /* --- table --- */
 

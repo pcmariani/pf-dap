@@ -10,8 +10,8 @@ for( int i = 0; i < dataContext.getDataCount(); i++ ) {
 
     // regex: 3 capture groups: opening th/td, content, closing th/td
     def data = is.text.replaceAll(
-        /(?s)(<t[hd].*?>)(.*?)(<\/t[hd]>)/,
-        "\$1<[CDATA[\$2]]>\$3"
+        /(?s)(<t[hd].*?>)\s*(.*?)\s*(<\/t[hd]>)/,
+        "\$1<![CDATA[\$2]]>\$3"
     )
 
     is = new ByteArrayInputStream(data.getBytes("UTF-8"));
